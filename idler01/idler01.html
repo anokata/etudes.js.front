@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <style>
+
+      body { 
+          background: #c7b39b ; /* url(bg.jpg); */
+          background-repeat: no-repeat;
+          background-size:cover;
+      }
+
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="row">
+
+        <div class="col-sm">
+          {{ message }}
+        </div>
+
+        <div class="col-sm">
+             <button-counter></button-counter>
+        </div>
+
+        <div class="col-sm">
+             Сделать: <button-counter></button-counter>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <progress-bar></progress-bar>
+        </div>
+        <div class="col-sm"> </div>
+        <div class="col-sm"> </div>
+        <div class="col-sm"> </div>
+
+    </div>
+</div>
+    <script src="idler01.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
