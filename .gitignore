@@ -1,3 +1,11 @@
+*.map
+*.zip
+*.jpg
+*bootstrap*.css
+*rc.json
+bootstrap*.js
+jquery*.js
+*lock.json
 # Logs
 logs
 *.log
