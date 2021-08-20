@@ -33,4 +33,9 @@ var app = new Vue({
     message: 'Hello Vue!',
     procent1: 10,
   },
+    methods: {
+        setMessage: function(event){
+            this.message = event.target.value;
+        }
+    }
 })

@@ -3,6 +3,7 @@
 *.jpg
 *bootstrap*.css
 *rc.json
+vue.js
 bootstrap*.js
 jquery*.js
 *lock.json
