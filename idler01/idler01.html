@@ -20,14 +20,15 @@
     <div class="row">
 
         <div class="col-sm">
-          {{ message }}
+            {{ message }}+{{number}}
         </div>
 
         <div class="col-sm">
              <button-counter></button-counter>
         </div>
 
-        <div class="col-sm">
+        <div class="col-sm" >
+            <div v-text="text_button1"></div>
              Сделать: <button-counter></button-counter>
         </div>
     </div>
@@ -36,8 +37,15 @@
         <div class="col-sm">
             <progress-bar></progress-bar>
         </div>
-        <div class="col-sm"> </div>
-        <div class="col-sm"> </div>
+        <div class="col-sm"> 
+
+            <div class="progress"><div class="progress-bar" role="progressbar" v-bind:aria-valuenow="procent1" aria-valuemin="0" aria-valuemax="100" :style="procent1style()" ></div></div>
+        </div>
+        <div class="col-sm"> 
+  <input type="range" id="cowbell" name="cowbell" 
+         min="0" max="100" value="90" v-model="number" step="10">
+  <label for="cowbell">Cowbell</label>
+        </div>
         <div class="col-sm"> </div>
 
     </div>
