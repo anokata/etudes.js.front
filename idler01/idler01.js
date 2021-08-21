@@ -1,4 +1,10 @@
 const firstTier = 10;
+const ClickTiers = {
+    1: 10,
+    2: 30,
+    3: 60,
+    4: 100,
+};
 
 Vue.component('button-counter', {
   data: function () {
@@ -8,13 +14,24 @@ Vue.component('button-counter', {
   },
   methods: {
     IncrementNumber: function (n, event) {
-      //this.procent1 += 1;
-        //console.log(app);
-        //console.log(this);
         app.procent1 += n;
+        app.clickInc();
     }
   },
     template: '<button class="btn btn-primary" @click="IncrementNumber(2, $event)">clicks: - {{ count }}</button>'
+})
+
+Vue.component('click-button', {
+  data: function () {
+    return {
+    }
+  },
+  methods: {
+    IncrementNumber: function (event) {
+        app.clickInc();
+    }
+  },
+    template: '<button class="btn btn-info" @click="IncrementNumber()">make clicks</button>'
 })
 
 
@@ -38,6 +55,10 @@ var app = new Vue({
     state: "",
     number: 1,
     isActive: false,
+
+    clickTier: 0,
+    clicks: 0,
+    clickAddenum: 1,
   },
     methods: {
         setMessage: function(event){
@@ -45,6 +66,10 @@ var app = new Vue({
         },
         procent1style:function (){
             return `width: ${this.procent1}%`;
-        }
+        },
+        clickInc: function(){
+            this.clicks += this.clickAddenum;
+            //console.log(`click ${this.clicks}`);
+        },
     }
 })
