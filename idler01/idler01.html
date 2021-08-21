@@ -11,7 +11,19 @@
           background-repeat: no-repeat;
           background-size:cover;
       }
-
+.region{
+    background-color: #999;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+}
+.active{
+    background-color:red;
+}
+.bounded{
+    border: 2px solid green;
+}
     </style>
 </head>
 <body>
@@ -46,7 +58,9 @@
          min="0" max="100" value="90" v-model="number" step="10">
   <label for="cowbell">Cowbell</label>
         </div>
-        <div class="col-sm"> </div>
+        <div class="col-sm"> 
+ <div class="region" v-bind:class="{active: isActive}" v-on:click="isActive=!isActive"></div>
+        </div>
 
     </div>
 </div>

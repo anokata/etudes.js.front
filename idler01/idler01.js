@@ -23,10 +23,9 @@ Vue.component('progress-bar', {
   data: function () {
     return {
       prc: 10,
-      prcwidth: "width: 10%"
     }
   },
-    template: '<div class="progress"><div class="progress-bar" role="progressbar" v-bind:aria-valuenow="prc" aria-valuemin="0" aria-valuemax="100" v-bind:style="prc" ></div></div>'
+    template: `<div class="progress"><div class="progress-bar" role="progressbar" v-bind:aria-valuenow="prc" aria-valuemin="0" aria-valuemax="100" v-bind:style="{width: in_prc+'%'}"></div></div>`
 })
 
 
@@ -38,6 +37,7 @@ var app = new Vue({
     procent1: 10,
     state: "",
     number: 1,
+    isActive: false,
   },
     methods: {
         setMessage: function(event){
