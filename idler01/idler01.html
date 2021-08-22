@@ -46,7 +46,7 @@
 </nav>
 
 <!-- <div id="test" :class="{tab_hide: !menu.test}"> -->
-<div id="test" v-if="menu.test">
+<div id="test" v-show="menu.test">
     <div class="row">
 
         <div class="col-sm">
@@ -84,7 +84,7 @@
 </div>
 
 
-<div id="dev" v-if="menu.dev">
+<div id="dev" v-show="menu.dev">
     <div class="row">
         <div class="col-sm"> 
             Make a char
