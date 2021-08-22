@@ -6,6 +6,18 @@ const ClickTiers = {
     4: 100,
 };
 
+// btn-primary btn-sm disabled
+// btn-secondary
+// btn-success
+// btn-danger
+// btn-warning
+// btn-info
+// btn-light
+// btn-dark
+// btn-outline
+// bootstrap nav bar - tabs
+//.navbar-toggler
+
 Vue.component('button-counter', {
   data: function () {
     return {
@@ -60,11 +72,19 @@ var app = new Vue({
     clicks: 0,
     clickAddenum: 1,
 
+      // tabs
+      // every action is unlocking
+      // Buy for ..
     unlocks: [],
     auto: {
         clickers: 0,
     },
     upgrades: {
+    },
+    menu:{
+        active: 'dev',
+        test: false,
+        dev: true,
     },
   },
     methods: {
@@ -77,6 +97,13 @@ var app = new Vue({
         clickInc: function(){
             this.clicks += this.clickAddenum;
             //console.log(`click ${this.clicks}`);
+        },
+        menuToggle: function(name){
+            let menu = this.menu;
+            if (menu[name]) return;
+            menu[name] = !menu[name];
+            menu[menu.active] = false;
+            menu.active = name;
         },
     }
 })

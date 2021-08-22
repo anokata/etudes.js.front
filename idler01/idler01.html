@@ -29,6 +29,20 @@
 </head>
 <body>
 <div class="container" id="app">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1" aria-controls="menu1" aria-expanded="false" aria-label="Toggle navigation">
+ </button>
+
+  <div class="collapse navbar-collapse" id="menu1">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" v-bind:class="{active: menu.dev}" v-on:click="menuToggle('dev')" href="#">Dev</a>
+        <a class="nav-item nav-link" v-bind:class="{active: menu.test}" v-on:click="menuToggle('test')" href="#">Test</a>
+    </div>
+  </div>
+
+</nav>
+
     <input type="text" v-on:input="setMessage" />
     <div class="row">
 
