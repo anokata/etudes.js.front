@@ -15,8 +15,6 @@ const ClickTiers = {
 // btn-light
 // btn-dark
 // btn-outline
-// bootstrap nav bar - tabs
-//.navbar-toggler
 
 Vue.component('button-counter', {
   data: function () {

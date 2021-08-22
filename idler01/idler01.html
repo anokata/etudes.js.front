@@ -45,7 +45,8 @@
 
 </nav>
 
-<div id="test" :class="{tab_hide: !menu.test}">
+<!-- <div id="test" :class="{tab_hide: !menu.test}"> -->
+<div id="test" v-if="menu.test">
     <div class="row">
 
         <div class="col-sm">
@@ -82,9 +83,11 @@
     </div>
 </div>
 
-<div id="dev" :class="{tab_hide: !menu.dev}">
+
+<div id="dev" v-if="menu.dev">
     <div class="row">
         <div class="col-sm"> 
+            Make a char
             <click-button></click-button>
         </div>
         <div class="col-sm"> 
