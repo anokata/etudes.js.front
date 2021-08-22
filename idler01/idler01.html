@@ -38,15 +38,15 @@
 
   <div class="collapse navbar-collapse" id="menu1">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" v-bind:class="{active: menu.dev}" v-on:click="menuToggle('dev')" href="#">Dev</a>
-        <a class="nav-item nav-link" v-bind:class="{active: menu.test}" v-on:click="menuToggle('test')" href="#">Test</a>
+        <a v-for="(val, name) in menu" class="nav-item nav-link" v-bind:class="{active: val.active}" v-on:click="menuToggle(name)" href="#">{{val.name}}</a>
+        <!-- <a class="nav-item nav-link" v-bind:class="{active: menu.dev}" v-on:click="menuToggle('dev')" href="#">Dev</a> -->
     </div>
   </div>
 
 </nav>
 
 <!-- <div id="test" :class="{tab_hide: !menu.test}"> -->
-<div id="test" v-show="menu.test">
+<div id="test" v-show="menu.test.active">
     <div class="row">
 
         <div class="col-sm">
@@ -84,7 +84,7 @@
 </div>
 
 
-<div id="dev" v-show="menu.dev">
+<div id="dev" v-show="menu.dev.active">
     <div class="row">
         <div class="col-sm"> 
             Make a char

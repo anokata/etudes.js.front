@@ -80,10 +80,20 @@ var app = new Vue({
     upgrades: {
     },
     menu:{
-        active: 'dev',
-        test: false,
-        dev: true,
+        dev: {
+            active: true,
+            name: "Dev",
+        },
+        test: {
+            active: false,
+            name: "Test",
+        },
+        about: {
+            active: false,
+            name: "About",
+        },
     },
+    menuActive: 'dev',
   },
     methods: {
         setMessage: function(event){
@@ -98,10 +108,10 @@ var app = new Vue({
         },
         menuToggle: function(name){
             let menu = this.menu;
-            if (menu[name]) return;
-            menu[name] = !menu[name];
-            menu[menu.active] = false;
-            menu.active = name;
+            if (menu[name].active) return;
+            menu[name].active = !menu[name].active;
+            menu[this.menuActive].active = false;
+            this.menuActive = name;
         },
     }
 })
