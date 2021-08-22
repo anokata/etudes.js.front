@@ -1,4 +1,4 @@
-const firstTier = 10;
+Vue.config.devtools = true;
 const ClickTiers = {
     1: 10,
     2: 30,
@@ -59,6 +59,13 @@ var app = new Vue({
     clickTier: 0,
     clicks: 0,
     clickAddenum: 1,
+
+    unlocks: [],
+    auto: {
+        clickers: 0,
+    },
+    upgrades: {
+    },
   },
     methods: {
         setMessage: function(event){
