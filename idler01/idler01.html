@@ -25,6 +25,8 @@
 .bounded{
     border: 2px solid green;
 }
+            .tab_vis{ display:block}
+            .tab_hide{ display:none}
     </style>
 </head>
 <body>
@@ -43,11 +45,12 @@
 
 </nav>
 
-    <input type="text" v-on:input="setMessage" />
+<div id="test" :class="{tab_hide: !menu.test}">
     <div class="row">
 
         <div class="col-sm">
             {{ message }}+{{number}}
+            <input type="text" v-on:input="setMessage" />
         </div>
 
         <div class="col-sm">
@@ -77,7 +80,9 @@
  <div class="region" v-bind:class="{active: isActive}" v-on:click="isActive=!isActive"></div>
         </div>
     </div>
+</div>
 
+<div id="dev" :class="{tab_hide: !menu.dev}">
     <div class="row">
         <div class="col-sm"> 
             <click-button></click-button>
