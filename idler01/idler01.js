@@ -6,6 +6,7 @@ const ClickTiers = {
     4: 100,
 };
 
+// cookie save
 // btn-primary btn-sm disabled
 // btn-secondary
 // btn-success
@@ -15,6 +16,8 @@ const ClickTiers = {
 // btn-light
 // btn-dark
 // btn-outline
+// mine gray block
+// sell block for 0.001 coin. marketing upd. 
 
 Vue.component('button-counter', {
   data: function () {
@@ -41,7 +44,7 @@ Vue.component('click-button', {
         app.clickInc();
     }
   },
-    template: '<button class="btn btn-info" @click="IncrementNumber()">make clicks</button>'
+    template: '<button class="btn btn-info" @click="IncrementNumber()">Mine gray block</button>'
 })
 
 
