@@ -1,4 +1,5 @@
 *.map
+*.exe
 *.zip
 *.jpg
 *bootstrap*.css

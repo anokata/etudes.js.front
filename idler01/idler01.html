@@ -84,6 +84,14 @@
 </div>
 
 
+<div v-show="menu.settings.active">
+    <div class="row">
+        <div class="col-sm">
+            <v-button message="Save" :handler="log" type="secondary"></v-button>
+        </div>
+    </div>
+</div>
+
 <div id="dev" v-show="menu.dev.active">
     <div class="row">
         <div class="col-sm"> 

@@ -18,6 +18,9 @@ const ClickTiers = {
 // btn-outline
 // mine gray block
 // sell block for 0.001 coin. marketing upd. 
+// every action is unlocking
+// Buy for ..
+// infinit gm progress gen unlock
 
 Vue.component('button-counter', {
   data: function () {
@@ -32,6 +35,17 @@ Vue.component('button-counter', {
     }
   },
     template: '<button class="btn btn-primary" @click="IncrementNumber(2, $event)">clicks: - {{ count }}</button>'
+})
+
+Vue.component('v-button', {
+    props: ['message', 'handler', 'type'],
+    data: function () {
+    return {
+    }
+    },
+    methods: {
+    },
+    template: '<button class="btn btn-primary" :class="\'btn-\'+type" @click="handler(\'save\'+type)" >{{message}}</button>'
 })
 
 Vue.component('click-button', {
@@ -73,9 +87,6 @@ var app = new Vue({
     clicks: 0,
     clickAddenum: 1,
 
-      // tabs
-      // every action is unlocking
-      // Buy for ..
     unlocks: [],
     auto: {
         clickers: 0,
@@ -91,6 +102,10 @@ var app = new Vue({
             active: false,
             name: "Test",
         },
+        settings: {
+            active: false,
+            name: "Settings",
+        },
         about: {
             active: false,
             name: "About",
@@ -99,6 +114,9 @@ var app = new Vue({
     menuActive: 'dev',
   },
     methods: {
+        log: function(msg){
+            console.log(msg);
+        },
         setMessage: function(event){
             this.message = event.target.value;
         },
