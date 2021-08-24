@@ -95,11 +95,19 @@
 <div id="dev" v-show="menu.dev.active">
     <div class="row">
         <div class="col-sm"> 
-            Mine gray block
-            <click-button></click-button>
+            <span>
+                <!-- TODO array for -->
+            <img :src="ico_grayblock"/ height=20 width=20 /> {{grayBlocks}}
+            <img :src="ico_yellowblock"/ height=20 width=20 /> {{yellowBlocks}}
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm"> 
+            <click-button message="Mine gray block"></click-button>
         </div>
         <div class="col-sm"> 
-            Have: {{clicks}}
         </div>
         <div class="col-sm"> 
         </div>

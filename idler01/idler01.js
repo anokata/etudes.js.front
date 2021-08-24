@@ -1,5 +1,5 @@
 Vue.config.devtools = true;
-const ClickTiers = {
+const MineTiers = {
     1: 10,
     2: 30,
     3: 60,
@@ -31,10 +31,10 @@ Vue.component('button-counter', {
   methods: {
     IncrementNumber: function (n, event) {
         app.procent1 += n;
-        app.clickInc();
+        app.blockInc();
     }
   },
-    template: '<button class="btn btn-primary" @click="IncrementNumber(2, $event)">clicks: - {{ count }}</button>'
+    template: '<button class="btn btn-primary" @click="IncrementNumber(2, $event)">grayBlocks - {{ count }}</button>'
 })
 
 Vue.component('v-button', {
@@ -67,10 +67,10 @@ Vue.component('click-button', {
   },
   methods: {
     IncrementNumber: function (event) {
-        app.clickInc();
+        app.blockInc();
     }
   },
-    template: '<button class="btn btn-info" @click="IncrementNumber()">Mine gray block</button>'
+    template: '<button class="btn btn-info" @click="IncrementNumber()">Mine gray block <img src="icons/grayblock_v2.png" height=20></img></button>'
 })
 
 
@@ -95,13 +95,16 @@ var app = new Vue({
     number: 1,
     isActive: false,
 
-    clickTier: 0,
-    clicks: 0,
-    clickAddenum: 1,
+    blockTier: 0,
+    grayBlocks: 0,
+    yellowBlocks: 0,
+    blockAddenum: 1,
+    ico_grayblock: "icons/grayblock_v2.png",
+    ico_yellowblock: "icons/yellowblock.png",
 
     unlocks: [],
     auto: {
-        clickers: 0,
+        grayMiners: 0,
     },
     upgrades: {
     },
@@ -135,9 +138,9 @@ var app = new Vue({
         procent1style:function (){
             return `width: ${this.procent1}%`;
         },
-        clickInc: function(){
-            this.clicks += this.clickAddenum;
-            //console.log(`click ${this.clicks}`);
+        blockInc: function(){
+            this.grayBlocks += this.blockAddenum;
+            //console.log(`block ${this.grayBlocks}`);
         },
         menuToggle: function(name){
             let menu = this.menu;
