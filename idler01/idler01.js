@@ -38,7 +38,19 @@ Vue.component('button-counter', {
 })
 
 Vue.component('v-button', {
-    props: ['message', 'handler', 'type'],
+    props: {
+      message: {
+        type: String,
+        required: true,
+        default: 'Button',
+        },
+      type: {
+        type: String,
+        default: 'secondary',
+        },
+      handler: Function,
+
+    },
     data: function () {
     return {
     }
