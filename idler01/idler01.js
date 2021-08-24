@@ -34,7 +34,7 @@ Vue.component('button-counter', {
         app.blockInc();
     }
   },
-    template: '<button class="btn btn-primary" @click="IncrementNumber(2, $event)">grayBlocks - {{ count }}</button>'
+    template: '<button class="btn btn-primary " @click="IncrementNumber(2, $event)">grayBlocks - {{ count }}</button>'
 })
 
 Vue.component('v-button', {
@@ -70,7 +70,7 @@ Vue.component('click-button', {
         app.blockInc();
     }
   },
-    template: '<button class="btn btn-info" @click="IncrementNumber()">Mine gray block <img src="icons/grayblock_v2.png" height=20></img></button>'
+    template: '<button class="btn btn-outline-info" @click="IncrementNumber()">Mine gray block <img src="icons/grayblock_v2.png" height=20></img></button>'
 })
 
 
