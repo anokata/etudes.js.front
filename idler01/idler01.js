@@ -22,20 +22,6 @@ const MineTiers = {
 // Buy for ..
 // infinit gm progress gen unlock
 
-Vue.component('button-counter', {
-  data: function () {
-    return {
-      count: 0
-    }
-  },
-  methods: {
-    IncrementNumber: function (n, event) {
-        app.procent1 += n;
-        app.blockInc();
-    }
-  },
-    template: '<button class="btn btn-primary " @click="IncrementNumber(2, $event)">grayBlocks - {{ count }}</button>'
-})
 
 Vue.component('v-button', {
     props: {
@@ -101,6 +87,7 @@ var app = new Vue({
     blockAddenum: 1,
     ico_grayblock: "icons/grayblock_v2.png",
     ico_yellowblock: "icons/yellowblock.png",
+    coins: 0.001,  
 
     unlocks: [],
     auto: {
@@ -148,6 +135,16 @@ var app = new Vue({
             menu[name].active = !menu[name].active;
             menu[this.menuActive].active = false;
             this.menuActive = name;
+        },
+        sellGray: function(){
+            this.coins += this.canBuyCoinsGray();
+            this.grayBlocks = 0;
+        },
+        canBuyCoinsGrayMsg: function(){
+            return `Sell gray blocks for ${this.canBuyCoinsGray()} coins`;
+        },
+        canBuyCoinsGray: function(){
+            return this.grayBlocks / 250;
         },
     }
 })
