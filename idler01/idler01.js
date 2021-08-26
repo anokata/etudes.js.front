@@ -47,6 +47,7 @@ Vue.component('v-button', {
 })
 
 Vue.component('click-button', {
+  props: ['message', 'clickfn'],
   data: function () {
     return {
     }
@@ -56,7 +57,7 @@ Vue.component('click-button', {
         app.blockInc();
     }
   },
-    template: '<button class="btn btn-outline-info" @click="IncrementNumber()">Mine gray block <img src="icons/grayblock_v2.png" height=20></img></button>'
+    template: '<button class="btn btn-outline-info" @click="clickfn()">{{message}}<img src="icons/grayblock_v2.png" height=20></img></button>'
 })
 
 
