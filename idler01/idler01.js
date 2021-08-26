@@ -141,7 +141,7 @@ var app = new Vue({
             this.grayBlocks = 0;
         },
         canBuyCoinsGrayMsg: function(){
-            return `Sell gray blocks for ${this.canBuyCoinsGray()} coins`;
+            return `Sell for ${this.canBuyCoinsGray()} coins`;
         },
         canBuyCoinsGray: function(){
             return this.grayBlocks / 250;
