@@ -2,8 +2,10 @@ const http = require('http');
 const os = require("os");
 const say = require("./say");
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const hostname = '0.0.0.0';
+//const hostname = '127.0.0.1';
+// for heroku
+const port = process.env.PORT || 3000;
 
 let userName = os.userInfo().username;
 console.log(userName);
@@ -35,7 +37,7 @@ info();
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+  res.end('Hello Dude');
 });
 
 server.listen(port, hostname, () => {
