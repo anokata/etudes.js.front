@@ -6,6 +6,12 @@ const MineTiers = {
     4: 100,
 };
 
+//OR console.log(this.$root.$data);
+var sharedState = {
+    clock: 2,
+    incClock: function(){this.clock+= 2;},
+};
+
 const NotFound = { template: '<h2>Page Not Found</h2>' }
 const Idler01 = { template: `
     <div class="row">
@@ -24,15 +30,25 @@ const Idler01 = { template: `
 `
 }
 const Idler02 = { template: '<h2>Idler 02 Page</h2>' }
-const About = { template: '<h2>About Page</h2>' }
+const About = { 
+    props: ['data', 'x', 'sharedState'],
+    methods: {
+        inc: function() { 
+            this.x += 1;
+            this.sharedState.incClock();
+        }
+    },
+    template: '<h2>About Page da:{{data}} x:{{x}}({{sharedState.clock}}) <v-button @click="inc()" message="Save" :handler="inc" type="secondary"></v-button></h2>' 
+}
+            
 const Dev = { template: '<h2>Dev Page</h2>' }
-const Test = { template: '<h2>TRest Page</h2>' }
+const Test = { template: '<h2>TRest Page {{ message }}+{{number}}</h2>' }
 const Settings = { template: '<h2>Settings Page</h2>' }
 
 const routes = [
   { path: '/', component: Idler01 },
   { path: '/idler02', component: Idler02 },
-  { path: '/About', component: About },
+  { path: '/About', component: About, props: {data: "saf", x: 1, sharedState: sharedState} },
   { path: '*', component: NotFound },
   { path: '/Dev', component: Dev },
   { path: '/Test', component: Test },
