@@ -22,6 +22,15 @@ const MineTiers = {
 // Buy for ..
 // infinit gm progress gen unlock
 
+Vue.filter('number-suffix', function(n){
+    let num = numeral(n);
+    return num.format('0.a');
+})
+Vue.filter('number-exponent', function(n){
+    let num = numeral(n);
+    return num.format('0.0e+0');
+})
+	
 
 Vue.component('v-button', {
     props: {
@@ -85,7 +94,7 @@ var app = new Vue({
     blockTier: 0,
     grayBlocks: 0,
     yellowBlocks: 0,
-    blockAddenum: 1,
+    blockAddenum: 1e3,
     ico_grayblock: "icons/grayblock_v2.png",
     ico_yellowblock: "icons/yellowblock.png",
     coins: 0.001,  

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <style>
 
@@ -102,7 +103,7 @@
         <div class="col-sm"> 
             <span>
                 <!-- TODO array for -->
-            <img :src="ico_grayblock"/ height=20 width=20 /> {{grayBlocks}}
+            <img :src="ico_grayblock"/ height=20 width=20 /> {{grayBlocks | number-exponent}}
             <img :src="ico_yellowblock"/ height=20 width=20 /> {{yellowBlocks}}
             </span>
         </div>
