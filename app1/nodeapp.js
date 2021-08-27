@@ -10,9 +10,13 @@ console.log(userName);
 console.log(`request date: ${say.date}`);
 console.log(say.getMessage(userName));
 
-const User = require("./user")
+const User = require("./user");
 let me = new User("Penguine", 32);
 me.sayHi();
+console.log(`Hello ${say.name}`); 
+
+const Mod2 = require("./mod2");
+Mod2.start();
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;

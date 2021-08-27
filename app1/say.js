@@ -12,4 +12,7 @@ module.exports.getMessage = function(name){
         return "Good day, dood, " + name;
     else
         return "Godd morning, " + name;
+    
 }
+
+module.exports.name = "Alice";
