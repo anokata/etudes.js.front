@@ -1,0 +1,8 @@
+{
+    "name": "modulesapp",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "^4.17.1",
+        "numeral": "^2.0.6"
+    }
+}
