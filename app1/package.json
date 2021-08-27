@@ -5,6 +5,7 @@
   "main": "nodeapp.js",
   "scripts": {
     "start": "node nodeapp.js",
+    "dev": "nodemon nodeapp.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

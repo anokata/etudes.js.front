@@ -13,7 +13,7 @@ console.log(`request date: ${say.date}`);
 console.log(say.getMessage(userName));
 
 const User = require("./user");
-let me = new User("Penguine", 32);
+let me = new User("PenDrive", 32);
 me.sayHi();
 console.log(`Hello ${say.name}`); 
 
