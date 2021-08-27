@@ -1,0 +1,17 @@
+{
+  "name": "idler01",
+  "version": "1.0.5",
+  "description": "Magic idler with route on vue.js",
+  "main": "main.js",
+  "scripts": {
+    "start": "",
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ksi",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

@@ -6,6 +6,23 @@ const MineTiers = {
     4: 100,
 };
 
+const NotFound = { template: '<h2>Page Not Found</h2>' }
+const Idler01 = { template: '<h2>Idler 01 Page</h2>' }
+const Idler02 = { template: '<h2>Idler 02 Page</h2>' }
+const About = { template: '<h2>About Page</h2>' }
+
+const routes = [
+  { path: '/', component: Idler01 },
+  { path: '/idler02', component: Idler02 },
+  { path: '/about', component: About },
+  { path: '*', component: NotFound }
+];
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: routes
+});
+
 // cookie save
 // btn-primary btn-sm disabled
 // btn-secondary
@@ -83,6 +100,7 @@ Vue.component('progress-bar', {
 
 var app = new Vue({
   el: '#app',
+  router: router,
   data: {
     message: 'Hello Vue!',
     text_button1: 'make it inc:',
