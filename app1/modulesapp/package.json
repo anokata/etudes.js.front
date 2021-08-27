@@ -1,8 +1,12 @@
 {
     "name": "modulesapp",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "dependencies": {
         "express": "^4.17.1",
         "numeral": "^2.0.6"
+    },
+    "scripts" : {
+        "start" : "node app2.js",
+        "dev" : "node app2.js Dude 32"
     }
 }
