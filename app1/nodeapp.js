@@ -17,6 +17,20 @@ console.log(`Hello ${say.name}`);
 
 const Mod2 = require("./mod2");
 Mod2.start();
+console.log(global._soiliton);
+
+
+function info(){
+    let nodePath = process.argv[0];
+    let appPath = process.argv[1];
+    let name = process.argv[2];
+     
+    console.log();
+    console.log("nodePath: " + nodePath);
+    console.log("appPath: " + appPath);
+    console.log("name: " + name);
+}
+info();
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;

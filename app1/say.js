@@ -16,3 +16,4 @@ module.exports.getMessage = function(name){
 }
 
 module.exports.name = "Alice";
+global._soiliton = { name: "val" };
