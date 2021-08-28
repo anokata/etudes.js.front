@@ -1,3 +1,5 @@
+const Vue = window.Vue;
+const numeral = window.numeral;
 Vue.config.devtools = true;
 
 const MineTiers = {
@@ -9,7 +11,7 @@ const MineTiers = {
 const blockTypes = 4;
 var blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
-// TODO JSHINT/lint, vim F12
+// TODO eslint, package.conf npm run lint, vim F12
 
 // cookie save
 // btn-primary btn-sm disabled
@@ -45,7 +47,7 @@ Vue.component("v-button", {
             required: true,
             default: "Button",
         },
-        btype: 4,
+        btype: Number(4),
         type: {
             type: String,
             default: "secondary",
