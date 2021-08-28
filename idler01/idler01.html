@@ -108,7 +108,7 @@
             </span>
         </div>
         <div class="col-sm">
-            coins: {{ coins }}
+            coins: {{ state.coins | number-suffixZ3 }}
         </div>
         <div class="col-sm"> 
         </div>
@@ -123,7 +123,7 @@
             <click-button message="Mine gray block  " type="0" :clickfn="mineBlock" ></click-button>
         </div>
         <div class="col-sm"> 
-            <v-button :message="canBuyCoinsMsg(0)" :handler="sellBlock" blockType="0" type="secondary"></v-button>
+            <v-button :message="canBuyCoinsMsg(0)" :handler="sellBlock" blockType=0 btype=0 type="secondary"></v-button>
         </div>
         <div class="col-sm"> 
         </div>
@@ -138,7 +138,7 @@
             <click-button message="Mine yellow block  " type="1" :clickfn="mineBlock" ></click-button>
         </div>
         <div class="col-sm"> 
-            <v-button :message="canBuyCoinsYellowMsg()" :handler="sellYellow" type="secondary"></v-button>
+            <v-button :message="canBuyCoinsMsg(1)" :handler="sellBlock" blockType=1 btype=1 type="secondary"></v-button>
         </div>
         <div class="col-sm"> 
         </div>

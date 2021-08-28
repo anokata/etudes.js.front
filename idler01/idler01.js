@@ -28,6 +28,10 @@ Vue.filter('number-suffix', function(n){
     let num = numeral(n);
     return num.format('0.a');
 })
+Vue.filter('number-suffixZ3', function(n){
+    let num = numeral(n);
+    return num.format('0.000a');
+})
 Vue.filter('number-exponent', function(n){
     let num = numeral(n);
     return num.format('0.0e+0');
@@ -41,15 +45,12 @@ Vue.component('v-button', {
         required: true,
         default: 'Button',
         },
+      btype: 4,
       type: {
         type: String,
         default: 'secondary',
         },
       handler: Function,
-      blockType: {
-          type:Number,
-          default: 0,
-      },
 
     },
     data: function () {
@@ -58,8 +59,8 @@ Vue.component('v-button', {
     },
     methods: {
         clickArg: function() {
-            console.log(this.blockType);
-            this.handler(this.blockType);
+            // console.log(`type:+ ${this.message} +${this.btype}`);
+            this.handler(this.btype);
         },
     },
     template: '<button class="btn btn-primary" :class="\'btn-\'+type" @click="clickArg()" >{{message}}</button>'
@@ -102,6 +103,7 @@ var app = new Vue({
         },
         upgrades: {
         },
+        coins: 0.002,  
 
         blocks: new Array(blockTypes).fill(10),
         blockAddenum: [],
@@ -121,7 +123,6 @@ var app = new Vue({
     yBlockAddenum: 1,
     ico_grayblock: "icons/grayblock_v2.png",
     ico_yellowblock: "icons/yellowblock.png",
-    coins: 0.001,  
 
     menu:{
         dev: {
@@ -148,8 +149,9 @@ var app = new Vue({
             //this.state.blocks = new Array(blockTypes).fill(10);
             this.state.blockAddenum = new Array(blockTypes).fill(1);
             this.state.blockCoinConversion = new Array(blockTypes).fill(0.002);
+            this.state.blockCoinConversion = this.state.blockCoinConversion.map((el, i) => { return el * i**i });
 
-            console.log(this.state);
+            //console.log(this.state);
         },
 
         mineBlock: function(type){
@@ -158,15 +160,15 @@ var app = new Vue({
         },
         sellBlock: function(type){
             this.state.coins += this.canBuyCoins(type);
-            //this.state.blocks[type] = 0;
             Vue.set(this.state.blocks, type, 0);
-            console.log(this.state, type);
+            //console.log(this.state, type);
         },
         canBuyCoins: function(type){
             return this.state.blocks[type] * this.state.blockCoinConversion[type];
         },
         canBuyCoinsMsg: function(type){
-            return `Sell for ${this.canBuyCoins(type)} coins`;
+            let val = numeral(this.canBuyCoins(type)).format('0.000a');
+            return `Sell for ${val} coins`;
         },
 
 
@@ -179,38 +181,12 @@ var app = new Vue({
         procent1style:function (){
             return `width: ${this.procent1}%`;
         },
-        mineGrayBlock: function(){
-            this.grayBlocks += this.blockAddenum;
-        },
-        mineYelloBlock: function(){
-            this.yellowBlocks += this.yBlockAddenum;
-        },
         menuToggle: function(name){
             let menu = this.menu;
             if (menu[name].active) return;
             menu[name].active = !menu[name].active;
             menu[this.menuActive].active = false;
             this.menuActive = name;
-        },
-        sellGray: function(){
-            this.coins += this.canBuyCoinsGray();
-            this.grayBlocks = 0;
-        },
-        canBuyCoinsGrayMsg: function(){
-            return `Sell for ${this.canBuyCoinsGray()} coins`;
-        },
-        canBuyCoinsGray: function(){
-            return this.grayBlocks / 250;
-        },
-        sellYellow: function(){
-            this.coins += this.canBuyCoinsYellow();
-            this.yellowBlocks = 0;
-        },
-        canBuyCoinsYellowMsg: function(){
-            return `Sell for ${this.canBuyCoinsYellow()} coins`;
-        },
-        canBuyCoinsYellow: function(){
-            return this.yellowBlocks / 250;
         },
 
     },
