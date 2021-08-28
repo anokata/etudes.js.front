@@ -6,6 +6,7 @@ const MineTiers = {
     3: 60,
     4: 100,
 };
+const blockTypes = 4;
 
 var state = {
     unlocks: [],
@@ -13,6 +14,21 @@ var state = {
         grayMiners: 0,
     },
     upgrades: {
+    },
+
+    blocks: [],
+    blockAddenum: [],
+
+    initState: function() {
+        this.blocks = new Array(blockTypes).fill(0);
+        this.blockAddenum = new Array(blockTypes).fill(1);
+
+        console.log(state);
+    },
+
+
+    mineBlock: function(type){
+        //this.grayBlocks += this.blockAddenum;
     },
 }
 
@@ -71,7 +87,7 @@ Vue.component('click-button', {
   },
   methods: {
     IncrementNumber: function (event) {
-        app.blockInc();
+        app.mineGrayBlock();
     }
   },
     template: '<button class="btn btn-outline-info" @click="clickfn()">{{message}}<img src="icons/grayblock_v2.png" height=20></img></button>'
@@ -103,6 +119,7 @@ var app = new Vue({
     grayBlocks: 0,
     yellowBlocks: 0,
     blockAddenum: 1e3,
+    yBlockAddenum: 1,
     ico_grayblock: "icons/grayblock_v2.png",
     ico_yellowblock: "icons/yellowblock.png",
     coins: 0.001,  
@@ -137,8 +154,11 @@ var app = new Vue({
         procent1style:function (){
             return `width: ${this.procent1}%`;
         },
-        blockInc: function(){
+        mineGrayBlock: function(){
             this.grayBlocks += this.blockAddenum;
+        },
+        mineYelloBlock: function(){
+            this.yellowBlocks += this.yBlockAddenum;
         },
         menuToggle: function(name){
             let menu = this.menu;
@@ -157,5 +177,19 @@ var app = new Vue({
         canBuyCoinsGray: function(){
             return this.grayBlocks / 250;
         },
-    }
+        sellYellow: function(){
+            this.coins += this.canBuyCoinsYellow();
+            this.yellowBlocks = 0;
+        },
+        canBuyCoinsYellowMsg: function(){
+            return `Sell for ${this.canBuyCoinsYellow()} coins`;
+        },
+        canBuyCoinsYellow: function(){
+            return this.yellowBlocks / 250;
+        },
+
+    },
+    created: function() {
+        state.initState();
+    },
 })
