@@ -102,6 +102,7 @@ var app = new Vue({
       state: {
         blockTier: 0,
         unlocks: [],
+        unlocksCoinNeed: [],
         auto: {
             grayMiners: 0,
         },
@@ -152,7 +153,12 @@ var app = new Vue({
             this.state.blockAddenum = new Array(blockTypes).fill(1);
             this.state.blockCoinConversion = new Array(blockTypes).fill(0.002);
             this.state.blockCoinConversion = this.state.blockCoinConversion.map((el, i) => { return el * i**i });
+            this.state.unlocks = new Array(blockTypes).fill(0);
+            this.state.unlocks[0] = 1;
+            this.state.unlocksCoinNeed = new Array(blockTypes).fill(0.002);
+            this.state.unlocksCoinNeed = this.state.unlocksCoinNeed.map((el, i) => { return el * i**i*10 });
 
+            console.log(this.state.unlocksCoinNeed);
             //console.log(this.state);
         },
 
@@ -171,6 +177,17 @@ var app = new Vue({
         canBuyCoinsMsg: function(type){
             let val = numeral(this.canBuyCoins(type)).format('0.000a');
             return `Sell for ${val} coins`;
+        },
+        unlock: function(type){
+            if (this.state.coins >= this.state.unlocksCoinNeed[type]) {
+                this.state.coins -= this.state.unlocksCoinNeed[type];
+                Vue.set(this.state.unlocks, type, 1);
+            }
+        },
+        unlockForMsg: function(type){
+            // let val = numeral(this.state.unlocksCoinNeed[type]).format('0.000a');
+            let val = this.state.unlocksCoinNeed[type];
+            return `Unlock for ${val} Coin`;
         },
 
 

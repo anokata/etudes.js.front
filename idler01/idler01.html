@@ -123,7 +123,7 @@
             <click-button message="Mine gray block  " type="0" :clickfn="mineBlock" ></click-button>
         </div>
         <div class="col-sm"> 
-            <v-button :message="canBuyCoinsMsg(0)" :handler="sellBlock" blockType=0 btype=0 type="secondary"></v-button>
+            <v-button :message="canBuyCoinsMsg(0)" :handler="sellBlock" btype=0 type="secondary"></v-button>
         </div>
         <div class="col-sm"> 
         </div>
@@ -135,10 +135,11 @@
 
     <div class="row">
         <div class="col-sm"> 
-            <click-button message="Mine yellow block  " type="1" :clickfn="mineBlock" ></click-button>
+            <v-button v-show="!state.unlocks[1]" :message="unlockForMsg(1)" :handler="unlock" btype=1 type="warning"></v-button>
+            <click-button v-show="state.unlocks[1]" message="Mine yellow block  " type="1" :clickfn="mineBlock" ></click-button>
         </div>
         <div class="col-sm"> 
-            <v-button :message="canBuyCoinsMsg(1)" :handler="sellBlock" blockType=1 btype=1 type="secondary"></v-button>
+            <v-button v-show="state.unlocks[1]" :message="canBuyCoinsMsg(1)" :handler="sellBlock" btype=1 type="secondary"></v-button>
         </div>
         <div class="col-sm"> 
         </div>
