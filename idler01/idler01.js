@@ -8,29 +8,7 @@ const MineTiers = {
 };
 const blockTypes = 4;
 
-var state = {
-    unlocks: [],
-    auto: {
-        grayMiners: 0,
-    },
-    upgrades: {
-    },
-
-    blocks: [],
-    blockAddenum: [],
-
-    initState: function() {
-        this.blocks = new Array(blockTypes).fill(0);
-        this.blockAddenum = new Array(blockTypes).fill(1);
-
-        console.log(state);
-    },
-
-
-    mineBlock: function(type){
-        //this.grayBlocks += this.blockAddenum;
-    },
-}
+// TODO JSHINT/lint, F12
 
 // cookie save
 // btn-primary btn-sm disabled
@@ -68,6 +46,10 @@ Vue.component('v-button', {
         default: 'secondary',
         },
       handler: Function,
+      blockType: {
+          type:Number,
+          default: 0,
+      },
 
     },
     data: function () {
@@ -75,22 +57,26 @@ Vue.component('v-button', {
     }
     },
     methods: {
+        clickArg: function() {
+            console.log(this.blockType);
+            this.handler(this.blockType);
+        },
     },
-    template: '<button class="btn btn-primary" :class="\'btn-\'+type" @click="handler(\'save\'+type)" >{{message}}</button>'
+    template: '<button class="btn btn-primary" :class="\'btn-\'+type" @click="clickArg()" >{{message}}</button>'
 })
 
 Vue.component('click-button', {
-  props: ['message', 'clickfn'],
+  props: ['message', 'clickfn', 'type'],
   data: function () {
     return {
     }
   },
   methods: {
-    IncrementNumber: function (event) {
-        app.mineGrayBlock();
-    }
+    clickArg: function() {
+        this.clickfn(this.type);
+    },
   },
-    template: '<button class="btn btn-outline-info" @click="clickfn()">{{message}}<img src="icons/grayblock_v2.png" height=20></img></button>'
+    template: '<button class="btn btn-outline-info" @click="clickArg">{{message}}<img src="icons/grayblock_v2.png" height=20></img></button>'
 })
 
 
@@ -108,14 +94,27 @@ Vue.component('progress-bar', {
 var app = new Vue({
   el: '#app',
   data: {
-    state: state,  
+      state: {
+        blockTier: 0,
+        unlocks: [],
+        auto: {
+            grayMiners: 0,
+        },
+        upgrades: {
+        },
+
+        blocks: new Array(blockTypes).fill(10),
+        blockAddenum: [],
+        blockCoinConversion:[],
+
+    },
+
     message: 'Hello Vue!',
     text_button1: 'make it inc:',
     procent1: 10,
     number: 1,
     isActive: false,
 
-    blockTier: 0,
     grayBlocks: 0,
     yellowBlocks: 0,
     blockAddenum: 1e3,
@@ -145,6 +144,32 @@ var app = new Vue({
     menuActive: 'dev',
   },
     methods: {
+        initState: function() {
+            //this.state.blocks = new Array(blockTypes).fill(10);
+            this.state.blockAddenum = new Array(blockTypes).fill(1);
+            this.state.blockCoinConversion = new Array(blockTypes).fill(0.002);
+
+            console.log(this.state);
+        },
+
+        mineBlock: function(type){
+            let val = this.state.blocks[type] + this.state.blockAddenum[type];
+            Vue.set(this.state.blocks, type, val);
+        },
+        sellBlock: function(type){
+            this.state.coins += this.canBuyCoins(type);
+            //this.state.blocks[type] = 0;
+            Vue.set(this.state.blocks, type, 0);
+            console.log(this.state, type);
+        },
+        canBuyCoins: function(type){
+            return this.state.blocks[type] * this.state.blockCoinConversion[type];
+        },
+        canBuyCoinsMsg: function(type){
+            return `Sell for ${this.canBuyCoins(type)} coins`;
+        },
+
+
         log: function(msg){
             console.log(msg);
         },
@@ -190,6 +215,6 @@ var app = new Vue({
 
     },
     created: function() {
-        state.initState();
+        this.initState();
     },
 })

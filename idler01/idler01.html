@@ -103,8 +103,8 @@
         <div class="col-sm"> 
             <span>
                 <!-- TODO array for -->
-            <img :src="ico_grayblock"/ height=20 width=20 /> {{grayBlocks | number-exponent}}
-            <img :src="ico_yellowblock"/ height=20 width=20 /> {{yellowBlocks}}
+            <img :src="ico_grayblock"/ height=20 width=20 /> {{state.blocks[0] | number-suffix }}
+            <img :src="ico_yellowblock"/ height=20 width=20 /> {{state.blocks[1]}}
             </span>
         </div>
         <div class="col-sm">
@@ -120,10 +120,10 @@
 
     <div class="row">
         <div class="col-sm"> 
-            <click-button message="Mine gray block  " :clickfn="mineGrayBlock"></click-button>
+            <click-button message="Mine gray block  " type="0" :clickfn="mineBlock" ></click-button>
         </div>
         <div class="col-sm"> 
-            <v-button :message="canBuyCoinsGrayMsg()" :handler="sellGray" type="secondary"></v-button>
+            <v-button :message="canBuyCoinsMsg(0)" :handler="sellBlock" blockType="0" type="secondary"></v-button>
         </div>
         <div class="col-sm"> 
         </div>
@@ -135,7 +135,7 @@
 
     <div class="row">
         <div class="col-sm"> 
-            <click-button message="Mine yellow block  " :clickfn="mineYelloBlock"></click-button>
+            <click-button message="Mine yellow block  " type="1" :clickfn="mineBlock" ></click-button>
         </div>
         <div class="col-sm"> 
             <v-button :message="canBuyCoinsYellowMsg()" :handler="sellYellow" type="secondary"></v-button>
