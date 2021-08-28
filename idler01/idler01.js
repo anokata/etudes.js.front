@@ -7,6 +7,10 @@ const MineTiers = {
     4: 100,
 };
 const blockTypes = 4;
+var blocksIcons = [
+    "icons/grayblock_v2.png",
+    "icons/yellowblock.png",
+];
 
 // TODO JSHINT/lint, F12
 
@@ -77,7 +81,7 @@ Vue.component('click-button', {
         this.clickfn(this.type);
     },
   },
-    template: '<button class="btn btn-outline-info" @click="clickArg">{{message}}<img src="icons/grayblock_v2.png" height=20></img></button>'
+    template: '<button class="btn btn-outline-info" @click="clickArg">{{message}}<img :src="blocksIcons[type]" height=20></img></button>'
 })
 
 
@@ -121,8 +125,6 @@ var app = new Vue({
     yellowBlocks: 0,
     blockAddenum: 1e3,
     yBlockAddenum: 1,
-    ico_grayblock: "icons/grayblock_v2.png",
-    ico_yellowblock: "icons/yellowblock.png",
 
     menu:{
         dev: {
