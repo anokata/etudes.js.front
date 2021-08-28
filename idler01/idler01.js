@@ -1,4 +1,5 @@
 Vue.config.devtools = true;
+
 const MineTiers = {
     1: 10,
     2: 30,
@@ -6,22 +7,14 @@ const MineTiers = {
     4: 100,
 };
 
-const NotFound = { template: '<h2>Page Not Found</h2>' }
-const Idler01 = { template: '<h2>Idler 01 Page</h2>' }
-const Idler02 = { template: '<h2>Idler 02 Page</h2>' }
-const About = { template: '<h2>About Page</h2>' }
-
-const routes = [
-  { path: '/', component: Idler01 },
-  { path: '/idler02', component: Idler02 },
-  { path: '/about', component: About },
-  { path: '*', component: NotFound }
-];
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: routes
-});
+var state = {
+    unlocks: [],
+    auto: {
+        grayMiners: 0,
+    },
+    upgrades: {
+    },
+}
 
 // cookie save
 // btn-primary btn-sm disabled
@@ -32,9 +25,7 @@ const router = new VueRouter({
 // btn-info
 // btn-light
 // btn-dark
-// btn-outline
-// mine gray block
-// sell block for 0.001 coin. marketing upd. 
+// marketing upd. 
 // every action is unlocking
 // Buy for ..
 // infinit gm progress gen unlock
@@ -100,12 +91,11 @@ Vue.component('progress-bar', {
 
 var app = new Vue({
   el: '#app',
-  router: router,
   data: {
+    state: state,  
     message: 'Hello Vue!',
     text_button1: 'make it inc:',
     procent1: 10,
-    state: "",
     number: 1,
     isActive: false,
 
@@ -117,12 +107,6 @@ var app = new Vue({
     ico_yellowblock: "icons/yellowblock.png",
     coins: 0.001,  
 
-    unlocks: [],
-    auto: {
-        grayMiners: 0,
-    },
-    upgrades: {
-    },
     menu:{
         dev: {
             active: true,
@@ -155,7 +139,6 @@ var app = new Vue({
         },
         blockInc: function(){
             this.grayBlocks += this.blockAddenum;
-            //console.log(`block ${this.grayBlocks}`);
         },
         menuToggle: function(name){
             let menu = this.menu;
