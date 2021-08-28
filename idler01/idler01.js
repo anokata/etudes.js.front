@@ -23,9 +23,9 @@ var blocksIcons = [
 // btn-info
 // btn-light
 // btn-dark
-// marketing upd. 
+// marketing upd.  update tab
+// autominer, per/sec info
 // every action is unlocking
-// Buy for ..
 // infinit gm progress gen unlock
 
 Vue.filter('number-suffix', function(n){
@@ -103,9 +103,10 @@ var app = new Vue({
         blockTier: 0,
         unlocks: [],
         unlocksCoinNeed: [],
-        auto: {
-            grayMiners: 0,
-        },
+        unlocksAuto: [],
+        unlocksAutoNeed: [],
+        auto: [],
+        autoAddenum: [],
         upgrades: {
         },
         coins: 0.002,  
@@ -130,11 +131,11 @@ var app = new Vue({
     menu:{
         dev: {
             active: true,
-            name: "Dev",
+            name: "Mine",
         },
-        test: {
+        upgrades: {
             active: false,
-            name: "Test",
+            name: "Upgrades",
         },
         settings: {
             active: false,
@@ -149,7 +150,7 @@ var app = new Vue({
   },
     methods: {
         initState: function() {
-            //this.state.blocks = new Array(blockTypes).fill(10);
+            this.state.blocks = new Array(blockTypes).fill(10);
             this.state.blockAddenum = new Array(blockTypes).fill(1);
             this.state.blockCoinConversion = new Array(blockTypes).fill(0.002);
             this.state.blockCoinConversion = this.state.blockCoinConversion.map((el, i) => { return el * i**i });
@@ -158,6 +159,12 @@ var app = new Vue({
             this.state.unlocksCoinNeed = new Array(blockTypes).fill(0.002);
             this.state.unlocksCoinNeed = this.state.unlocksCoinNeed.map((el, i) => { return el * i**i*10 });
 
+            this.state.auto = new Array(blockTypes).fill(0);
+            this.state.autoAddenum = new Array(blockTypes).fill(1);
+            this.state.unlocksAutoNeed= new Array(blockTypes).fill(0.002);
+            this.state.unlocksAutoNeed= this.state.unlocksAutoNeed.map((el, i) => { return el * i**i*10 });
+            this.state.unlocksAuto= new Array(blockTypes).fill(0);
+
             console.log(this.state.unlocksCoinNeed);
             //console.log(this.state);
         },
@@ -165,6 +172,11 @@ var app = new Vue({
         mineBlock: function(type){
             let val = this.state.blocks[type] + this.state.blockAddenum[type];
             Vue.set(this.state.blocks, type, val);
+        },
+        buyAutoMine: function(type){
+            // TODO if can, by coin?
+            let val = this.state.auto[type] + this.state.autoAddenum[type];
+            Vue.set(this.state.auto, type, val);
         },
         sellBlock: function(type){
             this.state.coins += this.canBuyCoins(type);
@@ -189,6 +201,16 @@ var app = new Vue({
             let val = this.state.unlocksCoinNeed[type];
             return `Unlock for ${val} Coin`;
         },
+        unlockAutoForMsg: function(type){
+            let val = this.state.unlocksAutoNeed[type];
+            return `Unlock autominer for ${val} Coin`;
+        },
+        unlockAuto: function(type){
+            if (this.state.coins >= this.state.unlocksAutoNeed[type]) {
+                this.state.coins -= this.state.unlocksAutoNeed[type];
+                Vue.set(this.state.unlocksAuto, type, 1);
+            }
+        },
 
 
         log: function(msg){
@@ -207,6 +229,8 @@ var app = new Vue({
             menu[this.menuActive].active = false;
             this.menuActive = name;
         },
+
+            // buyAutoMine 
 
     },
     created: function() {
