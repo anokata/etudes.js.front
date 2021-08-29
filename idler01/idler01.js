@@ -2,6 +2,9 @@ const Vue = window.Vue;
 const numeral = window.numeral;
 Vue.config.devtools = true;
 
+// global timer functions array, setinterval?
+// performance.now().
+
 const MineTiers = {
     1: 10,
     2: 30,
@@ -96,6 +99,7 @@ Vue.component("progress-bar", {
 var app = new Vue({
     el: "#app",
     data: {
+        start: null,
         state: {
             blockTier: 0,
             unlocks: [],
@@ -104,6 +108,7 @@ var app = new Vue({
             unlocksAutoNeed: [],
             auto: [],
             autoAddenum: [],
+            autoSpeed: [], // n in msec
             upgrades: {},
             coins: 0.002,
 
@@ -172,6 +177,7 @@ var app = new Vue({
                 }
             );
             this.state.unlocksAuto = new Array(blockTypes).fill(0);
+            this.state.autoSpeed = new Array(blockTypes).fill(0.001);
 
             console.log(this.state.unlocksCoinNeed);
             //console.log(this.state);
@@ -179,6 +185,9 @@ var app = new Vue({
 
         mineBlock: function (type) {
             let val = this.state.blocks[type] + this.state.blockAddenum[type];
+            this.setBlockAmount(type, val);
+        },
+        setBlockAmount: function (type, val) {
             Vue.set(this.state.blocks, type, val);
         },
         buyAutoMine: function (type) {
@@ -239,9 +248,34 @@ var app = new Vue({
             this.menuActive = name;
         },
 
-        // buyAutoMine
+        timerStep: function (t) {
+            //t = Math.round(t);
+            if (!this.start) this.start = t;
+            let delta = (t - this.start);
+            // slowdown
+            // if (delta < 100) {
+            //     requestAnimationFrame(this.timerStep);
+            //     return;
+            // }
+            this.start = t;
+            this.step(delta);
+            requestAnimationFrame(this.timerStep);
+        },
+        startTimer: function() {
+            requestAnimationFrame(this.timerStep);
+        },
+        step: function(d){
+            // console.log(`delta: ${d}ms`);
+            this.state.auto.forEach((e, i) => {
+                if (!e) return;
+                let add = this.state.autoSpeed[i] * d;
+                // console.log(`${i},${add}`);
+                this.setBlockAmount(i, this.state.blocks[i] + add);
+            });
+        },
     },
     created: function () {
         this.initState();
+        this.startTimer();
     },
 });
