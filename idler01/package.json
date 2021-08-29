@@ -7,14 +7,22 @@
     "start": "",
     "dev": "lite-server",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "npx babel idler01route.js --out-dir dist",
+    "webpack": "npx webpack --config webpack.config.js",
+    "build": "webpack"
   },
   "author": "ksi",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.17.0",
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   }
 }
