@@ -14,19 +14,12 @@ const MineTiers = {
 const blockTypes = 4;
 const initBlocks = 10;
 const initBlockAddenum = 1;
-var blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
+const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
-// TODO auto mine spd
+// TODO auto cost coin, progress price
 
 // cookie save
-// btn-primary btn-sm disabled
-// btn-secondary
-// btn-success
-// btn-danger
-// btn-warning
-// btn-info
-// btn-light
-// btn-dark
+// btn-danger btn-sm disabled
 // marketing upd.  update tab
 // autominer, per/sec info
 // every action is unlocking
@@ -268,7 +261,7 @@ var app = new Vue({
             // console.log(`delta: ${d}ms`);
             this.state.auto.forEach((e, i) => {
                 if (!e) return;
-                let add = this.state.autoSpeed[i] * d;
+                let add = this.state.autoSpeed[i] * d * e * this.state.autoAddenum[i];
                 // console.log(`${i},${add}`);
                 this.setBlockAmount(i, this.state.blocks[i] + add);
             });
