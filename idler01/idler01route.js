@@ -1,4 +1,24 @@
+// import Vue from 'vue'
+// import Vuex from 'vuex'
+
 Vue.config.devtools = true;
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+});
+
+store.commit('increment');
+console.log(store.state.count);
+
 const MineTiers = {
     1: 10,
     2: 30,
@@ -39,10 +59,11 @@ const About = {
         inc: function () {
             this.x += 1;
             this.sharedState.incClock();
+            app.log("hi");
         },
     },
     template:
-        '<h2>About Page da:{{data}} x:{{x}}({{sharedState.clock}}) <v-button @click="inc()" message="Save" :handler="inc" type="secondary"></v-button></h2>',
+        '<h2>About Page da:{{data}} x:{{x}}({{sharedState.clock}}) [count: {{store.state.count}}] <v-button @click="inc()" message="Save" :handler="inc" type="secondary"></v-button></h2>',
 };
 
 const Dev = { template: "<h2>Dev Page</h2>" };
@@ -142,6 +163,7 @@ var app = new Vue({
     el: "#app",
     router: router,
     data: {
+        store: store,
         message: "Hello Vue!",
         text_button1: "make it inc:",
         procent1: 10,
@@ -182,9 +204,19 @@ var app = new Vue({
         },
         menuActive: "dev",
     },
+    computed: {
+        count () {
+            return store.state.count
+        }
+    },
     methods: {
         log: function (msg) {
             console.log(msg);
+
+            store.commit('increment')
+            // this.$store.commit('increment');
+            // console.log(`VUEX store count: ${this.$store.state.count}`);
+            console.log(`VUEX store count: ${store.state.count}`);
         },
         setMessage: function (event) {
             this.message = event.target.value;

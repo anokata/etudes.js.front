@@ -9,6 +9,7 @@
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
             crossorigin="anonymous"
         />
+    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
         <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
@@ -69,13 +70,13 @@
                         :to="val.name"
                         v-for="(val, name) in menu"
                         class="nav-item nav-link"
-                        >{{val.name}}</router-link
-                    >
+                        >{{val.name}}</router-link>
                 </div>
             </nav>
 
             <router-view></router-view>
         </div>
+        <!-- <script src="dist/idler01route.js"></script> -->
         <script src="idler01route.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script
