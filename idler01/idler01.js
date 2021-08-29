@@ -9,9 +9,11 @@ const MineTiers = {
     4: 100,
 };
 const blockTypes = 4;
+const initBlocks = 10;
+const initBlockAddenum = 1;
 var blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
-// TODO eslint, package.conf npm run lint, vim F12
+// TODO auto mine spd
 
 // cookie save
 // btn-primary btn-sm disabled
@@ -143,9 +145,9 @@ var app = new Vue({
     },
     methods: {
         initState: function () {
+            this.state.blocks = new Array(blockTypes).fill(initBlocks);
+            this.state.blockAddenum = new Array(blockTypes).fill(initBlockAddenum);
             //TODO const
-            this.state.blocks = new Array(blockTypes).fill(10);
-            this.state.blockAddenum = new Array(blockTypes).fill(1);
             this.state.blockCoinConversion = new Array(blockTypes).fill(0.002);
             this.state.blockCoinConversion = this.state.blockCoinConversion.map(
                 (el, i) => {

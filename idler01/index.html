@@ -1,63 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-    <style>
-
-      body { 
-          background: #c7b39b ; /* url(bg.jpg); */
-          background-repeat: no-repeat;
-          background-size:cover;
-      }
-.region{
-    background-color: #999;
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-    margin: 10px;
-}
-.active{
-    background-color:red;
-}
-.bounded{
-    border: 2px solid green;
-}
-            .tab_vis{ display:block}
-            .tab_hide{ display:none}
-            .btn-outline-info {border-color: #587e8c; color: #587e8c; }
-            .btn-outline-info:hover {border-color: #587e8c; color: #fff; background-color: #0dcaf000}
-            .btn:focus,.btn:active {
-               outline: none !important;
-               box-shadow: none;
+    <head>
+        <meta charset="utf-8" />
+        <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <script src="https://unpkg.com/vuex"></script>
+        <style>
+            body {
+                background: #c7b39b; /* url(bg.jpg); */
+                background-repeat: no-repeat;
+                background-size: cover;
             }
-            a.router-link-active, li.router-link-active>a {
-              color: red;
+            .region {
+                background-color: #999;
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+                margin: 10px;
+            }
+            .active {
+                background-color: red;
+            }
+            .bounded {
+                border: 2px solid green;
+            }
+            .tab_vis {
+                display: block;
+            }
+            .tab_hide {
+                display: none;
+            }
+            .btn-outline-info {
+                border-color: #587e8c;
+                color: #587e8c;
+            }
+            .btn-outline-info:hover {
+                border-color: #587e8c;
+                color: #fff;
+                background-color: #0dcaf000;
+            }
+            .btn:focus,
+            .btn:active {
+                outline: none !important;
+                box-shadow: none;
+            }
+            a.router-link-active,
+            li.router-link-active > a {
+                color: red;
             }
             a.router-link-active {
-                background-color:#f03030;
+                background-color: #f03030;
             }
-    </style>
-</head>
-<body>
-<div class="container" id="app">
+        </style>
+    </head>
+    <body>
+        <div class="container" id="app">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="navbar-nav">
+                    <router-link
+                        :to="val.name"
+                        v-for="(val, name) in menu"
+                        class="nav-item nav-link"
+                        >{{val.name}}</router-link
+                    >
+                </div>
+            </nav>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="navbar-nav">
-        <router-link :to="val.name" v-for="(val, name) in menu" class="nav-item nav-link">{{val.name}}</router-link>
-    </div>
-</nav>
-
-<router-view></router-view>
-
-</div>
-    <script src="idler01route.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue-cookie@1.1.4/src/vue-cookie.min.js"></script> -->
-</body>
+            <router-view></router-view>
+        </div>
+        <script src="idler01route.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"
+        ></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue-cookie@1.1.4/src/vue-cookie.min.js"></script> -->
+    </body>
 </html>
