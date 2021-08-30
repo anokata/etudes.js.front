@@ -5,6 +5,13 @@ Vue.config.devtools = true;
 // global timer functions array, setinterval?
 // performance.now().
 
+function progressionDefault(el, i) {
+    return el * i ** i * 10;
+}
+function progressionDefaultD5(el, i) {
+    return el * i ** i * 2;
+}
+
 const MineTiers = {
     1: 10,
     2: 30,
@@ -14,9 +21,13 @@ const MineTiers = {
 const blockTypes = 4;
 const initBlocks = 10;
 const initBlockAddenum = 1;
+const initAutoCost = 0.001;
+const initBlockCoinCoversion = 0.002;
+const initUnlockCoinNeed = 0.002;
 const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
-// TODO auto cost coin, progress price
+// TODO speed calc
+// TODO click upg
 
 // cookie save
 // btn-danger btn-sm disabled
@@ -100,6 +111,7 @@ var app = new Vue({
             unlocksAuto: [],
             unlocksAutoNeed: [],
             auto: [],
+            autoCost: [],
             autoAddenum: [],
             autoSpeed: [], // n in msec
             upgrades: {},
@@ -144,9 +156,10 @@ var app = new Vue({
     methods: {
         initState: function () {
             this.state.blocks = new Array(blockTypes).fill(initBlocks);
-            this.state.blockAddenum = new Array(blockTypes).fill(initBlockAddenum);
-            //TODO const
-            this.state.blockCoinConversion = new Array(blockTypes).fill(0.002);
+            this.state.blockAddenum = new Array(blockTypes).fill(
+                initBlockAddenum
+            );
+            this.state.blockCoinConversion = new Array(blockTypes).fill(initBlockCoinCoversion);
             this.state.blockCoinConversion = this.state.blockCoinConversion.map(
                 (el, i) => {
                     return el * i ** i;
@@ -154,23 +167,19 @@ var app = new Vue({
             );
             this.state.unlocks = new Array(blockTypes).fill(0);
             this.state.unlocks[0] = 1;
-            this.state.unlocksCoinNeed = new Array(blockTypes).fill(0.002);
-            this.state.unlocksCoinNeed = this.state.unlocksCoinNeed.map(
-                (el, i) => {
-                    return el * i ** i * 10;
-                }
-            );
-
+            this.state.unlocksCoinNeed = new Array(blockTypes).fill(initUnlockCoinNeed);
+            this.state.unlocksCoinNeed =
+                this.state.unlocksCoinNeed.map(progressionDefault);
             this.state.auto = new Array(blockTypes).fill(0);
             this.state.autoAddenum = new Array(blockTypes).fill(1);
-            this.state.unlocksAutoNeed = new Array(blockTypes).fill(0.002);
-            this.state.unlocksAutoNeed = this.state.unlocksAutoNeed.map(
-                (el, i) => {
-                    return el * i ** i * 10;
-                }
-            );
-            this.state.unlocksAuto = new Array(blockTypes).fill(0);
+            //TODO const
             this.state.autoSpeed = new Array(blockTypes).fill(0.001);
+            this.state.autoCost = new Array(blockTypes).fill(initAutoCost);
+            this.state.autoCost = this.state.autoCost.map(progressionDefault);
+            this.state.unlocksAutoNeed = new Array(blockTypes).fill(0.002);
+            this.state.unlocksAutoNeed =
+                this.state.unlocksAutoNeed.map(progressionDefault);
+            this.state.unlocksAuto = new Array(blockTypes).fill(0);
 
             console.log(this.state.unlocksCoinNeed);
             //console.log(this.state);
@@ -184,9 +193,12 @@ var app = new Vue({
             Vue.set(this.state.blocks, type, val);
         },
         buyAutoMine: function (type) {
-            // TODO if can, by coin?
+            let cost = this.state.autoCost[type];
+            if (cost > this.state.coins) return;
+            this.state.coins -= cost;
             let val = this.state.auto[type] + this.state.autoAddenum[type];
             Vue.set(this.state.auto, type, val);
+            this.state.autoCost[type] = progressionDefaultD5(this.state.autoCost[type], type);
         },
         sellBlock: function (type) {
             this.state.coins += this.canBuyCoins(type);
@@ -217,6 +229,10 @@ var app = new Vue({
             let val = this.state.unlocksAutoNeed[type];
             return `Unlock autominer for ${val} Coin`;
         },
+        autoMinerBuyMsg: function (type) {
+            let val = this.state.autoCost[type];
+            return `Buy autominer for ${val} Coin`;
+        },
         unlockAuto: function (type) {
             if (this.state.coins >= this.state.unlocksAutoNeed[type]) {
                 this.state.coins -= this.state.unlocksAutoNeed[type];
@@ -244,7 +260,7 @@ var app = new Vue({
         timerStep: function (t) {
             //t = Math.round(t);
             if (!this.start) this.start = t;
-            let delta = (t - this.start);
+            let delta = t - this.start;
             // slowdown
             // if (delta < 100) {
             //     requestAnimationFrame(this.timerStep);
@@ -254,14 +270,15 @@ var app = new Vue({
             this.step(delta);
             requestAnimationFrame(this.timerStep);
         },
-        startTimer: function() {
+        startTimer: function () {
             requestAnimationFrame(this.timerStep);
         },
-        step: function(d){
+        step: function (d) {
             // console.log(`delta: ${d}ms`);
             this.state.auto.forEach((e, i) => {
                 if (!e) return;
-                let add = this.state.autoSpeed[i] * d * e * this.state.autoAddenum[i];
+                let add =
+                    this.state.autoSpeed[i] * d * e * this.state.autoAddenum[i];
                 // console.log(`${i},${add}`);
                 this.setBlockAmount(i, this.state.blocks[i] + add);
             });

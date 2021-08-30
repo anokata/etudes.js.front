@@ -106,8 +106,8 @@
                     <div class="col-sm">
                         coins: {{ state.coins | number-suffixZ3 }}
                     </div>
-                    <div class="col-sm">auto: {{ state.auto[0] }}</div>
                     <div class="col-sm"></div>
+                    <div class="col-sm">auto: {{ state.auto[0] }}</div>
                     <div class="col-sm"></div>
                 </div>
 
@@ -129,8 +129,14 @@
                     </div>
                     <div class="col-sm">
                         <click-button
+                            message="Upgrade click power for x Coin"
+                            type="0"
+                        ></click-button>
+                    </div>
+                    <div class="col-sm">
+                        <click-button
                             v-show="state.unlocksAuto[0]"
-                            message="Autominer gray blocks"
+                            :message="autoMinerBuyMsg(0)"
                             type="0"
                             :clickfn="buyAutoMine"
                         ></click-button>
@@ -145,7 +151,6 @@
                     <div class="col-sm">
                     <div class="col-sm">spd: {{ state.autoSpeed[0] * 1000 }}/sec</div>
                     </div>
-                    <div class="col-sm"></div>
                 </div>
 
                 <div class="row">
