@@ -28,6 +28,8 @@ const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
 // TODO speed calc
 // TODO click upg
+// TODO all multiplier - quicker
+// TODO classes and modules (on proto) of mines, auto... (classic js, no compile)
 
 // cookie save
 // btn-danger btn-sm disabled
