@@ -2,7 +2,7 @@
   "name": "idler01",
   "version": "1.0.5",
   "description": "Magic idler with route on vue.js",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "start": "",
     "dev": "lite-server",
@@ -10,11 +10,14 @@
     "test": "mocha *.test.js",
     "babel": "npx babel idler01route.js --out-dir dist",
     "webpack": "npx webpack --config webpack.config.js",
+    "webpackmain": "npx webpack --config webpack_main.config.js",
     "build": "webpack"
   },
   "author": "ksi",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
