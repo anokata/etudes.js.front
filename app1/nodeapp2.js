@@ -51,3 +51,44 @@ c1.set(123);
 c2.set(3);
 console.log(c1.get());
 console.log(c2.get());
+
+let inplaceobj = new (function () { this.a=8 });
+console.log(inplaceobj);
+
+function Clickable() {
+	this.clicks = 0;
+}
+
+function ClickIcon() {
+	Clickable.call(this);
+	this.ico = "";
+}
+
+console.log(new ClickIcon());
+
+function sumall() {
+	let sum = 0;
+	for (const x of arguments)
+		sum += x;
+	return sum;
+}
+
+console.log(sumall(1,2,3,2));
+
+let moduleOne = (function() {
+
+	let privateX = 0.11;
+	function hi() {
+		console.log(`hi from hi with ${privateX}`);
+	}
+	return {
+		hi: hi,
+		inc: () => privateX += 0.21,
+	}
+})();
+console.log(moduleOne);
+moduleOne.hi();
+moduleOne.inc();
+moduleOne.hi();
+
+
