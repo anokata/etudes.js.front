@@ -1,3 +1,4 @@
+"use strict";
 const Vue = window.Vue;
 const numeral = window.numeral;
 Vue.config.devtools = true;
@@ -30,6 +31,7 @@ const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 // TODO click upg
 // TODO all multiplier - quicker
 // TODO classes and modules (on proto) of mines, auto... (classic js, no compile)
+// TODO auto sell for coin (upd)
 
 // cookie save
 // btn-danger btn-sm disabled
