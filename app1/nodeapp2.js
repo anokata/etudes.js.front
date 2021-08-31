@@ -91,7 +91,7 @@ moduleOne.hi();
 moduleOne.inc();
 moduleOne.hi();
 
-log = function () { console.log(...arguments); }
+log = function () { let name = arguments[0]?.name; console.log(name?name:"", ...arguments); }
 logs = (...a) => { console.log(...a); }
 
 log(hoi);
@@ -112,9 +112,13 @@ let dinobj = {
 log(dinobj, dinobj.somename);
 
 // Const obj
-const staticObj = { prop: 3.14 };
+const staticObj = { prop: 3.14, name:"staticObj" };
 Object.freeze(staticObj);
 staticObj.prop = 0;
 log(staticObj);
+const copy = {...staticObj};
+copy.name = "copy";
+staticObj.prop += 10;
+log(copy);
 
 
