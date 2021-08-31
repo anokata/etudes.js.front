@@ -91,4 +91,30 @@ moduleOne.hi();
 moduleOne.inc();
 moduleOne.hi();
 
+log = function () { console.log(...arguments); }
+logs = (...a) => { console.log(...a); }
+
+log(hoi);
+var hoi = "undef";
+logs("a"+ (((()=>{})()==(()=>{})())+"")[0]);
+
+let obj = {hoi}; // {hoi: "undef"}
+log(obj);
+let objM = { make() { log("make it"); return this; }, "prop 0": "x", };
+objM["prop a"] = 4;
+log(objM.make());
+
+// dynamic prop name
+const propname = "somename";
+let dinobj = {
+	[propname]: 4,
+};
+log(dinobj, dinobj.somename);
+
+// Const obj
+const staticObj = { prop: 3.14 };
+Object.freeze(staticObj);
+staticObj.prop = 0;
+log(staticObj);
+
 
