@@ -120,5 +120,31 @@ const copy = {...staticObj};
 copy.name = "copy";
 staticObj.prop += 10;
 log(copy);
+log('prop' in copy);
+log(copy.hasOwnProperty('name'))
 
+function showObjProps(obj) {
+    for (const prop in obj) {
+        log(`${prop} : ${obj[prop]}`)
+    }
+}
 
+showObjProps(moduleOne);
+
+// Object.entries, Object.keys, Object,values
+
+function ConstructA() {
+    this.method = function(){ return 2; };
+    ConstructA.prototype.method2 = function() {return 3;} ;
+}
+let a1 = new ConstructA();
+let a2 = new ConstructA();
+log(a1 == a2);
+log(a1.method == a2.method); // diff!
+log(a1.method2 == a2.method2, a1.method2()); // same
+log(a1 instanceof ConstructA);
+
+ConstructA.prototype.id = Math.random();
+ConstructA.prototype.toString = function() {return this.id.toString();};
+log(a1);
+log(a1.id);
