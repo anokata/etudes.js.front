@@ -183,3 +183,6 @@ log(f2.call(a2)); // 0
 let f3 = a1.getY.bind(a2);
 a2.y = 3;
 log(f3()); // 3
+
+// descruct
+let [x1, x2] = Array.from(Array(3).keys()); log(x1, x2);

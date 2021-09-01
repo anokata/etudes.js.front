@@ -29,7 +29,7 @@ const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
 // TODO speed calc
 // TODO click upg
-// TODO all multiplier - quicker
+// TODO all multiplier - quicker, upg
 // TODO classes and modules (on proto) of mines, auto... (classic js, no compile)
 // TODO auto sell for coin (upd)
 
@@ -124,6 +124,7 @@ var app = new Vue({
             blocks: new Array(blockTypes).fill(10),
             blockAddenum: [],
             blockCoinConversion: [],
+            allMulty: 100,// TODO
         },
 
         message: "Hello Vue!",
