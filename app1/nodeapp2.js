@@ -136,6 +136,9 @@ showObjProps(moduleOne);
 function ConstructA() {
     this.method = function(){ return 2; };
     ConstructA.prototype.method2 = function() {return 3;} ;
+    let privateX = 0;
+    this.getX = function () {return privateX; };
+    this.incX = function () {privateX++;};
 }
 let a1 = new ConstructA();
 let a2 = new ConstructA();
@@ -143,8 +146,24 @@ log(a1 == a2);
 log(a1.method == a2.method); // diff!
 log(a1.method2 == a2.method2, a1.method2()); // same
 log(a1 instanceof ConstructA);
+a1.incX();
 
 ConstructA.prototype.id = Math.random();
 ConstructA.prototype.toString = function() {return this.id.toString();};
 log(a1);
-log(a1.id);
+log(a1.id, a1.getX());
+
+function ConstructBfromA() {
+    ConstructA.call(this);
+    this.news = [1,2,3];
+}
+ConstructBfromA.prototype = Object.create(ConstructA.prototype);
+ConstructA.prototype.somenew = function() {log(1, this)};
+(new ConstructBfromA).somenew();
+/*
+ * С помощью Object.create(X.prototype) можно создать объект прототипа.
+ * Нужно создавать чтобы в наследнике был свой - и изменение его не меняло родительский. Но он был бы таким же и вообщ его.
+ * А в прототипе могут быть ещё определены методы,поэтому его надо брать
+*/
+
+
