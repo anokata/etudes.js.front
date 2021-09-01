@@ -139,6 +139,8 @@ function ConstructA() {
     let privateX = 0;
     this.getX = function () {return privateX; };
     this.incX = function () {privateX++;};
+    this.y = 0;
+    this.getY = function () {return this.y; };
 }
 let a1 = new ConstructA();
 let a2 = new ConstructA();
@@ -166,4 +168,18 @@ ConstructA.prototype.somenew = function() {log(1, this)};
  * А в прототипе могут быть ещё определены методы,поэтому его надо брать
 */
 
+log(a1.getX()); // 1
+log(a2.getX()); // 0
+let f = a1.getX;
+log(f.call(a2), a2); // 1
 
+a1.y = 12;
+log(a1.getY()); // 12
+log(a2.getY()); // 0
+log(a1.getY.call(a2)); // 0
+let f2 = a1.getY;
+log(f2.call(a2)); // 0
+
+let f3 = a1.getY.bind(a2);
+a2.y = 3;
+log(f3()); // 3
