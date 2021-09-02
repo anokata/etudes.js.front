@@ -186,3 +186,12 @@ log(f3()); // 3
 
 // descruct
 let [x1, x2] = Array.from(Array(3).keys()); log(x1, x2);
+
+let name = "Jonh";
+function sendMail(to, from) { log(`The mail is sent by ${from} to ${to}`); };
+let mailJonh = sendMail.bind(null, name); // Carring ! Partial apply
+mailJonh("Clair");
+name = "Rob";
+mailJonh("Historia");
+
+
