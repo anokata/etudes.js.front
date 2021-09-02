@@ -125,6 +125,7 @@ var app = new Vue({
             blockAddenum: [],
             blockCoinConversion: [],
             allMulty: 100,// TODO
+            // testReactiveObj: (function(){ return {value:0, inc:function(){return this.value++;} }})(),
         },
 
         message: "Hello Vue!",
@@ -191,7 +192,7 @@ var app = new Vue({
         },
 
         mineBlock: function (type) {
-            let val = this.state.blocks[type] + this.state.blockAddenum[type];
+            let val = this.state.blocks[type] + this.state.blockAddenum[type] * this.state.allMulty;
             this.setBlockAmount(type, val);
         },
         setBlockAmount: function (type, val) {
@@ -282,8 +283,9 @@ var app = new Vue({
             // console.log(`delta: ${d}ms`);
             this.state.auto.forEach((e, i) => {
                 if (!e) return;
+                // function autoMine
                 let add =
-                    this.state.autoSpeed[i] * d * e * this.state.autoAddenum[i];
+                    this.state.autoSpeed[i] * d * e * this.state.autoAddenum[i] * this.state.allMulty;
                 // console.log(`${i},${add}`);
                 this.setBlockAmount(i, this.state.blocks[i] + add);
             });
