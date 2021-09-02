@@ -94,13 +94,36 @@
 
             <div id="dev" v-show="menu.dev.active">
                 <div class="row">
+                    <!-- TODO array for -->
                     <div class="col-sm">
                         <span>
-                            <!-- TODO array for -->
                             <img :src="blocksIcons[0]"/ height=20 width=20 />
-                            {{state.blocks[0] | number-suffix }} <img
-                            :src="blocksIcons[1]"/ height=20 width=20 />
-                            {{state.blocks[1]}}
+                            {{state.blocks[0] | number-suffix }} 
+                        </span>
+                    </div>
+                    <div class="col-sm"> <span>
+                            <img :src="blocksIcons[1]"/ height=20 width=20 />
+                            {{state.blocks[1] | number-suffix }} 
+                        </span>
+                    </div>
+                    <div class="col-sm"> <span>
+                            <img :src="blocksIcons[1]"/ height=20 width=20 />
+                            {{state.blocks[2] | number-suffix }} 
+                        </span>
+                    </div>
+                    <div class="col-sm"> <span>
+                            <img :src="blocksIcons[1]"/ height=20 width=20 />
+                            {{state.blocks[3] | number-suffix }} 
+                        </span>
+                    </div>
+                    <div class="col-sm"> <span>
+                            <img :src="blocksIcons[1]"/ height=20 width=20 />
+                            {{state.blocks[4] | number-suffix }} 
+                        </span>
+                    </div>
+                    <div class="col-sm"> <span>
+                            <img :src="blocksIcons[1]"/ height=20 width=20 />
+                            {{state.blocks[5] | number-suffix }} 
                         </span>
                     </div>
                     <div class="col-sm">
@@ -133,6 +156,7 @@
                             type="0"
                         ></click-button>
                     </div>
+                    <!-- TODO loop -->
                     <div class="col-sm">
                         <click-button
                             v-show="state.unlocksAuto[0]"
@@ -148,7 +172,7 @@
                             type="warning"
                         ></v-button>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm">auto: {{ state.auto[0] }}</div>
                     <div class="col-sm">spd: {{ state.autoSpeed[0] * 1000 }}/sec</div>
                     </div>
                 </div>
@@ -179,12 +203,28 @@
                         ></v-button>
                     </div>
                     <div class="col-sm"></div>
-                    <div class="col-sm"></div>
-                    <div class="col-sm"></div>
+                    <div class="col-sm">
+                        <click-button
+                            v-show="state.unlocksAuto[1]"
+                            :message="autoMinerBuyMsg(1)"
+                            type="1"
+                            :clickfn="buyAutoMine"
+                        ></click-button>
+                        <v-button
+                            v-show="!state.unlocksAuto[1]"
+                            :message="unlockAutoForMsg(2)"
+                            :handler="unlockAuto"
+                            btype="1"
+                            type="warning"
+                        ></v-button>
+                    </div>
+                    <div class="col-sm">auto: {{ state.auto[1] }}</div>
+                    <div class="col-sm">spd: {{ state.autoSpeed[1] * 1000 }}/sec</div>
                 </div>
             </div>
 
             <div id="upgrades" v-show="menu.upgrades.active">
+                <div class="col-sm"></div>
                 <div class="row">
                     <div class="col-sm">upg</div>
                 </div>
