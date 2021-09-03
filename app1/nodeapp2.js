@@ -194,4 +194,14 @@ mailJonh("Clair");
 name = "Rob";
 mailJonh("Historia");
 
+// Properies
 
+let Machine = { cost: 1.0, name:"XT_PCv2"};
+log(Object.getOwnPropertyDescriptor(Machine, "name"));
+// Make const property
+Object.defineProperty(Machine, "config", {value: "/etc/p", writeable: false, enumerable: true});
+Object.defineProperty(Machine, "name", {writeable: false, configurable:false });
+Machine.config = "/new";
+// Machine.name = "new";
+log(Machine);
+let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
