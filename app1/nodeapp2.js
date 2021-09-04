@@ -268,4 +268,32 @@ log(...arrayofqubesby10);
 const arrayAll = new Array(...array1, ...arrayofnums); 
 log(...arrayAll);
 log([...array1, 'A']);
+const partCopy = arrayofqubesby10.slice(2,6);
+partCopy[1] /= 100;
+partCopy.unshift(0.1);
+log(partCopy);
+log(partCopy.join("-"));
+
+function myReverseInPlace(array){
+    let len = array.length - 1;
+    for (let i = 0; i < len/2; i++) {
+        [array[i], array[len-i]] = [array[len-i], array[i]];
+    }
+    return array;
+}
+
+function myReverseNew(array){
+    let result = [];
+    for (let elem in array) {
+        result.unshift(elem);
+    }
+    return result;
+}
+
+const numbers10 = Array.from(Array(10).keys());
+log(myReverseNew(numbers10).join("_"));
+myReverseInPlace(numbers10);
+log(numbers10.join(","));
+log(numbers10);
+
 
