@@ -1,4 +1,5 @@
 const fs = require("fs");
+const l = console.log;
 
 console.log("start");
 
@@ -205,3 +206,28 @@ Machine.config = "/new";
 // Machine.name = "new";
 log(Machine);
 let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
+log();
+
+// Proxy
+const original = {name: "original", conf: "//:conf", do: function() {log(`connecting: ${this.conf}`)}};
+const handler = { get: function(target, prop, receiver){
+    log(`Proxing: ${target.name}@${prop}`);
+    if (prop == "conf") return `protocolUCQ${target[prop]}`;
+    if (typeof(target[prop])=='function') {
+        log("Preparing connection...");
+        return target[prop];
+    }
+    return target[prop];
+}};
+const proxyOriginal = new Proxy(original, handler);
+proxyOriginal.do();
+
+log();
+const original2 = {};
+const handler2 = {get:function(target, prop) {
+    return "none";
+}};
+const proxyOriginal2 = new Proxy(original2, handler2);
+log(proxyOriginal2.somepropthatnotexist);
+l();
+
