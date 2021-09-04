@@ -3,6 +3,7 @@ const Vue = window.Vue;
 const numeral = window.numeral;
 Vue.config.devtools = true;
 
+/* https://github.com/Patashu/break_eternity.js/tree/master */
 // global timer functions array, setinterval?
 // performance.now().
 
@@ -128,17 +129,6 @@ var app = new Vue({
             // testReactiveObj: (function(){ return {value:0, inc:function(){return this.value++;} }})(),
         },
 
-        message: "Hello Vue!",
-        text_button1: "make it inc:",
-        procent1: 10,
-        number: 1,
-        isActive: false,
-
-        grayBlocks: 0,
-        yellowBlocks: 0,
-        blockAddenum: 1e3,
-        yBlockAddenum: 1,
-
         menu: {
             dev: {
                 active: true,
@@ -252,9 +242,6 @@ var app = new Vue({
         setMessage: function (event) {
             this.message = event.target.value;
         },
-        procent1style: function () {
-            return `width: ${this.procent1}%`;
-        },
         menuToggle: function (name) {
             let menu = this.menu;
             if (menu[name].active) return;
@@ -289,6 +276,19 @@ var app = new Vue({
                 // console.log(`${i},${add}`);
                 this.setBlockAmount(i, this.state.blocks[i] + add);
             });
+        },
+
+        saveCoockie: function() {
+            Cookies.set("idler01Save", "somevalue", { sameSite: 'strict', secure: true });
+            this.log("saved.");
+        },
+        loadCoockie: function() {
+            let data = Cookies.get("idler01Save");
+            this.log(data, "loaded.");
+        },
+        resetCoockie: function() {
+            Cookies.remove("idler01Save");
+            this.log("hadr reset.");
         },
     },
     created: function () {

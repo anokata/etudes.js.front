@@ -11,6 +11,7 @@
         />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
         <style>
             body {
                 background: #c7b39b; /* url(bg.jpg); */
@@ -85,7 +86,17 @@
                     <div class="col-sm">
                         <v-button
                             message="Save"
-                            :handler="log"
+                            :handler="saveCoockie"
+                            type="secondary"
+                        ></v-button>
+                        <v-button
+                            message="Load"
+                            :handler="loadCoockie"
+                            type="secondary"
+                        ></v-button>
+                        <v-button
+                            message="Reset Save"
+                            :handler="resetCoockie"
                             type="secondary"
                         ></v-button>
                     </div>
@@ -175,7 +186,6 @@
                     <div class="col-sm">auto: {{ state.auto[0] }}</div>
                     <div class="col-sm">spd: {{ state.autoSpeed[0] * 1000 }}/sec</div>
                     </div>
-                </div>
 
                 <div class="row">
                     <div class="col-sm">
@@ -220,6 +230,7 @@
                     </div>
                     <div class="col-sm">auto: {{ state.auto[1] }}</div>
                     <div class="col-sm">spd: {{ state.autoSpeed[1] * 1000 }}/sec</div>
+                </div>
                 </div>
             </div>
 
