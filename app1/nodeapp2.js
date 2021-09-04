@@ -105,14 +105,14 @@ let objM = { make() { log("make it"); return this; }, "prop 0": "x", };
 objM["prop a"] = 4;
 log(objM.make());
 
-// dynamic prop name
+l("// dynamic prop name");
 const propname = "somename";
 let dinobj = {
 	[propname]: 4,
 };
 log(dinobj, dinobj.somename);
 
-// Const obj
+l("// Const obj");
 const staticObj = { prop: 3.14, name:"staticObj" };
 Object.freeze(staticObj);
 staticObj.prop = 0;
@@ -132,7 +132,7 @@ function showObjProps(obj) {
 
 showObjProps(moduleOne);
 
-// Object.entries, Object.keys, Object,values
+l("// Object.entries, Object.keys, Object,values");
 
 function ConstructA() {
     this.method = function(){ return 2; };
@@ -185,7 +185,7 @@ let f3 = a1.getY.bind(a2);
 a2.y = 3;
 log(f3()); // 3
 
-// descruct
+l("// descruct");
 let [x1, x2] = Array.from(Array(3).keys()); log(x1, x2);
 
 let name = "Jonh";
@@ -196,17 +196,17 @@ name = "Rob";
 mailJonh("Historia");
 
 
-// spread...obj
+l("// spread...obj");
 function namepass(name, pass){
     log(`name:${name} with pass: ${pass}`);
 }
 // namepass(...{name: "jonh", pass: "69cDkfBn3, length:2)"});
 
-// Properies
+l("// Properies");
 
 let Machine = { cost: 1.0, name:"XT_PCv2"};
 log(Object.getOwnPropertyDescriptor(Machine, "name"));
-// Make const property
+l("// Make const property");
 Object.defineProperty(Machine, "config", {value: "/etc/p", writeable: false, enumerable: true});
 Object.defineProperty(Machine, "name", {writeable: false, configurable:false });
 Machine.config = "/new";
@@ -215,7 +215,7 @@ log(Machine);
 let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
 log();
 
-// Proxy
+l("// Proxy");
 const original = {name: "original", conf: "//:conf", do: function() {log(`connecting: ${this.conf}`)}};
 const handler = { get: function(target, prop, receiver){
     log(`Proxing: ${target.name}@${prop}`);
@@ -238,7 +238,7 @@ const proxyOriginal2 = new Proxy(original2, handler2);
 log(proxyOriginal2.somepropthatnotexist);
 l();
 
-// Symbols
+l("// Symbols");
 const users = {
     [Symbol("Black")]: "writer",
     [Symbol("Black")]: "cleaner",
@@ -249,7 +249,7 @@ for (let user of Object.getOwnPropertySymbols(users)){
 log(Symbol.for("Black"), Symbol.for("Black") == Object.getOwnPropertySymbols(users)[0] );
 l();
 
-// Arrays and Strings
+l("// Arrays and Strings");
 const array0 = [];
 array0[2] = 'some';
 log(array0);
@@ -296,4 +296,54 @@ myReverseInPlace(numbers10);
 log(numbers10.join(","));
 log(numbers10);
 
+let testString = [];
+// For Of!
+for(let ch of "testString") {
+    testString.push(String.fromCharCode(ch.charCodeAt(0)-1).toUpperCase());
+}
+log(testString.join(""));
+// For In X
+testString = [];
+for(let i in "testString") {
+    testString.push(String.fromCharCode(i.charCodeAt(0)-1).toUpperCase());
+}
+log(testString.join(""));
+l();
+// includes every some
+log(arrayofqubesby10.every((x) => x > 10));
+log(arrayofqubesby10.some((x) => x > 10));
+log(arrayofqubesby10.filter((x) => x > 10 && x < 100));
+
+l();
+log("a".repeat(10));
+let numstr = Array.from(Array(10).keys()).join("");
+log(numstr.slice(-2));
+// function ord(strChar) { return strChar.charCodeAt(0); }
+ord = (s) => s.charCodeAt(0);
+// function chr(i) { return String.fromCharCode(i); }
+chr = String.fromCharCode;
+log(chr(72), ord("A"), chr(ord("A")+1));
+log(numstr.padStart(16,"+").padEnd(24,"-"));
+log("".padStart(24,"*"));
+log("'".repeat(24));
+l();
+
+l('// Template func');
+function templateCheck(parts, ...args) {
+    l(parts);
+    l(args);
+    return parts.map((s) => s.toUpperCase()).join("");
+}
+
+l(templateCheck`abc ${name} def ${obj1.name} ghi.`);
+
+let _zip = rows=>rows[0].map((_,c)=>rows.map(row=>row[c]))
+let zip = function (...args) { return _zip(args)};
+l(zip([1,2], ['a','b']))
+l();
+
+l("Classes".padStart(10, "*"));
+class A {};
+l(A);
+l(new A());
 
