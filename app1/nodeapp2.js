@@ -374,4 +374,14 @@ try {
 }
 pen.name = "0";
 
+l("------------- number");
+let num1 = 1e4+1e-4;
+num1 = 0x123;
+num1 = Math.floor(Math.random()*1e8);
+log(`${num1} = ${num1.toString(36)}`);
+log(12839123891203091283018..toString(36));
+log((123.456.toFixed(1)));
+num1 = +(0.1+0.2).toFixed(1);
+log(num1);
+parseInt("abba", 36);
 
