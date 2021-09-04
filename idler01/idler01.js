@@ -28,17 +28,16 @@ const initBlockCoinCoversion = 0.002;
 const initUnlockCoinNeed = 0.002;
 const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
-// TODO speed calc
+// TODO speed calc // autominer, per/sec info
 // TODO click upg
-// TODO all multiplier - quicker, upg
+// TODO all multiplier -  upg
 // TODO classes and modules (on proto) of mines, auto... (classic js, no compile)
 // TODO auto sell for coin (upd)
-
-// cookie save
-// btn-danger btn-sm disabled
+// TODO cookie save auto every 10sec
 // marketing upd.  update tab
-// autominer, per/sec info
 // every action is unlocking
+
+// btn-danger btn-sm disabled
 // infinit gm progress gen unlock
 
 Vue.filter("number-suffix", function (n) {
@@ -279,11 +278,22 @@ var app = new Vue({
         },
 
         saveCoockie: function() {
-            Cookies.set("idler01Save", "somevalue", { sameSite: 'strict', secure: true });
+            let data = JSON.stringify(this.state);
+            // atob btoa
+            Cookies.set("idler01Save", data, { sameSite: 'strict', secure: true });
             this.log("saved.");
         },
         loadCoockie: function() {
             let data = Cookies.get("idler01Save");
+            if (!data) return;
+            try {
+                let state = JSON.parse(data);
+                this.state = state;
+            } catch {
+                this.log("Load Error!");
+                this.log(data);
+                return;
+            }
             this.log(data, "loaded.");
         },
         resetCoockie: function() {
@@ -293,6 +303,7 @@ var app = new Vue({
     },
     created: function () {
         this.initState();
+        this.loadCoockie();
         this.startTimer();
     },
 });
