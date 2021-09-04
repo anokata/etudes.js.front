@@ -195,6 +195,13 @@ mailJonh("Clair");
 name = "Rob";
 mailJonh("Historia");
 
+
+// spread...obj
+function namepass(name, pass){
+    log(`name:${name} with pass: ${pass}`);
+}
+// namepass(...{name: "jonh", pass: "69cDkfBn3, length:2)"});
+
 // Properies
 
 let Machine = { cost: 1.0, name:"XT_PCv2"};
@@ -242,5 +249,23 @@ for (let user of Object.getOwnPropertySymbols(users)){
 log(Symbol.for("Black"), Symbol.for("Black") == Object.getOwnPropertySymbols(users)[0] );
 l();
 
-// 
+// Arrays and Strings
+const array0 = [];
+array0[2] = 'some';
+log(array0);
+const array1 = Array.of('a', 'b', 'c');
+log(array1);
+const arrayofchars = Array.from("slafjeUiojvlvnkcXzowjrfj;sdfje");
+log(arrayofchars);
+const arrayofnums = Array.from([1,2,3], (x) => x*10);
+log(arrayofnums);
+const arrayofqubesby10 = Array.from(Array(10), (_, i) => {let x=i+2; return x*x*x});
+log(arrayofqubesby10);
+arrayofqubesby10.sort((x, y) => y - x);
+log(arrayofqubesby10);
+// ...
+log(...arrayofqubesby10);
+const arrayAll = new Array(...array1, ...arrayofnums); 
+log(...arrayAll);
+log([...array1, 'A']);
 
