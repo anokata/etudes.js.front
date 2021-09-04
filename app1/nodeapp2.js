@@ -347,3 +347,31 @@ class A {};
 l(A);
 l(new A());
 
+l();l("*** get set");
+l();l("*** Exeptions");
+const pen = {
+    model:"Binog",
+    partion: "XC-25",
+    get name (){
+        l("... property name access...");
+        return `[Pen]: ${this.model}(${this.partion})`;
+    },
+    set name (value){
+        if (typeof value != 'string') {
+            l("Error. Name of pen must be string.");
+            throw new Error("Error. Name of pen must be string.");
+            return;
+        }
+        l("Error. Can not change name of pen");
+    }
+};
+
+l(pen.name);
+try {
+    pen.name = 0;
+} catch (err) {
+    l(err.name, err.message);
+}
+pen.name = "0";
+
+
