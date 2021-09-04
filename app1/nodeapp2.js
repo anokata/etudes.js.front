@@ -231,3 +231,16 @@ const proxyOriginal2 = new Proxy(original2, handler2);
 log(proxyOriginal2.somepropthatnotexist);
 l();
 
+// Symbols
+const users = {
+    [Symbol("Black")]: "writer",
+    [Symbol("Black")]: "cleaner",
+};
+for (let user of Object.getOwnPropertySymbols(users)){
+    l(user, user.description, users[user]);
+}
+log(Symbol.for("Black"), Symbol.for("Black") == Object.getOwnPropertySymbols(users)[0] );
+l();
+
+// 
+
