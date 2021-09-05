@@ -465,4 +465,11 @@ testms(20);
 testms.defer(500, 'txt');
 testms.getDefer(1000)('a', 'b');
 
+// Object.getPrototypeOf
+// Object.create, Object.setPrototypeOf
 
+let miniObj = Object.create(null); // no proto
+log("min:", miniObj);
+for (let key in miniObj) l(key); // no
+l(globalThis);
+l();
