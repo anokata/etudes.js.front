@@ -396,14 +396,52 @@ l(ucFirst("jonh"));
 
 l();l("---- Proto");
 let LivingEntity = { health: 100, step() {this.health--; return this.health}, };
-let BasicCell = { size: "1nm", };
+let BasicCell = { size: "1nm", get name() { return this._name}, set name(value) { this._name = value; }};
 BasicCell.__proto__ = LivingEntity;
-log(BasicCell.health);
+
+BasicCell.name = "basic";
+log(BasicCell.health, BasicCell.name);
 log(BasicCell.step());
 
 let cellWithMitochondria = {
     __proto__: BasicCell,
     mitos: [{energy: 42}],
 };
+cellWithMitochondria.name = 'mita';
 
-log(cellWithMitochondria.step()); // 98 !
+log(cellWithMitochondria.step(), cellWithMitochondria.name); // 98 !
+
+let head = {
+  glasses: 1
+};
+
+let table = {
+    __proto__:head,
+  pen: 3,
+};
+
+let bed = {
+    __proto__: table,
+  sheet: 1,
+  pillow: 2
+};
+
+let pockets = {
+    __proto__: bed,
+  money: 2000,
+};
+// pockets → bed → table → head.
+
+function MakeCell() {
+    this.name = "cell";
+}
+MakeCell.prototype = BasicCell; // warn! best to add props
+let cell1 = new MakeCell(); // cell1.__proto__ == BasicCell
+log(cell1.__proto__, cell1.name);
+
+function F1(){};
+log((new F1()).constructor); // == F1
+
+log({}.__proto__ == Object.prototype);
+log(Object.prototype.__proto__);
+log(Array.prototype.__proto__ == Object.prototype);
