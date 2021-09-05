@@ -385,3 +385,25 @@ num1 = +(0.1+0.2).toFixed(1);
 log(num1);
 parseInt("abba", 36);
 
+l();l();
+l("я".codePointAt(0));
+l(String.fromCodePoint(1000));
+
+function ucFirst(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+l(ucFirst("jonh"));
+
+l();l("---- Proto");
+let LivingEntity = { health: 100, step() {this.health--; return this.health}, };
+let BasicCell = { size: "1nm", };
+BasicCell.__proto__ = LivingEntity;
+log(BasicCell.health);
+log(BasicCell.step());
+
+let cellWithMitochondria = {
+    __proto__: BasicCell,
+    mitos: [{energy: 42}],
+};
+
+log(cellWithMitochondria.step()); // 98 !
