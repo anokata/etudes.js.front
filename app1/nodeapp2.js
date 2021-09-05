@@ -445,3 +445,24 @@ log((new F1()).constructor); // == F1
 log({}.__proto__ == Object.prototype);
 log(Object.prototype.__proto__);
 log(Array.prototype.__proto__ == Object.prototype);
+log([].__proto__ == Array.prototype);
+log([].__proto__.constructor == Array);
+l((new Date()).__proto__.constructor == Date);
+l((new Date()).__proto__ == Date.prototype);
+console.dir(new Date());
+
+Function.prototype.defer = function(ms, ...args){
+    setTimeout(this, ms, args);
+};
+
+Function.prototype.getDefer = function(ms){
+    return (...args) => { setTimeout(this, ms, args);};
+};
+
+function testms(x) { console.log(`test defer ${x}`); }
+
+testms(20);
+testms.defer(500, 'txt');
+testms.getDefer(1000)('a', 'b');
+
+
