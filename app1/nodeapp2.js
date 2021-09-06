@@ -473,3 +473,29 @@ log("min:", miniObj);
 for (let key in miniObj) l(key); // no
 l(globalThis);
 l();
+
+l("**** Function Generator ");
+function* gen1() {
+    yield 'a';
+    yield 'b';
+    yield 'd';
+}
+let gen1x = gen1();
+l(gen1x, [...gen1x]);
+gen1x = gen1();
+l(gen1x.next());
+
+gen1x = gen1();
+for (let x of gen1x) { l(`generated: ${x}`)};
+
+function _sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function sleep(ms) {
+    await _sleep(ms);
+}
+l("before sleep");
+sleep(1000);
+l("after sleep");
+
