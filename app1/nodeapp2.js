@@ -601,3 +601,31 @@ function delayOnPromise(ms) {
 }
 
 delayOnPromise(1500).then(log);
+
+new Promise(resolve => setTimeout(()=> resolve(Date.now()), 1500))
+    .then(result => { l(`chain: ${result} (${Date.now() - result})`); return Date.now();})
+    .then(result => { l(`chain: ${result} (${Date.now() - result})`); return Date.now();})
+    .then(result => { l(`chain: ${result} (${Date.now() - result})`); return Date.now();});
+
+l("//Promise Chain");
+new Promise(resolve => {
+    let now = Date.now();
+    setTimeout(() => resolve({t:now, n:1}), 2000)
+    }
+).then(result => {
+    log(`Chain #${result.n} delta: ${Date.now() - result.t}`);
+    return new Promise(resolve => {
+        let now = Date.now();
+        setTimeout(() => resolve({t:now, n:2}), 500)
+    })
+}).then(result => {
+    log(`Chain #${result.n} delta: ${Date.now() - result.t}`);
+    return new Promise(resolve => {
+        let now = Date.now();
+        setTimeout(() => resolve({t:now, n:3}), 300)
+    })
+}).then(result => {
+    log(`Chain #${result.n} delta: ${Date.now() - result.t}`);
+});
+
+l();
