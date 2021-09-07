@@ -499,3 +499,33 @@ l("before sleep");
 sleep(1000);
 l("after sleep");
 
+function* naturals(start, end) {
+    for (let n = start; n <= end; n++) yield n;
+}
+
+let nat = naturals(0,100);
+l([...nat].slice(0,9));
+
+function* natCompose() {
+    yield* naturals(10,20);
+    yield* naturals(30,40);
+}
+l([...natCompose()]);
+
+function* natByF(start, end, f) {
+    for (let n = start; n <= end; n++) yield f(n);
+}
+
+l([...natByF(1,10, x=> x*2)]); // evens
+l([...natByF(1,10, x=> x**2)]); // quads
+
+function* natByFwithout(start, end, f, filter) {
+    for (let n = start; n <= end; n++) {
+        let x = f(n);
+        if (filter(x)) yield x;
+    }
+}
+
+l([...natByFwithout(10,100, x => x**3, x => x % 10 == 3)]); // qubes ending on 3
+
+
