@@ -1,4 +1,6 @@
 const fs = require("fs");
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const colors = require('colors');
 const l = console.log;
 
 console.log("start");
@@ -629,3 +631,7 @@ new Promise(resolve => {
 });
 
 l();
+fetch("https://ya.ru").then((r) => r.text()).then((r) => l(r.slice(0,20).brightRed.bgGray));
+
+
+new Promise((r) => {throw new Error("hi")}).catch((e)=>l("er".red));
