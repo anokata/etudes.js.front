@@ -580,3 +580,24 @@ function* pseudoRandom(seed) {
 let generator = pseudoRandom(1);
 l(generator.next());
 l(generator.next());
+
+l();l("********** Promise ************");
+
+let p1 = new Promise(function(resolve, reject) {
+    // lets do some work
+    l("primise p1 started when created", resolve, resolve.name, resolve.length);
+    let ns = [...natByFwithout(10,1000, x => x**3, x => x % 10 == 3)];
+
+    setTimeout(() => resolve("done"), 1000);
+});
+l(p1);
+setTimeout(() => l(p1), 1050);
+p1.then((result) => l("p1 then: ", result)).finally(()=> l("p1 complete."));
+
+function delayOnPromise(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(`delaied on ${ms}ms ok`), ms);
+    })
+}
+
+delayOnPromise(1500).then(log);
