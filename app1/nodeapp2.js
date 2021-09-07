@@ -528,4 +528,55 @@ function* natByFwithout(start, end, f, filter) {
 
 l([...natByFwithout(10,100, x => x**3, x => x % 10 == 3)]); // qubes ending on 3
 
+function* genWithResultIn() {
+    let a = yield 0;
+    let b = yield a;
+    let c = yield a + b;
+    let d = yield c + b;
+    let e = yield c + d;
+}
 
+let gen2 = genWithResultIn();
+l([...gen2]);
+gen2 = genWithResultIn();
+l(gen2.next(10)); // 0
+l(gen2.next(11)); // 11
+l(gen2.next(12)); // 23
+l(gen2.next(13)); // 25
+l(gen2.next(14)); // 27
+l(gen2.next(15)); // undef
+
+function MakeRange (from, to) {
+  return {
+  from, to,
+  [Symbol.iterator]() {
+    return {
+      current: this.from,
+      last: this.to,
+      next() { 
+        if (this.current <= this.last) {
+          return { done: false, value: this.current++ };
+        } else {
+          return { done: true };
+        }
+          }
+        };
+      }
+    };
+}
+
+let range1 = MakeRange(1,5);
+l([...range1]);
+for (let i of range1) l(i);
+
+function* pseudoRandom(seed) {
+    let value = seed;
+    while (true) {
+        value = value * 16807 % 2147483647;
+        yield value;
+    }
+}
+
+let generator = pseudoRandom(1);
+l(generator.next());
+l(generator.next());
