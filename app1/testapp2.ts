@@ -2,8 +2,10 @@
 
 let l = console.log;
 let a: number = 8;
-a = "c".codePointAt(0);
-l(a);
+l(String.prototype.codePointAt);
+let _a:number | undefined = "c".codePointAt(0);
+/* a = _a instanceof number ? _a : 0; */
+l(a, _a);
 
 function logtype(value: any): void {
     l(`|${typeof value}|=${value}`);
@@ -57,6 +59,67 @@ paramsopt(100);
 paramsopt(100, 200);
 paramsinit(100);
 paramsinit(100, 200);
+
+l("*** function type");
+let f1: ()=>void;
+f1 = l;
+let f2: (any)=>void;
+f2 = logtype;
+
+function usefunc(value: string, func: (string) => string) {
+    return func(value.toUpperCase());
+}
+
+function f1s(s:string): string {
+    return `[${s.trim()}]`;
+}
+
+l(usefunc("   abc!=144   ", f1s));
+
+type funcNumWithOneArg = (value: number) => number;
+let f3: funcNumWithOneArg;
+f3 = (v) => 3;
+l(f3(0), f3);
+
+f3 = (v:number):number => v*3;
+l(f3(23));
+
+let p1: Promise<number>;
+let a4: number[] = [1];
+let a5: Array<number> = new Array<number>(1);
+l(typeof(a4), typeof(a5));
+
+l();l("*** Union");
+let u1 : number | string;
+u1 = 1; u1 = "a";
+
+function uf1(a: string|Array<string>):void {}
+
+type ID = number | null;
+let id:ID = 8;
+
+function pSz(a?: number) {l(a)};
+pSz();
+
+l();l("*** obj type");
+type User = {name: string, prof?: string, cost?: number};
+let user1: User = {name: "Jonh", prof: "cleaner", cost:1e3};
+l(user1, typeof(user1));
+user1 = {name: "Jane"};
+
+function objfunc(o:{}):{} { return {o:o}};
+l(objfunc({x:'y'}));
+
+l("prop IN obj");
+function testObj(obj:{}): boolean {return "ok" in obj;}
+l(testObj({ok:true}));
+
+l("decompose obj");
+
+function showObj({value, x="_", y="Y"} : {value: number, x?: string, y?: string}):void {
+    console.log(`Obj: {${value}-${x}-${y}}`);
+}
+showObj({value: 512});
 
 
 

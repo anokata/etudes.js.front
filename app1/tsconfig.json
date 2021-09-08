@@ -5,7 +5,8 @@
         "outDir": "dist",
         "sourceMap": true,
         "outFile": "testapp.js",
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "strictNullChecks": true
     },
     "files":[
         "testapp.ts"
