@@ -99,3 +99,11 @@ function showObj({ value, x = "_", y = "Y" }) {
     console.log(`Obj: {${value}-${x}-${y}}`);
 }
 showObj({ value: 512 });
+let c1 = { name: "default name", provider: "none" };
+l(c1);
+l();
+l("type assertion");
+let char = "Z".codePointAt(0);
+l("coerced to num ", char);
+let str1 = "abcdef".slice(1, 3).codePointAt(1);
+l("coerced to num ", str1);

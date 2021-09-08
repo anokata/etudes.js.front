@@ -121,5 +121,14 @@ function showObj({value, x="_", y="Y"} : {value: number, x?: string, y?: string}
 }
 showObj({value: 512});
 
+type Person = {name: string};
+type Client = Person & {provider: string};
+let c1: Client = {name: "default name", provider: "none"};
+l(c1);
 
+l();l("type assertion");
 
+let char:number = <number>"Z".codePointAt(0);
+l("coerced to num ", char);
+let str1: number = "abcdef".slice(1,3).codePointAt(1) as number;
+l("coerced to num ", str1);
