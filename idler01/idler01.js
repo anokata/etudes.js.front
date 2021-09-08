@@ -30,6 +30,7 @@ const blocksIcons = ["icons/grayblock_v2.png", "icons/yellowblock.png"];
 
 // TODO speed calc // autominer, per/sec info
 // TODO click upg
+// exp
 // TODO all multiplier -  upg
 // TODO classes and modules (on proto) of mines, auto... (classic js, no compile)
 // TODO auto sell for coin (upd)
@@ -282,6 +283,7 @@ var app = new Vue({
             // atob btoa
             Cookies.set("idler01Save", data, { sameSite: 'strict', secure: true });
             this.log("saved.");
+            //TODO localStorage
         },
         loadCoockie: function() {
             let data = Cookies.get("idler01Save");
