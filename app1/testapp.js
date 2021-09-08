@@ -30,3 +30,13 @@ const elrik = new User("Typescript", null);
 const kane = new User("Kane", "warrior");
 const header = this.document.getElementById("header");
 header.innerHTML = `Greating to ${elrik}! And ${kane}`;
+let l = console.log;
+let x = 123;
+// x = 'a'; // type err
+x += 123;
+l(x);
+{
+    let x;
+    x = 'xxx';
+    l(x);
+}

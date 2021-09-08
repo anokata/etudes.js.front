@@ -4,7 +4,8 @@
         "removeComments": true,
         "outDir": "dist",
         "sourceMap": true,
-        "outFile": "testapp.js"
+        "outFile": "testapp.js",
+        "noEmitOnError": true
     },
     "files":[
         "testapp.ts"

@@ -635,3 +635,5 @@ fetch("https://ya.ru").then((r) => r.text()).then((r) => l(r.slice(0,20).brightR
 
 
 new Promise((r) => {throw new Error("hi")}).catch((e)=>l("er".red));
+
+log(Promise.resolve(20), "Promises".blue);
