@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "removeComments": true,
+        "outDir": "dist",
+        "sourceMap": true,
+        "outFile": "testapp.js"
+    },
+    "files":[
+        "testapp.ts"
+    ],
+    "exclude":[
+        "node_modules"
+    ]
+}
