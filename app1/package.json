@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node nodeapp.js",
     "dev": "nodemon nodeapp.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tstest": "tsc -w -t ES6 testapp.ts"
   },
   "author": "",
   "license": "ISC",
