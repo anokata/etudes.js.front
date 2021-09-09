@@ -8,6 +8,26 @@ doublePrices = doublePrices.map((v) => v * 2.02);
 log(doublePrices);
 let staticPrices = doublePrices.map((v) => +(v / 34).toFixed(2));
 log(staticPrices.join(" "));
-const [head, ...tail] = staticPrices;
+let [head, ...tail] = staticPrices;
 log(head);
-log(tail);
+log();
+log("Tupels...");
+let c1 = [1, 8.3];
+let tup1 = ["abc", { ko: 2 }];
+c1[0] *= 0.2;
+log(c1, tup1);
+let tup2 = [];
+let tup3 = ["abc", "__3"];
+function rePair(a, b) {
+    return [a[0] + a[1], b[0] + b[1]];
+}
+let tup4 = rePair(c1, tup3);
+log(tup4, tup2);
+let tup5 = ["A", "__3"];
+let tup6 = ["B"];
+tup5 = tup6;
+tup6 = tup5;
+log(tup5, tup6);
+let flags = ["FLAGS", true, false];
+let [h, ...t] = flags;
+log(flags, h, t);

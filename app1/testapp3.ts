@@ -12,9 +12,34 @@ log(doublePrices);
 let staticPrices: readonly number[] = doublePrices.map((v) => +(v/34).toFixed(2));
 log(staticPrices.join(" "));
 
-const [head, ...tail] = staticPrices;
+let [head, ...tail] = staticPrices;
 log(head);
 log();log("Tupels...");
 
+type ComplexNumber = [real:number, img:number];
+let c1: ComplexNumber = [1,8.3];
+let tup1: [string, {}] = ["abc", {ko: 2}];
+c1[0] *=0.2;
+log(c1, tup1);
 
+let tup2: [] = [];
+let tup3: [string, string] = ["abc", "__3"];
 
+function rePair(a:[number, number], b:[string, string]): [number, string] {
+    return [a[0]+a[1], b[0]+b[1]];
+}
+
+let tup4 = rePair(c1, tup3);
+log(tup4, tup2);
+
+let tup5: [string, string?] = ["A", "__3"];
+let tup6: [string, string?] = ["B"];
+tup5 = tup6;
+tup6 = tup5;
+log(tup5, tup6);
+
+let flags: [string, ...boolean[]] = ["FLAGS", true, false];
+let [h, ...t] = flags;
+log(flags, h, t);
+
+log();
