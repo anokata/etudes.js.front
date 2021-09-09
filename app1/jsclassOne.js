@@ -3,10 +3,16 @@ log("*** Classes");
 class Lamp {
     constructor(model) {
         this.model = model ?? "basic";
+        Lamp._count++;
     }
 
     describe() {
         return `Lamp[${this.model}]`;
+    }
+
+    static _count = 0;
+    static get lampCount() {
+        return Lamp._count;
     }
 }
 
@@ -67,3 +73,15 @@ class BigLamp extends Lamp {
 
 let blamp = new BigLamp(18);
 log(`${blamp} || ${blamp.describe()}`);
+
+log();
+
+class ModernLamp extends Lamp {
+    static createLamp(modelName) {
+        return new this(`~${modelName}~`);
+    }
+}
+
+let mlamp = ModernLamp.createLamp("Bijoku");
+log(mlamp);
+log(`Lamps created: ${Lamp.lampCount}`);

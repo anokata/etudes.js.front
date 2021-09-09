@@ -14,7 +14,7 @@ log(staticPrices.join(" "));
 
 const [head, ...tail] = staticPrices;
 log(head);
-log();log("Tupes...");
+log();log("Tupels...");
 
 
 
