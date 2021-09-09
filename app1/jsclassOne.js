@@ -10,6 +10,10 @@ class Lamp {
         return `Lamp[${this.model}]`;
     }
 
+    toString() {
+        return this.describe();
+    }
+
     static _count = 0;
     static get lampCount() {
         return Lamp._count;
@@ -80,8 +84,35 @@ class ModernLamp extends Lamp {
     static createLamp(modelName) {
         return new this(`~${modelName}~`);
     }
+    toString() {
+        return `${super.toString()}(${this.#serialNum})`
+    }
+    #serialNum = Math.round(Math.random()*1e8);
+    _lampsCount = 0;
+    getLampsCount() { return this._lampsCount };
+
+    // [Symbol.toStringTag]: "ModernLamp";
+    static polyFunc(lamp) {
+        if (lamp instanceof ModernLamp) {
+            return "modern";
+        } else if (lamp instanceof BigLamp) {
+            return "big";
+        } else if (lamp instanceof Lamp) {
+            return "normal";
+        }
+    }
 }
 
 let mlamp = ModernLamp.createLamp("Bijoku");
 log(mlamp);
-log(`Lamps created: ${Lamp.lampCount}`);
+log(`${mlamp}`);
+log(`Lamps created: ${Lamp.lampCount}`); // and ModernLamp.lampCount too
+
+let objectToString = Object.prototype.toString;
+log(objectToString.call(mlamp));
+log({}.toString.call(blamp));
+log(typeof(mlamp), mlamp instanceof Lamp, basicLamp instanceof ModernLamp);
+log(ModernLamp.polyFunc(blamp));
+log([basicLamp, blamp, mlamp].map(ModernLamp.polyFunc));
+log();
+
