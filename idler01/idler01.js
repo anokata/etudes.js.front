@@ -1,4 +1,3 @@
-"use strict";
 const Vue = window.Vue;
 const numeral = window.numeral;
 Vue.config.devtools = true;
