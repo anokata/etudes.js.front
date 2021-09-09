@@ -7,3 +7,5 @@ export function logme(s) {
 let messageAkr = "SSS.D";
 
 export {messageAkr};
+
+export default { s: "SSD[...]"}; // def export without name
