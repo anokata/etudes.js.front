@@ -47,3 +47,21 @@ obj2 = Object.fromEntries(
   Object.entries(obj2).map(([key, value]) => [key, value / 100])
 );
 log(obj2);
+
+log("*** Decorators");
+
+function basicWork(x,y) {
+    return `The ${x} is doing basic work: ${y}`;
+}
+
+function stringFunParDecorator(fun, parA, parB) {
+    return function(...args) {
+        return `${parA}${fun(...args)}${parB}`;
+    }
+}
+// decorating
+basicWork = stringFunParDecorator(basicWork, "(", ")");
+basicWork = stringFunParDecorator(basicWork, "[", "]");
+basicWork = stringFunParDecorator(basicWork, "-", "-");
+log(basicWork("Jong", "Typing code"));
+
