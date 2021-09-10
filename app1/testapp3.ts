@@ -212,3 +212,26 @@ interface StoSArray {
 
 let tools: StoSArray = {"some": "knife"};
 log(tools);
+log(typeof(s2), s2 instanceof Space);
+
+log();log("*** <Generics>");
+
+function genX<X>(x:X):X { return x; }
+log(genX<number>(8));
+log(genX<string>("a"));
+
+function mapT<T>(...xs: T[]):string {
+    return xs.reduce((acc, x)=>`${acc}.${x}.`, "");
+}
+
+log(mapT<number>(6,4,2,7));
+
+function titleGlue<T extends {title: string}>(a:T, b:T):string {
+    return `${a.title}-${b.title}`;
+}
+class User {
+    constructor(public title:string) {}
+}
+let u1 = new User("Konna ni sekai");
+let u2 = new User("Umareta shojo");
+log(titleGlue(u1, u2));

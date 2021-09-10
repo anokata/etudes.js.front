@@ -169,3 +169,24 @@ log(foodMaker(21));
 log("*Array Interface");
 let tools = { "some": "knife" };
 log(tools);
+log(typeof (s2), s2 instanceof Space);
+log();
+log("*** <Generics>");
+function genX(x) { return x; }
+log(genX(8));
+log(genX("a"));
+function mapT(...xs) {
+    return xs.reduce((acc, x) => `${acc}.${x}.`, "");
+}
+log(mapT(6, 4, 2, 7));
+function titleGlue(a, b) {
+    return `${a.title}-${b.title}`;
+}
+class User {
+    constructor(title) {
+        this.title = title;
+    }
+}
+let u1 = new User("Konna ni sekai");
+let u2 = new User("Umareta shojo");
+log(titleGlue(u1, u2));
