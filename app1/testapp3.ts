@@ -76,9 +76,9 @@ abstract class UnderSpace {
 }
 
 class Space extends UnderSpace {
-    volume: number = 1e-3; 
-    readonly tag: string = "_";
-    _protection: boolean = false;
+    protected volume: number = 1e-3; 
+    protected readonly tag: string = "_";
+    protected _protection: boolean = false;
 
     constructor(volume:number = 1e-3, tag:string = "-") {
         super();
@@ -90,16 +90,17 @@ class Space extends UnderSpace {
 		return `...[${this.volume}]@${this.tag}`;
 	}
 
-    isProtected(){return this._protection;}
-    protect(){this._protection = true;}
+    protected isProtected(){return this._protection;}
+    protected protect(){this._protection = true;}
+    public getTag() { return this.tag; }
 }
 
-log(new Space(), new Space().tag);
+log(new Space(), new Space().getTag());
 log(`${ new Space(0.002) }`);
 let s1: UnderSpace = new Space();
 
 class DustSpace extends Space {
-    _dust: number;
+    private _dust: number;
 
     constructor(dustAmount: number = 0.1) {
         super(2e3, "D");
@@ -114,4 +115,16 @@ log(`${ new DustSpace(1.302) }`);
 log(s1, s2);
 s1 = s2; 
 //s2 = s1; //no
+
+class PSpace extends Space {
+
+    constructor (public p:{}) {
+        super();
+    }
+
+    toString() { return JSON.stringify(this.p); }
+}
+
+log(`${new PSpace({n:2})}`);
+
 

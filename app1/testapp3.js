@@ -86,8 +86,9 @@ class Space extends UnderSpace {
     }
     isProtected() { return this._protection; }
     protect() { this._protection = true; }
+    getTag() { return this.tag; }
 }
-log(new Space(), new Space().tag);
+log(new Space(), new Space().getTag());
 log(`${new Space(0.002)}`);
 let s1 = new Space();
 class DustSpace extends Space {
@@ -102,3 +103,11 @@ log(`${new DustSpace(1.302)}`);
 log(s1, s2);
 s1 = s2;
 //s2 = s1; //no
+class PSpace extends Space {
+    constructor(p) {
+        super();
+        this.p = p;
+    }
+    toString() { return JSON.stringify(this.p); }
+}
+log(`${new PSpace({ n: 2 })}`);
