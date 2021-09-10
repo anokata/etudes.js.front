@@ -43,3 +43,44 @@ let [h, ...t] = flags;
 log(flags, h, t);
 
 log();
+
+function sumSub(base: number, ...xs:number[]): [number, number] {
+    let sum = xs.reduce((acc, x) => acc = (acc+x)/base, 0);
+    let sub = xs.reduce((acc, x) => acc = (acc-x)*base, 0);
+    return [sum, sub];
+}
+
+log(sumSub(0.1, 1,2,3,4,5,6,7));
+
+const ys = [8,8,2,500] as const;
+log(sumSub(...ys));
+log();
+
+enum Drawables {Pen=8, Pencil, Marker, Brush, FeltTipPen, Liner};
+let tool:Drawables = Drawables.Brush;
+log(Drawables);
+log(tool, Drawables[tool]);
+
+enum AgentNames {A= "Antony", J="James", T="Target"};
+const a008: AgentNames = AgentNames.J;
+log(a008);
+log(); log("*** OOP");
+
+class Empty {};
+
+let voiding: Empty = new Empty();
+log(voiding);
+
+class Space {
+    volume: number = 1e-3; 
+    tag: string = "_";
+
+	toString(): string {
+		return `...[${this.volume}]@${this.tag}`;
+	}
+}
+
+log(new Space(), new Space().tag);
+log(`${ new Space() }`);
+
+

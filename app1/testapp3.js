@@ -31,3 +31,53 @@ log(tup5, tup6);
 let flags = ["FLAGS", true, false];
 let [h, ...t] = flags;
 log(flags, h, t);
+log();
+function sumSub(base, ...xs) {
+    let sum = xs.reduce((acc, x) => acc = (acc + x) / base, 0);
+    let sub = xs.reduce((acc, x) => acc = (acc - x) * base, 0);
+    return [sum, sub];
+}
+log(sumSub(0.1, 1, 2, 3, 4, 5, 6, 7));
+const ys = [8, 8, 2, 500];
+log(sumSub(...ys));
+log();
+var Drawables;
+(function (Drawables) {
+    Drawables[Drawables["Pen"] = 8] = "Pen";
+    Drawables[Drawables["Pencil"] = 9] = "Pencil";
+    Drawables[Drawables["Marker"] = 10] = "Marker";
+    Drawables[Drawables["Brush"] = 11] = "Brush";
+    Drawables[Drawables["FeltTipPen"] = 12] = "FeltTipPen";
+    Drawables[Drawables["Liner"] = 13] = "Liner";
+})(Drawables || (Drawables = {}));
+;
+let tool = Drawables.Brush;
+log(Drawables);
+log(tool, Drawables[tool]);
+var AgentNames;
+(function (AgentNames) {
+    AgentNames["A"] = "Antony";
+    AgentNames["J"] = "James";
+    AgentNames["T"] = "Target";
+})(AgentNames || (AgentNames = {}));
+;
+const a008 = AgentNames.J;
+log(a008);
+log();
+log("*** OOP");
+class Empty {
+}
+;
+let voiding = new Empty();
+log(voiding);
+class Space {
+    constructor() {
+        this.volume = 1e-3;
+        this.tag = "_";
+    }
+    toString() {
+        return `...[${this.volume}]@${this.tag}`;
+    }
+}
+log(new Space(), new Space().tag);
+log(`${new Space()}`);
