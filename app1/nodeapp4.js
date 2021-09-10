@@ -1,4 +1,5 @@
 log = console.log;
+log = spyDecorator(log);
 let m = new Map();
 log(m);
 m.set("n1", { c: 4 });
@@ -92,8 +93,32 @@ log(methodWork.call(tw, 0));
 function stringMethodPDecorator(method, p) {
     return function (...args) {
         return `${p.toLowerCase()}${method.call(this, ...args)}${p.toUpperCase()}`;
+        // method.apply(this, args)
     };
 }
 
 workingObj.work = stringMethodPDecorator(workingObj.work, 'j');
 log(workingObj.work(2));
+
+// method borroing
+log(String.prototype.toLowerCase.call("DOM"));
+log([].join.call(["D", "M", "Z"], "-"));
+log(Array.prototype.join.call("greatings!".split(""), "-"));
+
+function spyDecorator(func) {
+
+    function nfunc(...args) {
+        nfunc.calls.push([nfunc.calls.length+1,...args]);
+        func.apply(this, args);
+    }
+    nfunc.calls = [];
+    return nfunc;
+}
+log(1,2,3);
+
+log.calls.forEach((e) => {
+    let [n, arg1, ...args] = e;
+    log(`call# ${n}, with ${e.length-1} args: [${arg1}...]`);
+});
+
+
