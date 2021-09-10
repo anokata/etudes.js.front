@@ -70,14 +70,35 @@ class Empty {
 ;
 let voiding = new Empty();
 log(voiding);
-class Space {
-    constructor() {
+class UnderSpace {
+}
+class Space extends UnderSpace {
+    constructor(volume = 1e-3, tag = "-") {
+        super();
         this.volume = 1e-3;
         this.tag = "_";
+        this._protection = false;
+        this.volume = volume;
+        this.tag = tag;
     }
     toString() {
         return `...[${this.volume}]@${this.tag}`;
     }
+    isProtected() { return this._protection; }
+    protect() { this._protection = true; }
 }
 log(new Space(), new Space().tag);
-log(`${new Space()}`);
+log(`${new Space(0.002)}`);
+let s1 = new Space();
+class DustSpace extends Space {
+    constructor(dustAmount = 0.1) {
+        super(2e3, "D");
+        this._dust = dustAmount;
+    }
+    toString() { return `Dust.${super.toString()}`; }
+}
+let s2 = new DustSpace();
+log(`${new DustSpace(1.302)}`);
+log(s1, s2);
+s1 = s2;
+//s2 = s1; //no

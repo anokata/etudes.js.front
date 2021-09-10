@@ -71,16 +71,47 @@ class Empty {};
 let voiding: Empty = new Empty();
 log(voiding);
 
-class Space {
+abstract class UnderSpace {
+    abstract toString(): void;
+}
+
+class Space extends UnderSpace {
     volume: number = 1e-3; 
-    tag: string = "_";
+    readonly tag: string = "_";
+    _protection: boolean = false;
+
+    constructor(volume:number = 1e-3, tag:string = "-") {
+        super();
+        this.volume = volume;
+        this.tag = tag;
+    }
 
 	toString(): string {
 		return `...[${this.volume}]@${this.tag}`;
 	}
+
+    isProtected(){return this._protection;}
+    protect(){this._protection = true;}
 }
 
 log(new Space(), new Space().tag);
-log(`${ new Space() }`);
+log(`${ new Space(0.002) }`);
+let s1: UnderSpace = new Space();
 
+class DustSpace extends Space {
+    _dust: number;
+
+    constructor(dustAmount: number = 0.1) {
+        super(2e3, "D");
+        this._dust = dustAmount;
+    }
+
+    toString() { return `Dust.${super.toString()}`; }
+}
+
+let s2: Space = new DustSpace();
+log(`${ new DustSpace(1.302) }`);
+log(s1, s2);
+s1 = s2; 
+//s2 = s1; //no
 
