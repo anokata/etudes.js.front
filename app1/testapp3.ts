@@ -235,3 +235,4 @@ class User {
 let u1 = new User("Konna ni sekai");
 let u2 = new User("Umareta shojo");
 log(titleGlue(u1, u2));
+

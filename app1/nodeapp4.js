@@ -74,3 +74,26 @@ basicWork = stringFunParDecorator(basicWork, "(", ")");
 basicWork = stringFunParDecorator(basicWork, "[", "]");
 basicWork = stringFunParDecorator(basicWork, "-", "-");
 log(basicWork("Jong", "Typing code"));
+
+let workingObj = {
+    arg: "work",
+    work(a){
+        let x = a ?? 0;
+        return `do:${this.arg}-${x}`;
+    }
+}
+
+let tw = {arg: "none"};
+let methodWork = workingObj.work;
+
+log(workingObj.work());
+log(methodWork.call(tw, 0));
+
+function stringMethodPDecorator(method, p) {
+    return function (...args) {
+        return `${p.toLowerCase()}${method.call(this, ...args)}${p.toUpperCase()}`;
+    };
+}
+
+workingObj.work = stringMethodPDecorator(workingObj.work, 'j');
+log(workingObj.work(2));
