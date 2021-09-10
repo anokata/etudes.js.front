@@ -1,3 +1,5 @@
+// import * as colors from 'colors';
+
 const log:(...a)=>void =console.log;
 log("==start==");
 type Numbers = number[];
@@ -73,6 +75,12 @@ log(voiding);
 
 abstract class UnderSpace {
     abstract toString(): void;
+    private static _count:number = 0;
+    constructor(){
+        UnderSpace.incount();
+    }
+    public static get count():number { return UnderSpace._count; }
+    public static incount():void { UnderSpace._count++; }
 }
 
 class Space extends UnderSpace {
@@ -126,5 +134,81 @@ class PSpace extends Space {
 }
 
 log(`${new PSpace({n:2})}`);
+log('space created: ', PSpace.count);
 
+log();log("*** Interfaces");
 
+interface IWalkable {
+    walk(distance: number): boolean;
+}
+
+let catWalker :IWalkable = {walk(d) {return true}};
+log(catWalker.walk(1));
+
+class Cat implements IWalkable {
+    walk(d: number) { return d > 10; }
+    speak() { log("cat"); }
+}
+
+class Dox implements IWalkable {
+    walk(d: number) { return d < 9; }
+    speak() { log("dox"); }
+    doku():void {}
+}
+
+let cat1: IWalkable = new Cat();
+let cat2: Cat = new Cat();
+let dox1: IWalkable = new Dox();
+let dox2: Dox = new Dox();
+cat1 = cat2; // ok
+// cat2 = cat1; // no
+cat1 = dox2;
+// cat2 = dox1; // no
+cat2 = dox2; 
+cat2.speak();
+// extend interface:
+interface IDoner {
+    done():void;
+}
+interface IDoner {
+    speed: number;
+}
+
+class Crow implements IDoner {
+    public speed: number = 10;
+    done() {log("kar!", this.speed)}
+}
+new Crow().done();
+
+interface IMeganer extends IDoner {
+    megadone(): boolean;
+}
+
+class MegaCrow implements IMeganer {
+    public speed: number = 1e2;
+    done() {log("Mega kar!", this.speed, this.megadone())}
+    megadone(): boolean {return true}
+}
+
+new MegaCrow().done();
+
+log("*Function interface")
+interface ThingsMaker {
+    (amount: number):{count: number, kind: string};
+}
+
+let foodMaker: ThingsMaker = function(a: number) {return {
+    count: a*10,
+    kind: "Food",
+    info: "coil",
+}};
+log(foodMaker(21));
+
+log("*Array Interface");
+
+interface StoSArray {
+    [index: string]:string;
+}
+
+let tools: StoSArray = {"some": "knife"};
+log(tools);

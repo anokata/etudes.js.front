@@ -1,4 +1,4 @@
-// import * as colors from 'colors';
+import * as colors from 'colors';
 const log = console.log;
 log("==start==");
 let prices = [0.1, 0.02, 0.93];
@@ -120,52 +120,4 @@ class PSpace extends Space {
 log(`${new PSpace({ n: 2 })}`);
 log('space created: ', PSpace.count);
 log();
-log("*** Interfaces");
-let catWalker = { walk(d) { return true; } };
-log(catWalker.walk(1));
-class Cat {
-    walk(d) { return d > 10; }
-    speak() { log("cat"); }
-}
-class Dox {
-    walk(d) { return d < 9; }
-    speak() { log("dox"); }
-    doku() { }
-}
-let cat1 = new Cat();
-let cat2 = new Cat();
-let dox1 = new Dox();
-let dox2 = new Dox();
-cat1 = cat2; // ok
-// cat2 = cat1; // no
-cat1 = dox2;
-// cat2 = dox1; // no
-cat2 = dox2;
-cat2.speak();
-class Crow {
-    constructor() {
-        this.speed = 10;
-    }
-    done() { log("kar!", this.speed); }
-}
-new Crow().done();
-class MegaCrow {
-    constructor() {
-        this.speed = 1e2;
-    }
-    done() { log("Mega kar!", this.speed, this.megadone()); }
-    megadone() { return true; }
-}
-new MegaCrow().done();
-log("*Function interface");
-let foodMaker = function (a) {
-    return {
-        count: a * 10,
-        kind: "Food",
-        info: "coil",
-    };
-};
-log(foodMaker(21));
-log("*Array Interface");
-let tools = { "some": "knife" };
-log(tools);
+log(colors.red("*** Interfaces"));

@@ -6,7 +6,8 @@
         "sourceMap": true,
         "outFile": "testapp.js",
         "noEmitOnError": true,
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "moduleResolution": "node"
     },
     "files":[
         "testapp.ts"
