@@ -121,4 +121,46 @@ log.calls.forEach((e) => {
     log(`call# ${n}, with ${e.length-1} args: [${arg1}...]`);
 });
 
+log("*** Iterators, for of");
+
+let range = {
+    from: 10,
+    to: 20,
+    [Symbol.iterator]: function() {
+        // call once in forOf, return iterator
+        log(">Enter in Symbol.iterator");
+        // make iterator obj
+        return {
+            current: this.from,
+            last: this.to,
+            next(){
+                if (this.current <= this.last) return {done: false, value: this.current++ };
+                return {done: true};
+            }
+        }
+    }
+}
+
+for (let i of range) log(`#${i}`);
+
+let randomGen = {
+    seed: 20,
+    [Symbol.iterator]: function() {
+        return {
+            current: this.seed,
+            next(){
+                this.current = (134775813 * this.current + 1) % (2**32);
+                return {done: false, value: this.current };
+            }
+        }
+    }
+}
+
+let srand = "";
+for (let r of randomGen) {log(r); if (srand.length > 100) break; srand += r.toString(36)}
+log(srand);
+
+for (let c of "string is iterable") 
+    process.stdout.write(`(${c})`);
+
 
