@@ -19,6 +19,7 @@
 </head>
 <body>
     <div id="app"> </div>
+    <div id="app2"> </div>
       
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
@@ -30,6 +31,13 @@
        const divStyle = {
             color: '#abc',
        };
+
+class Bitton extends React.Component {
+    render() {
+        return <button>OK</button>;
+    }
+}
+
     ReactDOM.render(
         <div className="dot block-a" style={divStyle}>
         <h1>Hello React 
@@ -38,6 +46,11 @@
         <p>{a.map(x=>String.fromCodePoint(x+100))}</p>
         </div>,
         document.getElementById("app")
+    );
+
+    ReactDOM.render(
+        <Bitton />,
+        document.getElementById("app2")
     )
    </script>
 </body>
