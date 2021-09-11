@@ -1,0 +1,23 @@
+{
+  "name": "reactapp1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "serve.js",
+  "scripts": {
+    "test": "node serve.js",
+    "build": "npx babel index.jsx --out-file index.js",
+    "start": "npx babel index.jsx --out-file index.js && start http://localhost:3000/ && node serve.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.12.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  }
+}
