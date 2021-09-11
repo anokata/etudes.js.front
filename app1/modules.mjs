@@ -23,3 +23,8 @@ export function main() {
 }
 
 main();
+
+log();log("*** fetch api".yellow);
+import fetch from "node-fetch";
+let res1 = fetch("http://github.com");
+res1.then((response) => (response.text().then((text) => log(text.trim().slice(0,20)))));
