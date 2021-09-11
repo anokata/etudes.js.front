@@ -163,4 +163,27 @@ log(srand);
 for (let c of "string is iterable") 
     process.stdout.write(`(${c})`);
 
+log();
+log("Implicit iterate:");
+
+let retstr = "ReTuRn?";
+log(Object.getOwnPropertySymbols(retstr.__proto__));
+// log(Object.getOwnPropertyNames(retstr));
+let iterator = retstr[Symbol.iterator]();
+log(iterator);
+// iterator = iterator();
+// log(iterator);
+
+while (true) {
+    let current = iterator.next();
+    if (current.done) break;
+    log(current, `-> ${current.value}`);
+} 
+
+log(Array.from(range));
+log(Array.from(range, n => n*10+n));
+
+let pseudoArray = { 0: 'c', 1:'y', 2:'b', length: 3};
+log(Array.from(pseudoArray).join("-"));
+
 
