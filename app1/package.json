@@ -10,7 +10,8 @@
     "tstest": "tsc -w -t ES6 testapp.ts",
     "tstest2": "tsc -w -t ES6 testapp2.ts",
     "tstestns": "tsc & node tsmod.js",
-    "tstestweb": "npx webpack --config webpack.tsmod.config.js && node dist/tsmod_bundle.js"
+    "tstestweb": "npx webpack --config webpack.tsmod.config.js && node dist/tsmod_bundle.js",
+    "tstestjslib": "npx webpack --config webpack.jslib.config.js && node dist/jslib_bundle.js"
   },
   "author": "",
   "license": "ISC",
