@@ -11,3 +11,7 @@ Modx.NS2.INNERNS8.print("hi");
 
 import print8 = Modx.NS2.INNERNS8.print;
 print8("shortname");
+
+import ensom from './module';
+ensom();
+//tsc  --module esnext
