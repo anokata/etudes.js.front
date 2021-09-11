@@ -2,15 +2,15 @@
     "compilerOptions": {
         "target": "es6",
         "removeComments": true,
-        "outDir": "dist",
+        "outDir": "./dist/",
         "sourceMap": true,
-        "outFile": "testapp.js",
         "noEmitOnError": true,
         "strictNullChecks": true,
         "moduleResolution": "node"
     },
     "files":[
-        "testapp.ts"
+        "tsmodx.ts",
+        "tstestmod.ts"
     ],
     "exclude":[
         "node_modules"

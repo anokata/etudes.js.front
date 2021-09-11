@@ -8,7 +8,8 @@
     "dev": "nodemon nodeapp.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tstest": "tsc -w -t ES6 testapp.ts",
-    "tstest2": "tsc -w -t ES6 testapp2.ts"
+    "tstest2": "tsc -w -t ES6 testapp2.ts",
+    "tstestns": "tsc & node tsmod.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +18,11 @@
     "colors": "^1.4.0",
     "express": "^4.17.1",
     "node-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
   }
 }

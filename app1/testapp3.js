@@ -190,3 +190,10 @@ class User {
 let u1 = new User("Konna ni sekai");
 let u2 = new User("Umareta shojo");
 log(titleGlue(u1, u2));
+log();
+log("*** Namespaces!");
+var NS1;
+(function (NS1) {
+    NS1.Value = +(Math.random() * 1e5).toFixed();
+})(NS1 || (NS1 = {}));
+log(NS1.Value);

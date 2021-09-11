@@ -236,3 +236,9 @@ let u1 = new User("Konna ni sekai");
 let u2 = new User("Umareta shojo");
 log(titleGlue(u1, u2));
 
+log();log("*** Namespaces!");
+
+namespace NS1 {
+    export let Value = +(Math.random()*1e5).toFixed();
+}
+log(NS1.Value);
