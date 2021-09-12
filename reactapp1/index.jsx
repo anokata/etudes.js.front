@@ -10,8 +10,15 @@ let element1 = <b>hi</b>;
 log(element1);
 
 class Bitton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.click = this.click.bind(this);
+    }
+    click(e) {
+        log("Clicked", this.props.name, e);
+    }
     render() {
-    return <button>OK {this.props.name}</button>;
+        return <button onClick={this.click}>OK {this.props.name}</button>;
 }
 }
 Bitton.defaultProps = {name:"Default"};

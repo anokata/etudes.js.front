@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node serve.js",
     "build": "npx babel index.jsx --out-file index.js",
-    "start": "npx babel index.jsx --out-file index.js && start http://localhost:3000/ && node serve.js"
+    "start": "npx babel index.jsx --out-file index.js && start http://localhost:4000/ && node serve.js"
   },
   "author": "",
   "license": "ISC",

@@ -8,12 +8,19 @@ let element1 = /*#__PURE__*/React.createElement("b", null, "hi");
 log(element1);
 
 class Bitton extends React.Component {
-  defaultProps = {
-    name: "Kate"
-  };
+  constructor(props) {
+    super(props);
+    this.click = this.click.bind(this);
+  }
+
+  click(e) {
+    log("Clicked", this.props.name, e);
+  }
 
   render() {
-    return /*#__PURE__*/React.createElement("button", null, "OK ", this.props.name);
+    return /*#__PURE__*/React.createElement("button", {
+      onClick: this.click
+    }, "OK ", this.props.name);
   }
 
 }
