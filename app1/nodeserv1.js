@@ -28,6 +28,8 @@ function serverHandler(request, response) {
             return;
         }
         response.statusCode = 200;
+        let text = "basic template test";
+        data = data.toString().replace("{text}", text);
         response.end(data);
     });
 
