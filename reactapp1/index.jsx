@@ -10,21 +10,22 @@ let element1 = <b>hi</b>;
 log(element1);
 
 class Bitton extends React.Component {
-render() {
-return <button>OK</button>;
+    render() {
+    return <button>OK {this.props.name}</button>;
 }
 }
+Bitton.defaultProps = {name:"Default"};
 
 // functional component
-function Timer(){
+function Timer(props){
     let ms = new Date().getMilliseconds();
     let sec = new Date().getSeconds();
-    return <span>{sec}:{ms}</span>;
+    return <span style={{color : props.color }}>{sec}:{ms}</span>;
 }
 
 function renderTimer() {
     ReactDOM.render(
-        <Timer/>,
+        <Timer color="#0bd"/>,
         document.getElementById("timer")
     );
 }
@@ -35,6 +36,7 @@ function tick() {
     <div>
     <h3>{new Date().toLocaleTimeString()}.</h3>
     ms:<Timer/>
+    <Bitton />,
     </div>,
     document.getElementById("header")
     );
@@ -45,7 +47,7 @@ ReactDOM.render(
 <div className="dot block-a" style={divStyle}>
 <h1>Hello React 
 {b}
-    ms:<Timer/>
+    ms:<Timer color="#ab0"/>
 </h1>
 <p>{a.map(x=>String.fromCodePoint(x+100))}</p>
 </div>,
@@ -53,6 +55,6 @@ document.getElementById("app")
 );
 
 ReactDOM.render(
-<Bitton />,
+<Bitton name="Jonk"/>,
 document.getElementById("app2")
 )
