@@ -20,9 +20,18 @@ function serverHandler(request, response) {
         return;
     }
 
-    response.setHeader("Content-Type", "text/html; charset=utf-8;");
-    response.statusCode = 200;
-    response.statusMessage = "hi";
-    response.write("Hi!\n");
-    response.end(`Request: [${request.method}] on: ${request.url}`);
+    const filePath = request.url.substr(1);
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            response.statusCode = 404;
+            response.end("Not found :(");
+            return;
+        }
+        response.statusCode = 200;
+        response.end(data);
+    });
+
+    // response.setHeader("Content-Type", "text/html; charset=utf-8;");
+    // response.write(`Request: [${request.method}] on: ${request.url}`);
+    // response.statusMessage = "hi";
 }
