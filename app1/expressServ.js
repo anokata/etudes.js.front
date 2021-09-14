@@ -9,6 +9,24 @@ server.use(express.static(__dirname + "/static"));
 
 const urlencodedParser = express.urlencoded({extended: false});
 
+// create router
+const catRouter = express.Router();
+
+catRouter.use("/color", (req, res) => {
+    res.send("color");
+});
+
+
+catRouter.use("/type", (req, res) => {
+    res.send("type");
+});
+
+catRouter.use("/name", (req, res) => {
+    res.send("name");
+});
+
+server.use("/cat", catRouter);
+
 server.post("/register",urlencodedParser, (req, res) => {
     if(!req.body) return response.sendStatus(400);
     log(req.body);
