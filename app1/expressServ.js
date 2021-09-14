@@ -18,6 +18,19 @@ server.use("/about", (req, res, next) => {
     next();
 });
 
+
+server.use("/product*", (req, res, next) => {
+    log("Middleware pattern*");
+    res.send(`product # ${req.baseUrl} | ${req.path}`);
+    next();
+});
+
+server.get(/.*(\.)js/, function (request, response) {
+    log("Middleware pattern js hook");
+    response.send(request.url)
+});
+
+
 // main roots
 server.get("/", root);
 server.get("/about", (req, res) => {
