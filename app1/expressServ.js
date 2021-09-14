@@ -4,6 +4,9 @@ const server = express();
 // log(server);
 log(__dirname);
 // middlewares
+
+server.use(express.static(__dirname + "/static"));
+
 server.use((req, res, next) => {
     log("Middleware #1 ... Preparing");
     next();
@@ -19,8 +22,9 @@ server.use("/about", (req, res, next) => {
 server.get("/", root);
 server.get("/about", (req, res) => {
     log("/about get")
-    res.sendFile(__dirname + "/about.html");
+    res.sendFile(__dirname + "/static/about.html");
 });
+
 
 server.get("/hi", (req, res) => {
     res.send("About");
@@ -32,7 +36,7 @@ server.get("/no", (req, res) => {
 });
 
 function root(req, res) {
-    res.send("<h3>Hi Express.js</h3> <a href='/about' >a</a>");
+    res.send("<h3>Hi Express.js</h3> <a href='/about' >a</a> <a href='/about.html'> about</a>");
 }
 
 
