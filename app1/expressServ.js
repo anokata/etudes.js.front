@@ -44,6 +44,11 @@ server.get("/hi", (req, res) => {
     // res.send({name: "Antony"});
 });
 
+
+server.get("/*", (req, res) => {
+    res.redirect("/");
+});
+
 server.get("/no", (req, res) => {
     res.status(404).send("Nothing");
 });
