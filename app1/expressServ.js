@@ -17,14 +17,13 @@ server.post("/register",urlencodedParser, (req, res) => {
 
 server.use((req, res, next) => {
     log("Middleware #1 ... Preparing");
-    // req.middleware = {};
+    req.middleware = {};
     next();
 });
 
-server.use("/about", (req, res, next) => {
+server.use("/about2", (req, res, next) => {
     log("Middleware #about");
-    // res.send(['abc', 123]);
-    // log(req.middleware);
+    res.send(['abc', 123]);
     next();
 });
 
@@ -64,6 +63,7 @@ server.get("/list", (req, res) => {
 server.get("/", root);
 server.get("/about", (req, res) => {
     log("/about get")
+    log(req.middleware);
     res.sendFile(__dirname + "/static/about.html");
 });
 

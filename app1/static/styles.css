@@ -1,0 +1,18 @@
+body {
+    font-family: Verdana;
+    color: #b0b0c0;
+    background-color: #202028;
+}
+a {
+    color: #a0a0d0;
+    padding: 5px;
+    margin: 5px;
+}
+
+br {
+    margin: 5px;
+}
+
+a:visited {
+    color: #d0a0a0;
+}
