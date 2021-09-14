@@ -7,14 +7,24 @@ log(__dirname);
 
 server.use(express.static(__dirname + "/static"));
 
+const urlencodedParser = express.urlencoded({extended: false});
+
+server.post("/register",urlencodedParser, (req, res) => {
+    if(!req.body) return response.sendStatus(400);
+    log(req.body);
+    res.send(`${req.body.userName} - ${req.body.userAge}`);
+});
+
 server.use((req, res, next) => {
     log("Middleware #1 ... Preparing");
+    // req.middleware = {};
     next();
 });
 
 server.use("/about", (req, res, next) => {
     log("Middleware #about");
     // res.send(['abc', 123]);
+    // log(req.middleware);
     next();
 });
 
