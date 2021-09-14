@@ -25,11 +25,30 @@ server.use("/product*", (req, res, next) => {
     next();
 });
 
+server.use("/cash", (req, res, next) => {
+    let id = req.query.id;
+    let amount = req.query.amount;
+    if (Array.isArray(id)) {
+        let response = "ids:";
+        id.forEach((id) => {response += `<br> <li>${id}</li>`});
+        res.send(response);
+    } else if (typeof id == 'object'){
+        res.send(`OBJ: ${JSON.stringify(req.query)}`);
+    } else {
+        res.send(`Params: ID:${id} amount:${amount}$ <br> params: ${JSON.stringify(req.query)}`);
+    }
+    next();
+});
+
 server.get(/.*(\.)js/, function (request, response) {
     log("Middleware pattern js hook");
     response.send(request.url)
 });
 
+server.get("/list", (req, res) => {
+    log("/list get")
+    res.send("<h3>Hi Express.js</h3> <a href='/about' >a</a> <a href='/about.html'> about</a>");
+});
 
 // main roots
 server.get("/", root);
@@ -46,7 +65,7 @@ server.get("/hi", (req, res) => {
 
 
 server.get("/*", (req, res) => {
-    res.redirect("/");
+    // res.redirect("/");
 });
 
 server.get("/no", (req, res) => {
@@ -54,7 +73,7 @@ server.get("/no", (req, res) => {
 });
 
 function root(req, res) {
-    res.send("<h3>Hi Express.js</h3> <a href='/about' >a</a> <a href='/about.html'> about</a>");
+    res.redirect("index.html");
 }
 
 
