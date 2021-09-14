@@ -28,10 +28,17 @@ server.use("/about2", (req, res, next) => {
 });
 
 
-server.use("/product*", (req, res, next) => {
+server.use("/product/:prodID", (req, res, next) => {
     log("Middleware pattern*");
-    res.send(`product # ${req.baseUrl} | ${req.path}`);
-    next();
+    log("request param: ", req.params["prodID"]);
+    res.send(`product # ${req.baseUrl} | ${req.path} | ${req.params["prodID"]}`);
+});
+
+
+server.use("/product/:prodID/tag/:tag", (req, res, next) => {
+    let id = req.params["prodID"];
+    let tag = req.params["tag"];
+    res.send(`product ${id} / [${tag}]`);
 });
 
 server.use("/cash", (req, res, next) => {
