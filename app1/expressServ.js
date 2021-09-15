@@ -1,11 +1,14 @@
 const log = console.log;
 const express = require("express");
+const hbs = require("hbs");
 const server = express();
 // log(server);
 log(__dirname);
 // middlewares
 
 server.use(express.static(__dirname + "/static"));
+server.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials");
 
 const urlencodedParser = express.urlencoded({extended: false});
 const jsonParser = express.json();
@@ -84,6 +87,21 @@ server.get("/list", (req, res) => {
     log("/list get")
     res.send("<h3>Hi Express.js</h3> <a href='/about' >a</a> <a href='/about.html'> about</a>");
 });
+
+// templates
+server.use("/con", (request, response) => {
+    response.render("contact.hbs", {
+        title: "Kirille",
+        emailsVisible: true,
+        emails: ["ano@none.com", "kata@none.com"],
+        phone: "+1234567890"
+    });
+});
+
+server.use("/home", (request, response) => {
+    response.render("home.hbs");
+});
+
 
 // main roots
 server.get("/", root);

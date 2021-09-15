@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
 </head>
 <body>
+{{> menu}}
     <h1>{{title}}</h1>
     {{#if emailsVisible}}
         <h3>Электронные адреса</h3>
@@ -15,5 +16,6 @@
         </ul>
     {{/if}}
     <p>Телефон: {{phone}}</p>
+{{> footer}}
 </body>
 <html>
