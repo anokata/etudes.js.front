@@ -8,6 +8,7 @@ log(__dirname);
 server.use(express.static(__dirname + "/static"));
 
 const urlencodedParser = express.urlencoded({extended: false});
+const jsonParser = express.json();
 
 // create router
 const catRouter = express.Router();
@@ -22,7 +23,7 @@ catRouter.use("/type", (req, res) => {
 });
 
 catRouter.use("/name", (req, res) => {
-    res.send("name");
+    res.send("namecolor");
 });
 
 server.use("/cat", catRouter);
@@ -111,7 +112,11 @@ function root(req, res) {
     res.redirect("index.html");
 }
 
-
+server.post("/user", jsonParser, function (request, response) {
+    console.log(request.body);
+    if(!request.body) return response.sendStatus(400);
+    response.json(request.body);
+});
 
 server.listen(3000);
 log("listen on 3000 port");

@@ -19,13 +19,52 @@
     <a href="/cat/name">cat name</a><br/>
     <a href="/cat/type">cat type</a><br/>
 
-    <form action="/register" method="post">
+    <form action="/register" method="post" name="registerForm">
         <label>Name</label><br>
         <input type="text" name="userName" /><br><br>
         <label>Age</label><br>
         <input type="number" name="userAge" /><br><br>
-        <input type="submit" value="Отправить" />
+        <input id="submit" type="submit" value="Отправить" />
     </form>
+
+    <script>
+ 
+         document.getElementById("submit").addEventListener("click", function (e) {
+            console.log("submit json");
+            e.preventDefault();
+            let registerForm = document.forms["registerForm"];
+            let userName = registerForm.elements["userName"].value;
+            let userAge = registerForm.elements["userAge"].value;
+            let user = JSON.stringify({userName: userName, userAge: userAge});
+
+             /*
+            let request = new XMLHttpRequest();
+             request.open("POST", "/user", true);   
+             request.setRequestHeader("Content-Type", "application/json");
+             request.addEventListener("load", function () {
+                 let receivedUser = JSON.parse(request.response);
+                 console.log(receivedUser.userName, "-", receivedUser.userAge);
+             });
+             request.send(user);
+             */
+
+            (async () => {
+              const rawResponse = await fetch('/user', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: user,
+              });
+
+              const receivedUser = await rawResponse.json();
+              console.log(receivedUser);
+              console.log(receivedUser.userName, "-", receivedUser.userAge);
+            })();
+
+         });
+    </script>
 
 </body>
 </html>
