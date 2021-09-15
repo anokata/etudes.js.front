@@ -19,6 +19,7 @@
     "color": "^4.0.1",
     "colors": "^1.4.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
     "hbs": "^4.1.2",
     "node-fetch": "^3.0.0"
   },

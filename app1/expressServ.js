@@ -2,6 +2,7 @@ const log = console.log;
 const express = require("express");
 const hbs = require("hbs");
 const server = express();
+const expressHbs = require("express-handlebars");
 // log(server);
 log(__dirname);
 // middlewares
@@ -9,6 +10,12 @@ log(__dirname);
 server.use(express.static(__dirname + "/static"));
 server.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
+server.engine("hbs", expressHbs( {
+        layoutsDir: "views/layouts", 
+        defaultLayout: "layout",
+        extname: "hbs"
+}));
+// server.use(express.static('static'));
 
 const urlencodedParser = express.urlencoded({extended: false});
 const jsonParser = express.json();
@@ -17,7 +24,7 @@ const jsonParser = express.json();
 const catRouter = express.Router();
 
 catRouter.use("/color", (req, res) => {
-    res.send("color");
+    res.render("catcolor.hbs");
 });
 
 
@@ -50,17 +57,19 @@ server.use("/about2", (req, res, next) => {
 });
 
 
-server.use("/product/:prodID", (req, res, next) => {
-    log("Middleware pattern*");
+server.use("/product2/:prodID", (req, res, next) => {
+    log("Middleware pattern* product");
     log("request param: ", req.params["prodID"]);
     res.send(`product # ${req.baseUrl} | ${req.path} | ${req.params["prodID"]}`);
 });
 
 
 server.use("/product/:prodID/tag/:tag", (req, res, next) => {
+    log("Middleware pattern* product/tag");
     let id = req.params["prodID"];
     let tag = req.params["tag"];
-    res.send(`product ${id} / [${tag}]`);
+    let result = {result: `Product ${id} / [${tag}]`};
+    res.render("product.hbs", result);
 });
 
 server.use("/cash", (req, res, next) => {
@@ -99,6 +108,9 @@ server.use("/con", (request, response) => {
 });
 
 server.use("/home", (request, response) => {
+    response.render("home.hbs");
+});
+server.use("/x/home", (request, response) => {
     response.render("home.hbs");
 });
 
