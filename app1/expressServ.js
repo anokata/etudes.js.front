@@ -2,19 +2,20 @@ const log = console.log;
 const express = require("express");
 const hbs = require("hbs");
 const server = express();
-const expressHbs = require("express-handlebars");
+// const expressHbs = require("express-handlebars");
 // log(server);
 log(__dirname);
 // middlewares
 
 server.use(express.static(__dirname + "/static"));
 server.set("view engine", "hbs");
+server.set("view options", { layout: "layouts/layout" });
+// server.engine("hbs", expressHbs( {
+//         layoutsDir: "views/layouts", 
+//         defaultLayout: "layout",
+//         extname: "hbs"
+// }));
 hbs.registerPartials(__dirname + "/views/partials");
-server.engine("hbs", expressHbs( {
-        layoutsDir: "views/layouts", 
-        defaultLayout: "layout",
-        extname: "hbs"
-}));
 // server.use(express.static('static'));
 
 const urlencodedParser = express.urlencoded({extended: false});
@@ -22,6 +23,19 @@ const jsonParser = express.json();
 
 // create router
 const catRouter = express.Router();
+
+hbs.registerHelper("getTime", function(){
+    let now = (new Date()).toLocaleString();
+    return `Текущее время: ${now}`;
+});
+
+hbs.registerHelper("listme", function(l){
+    if (!l) return "no";
+    log(l);
+    let result="";
+    l.forEach(e => result = `${result} <li>${e}</li> ..`);
+    return new hbs.SafeString(`<ul> ${result} </ul>`);
+});
 
 catRouter.use("/color", (req, res) => {
     res.render("catcolor.hbs");
@@ -108,7 +122,7 @@ server.use("/con", (request, response) => {
 });
 
 server.use("/home", (request, response) => {
-    response.render("home.hbs");
+    response.render("home.hbs", {l:[4,5,6]});
 });
 server.use("/x/home", (request, response) => {
     response.render("home.hbs");
