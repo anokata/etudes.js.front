@@ -7,16 +7,21 @@ html
       include ../static/styles.css
 
 body
-   h1 #{title} в Pug
-     
-   <table>
+
+include menu.pug
+
+
+h1 #{title} в Pug
+ 
+<table>
+   <tr>
+       <th>Type</th>
+       <th>Name</th>
+   </tr>
+   each tool in tools
        <tr>
-           <th>Type</th>
-           <th>Name</th>
+          <td> #{tool.type}  </td> 
+           <td> #{tool.name}  </td> 
        </tr>
-       each tool in tools
-           <tr>
-              <td> #{tool.type}  </td> 
-               <td> #{tool.name}  </td> 
-           </tr>
-   </table>
+</table>
+include footer.pug
