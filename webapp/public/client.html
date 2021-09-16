@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Список cats</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Список cats</h2>
+    <form name="catForm">
+        <input type="hidden" name="id" value="0" />
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input class="form-control" name="name" />
+        </div>
+        <div class="form-group">
+            <label for="age">age:</label>
+            <input class="form-control" name="age" />
+        </div>
+        <div class="panel-body">
+            <button type="submit" class="btn btn-sm btn-primary">Сохранить</button>
+            <a id="reset" class="btn btn-sm btn-primary">Сбросить</a>
+        </div>
+    </form>
+    <table class="table table-condensed table-striped table-bordered">
+        <thead><tr><th>Id</th><th>Имя</th><th>age</th><th></th></tr></thead>
+        <tbody>
+        </tbody>
+    </table>
+   
+    <script>
+        async function Getcats() {
+            const response = await fetch("/api/cats", {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const cats = await response.json();
+                let rows = document.querySelector("tbody"); 
+                cats.forEach(cat => {
+                    rows.append(row(cat));
+                });
+            }
+        }
+
+        async function Getcat(id) {
+            const response = await fetch("/api/cats/" + id, {
+                method: "GET",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const cat = await response.json();
+                const form = document.forms["catForm"];
+                form.elements["id"].value = cat.id;
+                form.elements["name"].value = cat.name;
+                form.elements["age"].value = cat.age;
+            }
+        }
+
+        async function Createcat(catName, catage) {
+            console.log(catName, catage);
+            const response = await fetch("api/cats", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: catName,
+                    age: catage
+                })
+            });
+            if (response.ok === true) {
+                const cat = await response.json();
+                reset();
+                document.querySelector("tbody").append(row(cat));
+            }
+        }
+
+        async function Editcat(catId, catName, catage) {
+            const response = await fetch("api/cats", {
+                method: "PUT",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: catId,
+                    name: catName,
+                    age: catage
+                })
+            });
+            if (response.ok === true) {
+                const cat = await response.json();
+                reset();
+                document.querySelector("tr[data-rowid='" + cat.id + "']").replaceWith(row(cat));
+            }
+        }
+
+        async function Deletecat(id) {
+            const response = await fetch("/api/cats/" + id, {
+                method: "DELETE",
+                headers: { "Accept": "application/json" }
+            });
+            if (response.ok === true) {
+                const cat = await response.json();
+                document.querySelector("tr[data-rowid='" + cat.id + "']").remove();
+            }
+        }
+  
+        function reset() {
+            const form = document.forms["catForm"];
+            form.reset();
+            form.elements["id"].value = 0;
+        }
+
+        function row(cat) {
+            const tr = document.createElement("tr");
+            tr.setAttribute("data-rowid", cat.id);
+  
+            const idTd = document.createElement("td");
+            idTd.append(cat.id);
+            tr.append(idTd);
+  
+            const nameTd = document.createElement("td");
+            nameTd.append(cat.name);
+            tr.append(nameTd);
+  
+            const ageTd = document.createElement("td");
+            ageTd.append(cat.age);
+            tr.append(ageTd);
+              
+            const linksTd = document.createElement("td");
+  
+            const editLink = document.createElement("a");
+            editLink.setAttribute("data-id", cat.id);
+            editLink.setAttribute("style", "cursor:pointer;padding:15px;");
+            editLink.append("Изменить");
+            editLink.addEventListener("click", e => {
+  
+                e.preventDefault();
+                Getcat(cat.id);
+            });
+            linksTd.append(editLink);
+  
+            const removeLink = document.createElement("a");
+            removeLink.setAttribute("data-id", cat.id);
+            removeLink.setAttribute("style", "cursor:pointer;padding:15px;");
+            removeLink.append("Удалить");
+            removeLink.addEventListener("click", e => {
+  
+                e.preventDefault();
+                Deletecat(cat.id);
+            });
+  
+            linksTd.append(removeLink);
+            tr.appendChild(linksTd);
+  
+            return tr;
+        }
+ 
+        document.getElementById("reset").click(function (e) {
+            e.preventDefault();
+            reset();
+        })
+  
+        document.forms["catForm"].addEventListener("submit", e => {
+            e.preventDefault();
+            const form = document.forms["catForm"];
+            const id = form.elements["id"].value;
+            const name = form.elements["name"].value;
+            const age = form.elements["age"].value;
+            if (id == 0)
+                Createcat(name, age);
+            else
+                Editcat(id, name, age);
+        });
+  
+        Getcats();
+    </script>
+</body>
+</html>

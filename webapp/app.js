@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-    
+log = console.log;    
 const app = express();
 const jsonParser = express.json();
   
@@ -32,12 +32,14 @@ app.post("/api/cats", jsonParser, function (req, res) {
     const catName = req.body.name;
     const catAge = req.body.age;
     let cat = {name: catName, age: catAge};
+    log(req.body);
       
     let data = fs.readFileSync(filePath, "utf8");
     let cats = JSON.parse(data);
       
     const id = Math.max.apply(Math, cats.map(o => o.id));
-    cat.id++;
+    cat.id = id + 1;
+    log(cats, id);
     cats.push(cat);
     data = JSON.stringify(cats);
     fs.writeFileSync("cats.json", data);
@@ -68,7 +70,7 @@ app.put("/api/cats", jsonParser, function(req, res){
       
     let data = fs.readFileSync(filePath, "utf8");
     const cats = JSON.parse(data);
-    let cat = cats.find(c => c.id == id);
+    let cat = cats.find(c => c.id == catId);
 
     if(cat){
         cat.age = catAge;
@@ -81,6 +83,10 @@ app.put("/api/cats", jsonParser, function(req, res){
     }
 });
    
+app.use("/", (req, res) => {
+    res.redirect("/client.html");
+});
+
 app.listen(3000, function(){
     console.log("serving on 3000...");
 });
