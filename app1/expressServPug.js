@@ -20,6 +20,19 @@ server.use("/tools", (request, response) => {
     });
 });
 
+server.use("/tool", (request, response) => {
+    response.render("tool", {
+        tools: [
+            { type: "wax", name: "candle" },
+            { type: "iron", name: "nakovalnya" },
+            { type: "code", name: "bash" },
+            { type: "steel", name: "whrench" },
+            { type: "rock", name: "hammer" },
+        ],
+        title: "Tools List in layout pug",
+    });
+});
+
 server.get("/", root);
 
 function root(req, res) {
