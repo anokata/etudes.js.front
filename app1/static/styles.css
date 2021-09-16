@@ -16,3 +16,18 @@ br {
 a:visited {
     color: #d0a0a0;
 }
+
+
+table {
+    padding: 2px;
+    background-color: #eee;
+}
+td {
+    border:1px solid #888;
+    border-radius: 2px;
+    padding: 4px;
+}
+th {
+    background-color: #999;
+    color: #eee;
+}
