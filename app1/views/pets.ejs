@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title %></title>
+    <meta charset="utf-8" />
+    <style>
+        table {
+            padding: 2px;
+            background-color: #eee;
+        }
+        td {
+            border:1px solid #888;
+            border-radius: 2px;
+            padding: 4px;
+        }
+        th {
+            background-color: #999;
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+     
+    <h1><%=title %> в EJS</h1>
+     
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+        </tr>
+    <% for(let p of pets) {%>
+        <tr>
+            <td> <%=p.type %> </td> 
+            <td> <%=p.name %> </td> 
+        </tr>
+    <%} %>
+    </table>
+
+</body>
+<html>
