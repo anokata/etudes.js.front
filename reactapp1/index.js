@@ -11,6 +11,9 @@ class Bitton extends React.Component {
   constructor(props) {
     super(props);
     this.click = this.click.bind(this);
+    this.state = {
+      msg: "hi from state"
+    };
   }
 
   click(e) {
@@ -18,9 +21,9 @@ class Bitton extends React.Component {
   }
 
   render() {
-    return /*#__PURE__*/React.createElement("button", {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", null, this.state.msg), /*#__PURE__*/React.createElement("button", {
       onClick: this.click
-    }, "OK ", this.props.name);
+    }, "OK ", this.props.name), " ");
   }
 
 }
@@ -58,6 +61,45 @@ ReactDOM.render( /*#__PURE__*/React.createElement("div", {
 }, /*#__PURE__*/React.createElement("h1", null, "Hello React", b, "ms:", /*#__PURE__*/React.createElement(Timer, {
   color: "#ab0"
 })), /*#__PURE__*/React.createElement("p", null, a.map(x => String.fromCodePoint(x + 100)))), document.getElementById("app"));
+
+class ClickButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      class: "off",
+      label: "Press me",
+      counter: 0
+    };
+    this.press = this.press.bind(this);
+  }
+
+  press() {
+    let className = this.state.class === "off" ? "on" : "off";
+    this.setState({
+      class: className
+    });
+    this.setState(this.incrementCounter);
+    this.setState(this.incrementCounter);
+  }
+
+  incrementCounter(prevState, props) {
+    return {
+      counter: prevState.counter + parseInt(props.increment)
+    };
+  }
+
+  render() {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+      onClick: this.press,
+      className: this.state.class
+    }, this.state.label), /*#__PURE__*/React.createElement("div", null, "Counter: ", this.state.counter, " ", /*#__PURE__*/React.createElement("br", null), "Increment: ", this.props.increment));
+  }
+
+}
+
 ReactDOM.render( /*#__PURE__*/React.createElement(Bitton, {
   name: "Jonk"
 }), document.getElementById("app2"));
+ReactDOM.render( /*#__PURE__*/React.createElement(ClickButton, {
+  increment: "1"
+}), document.getElementById("appBut"));
