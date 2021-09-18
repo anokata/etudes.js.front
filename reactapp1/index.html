@@ -3,12 +3,80 @@
 <head>
     <meta charset="utf-8" />
     <title>Hello React</title>
+    <link href="https://allfont.ru/allfont.css?fonts=cyrillicgoth-medium" rel="stylesheet" type="text/css" />
+    <link href="https://allfont.ru/allfont.css?fonts=a-theme-for-murder" rel="stylesheet" type="text/css" />
     <style>
+
+        body {
+            color: #2f3238;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+            font-family: monospace;
+        }
+        div.text {
+            width: 700px;
+            padding: 100px 0;
+            margin: 0 auto;
+        }
+
+        .longText {
+            text-align: left;
+            font-size: 0.8em;
+        }
+        .centerdText {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.8em;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+        .font1 {
+            font-family: serif;
+        }
+        .font2 {
+            font-family: sans-serif;
+        }
+        .font3 {
+            font-family: monospace;
+        }
+        .goth {
+            font-family: 'CyrillicGoth Medium', arial;
+        }
+        .murd {
+            font-family: 'a Theme for murder', arial;
+        }
+        .lightText {
+            font-weight: lighter;
+            color: #666970;
+            font-size: 1.2em;
+        }
+        h1, h2, h3, h4, h5 {
+          color:  #646464;
+          text-align: center;
+        }
+        h1 {
+          font-weight: bold;
+          font-size: 50px;
+        }
+        h2 {
+          font-size: 40px;
+        }
+        h3 {
+          font-size: 20px;
+        }
+        h4 {
+          font-size: 18px;
+        }
+        p {
+          font-size: 16px;
+          color: #333;
+        }
+
+
         .block-a {
             background: #293f4d;;
         }
         body {
-            background-color: #1c1c1c;
+            /*background-color: #1c1c1c;*/
         }
         .block-a p {
             border: 2px solid #aac;
@@ -43,7 +111,52 @@
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-     
+
+    <hr>
+    <div class="longText text">
+        <h1>JS</h1>
+        <hr>
+        <h2>Function</h2>
+        <h3>code</h3>
+        <h3 class="font1">code with zasechki(Antikva)</h3>
+        <h3 class="font2">code withou zasechki(Grotesk)</h3>
+        <h3 class="font3">code monospace</h3>
+        <h4 class="goth">part one I</h4>
+        <h4 class="murd">part one I</h4>
+        <h4>part one I</h4>
+        <p>"usestrict";Object.defineProperty(exports,"__esModule",{value:true});exports.default=_default;function_slash(){constdata=require("slash");_slash=function(){returndata;};returndata;}function_path(){constdata=require("path");_path=function(){returndata;};returndata;}</p>
+        <p class="lightText">function_fs(){constdata=require("fs");_fs=function(){returndata;};returndata;}varutil=require("./util");functionasyncGeneratorStep(gen,resolve,reject,_next,_throw,key,arg){try{varinfo=gen[key](arg);</p>
+        <p>varvalue=info.value;}catch(error){reject(error);return;}if(info.done){resolve(value);}else{Promise.resolve(value).then(_next,_throw);</p>
+        <p>}}function_asyncToGenerator(fn){returnfunction(){varself=this,args=arguments;returnnewPromise(function(resolve,reject){vargen=fn.apply(self,args);</p>
+        <p class="centerdText">function_next(value){asyncGeneratorStep(gen,resolve,reject,_next,_throw,"next",value);}function_throw(err){asyncGeneratorStep(gen,resolve,reject,_next,_throw,"throw",err);}_next(undefined);});};</p>
+        <p>}constFILE_TYPE=Object.freeze({NON_COMPILABLE:"NON_COMPILABLE",COMPILED:"COMPILED",IGNORED:"IGNORED",ERR_COMPILATION:"ERR_COMPILATION"});</p>
+        <hr>
+        <p>functionoutputFileSync(filePath,data){(((v,w)=>(v=v.split("."),w=w.split("."),+v[0]>+w[0]||v[0]==w[0]&&+v[1]>=+w[1]))(process.versions.node,"10.12")?_fs().mkdirSync:require("make-dir").sync)(_path().dirname(filePath),{recursive:true});_fs().writeFileSync(filePath,data);}function_default(_x){return_ref.apply(this,arguments);</p>
+        <p>}function_ref(){_ref=_asyncToGenerator(function*({cliOptions,babelOptions}){constfilenames=cliOptions.filenames;functionwrite(_x2,_x3){return_write.apply(this,arguments);</p>
+        <p>}function_write(){_write=_asyncToGenerator(function*(src,base){letrelative=_path().relative(base,src);if(!util.isCompilableExtension(relative,cliOptions.extensions)){returnFILE_TYPE.NON_COMPILABLE;</p>
+        <p>}relative=util.withExtension(relative,cliOptions.keepFileExtension?_path().extname(relative):cliOptions.outFileExtension);constdest=getDest(relative,base);</p>
+        <p>try{constres=yieldutil.compile(src,Object.assign({},babelOptions,{sourceFileName:_slash()(_path().relative(dest+"/..",src))}));if(!res)returnFILE_TYPE.IGNORED;</p>
+        <p>if(res.map&&babelOptions.sourceMaps&&babelOptions.sourceMaps!=="inline"){constmapLoc=dest+".map";res.code=util.addSourceMappingUrl(res.code,mapLoc);res.map.file=_path().basename(relative);</p>
+        <p>outputFileSync(mapLoc,JSON.stringify(res.map));}outputFileSync(dest,res.code);util.chmod(src,dest);if(cliOptions.verbose){console.log(src+"->"+dest);}returnFILE_TYPE.COMPILED;</p>
+        <p>}catch(err){if(cliOptions.watch){console.error(err);returnFILE_TYPE.ERR_COMPILATION;}throwerr;}});return_write.apply(this,arguments);</p>
+        <p>}functiongetDest(filename,base){if(cliOptions.relative){return_path().join(base,cliOptions.outDir,filename);}return_path().join(cliOptions.outDir,filename);</p>
+        <p>}functionhandleFile(_x4,_x5){return_handleFile.apply(this,arguments);}function_handleFile(){_handleFile=_asyncToGenerator(function*(src,base){constwritten=yieldwrite(src,base);</p>
+        <p>if(cliOptions.copyFiles&&written===FILE_TYPE.NON_COMPILABLE||cliOptions.copyIgnored&&written===FILE_TYPE.IGNORED){constfilename=_path().relative(base,src);constdest=getDest(filename,base);</p>
+        <p>outputFileSync(dest,_fs().readFileSync(src));util.chmod(src,dest);}returnwritten===FILE_TYPE.COMPILED;});return_handleFile.apply(this,arguments);</p>
+        <p>}functionhandle(_x6){return_handle.apply(this,arguments);}function_handle(){_handle=_asyncToGenerator(function*(filenameOrDir){if(!_fs().existsSync(filenameOrDir))return0;</p>
+        <p>conststat=_fs().statSync(filenameOrDir);if(stat.isDirectory()){constdirname=filenameOrDir;letcount=0;constfiles=util.readdir(dirname,cliOptions.includeDotfiles);</p>
+        <p>for(constfilenameoffiles){constsrc=_path().join(dirname,filename);constwritten=yieldhandleFile(src,dirname);if(written)count+=1;}returncount;}else{constfilename=filenameOrDir;</p>
+        <p>constwritten=yieldhandleFile(filename,_path().dirname(filename));returnwritten?1:0;}});return_handle.apply(this,arguments);}letcompiledFiles=0;letstartTime=null;</p>
+        <p>constlogSuccess=util.debounce(function(){if(startTime===null){return;}constdiff=process.hrtime(startTime);</p>
+        <p>console.log(`Successfullycompiled${compiledFiles}${compiledFiles!==1?"files":"file"}withBabel(${diff[0]*1e3+Math.round(diff[1]/1e6)}ms).`);compiledFiles=0;startTime=null;},100);</p>
+        <p>if(!cliOptions.skipInitialBuild){if(cliOptions.deleteDirOnStart){util.deleteDir(cliOptions.outDir);</p>
+        <p>}(((v,w)=>(v=v.split("."),w=w.split("."),+v[0]>+w[0]||v[0]==w[0]&&+v[1]>=+w[1]))(process.versions.node,"10.12")?_fs().mkdirSync:require("make-dir").sync)(cliOptions.outDir,{recursive:true});</p>
+        <p>startTime=process.hrtime();for(constfilenameofcliOptions.filenames){compiledFiles+=yieldhandle(filename);}if(!cliOptions.quiet){logSuccess();logSuccess.flush();</p>
+        <p>}}if(cliOptions.watch){constchokidar=util.requireChokidar();</p>
+        <p>filenames.forEach(function(filenameOrDir){constwatcher=chokidar.watch(filenameOrDir,{persistent:true,ignoreInitial:true,awaitWriteFinish:{stabilityThreshold:50,pollInterval:10}});letprocessing=0;</p>
+        <p>["add","change"].forEach(function(type){watcher.on(type,function(){var_ref2=_asyncToGenerator(function*(filename){processing++;if(startTime===null)startTime=process.hrtime();</p>
+        <p>try{yieldhandleFile(filename,filename===filenameOrDir?_path().dirname(filenameOrDir):filenameOrDir);compiledFiles++;}catch(err){console.error(err);}processing--;if(processing===0&&!cliOptions.quiet)logSuccess();});returnfunction(_x7){return_ref2.apply(this,arguments);};}());});});}});return_ref.apply(this,arguments);}</p>
+    </div>     
 <script type="text/babel" src="index.jsx"></script>
 </body>
 </html>
