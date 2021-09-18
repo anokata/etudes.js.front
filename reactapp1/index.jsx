@@ -71,6 +71,17 @@ class ClickButton extends React.Component {
        this.press = this.press.bind(this);
    }
 
+   componentDidMount(){
+       console.log("componentDidMount()");
+   }
+   componentWillUnmount(){
+       console.log("componentWillUnmount()");
+   }
+   shouldComponentUpdate(){
+       console.log("shouldComponentUpdate()");
+       return true;
+   }
+
    press(){
        let className = (this.state.class==="off")?"on":"off";
        this.setState({class: className});

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React</title>
+    <style></style>
+</head>
+<body>
+<div id="app"> 
+    <form name="f1">
+        <input name="val1" value="tst"></input>
+        <input name="val2" value="YIODSFSDJF"></input>
+        <div>
+            <input name="type" type="radio" value="ext">ext</input>
+            <input name="type" type="radio" value="normal" label="norm"> normal </input>
+        </div>
+        <fieldset name="userSet">
+            <legend>(USERName)</legend>
+            <input name="username" type="text">
+        </fieldset>
+
+        <input name="colorInput" type="color"><br>
+        <input name="dateInput" type="date"><br>
+        <input name="datetimeInput" type="datetime-local"><br>
+        <input name="rangeInput" type="range"><br>
+
+        <input name="buttonInput" type="button" value="button"><br>
+        <input name="fileInput" type="file"><br>
+        img:<input name="imageInput" type="image"><br>
+        <input name="resetInput" type="reset"><br>
+
+        time <input name="timeInput" type="time" value="time"><br>
+        <input name="checkboxInput" type="checkbox"><br>
+        <input name="radioInput" type="radio"><br>
+
+        email <input type="email" value="email"><br>
+        hidden <input type="hidden" value="hidden"><br>
+        number <input type="number" value="number"><br>
+        password <input type="password" value="password"><br>
+        search <input type="search" value="search"><br>
+        submit <input type="submit" value="submit"><br>
+        tel <input type="tel" value="tel"><br>
+        url <input type="url" value="url"><br>
+        week <input type="week" value="week"><br>
+
+    </form>
+</div>
+<script>
+    let log=console.log;
+    log(document.forms);
+    log(document.forms.f1);
+    log(document.forms.f1.val1);
+    log(document.forms.f1.val1.value);
+    log(document.forms.f1.elements);
+    log(document.forms.f1.elements.val2);
+    log(document.forms.f1.type);
+    let forms = document.forms;
+    let f1 = forms.f1;
+    let userFieldset = f1.userSet;
+    log(userFieldset);
+    log(userFieldset.elements.username);
+    log(f1.elements.val1 === f1.val1);
+    f1.val1.name = "VAL";
+    log(f1.elements.VAL === f1.VAL);
+    log(f1.val1 === f1.VAL);
+    log(f1.val2.form);
+    
+    log(f1.checkboxInput);
+    log(f1.checkboxInput.checked);
+
+    function checkboxInvert() {
+        f1.checkboxInput.checked = !f1.checkboxInput.checked;
+        f1.radioInput.checked = !f1.radioInput.checked;
+        setTimeout(checkboxInvert, 300);
+        let d = new Date(`01/01/2001 ${f1.timeInput.value}`);
+        d.setTime(d.getTime() + 60000);
+        f1.timeInput.value = d.toTimeString().slice(0,5);
+    }
+
+    setTimeout(checkboxInvert, 100);
+</script>
+</body>
+</html>
