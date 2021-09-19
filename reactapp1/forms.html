@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Hello React</title>
-    <style></style>
+  <meta charset="utf-8" />
+  <title>Hello html forms</title>
+  <style>
+  .gray-background {
+      background-color: #cccccc;
+  }
+  body {
+  }
+  </style>
 </head>
-<body>
+<body class="gray-background">
 <div id="app"> 
     <form name="f1">
         <input name="val1" value="tst"></input>
@@ -33,7 +39,7 @@
         <input name="checkboxInput" type="checkbox"><br>
         <input name="radioInput" type="radio"><br>
 
-        email <input type="email" value="email"><br>
+        email <input id="inputElem" type="email" value="email"><br>
         hidden <input type="hidden" value="hidden"><br>
         number <input type="number" value="number"><br>
         password <input type="password" value="password"><br>
@@ -45,6 +51,9 @@
 
     </form>
 </div>
+
+<div contentEditable id="elem">edit <b>me</b>, please</div>
+
 <script>
     let log=console.log;
     log(document.forms);
@@ -78,6 +87,76 @@
     }
 
     setTimeout(checkboxInvert, 100);
+
+    // observer
+    function observFunc(mr, o) {
+        log(mr, o);
+    }
+    let observer = new MutationObserver(observFunc);
+    observer.observe(document.getElementById("elem"), {
+          childList: true,
+          subtree: true,
+          characterDataOldValue: true,
+    });
+    let inputObserver = new MutationObserver(observFunc);
+    log(document.getElementById("inputElem"));
+    inputObserver.observe(document.getElementById("inputElem"), {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          characterData: true,
+          characterDataOldValue: true,
+    });
+
 </script>
+
+
+<div>
+    <audio controls>
+         <source src="https://www.w3schools.com/html/horse.ogg">
+         <source src="https://www.w3schools.com/html/horse.mp3">
+    </audio>
+    <audio src="C:/DWLD/muz/4/MrMoMMusic-Phem-flowers.mp3" controls></audio>
+
+    <div id="emmet" class="emmetTest">
+        <div>
+            <tr>
+            <td>
+                some
+            </td>
+            </tr>
+            <img src="some.png" alt="">
+        </div>
+<pre>
+    .container>.row>.column
+</pre>
+    <div class="container">
+        <div class="row">
+            <div class="column"></div>
+        </div>
+    </div>
+    li*3
+    <li></li>
+    <li></li>
+    <li></li>
+    lorem
+    lorem5
+    <div class="text">Dolor nam sunt placeat corporis quisquam! Dignissimos illo tempore alias modi neque dicta Inventore animi earum natus soluta tempora. Alias perspiciatis deserunt nulla soluta accusantium Dignissimos dolores enim rerum maiores</div>
+    Elit? lorem2
+    Adipisicing recusandae.
+    </div>
+    span.smallText.block$x{text$}*2
+    <span class="smallText block1x">text1</span>
+    <span class="smallText block2x">text2</span>
+    span{t$$$@8}*2
+    <span>t008</span>
+    <span>t009</span>
+    link:css
+    link:css[href=1.css]
+    script:src
+    script:src[src=1.js]
+    .some|c
+</div>
+
 </body>
 </html>
