@@ -116,3 +116,43 @@ ReactDOM.render( /*#__PURE__*/React.createElement(Bitton, {
 ReactDOM.render( /*#__PURE__*/React.createElement(ClickButton, {
   increment: "1"
 }), document.getElementById("appBut"));
+
+class ClockTimer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+      name: "Timer"
+    };
+    this.unmount = this.unmount.bind(this);
+  }
+
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById("clocktimer"));
+  }
+
+  componentDidMount() {
+    this.timerId = setInterval(() => this.tick(), 1000);
+    console.log("componentDidMount()");
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+    console.log("componentWillUnmount()");
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "\u0422\u0435\u043A\u0443\u0449\u0435\u0435 \u0432\u0440\u0435\u043C\u044F ", this.state.date.toLocaleTimeString(), "."), /*#__PURE__*/React.createElement("button", {
+      onClick: this.unmount
+    }, "Unmount"));
+  }
+
+}
+
+ReactDOM.render( /*#__PURE__*/React.createElement(ClockTimer, null), document.getElementById("clocktimer"));
