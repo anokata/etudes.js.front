@@ -9,6 +9,23 @@
   }
   body {
   }
+  div {
+    background-color: #ddd;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #bbb;
+    width: 80%;
+    margin-left: 10%;
+  }
+  .b1 {
+    background-color: #cca;
+  }
+  .b2 {
+    background-color: #aac;
+  }
+  .b3 {
+    background-color: #aca;
+  }
   </style>
 </head>
 <body class="gray-background">
@@ -157,6 +174,50 @@
     script:src[src=1.js]
     .some|c
 </div>
+
+<div id="progressID" class="progress">1
+  <div style="width:20px"></div>
+</div>
+<script>
+  let prc = 1;
+  function incProgress() {
+    if (prc < 100) {
+      setTimeout(incProgress, 50);
+      progressID.innerHTML = prc; 
+      prc += 1;
+    } else {
+      setTimeout(incProgress, 1000);
+      prc = 0;
+    }
+  }
+  log(progressID);
+  incProgress();
+
+setTimeout(() => log("set timeout: macro task, after (#3)"));
+Promise.resolve()
+  .then(() => log("promise async, microtask queue (#2)"));
+log("sycro code #1");
+
+</script>
+
+<div class="b1">Dolor maxime veritatis placeat velit impedit sunt, in Consectetur earum magni labore voluptatem illum Natus deleniti dolorem molestias qui placeat asperiores? Nam similique molestiae tempora iusto veniam. Illo numquam culpa.</div>
+<div class="b2">Sit sapiente praesentium modi natus nemo nihil voluptates similique molestiae totam, aperiam? Quos aut mollitia commodi repellat explicabo Necessitatibus ea modi eum natus officiis. Molestiae eveniet repellat itaque molestiae illo.</div>
+<div class="b3">Consectetur repellat a cum earum quae Assumenda autem ducimus qui odit beatae. Ut dolore laborum temporibus laudantium enim corporis Placeat at explicabo qui maiores ducimus illum Praesentium blanditiis quos beatae</div>
+
+<style>
+.card-hello {
+  background-color: #FA7268;
+  color:#FFF;
+  width: 230px;
+  height: 25px;
+  padding: 20px;
+  margin: 10px;
+  border: 2px solid #9C27B0;
+  font-size: 20px;
+}
+</style>
+
+<div class="card-hello">123</div>
 
 </body>
 </html>
