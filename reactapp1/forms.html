@@ -4,10 +4,41 @@
   <meta charset="utf-8" />
   <title>Hello html forms</title>
   <style>
+
+  --m-color: #ccc;
+
+  :root {
+    --main-color: #000000;
+  }
+
+  @media (max-width: 1000px) {
+    body {
+      background-color: #ece0cc;
+    }
+  }
+  @media (min-width:1000px) {
+    body {
+        background-color: var(--m-color);
+    }
+  }
+
+
+  @keyframes colorChange {
+    0% {
+      color: #ccc;
+    }
+    50% {
+      color: #777;
+    }
+    100% {
+      color: #000;
+    }
+  }
+  .animated-text {
+    animation: colorChange 3s infinite;
+  }
   .gray-background {
       background-color: #cccccc;
-  }
-  body {
   }
   div {
     background-color: #ddd;
@@ -16,6 +47,7 @@
     border: 1px solid #bbb;
     width: 80%;
     margin-left: 10%;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   }
   .b1 {
     background-color: #cca;
@@ -26,9 +58,47 @@
   .b3 {
     background-color: #aca;
   }
+  .sp1 {
+    background-color: #aca;
+  }
+  .sp2 {
+    background-color: #aac;
+  }
+  .sp3 {
+    background-color: #fca;
+  }
+  .sp4 {
+    background-color: #afa;
+  }
+  .sp5 {
+    background-color: #acf;
+  }
+  span {
+    margin: 5px;
+    border: 2px dotted #888;
+    box-shadow: 3px 3px 5px rgba(250,250,250,0.2);
+  }
+  .fixed-menu {
+    background-color: #dca;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 80%;
+    margin-top:0;
+    box-shadow:none;
+    border-bottom: 2px solid #873;
+  }
+  #app{
+    top: 53px;
+    position: relative;
+  }
+  button {
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
   </style>
 </head>
-<body class="gray-background">
+<body>
 <div id="app"> 
     <form name="f1">
         <input name="val1" value="tst"></input>
@@ -203,6 +273,11 @@ log("sycro code #1");
 <div class="b1">Dolor maxime veritatis placeat velit impedit sunt, in Consectetur earum magni labore voluptatem illum Natus deleniti dolorem molestias qui placeat asperiores? Nam similique molestiae tempora iusto veniam. Illo numquam culpa.</div>
 <div class="b2">Sit sapiente praesentium modi natus nemo nihil voluptates similique molestiae totam, aperiam? Quos aut mollitia commodi repellat explicabo Necessitatibus ea modi eum natus officiis. Molestiae eveniet repellat itaque molestiae illo.</div>
 <div class="b3">Consectetur repellat a cum earum quae Assumenda autem ducimus qui odit beatae. Ut dolore laborum temporibus laudantium enim corporis Placeat at explicabo qui maiores ducimus illum Praesentium blanditiis quos beatae</div>
+<span class="sp1">Adipisicing facere cumque provident repudiandae</span>
+<span class="sp2">Amet at sed atque saepe?</span>
+<span class="sp3">Elit nulla fugiat ea atque.</span>
+<span class="sp4">Sit possimus magnam laudantium ratione.</span>
+<span class="sp5">Elit aperiam illum eveniet expedita</span>
 
 <style>
 .card-hello {
@@ -212,12 +287,32 @@ log("sycro code #1");
   height: 25px;
   padding: 20px;
   margin: 10px;
+  margin-left: 10%;
   border: 2px solid #9C27B0;
   font-size: 20px;
 }
 </style>
 
-<div class="card-hello">123</div>
+
+<script>
+document.documentElement.style.setProperty('--m-color', "rgb(200, 200, 200)");
+let s = getComputedStyle(document.documentElement);
+log(s);
+
+function changeColor() {
+  let root = document.documentElement;
+  let color = root.style.getPropertyValue("--m-color");
+  let r = +color.match(/\d+/g)[0];
+  r -= 5;
+  root.style.setProperty("--m-color", `rgb(${r}, ${r}, ${r})`);
+  setTimeout(changeColor, 100);
+}
+</script>
+
+<div class="fixed-menu">
+  <button onclick="changeColor()">changeColor</button>
+</div>
+  <div class="card-hello animated-text">123</div>
 
 </body>
 </html>
