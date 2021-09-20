@@ -96,6 +96,77 @@
     padding: 4px 8px;
     border-radius: 8px;
   }
+  .inlineBlock {
+    display: inline-block;
+    border: 1px solid #333;
+    width: 10rem;
+    margin: 0;
+    margin-left: 1rem;
+    vertical-align:middle;
+  }
+  .ib1 { background-color: #c8c; 
+    height: 1rem;
+  }
+  .ib2 { background-color: #8cc; 
+    height: 2rem;
+  }
+  .ib3 { background-color: #cc8; 
+    height: 3rem;
+  }
+  .ib4 { background-color: #88c; 
+    height: 2rem;
+  }
+  .ib5 { background-color: #c88; 
+    height: 1rem;
+  }
+  .tc1 {
+    height: 5rem; 
+    display: table-cell; 
+    vertical-align: middle
+  }
+  .left-float {
+    float: left;
+    text-align: center;
+    border: 1px solid #222;
+    width: 15rem;
+    padding: 0;
+    margin: 1rem;
+  }
+  .rect {
+    width: 5rem;
+    height: 5rem;
+    background-color: #caf;
+  }
+  .left-float div {
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
+    clear: left;
+  }
+  .clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+  }
+
+  .left {
+    float: left;
+    width: 30%;
+    background-color: #ccd;
+    margin-left: 1rem;
+  }
+
+  .right {
+    background-color: #cdc;
+    float: right;
+    width: 30%;
+  }
+  .footer {
+    clear: both;
+  }
   </style>
 </head>
 <body>
@@ -313,6 +384,49 @@ function changeColor() {
   <button onclick="changeColor()">changeColor</button>
 </div>
   <div class="card-hello animated-text">123</div>
+
+  <div style="width:70vw; font-size:5vh">70vw</div>
+
+  <h3>inline blocks </h3>
+  <div>
+    <div class="inlineBlock ib1">Lorem.</div>
+    <div class="inlineBlock ib2">Consectetur consectetur</div>
+    <div class="inlineBlock ib3">Adipisicing beatae?</div>
+    <div class="inlineBlock ib4">Sit modi!</div>
+    <div class="inlineBlock ib5">Ipsum veniam?</div>
+    <div class="tc1">Ipsum veniam? many many many many text chars ...</div>
+  </div>
+
+  <div class="clearfix">
+    <div class="left-float">
+      <div class="rect"></div>
+      <div>Elit ipsam dolore </div>
+    </div>
+    <span>Sit sit aspernatur tempora molestiae aliquid Ipsum voluptatum asperiores perspiciatis ullam porro adipisci? Suscipit fugiat doloremque quidem officia repellat odit cum Est cupiditate iste optio quod laborum? Quibusdam assumenda at eum totam adipisci. Sunt perspiciatis labore.  </span>
+  <!-- <div style="clear:both; visibility: hidden"></div> -->
+  </div>
+
+<div>
+  <h2>Vincent</h2>
+  <div class="rect left-float"></div>
+  <p>Dolor amet quis</p>
+  <p>Adipisicing nihil. </p>
+<div style="clear:both; box-shadow: none"></div>
+  
+  <h2>Cloud</h2>
+  <div class="rect left-float"></div>
+  <p>Adipisicing nihil. </p>
+  <p>Dolor amet quis</p>
+<div style="clear:both; box-shadow: none"></div>
+</div>
+
+<div class="header" style="text-align:center"><h3>2 columns with HandF</h3></div>
+<div class="clearfix">
+  <div class="left">Elit aspernatur ipsum earum officia repellat? Quis sunt pariatur voluptates sapiente laborum? Commodi tempora veniam consequatur accusantium ab Suscipit quae numquam quas beatae saepe. Corrupti iste delectus culpa nam ad?j</div>
+  <div class="right" style="color: #224">Lorem illo nihil deserunt dolorem accusantium Aliquid eos nulla voluptas voluptatem dolorem Sed laborum sint facere incidunt vel Quisquam quidem minus quaerat quasi aliquid ipsum Libero odio sequi alias ad0</div>
+</div>
+<div class="footer">(c) copycopyCV</div>
+
 
 </body>
 </html>
