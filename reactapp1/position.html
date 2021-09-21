@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title></title>
   <link rel="stylesheet" href="../style.css" media="all" >
+  <link href="https://allfont.ru/allfont.css?fonts=yew-basturd-bolditalic" rel="stylesheet" type="text/css" />
   <style>
     div {
       padding: .5rem;
@@ -62,6 +63,40 @@
       align-items: center; 
     }
 
+    .text-line-1 {
+      font-size: 2rem;
+      line-height: 2rem;
+      font-family:: monospace;
+      padding: 0;
+      text-align: center;
+    }
+
+    .text-line-2 {
+      font: 1.3rem/2 'Yew Basturd BoldItalic', sans-serif;
+      padding: 0;
+      text-align: center;
+    }
+
+    .ws-pre {
+      text-align: center;
+      white-space: pre-wrap;
+    }
+    .ws-pre:hover{
+      outline-offset: 0.5rem;
+      transition: all, 1.5s;
+    }
+
+    .blur-border {
+      filter: blur(2px);
+      border: 3px solid #333;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0.8;
+      background-color: rgba(0,0,0,0)
+    }
   </style>
 </head>
 <body>
@@ -85,9 +120,26 @@
   </div>
 </div>
 
-<div class="outer">
+<div class="outer"  style="box-shadow: 0 0 40px 1px #ffa;">
   <div class="flex-align">Elit dolor error nam quae repudiandae fugit eius quod. </div>
 </div>
+
+<hr>
+
+<div class="text-line-1">Elit hic esse aliquam fugiat sunt iste minima qui? </div>
+<div class="text-line-1" style="line-height: 1.5">Elit hic esse aliquam fugiat sunt iste minima qui? </div>
+<div class="text-line-2">Elit hic esse aliquam fugiat sunt iste minima qui? </div>
+
+<div class="ws-pre" style="position: relative"><div class="blur-border"></div>
+                      White-Space 
+                    Consectetur enim 
+             molestias quibusdam eos sit? 
+             Molestiae consequatur corporis 
+             odit iure id Amet optio commodi   -------------------------------------
+             expedita veniam ea Nihil deleniti 
+             consectetur ut provident sequi 
+             explicabo Eligendi nesciunt quod 
+                   iiure laborum</div>
 
 </body>
 </html>
