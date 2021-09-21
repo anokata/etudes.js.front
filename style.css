@@ -1,0 +1,11 @@
+:root {
+  --w-color: #ddd;
+  --b-color: #333;
+}
+
+body {
+  font-size: 14px;
+  font-family: sans-serif;
+  background-color: var(--w-color);
+}
+
