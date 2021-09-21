@@ -30,6 +30,9 @@
   .box2 {
     background-color: #afa;
   }
+  .box3 {
+    background-color: #f8a;
+  }
   .hover-anim:hover {
     background-color: #dfa;
   }
@@ -81,6 +84,24 @@
     transform-origin: left top;
   }
 
+  .hover-transit:hover {
+    background-color: #8ab;
+    transition-property: background-color;
+    transition-duration: 2s;
+    cursor: move
+  }
+  .hover-transit-click {
+    background-color: #fab;
+    transform: rotate(-5deg) scale(1.1);
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease;
+  }
+  .hover-transit-tr1:hover {
+    background-color: #8ab;
+    transform: rotate(20deg);
+  }
+
   </style>
 </head>
 <body>
@@ -113,6 +134,45 @@
   <div class="hover-anim-tr7 box1 box2">
  Lorem atque aliquam officiis quidem cumque animi 
   </div>
+
+  <div></div>
+  <div class="hover-transit box1 box3" onmousedown="tr1fadeIn()" onmouseup="tr1fadeOut()">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr1 box1 box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr2 box1 box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr3 box1 box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr4 box1 box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr5 box1 box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr6 box1 box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr7 box1  box3">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
  
+ <script>
+
+  function tr1fadeIn() {
+    let el = document.getElementsByClassName("hover-anim-tr1");
+    el[0]?.classList.add("hover-transit-click");
+    console.log("added", el[0].className);
+  }
+  function tr1fadeOut() {
+    let el = document.getElementsByClassName("hover-anim-tr1");
+    el[0]?.classList.remove("hover-transit-click");
+    console.log("removed", el[0].className);
+  }
+ </script>
 </body>
 </html>
