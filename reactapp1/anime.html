@@ -29,6 +29,7 @@
   }
   .box2 {
     background-color: #afa;
+    cursor: move;
   }
   .box3 {
     background-color: #f8a;
@@ -53,7 +54,7 @@
   }
 
   .hover-anim-tr4 {
-    cursor: move
+    cursor: move;
   }
   .hover-anim-tr4:hover {
     background-color: #faf;
@@ -100,6 +101,55 @@
   .hover-transit-tr1:hover {
     background-color: #8ab;
     transform: rotate(20deg);
+  }
+  .hover-transit-tr2:hover {
+    background-color: #8ab;
+    opacity: 0.1;
+    transition: all, 1s;
+  }
+
+  .hover-transit-tr3:hover {
+    background-color: #fda;
+    transform: scaleX(-0.5);
+    transition: all, 0.5s ease-in;
+  }
+  .hover-transit-tr4:hover {
+    background-color: #fda;
+    transition: all, 0.5s ease-in;
+    opacity: 0;
+  }
+  .hover-transit-tr5:hover {
+    background-color: #aaf;
+    transform: skew(5deg, 5deg);
+    transition: all, 0.5s ease-out;
+  }
+  .hover-transit-tr6:hover {
+    background-color: #aff;
+    transition: all, 0.5s ease-in-out;
+  }
+  .hover-transit-tr7:hover {
+    transition: all, 0.5s ease;
+    background-color: #fda;
+    transform: rotate(20deg);
+    transform-origin: left top;
+  }
+
+  .tooltipID {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 20rem;
+    height: 20rem;
+    opacity: 100;
+  }
+  .tooltip-show {
+    display: block !important;
+    opacity: 100;
+  }
+  .tooltip-hide {
+    transition: all, 3.5s;
+    opacity: 0;
   }
 
   </style>
@@ -148,7 +198,7 @@
   <div class="hover-transit-tr3 box1 box3">
  Lorem atque aliquam officiis quidem cumque animi 
   </div>
-  <div class="hover-transit-tr4 box1 box3">
+  <div class="hover-transit-tr4 box1 box2" onmousedown="tooltip()">
  Lorem atque aliquam officiis quidem cumque animi 
   </div>
   <div class="hover-transit-tr5 box1 box3">
@@ -157,8 +207,11 @@
   <div class="hover-transit-tr6 box1 box3">
  Lorem atque aliquam officiis quidem cumque animi 
   </div>
-  <div class="hover-transit-tr7 box1  box3">
+  <div class="hover-transit-tr7 box1  box2" onmouseover="tooltip()">
  Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-transit-tr8 box1  box3 tooltipID" id="tooltipID" >
+ TOOLTIP Lorem atque aliquam officiis quidem cumque animi 
   </div>
  
  <script>
@@ -172,6 +225,19 @@
     let el = document.getElementsByClassName("hover-anim-tr1");
     el[0]?.classList.remove("hover-transit-click");
     console.log("removed", el[0].className);
+  }
+
+  function tooltip() {
+    let tt = tooltipID || document.getElementById("tooltipID");
+    console.log("tooltip", tt);
+    tt.classList.add("tooltip-show");
+    setTimeout(() => {
+      tt.classList.add("tooltip-hide")
+    }, 0);
+    setTimeout(() => {
+      tt.classList.remove("tooltip-show");
+      tt.classList.remove("tooltip-hide")
+    }, 3500);
   }
  </script>
 </body>
