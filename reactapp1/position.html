@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../style.css" media="all" >
+  <style>
+    div {
+      padding: .5rem;
+      background-color: #ccb;
+      outline: .3rem solid #555;
+    }
+    .block {
+      position: relative; /* default static */
+      background-color: #fca;
+      width: 10rem;
+      height: 10rem;
+    }
+    .absolutInRelat {
+      filter: blur(0.5px);
+      position: absolute;
+      right: .2rem;
+      bottom: 0rem;
+      background-color: #cfa;
+      width: 5rem;
+      height: 5rem;
+      margin: 1rem;
+    }
+    .align {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="block">
+    Adipisicing enim?
+    <div class="absolutInRelat">absolut in relat div</div>
+    <span style="filter: blur(1px)">HI</span>
+    Amet vel numquam inventore quod quaerat et? Numquam eveniet quibusdam optio velit asperiores non Eaque suscipit nostrum ullam fuga aliquam. Beatae sint consequatur soluta ipsum sapiente !
+  </div>
+  <div class="align">Sit ex iste Amet veritatis animi aperiam quia fuga</div>
+</body>
+</html>
