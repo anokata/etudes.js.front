@@ -9,6 +9,7 @@
       padding: .5rem;
       background-color: #ccb;
       outline: .3rem solid #555;
+      margin: 1rem;
     }
     .block {
       position: relative; /* default static */
@@ -29,6 +30,38 @@
     .align {
       text-align: center;
     }
+    .middle-align {
+      margin: 0 auto;
+      background-color: #caf;
+      width: 20rem;
+    }
+
+    .outer {
+      position: relative;
+      height: 5em;
+      background-color: #aac;
+    }
+
+    .inner {
+      position: absolute;
+      top: 50%;
+      margin-top: -0.625em;
+      background-color: #daa;
+    }
+
+    .table-vert {
+      display: table-cell; 
+      vertical-align: middle; 
+      height: 15rem;
+      width: 10rem;
+    }
+
+    .flex-align  {
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+    }
+
   </style>
 </head>
 <body>
@@ -38,6 +71,23 @@
     <span style="filter: blur(1px)">HI</span>
     Amet vel numquam inventore quod quaerat et? Numquam eveniet quibusdam optio velit asperiores non Eaque suscipit nostrum ullam fuga aliquam. Beatae sint consequatur soluta ipsum sapiente !
   </div>
+
   <div class="align">Sit ex iste Amet veritatis animi aperiam quia fuga</div>
+  <div class="align"><div class="middle-align">Sit ex iste Amet veritatis animi aperiam quia fuga BLock align with marginLR:auto</div></div>
+
+  <div class="outer">
+    <div class="inner">VERTICAL ALIGN delectus illo ex fugit reiciendis. One Line only.</div>
+  </div>
+
+<div class="middle-align">
+  <div style="">
+    <button>Кнопка<br>с любой высотой<br>и шириной</button>
+  </div>
+</div>
+
+<div class="outer">
+  <div class="flex-align">Elit dolor error nam quae repudiandae fugit eius quod. </div>
+</div>
+
 </body>
 </html>
