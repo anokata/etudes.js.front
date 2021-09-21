@@ -27,6 +27,9 @@
     text-align: center;
     display: inline-block;
   }
+  .box2 {
+    background-color: #afa;
+  }
   .hover-anim:hover {
     background-color: #dfa;
   }
@@ -46,11 +49,36 @@
     transform: scaleX(-0.5);
   }
 
+  .hover-anim-tr4 {
+    cursor: move
+  }
+  .hover-anim-tr4:hover {
+    background-color: #faf;
+    transform: translate(.5rem, 0.5rem);
+  }
+  .hover-anim-tr4:active {
+    background-color: #aaf;
+    transform: translate(1rem, 1rem);
+  }
 
   .hover-letter:hover {
     transform: scale(2.1);
     display: inline-block;
     cursor: pointer;
+  }
+
+  .hover-anim-tr5:hover {
+    background-color: #aaf;
+    transform: skew(5deg, 5deg);
+  }
+  .hover-anim-tr6:hover {
+    background-color: #aff;
+    transform: rotate3d(1, 1, 1, 30deg) matrix3d(1,0,0,0,0,1,6,0,0,0,1,0,50,100,0,1.1);
+  }
+  .hover-anim-tr7:hover {
+    background-color: #fda;
+    transform: rotate(20deg);
+    transform-origin: left top;
   }
 
   </style>
@@ -70,6 +98,19 @@
     <span class="hover-letter">E</span> <span class="hover-letter">C</span> <span class="hover-letter">L.</span> <span class="hover-letter">I</span> <span class="hover-letter">E!</span> <span class="hover-letter">D.</span> <span class="hover-letter">L!</span> <span class="hover-letter">I?</span> <span class="hover-letter">I</span> <span class="hover-letter">C</span>
   </div>
   <div class="hover-anim-tr3 box1">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+
+  <div class="hover-anim-tr4 box1">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-anim-tr5 box1">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-anim-tr6 box1">
+ Lorem atque aliquam officiis quidem cumque animi 
+  </div>
+  <div class="hover-anim-tr7 box1 box2">
  Lorem atque aliquam officiis quidem cumque animi 
   </div>
  
