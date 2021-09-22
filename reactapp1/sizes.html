@@ -34,6 +34,29 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
 
+  .vert1rem {
+    margin: 1rem auto;
+    width: 30rem;
+    border: .1rem solid #3a3;
+  }
+  .horz1rem {
+    margin: 0 1rem;
+    border: .1rem solid #833;
+    display: inline-block;
+  }
+
+  .box {
+    border: .1rem solid #335;
+    margin-bottom: -1em;
+    line-height: 2;
+  }
+  .title-out {
+    margin-top: -2em;
+  }
+  .inner {
+    border: .1rem solid #aaa;
+    background-color: #cac;
+  }
   </style>
 </head>
 <body>
@@ -45,7 +68,20 @@
   </form>
 
   <hr>
+  <div class="vert1rem">vertical margins - apply Max</div>
+  <div class="vert1rem">margin vertical - not sum</div>
+  <hr style="margin-left: -1rem;">
+  <div class="vert1rem">
+    <span class="horz1rem">horizontal margin is summing</span>
+    <span class="horz1rem">Total: 2rem between</span>
+  </div>
+  <hr style="margin-left: -1rem;">
 
+  <div class="box">
+    <h3 class="title-out">title out</h3>
+    <div class="box">Amet autem et corporis eaque recusandae doloribus excepturi deserunt fuga Corrupti quas aliquam in fugit incidunt Porro vitae dignissimos modi sint illum Atque quibusdam obcaecati quae omnis sint, doloribus saepe.</div>
+    <span class="inner">Amet id.</span>
+  </div>
 
   <hr class="six">
   
