@@ -5,6 +5,9 @@
   <title></title>
   <link rel="stylesheet" href="../style.css" media="all">
   <style>
+    *:target {
+      font-weight: bold;
+    }
     .form-box {
       width: 20rem;
       outline: .3rem solid #3a3;
@@ -107,6 +110,13 @@
     height: 100%;
     background-color: #ddb;
   }
+  p.p::before {
+    content: " [[ ";
+  }
+
+  p.p::after {
+    content: " ]] ";
+  }
   </style>
 </head>
 <body>
@@ -164,7 +174,8 @@
     <div class="text3">Sit facilis atque sequi harum distinctio officiis. Quidem eligendi perspiciatis fugiat vitae consequuntur? Amet hic quas sunt similique odit laudantium, dolore. Quaerat dolores ipsa minus minus magni. Ipsa reprehenderit corporis</div>
   </div>
 
-  Dolor nulla dolores cupiditate velit nobis eos nostrum, eum mollitia delectus unde Voluptas explicabo rem obcaecati excepturi sit sed, quas error commodi Odio dolorum tenetur temporibus accusamus incidunt? Architecto rem.
-
+  <p class="p">
+    Dolor nulla dolores cupiditate velit nobis eos nostrum, eum mollitia delectus unde Voluptas explicabo rem obcaecati excepturi sit sed, quas error commodi Odio dolorum tenetur temporibus accusamus incidunt? Architecto rem.
+  </p>
 </body>
 </html>
