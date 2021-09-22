@@ -67,10 +67,57 @@
     float: left;
     margin: .5rem;
   }
+  .box2 {
+    background-color: #bcc;
+    height: 10em;
+    width: 80%;
+    margin: .5rem;
+  }
+  .text {
+    display: inline-block;
+    background-color: #bbc;
+    border:1px solid #527;
+    padding: .5em;
+    width: 80%;
+  }
+  .sideToggle {
+    display: inline-block;
+    width: 5em;
+    height: 100%;
+    background-color: #ddb;
+    vertical-align: middle;
+  }
+  .box3 {
+    position: relative;
+    background-color: #bcc;
+    width: 80%;
+    margin: .5rem;
+  }
+  .text3 {
+    background-color: #bbc;
+    border:1px solid #527;
+    padding: .5em;
+    margin-left: 5.1em;
+  }
+  .sideToggle3 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5em;
+    height: 100%;
+    background-color: #ddb;
+  }
   </style>
 </head>
 <body>
-  <form class="form-box" action="">
+  <nav>
+    <a href="#form">form</a>
+    <a href="#vert">vert</a>
+    <a href="#out">out</a>
+    <a href="#overflow">overflow</a>
+    <a href="#side">side</a>
+  </nav>
+  <form id="form" class="form-box" action="">
     <input type="" value="name">
     <input type="" value="type">
     <input type="">
@@ -78,7 +125,7 @@
   </form>
 
   <hr>
-  <div class="vert1rem">vertical margins - apply Max</div>
+  <div id="vert" class="vert1rem">vertical margins - apply Max</div>
   <div class="vert1rem">margin vertical - not sum</div>
   <hr style="margin-left: -1rem;">
   <div class="vert1rem">
@@ -102,6 +149,22 @@
   <div class="overflow"><span>Ipsum quidem incidunt vero voluptatem ullam aliquam Iste voluptas ratione repellendus quibusdam eligendi? Ad vel adipisci laborum tempora earum Impedit aspernatur odio sed assumenda distinctio Nulla perspiciatis autem dolorem recusandae?</span></div>
   <div class="overflow" style="overflow: hidden"><span>Ipsum quidem incidunt vero voluptatem ullam aliquam Iste voluptas ratione repellendus quibusdam eligendi? Ad vel adipisci laborum tempora earum Impedit aspernatur odio sed assumenda distinctio Nulla perspiciatis autem dolorem recusandae?</span></div>
   <div class="overflow" style="overflow: auto"><span>Ipsum quidem incidunt vero voluptatem ullam aliquam Iste voluptas ratione repellendus quibusdam eligendi? Ad vel adipisci laborum tempora earum Impedit aspernatur odio sed assumenda distinctio Nulla perspiciatis autem dolorem recusandae?</span></div>
+
+  <hr>
+
+  <div style="clear:both; height: 5em"></div>
+
+  <div class="box2">
+    <div class="sideToggle">&gt;</div>
+    <div class="text">Sit facilis atque sequi harum distinctio officiis. Quidem eligendi perspiciatis fugiat vitae consequuntur? Amet hic quas sunt similique odit laudantium, dolore. Quaerat dolores ipsa minus minus magni. Ipsa reprehenderit corporis</div>
+  </div>
+
+  <div class="box3" id="side">
+    <div class="sideToggle3">&gt;</div>
+    <div class="text3">Sit facilis atque sequi harum distinctio officiis. Quidem eligendi perspiciatis fugiat vitae consequuntur? Amet hic quas sunt similique odit laudantium, dolore. Quaerat dolores ipsa minus minus magni. Ipsa reprehenderit corporis</div>
+  </div>
+
+  Dolor nulla dolores cupiditate velit nobis eos nostrum, eum mollitia delectus unde Voluptas explicabo rem obcaecati excepturi sit sed, quas error commodi Odio dolorum tenetur temporibus accusamus incidunt? Architecto rem.
 
 </body>
 </html>
