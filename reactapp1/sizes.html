@@ -57,6 +57,16 @@
     border: .1rem solid #aaa;
     background-color: #cac;
   }
+  img {
+    vertical-align: top
+  }
+  .overflow {
+    width: 10em;
+    height: 10em;
+    background-color: #bac;
+    float: left;
+    margin: .5rem;
+  }
   </style>
 </head>
 <body>
@@ -84,7 +94,14 @@
   </div>
 
   <hr class="six">
-  
+
+  <div class="inner">
+    <img src="../img.jpg" alt="">
+  </div>
+
+  <div class="overflow"><span>Ipsum quidem incidunt vero voluptatem ullam aliquam Iste voluptas ratione repellendus quibusdam eligendi? Ad vel adipisci laborum tempora earum Impedit aspernatur odio sed assumenda distinctio Nulla perspiciatis autem dolorem recusandae?</span></div>
+  <div class="overflow" style="overflow: hidden"><span>Ipsum quidem incidunt vero voluptatem ullam aliquam Iste voluptas ratione repellendus quibusdam eligendi? Ad vel adipisci laborum tempora earum Impedit aspernatur odio sed assumenda distinctio Nulla perspiciatis autem dolorem recusandae?</span></div>
+  <div class="overflow" style="overflow: auto"><span>Ipsum quidem incidunt vero voluptatem ullam aliquam Iste voluptas ratione repellendus quibusdam eligendi? Ad vel adipisci laborum tempora earum Impedit aspernatur odio sed assumenda distinctio Nulla perspiciatis autem dolorem recusandae?</span></div>
 
 </body>
 </html>
