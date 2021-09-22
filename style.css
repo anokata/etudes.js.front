@@ -1,11 +1,44 @@
 :root {
   --w-color: #ddd;
   --b-color: #333;
+  --g-color: #888;
+  --dg-color:#555;
 }
 
 body {
   font-size: 14px;
   font-family: sans-serif;
   background-color: var(--w-color);
+  padding: 0em;
+  margin: 0em;
 }
 
+.copyleft {
+  display:inline-block;
+  transform: rotate(180deg);
+}
+
+
+header {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #ccc;
+  color: var(--b-color);
+  font: bold 2rem/2rem bold sans-serif;
+  padding: 1em;
+  padding-bottom: 1em;
+  box-sizing: border-box;
+}
+
+footer {
+  height: 3em;
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--g-color);
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: var(--w-color);
+  font: bold 2rem/2rem bold sans-serif;
+  text-align: center;
+  padding-top: 1em;
+}
