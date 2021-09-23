@@ -9,8 +9,8 @@
 }
 
 body {
-  font-size: 14px;
-  font-family: sans-serif;
+  font-size: 18px;
+  font-family: Sans-serif;
   background-color: var(--w-color);
   padding: 0em;
   margin: 0em;
@@ -53,4 +53,32 @@ aside {
   position: absolute;
   top: 0;
   width: 9%;
+}
+
+section {
+  width: var(--w-main);
+  margin: 0 auto;
+  background-color: var(--w-color);
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-family: Sans-serif;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+hr.six {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
