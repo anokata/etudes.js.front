@@ -1,5 +1,6 @@
 :root {
   --w-color: #ddd;
+  --ww-color: #e0e0e0;
   --b-color: #333;
   --g-color: #888;
   --dg-color:#555;
@@ -21,6 +22,20 @@ body {
   transform: rotate(180deg);
 }
 
+footer a {
+  color: var(--w-color);
+  color: #bbb;
+  text-decoration: none;
+}
+
+p {
+  font-family: "Segoe UI", "Liberation Sans", sans-serif;
+}
+
+main {
+  width: var(--w-main);
+  margin: 0 auto;
+}
 
 header {
   width: var(--w-main);
@@ -34,7 +49,7 @@ header {
 }
 
 footer {
-  height: 3em;
+  min-height: 3em;
   width: var(--w-main);
   margin: 0 auto;
   background-color: var(--g-color);
@@ -44,6 +59,18 @@ footer {
   font: bold 2rem/2rem bold sans-serif;
   text-align: center;
   padding-top: 1em;
+  color: rgb(131, 140, 149);
+  background-color:#292623;
+  font-size: 0.8rem;
+}
+
+footer p {
+  font-size: 0.8rem;
+  padding: .1rem;
+}
+
+footer a:hover {
+  color: var(--ww-color);
 }
 
 aside {
@@ -52,6 +79,7 @@ aside {
   height: 100%;
   position: absolute;
   top: 0;
+  left: 0;
   width: 9%;
 }
 
