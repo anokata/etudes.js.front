@@ -3,6 +3,9 @@
   --b-color: #333;
   --g-color: #888;
   --dg-color:#555;
+  --rb-color:#dcc;
+  --w-main: 80%;
+  --w-side: 20%;
 }
 
 body {
@@ -20,7 +23,7 @@ body {
 
 
 header {
-  width: 90%;
+  width: var(--w-main);
   margin: 0 auto;
   background-color: #ccc;
   color: var(--b-color);
@@ -32,7 +35,7 @@ header {
 
 footer {
   height: 3em;
-  width: 90%;
+  width: var(--w-main);
   margin: 0 auto;
   background-color: var(--g-color);
   margin-top: 1em;
@@ -41,4 +44,13 @@ footer {
   font: bold 2rem/2rem bold sans-serif;
   text-align: center;
   padding-top: 1em;
+}
+
+aside {
+  width: var(--w-side);
+  background-color: var(--rb-color);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 9%;
 }
