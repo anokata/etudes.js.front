@@ -1,6 +1,6 @@
 :root {
-  --w-color: #ddd;
-  --ww-color: #e0e0e0;
+  --w-color: #e0e0e0;
+  --ww-color: #f0f0f0;
   --b-color: #333;
   --g-color: #888;
   --dg-color:#555;
@@ -12,9 +12,10 @@
 body {
   font-size: 18px;
   font-family: Sans-serif;
-  background-color: var(--w-color);
+  background-color: var(--ww-color);
   padding: 0em;
   margin: 0em;
+  color: var(--b-color);
 }
 
 .copyleft {
@@ -109,4 +110,13 @@ hr.six {
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+span.fio {
+  color: #337;
+}
+
+.fio:hover {
+  color: #55f;
 }
