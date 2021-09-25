@@ -15,6 +15,7 @@
 }
 .scss p {
   color: #aff;
+  padding: 4px;
 }
 .scss a:hover {
   -webkit-transform: rotate(3deg);
