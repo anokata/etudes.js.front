@@ -1,8 +1,31 @@
+@import base
+
 $s-color: #fa0
+$bg-color: #faf
+
+=transform($property)
+  -webkit-transform: $property
+  -ms-transform: $property
+  transform: $property
+
+
+%base-p
+    background-color: $bg-color
+    +transform(scale(-1))
+
+%macro-p
+    @extend %base-p
+    color: #222
 
 .scss 
   color: $s-color
   font-size: 1.5em
   p
+    @extend %base-p
     color: #aff
+  a:hover
+    +transform(rotate(3deg))
+    transit: all 1s
+
+
 
