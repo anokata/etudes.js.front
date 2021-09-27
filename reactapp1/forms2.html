@@ -1,54 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      body {
+        background-color: #eeeeee;
+      }
 
-    body {
-      background-color: #eeeeee;
-    }
+      main {
+        width: 80%;
+        margin: 0 auto;
+      }
 
-    main {
-      width: 80%;
-      margin: 0 auto;
-    }
+      select {
+        width: 30em;
+      }
+      .input {
+        display: block;
+        padding: 0.5em;
+        border-radius: 0.3rem;
+        margin: 0.5em auto;
+        border-color: #af0;
+      }
+      button.input {
+        border-color: #fa0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form name="etu">
+        <div id="selected" class="input"></div>
+        <select
+          class="input"
+          id="sel"
+          name="sele"
+          onchange="showSelected()"
+          size="10"
+          onfocus="selectFocus()"
+          onblur="selectBlur()"
+        >
+          <option value="lo">L</option>
+          <option value="ri">R</option>
+          <option value="mas">M</option>
+        </select>
+        <input
+          class="input"
+          type="text"
+          value="default autofocused!"
+          autofocus
+        />
+        <input class="input" type="button" value="![?]!" />
+        <button class="input" value="OK?" accesskey="a">
+          shift-alt-a button text
+        </button>
+      </form>
+    </main>
 
-    select {
-      width: 30em;
-    }
-    .input {
-      display: block;
-      padding: .5em;
-      border-radius: .3rem;
-      margin:.5em auto;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <form name="etu">
-    <div id="selected" class="input"></div>
-      <select  class="input" id="sel" name="sele" onchange="showSelected()" size=10>
-        <option value="lo">L</option>
-        <option value="ri">R</option>
-        <option value="mas">M</option>
-      </select>
-      <input class="input" type="text" value="default">
-    </form>
-  </main>
+    <script>
+      let log = console.log;
 
-  
-  <script>
-    function showSelected() {
-      let select = document.forms.etu.sel;
-      selected.innerHTML = `${select.value}:${select.selectedIndex}`;
-      let char = String.fromCharCode(Math.round((Math.random()*100)));
-      let newOption = new Option(char, char);
-      select.add(newOption);
-    }
+      function showSelected() {
+        let select = document.forms.etu.sel;
+        selected.innerHTML = `${select.value}:${select.selectedIndex}`;
+        let char = String.fromCharCode(Math.round(Math.random() * 100));
+        let newOption = new Option(char, char);
+        select.add(newOption);
+      }
 
-    showSelected();
-  </script>
-</body>
+      showSelected();
+
+      function selectFocus() {
+        log("focus");
+      }
+      function selectBlur() {
+        log("blur");
+      }
+    </script>
+  </body>
 </html>
