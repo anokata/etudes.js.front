@@ -29,6 +29,32 @@
       .invalid { 
         border-color: #f51; 
       }
+      li { 
+        cursor: pointer; 
+        padding: .5em;
+      }
+      li:focus { outline: .3rem dashed #3f8; }
+      div.tab {
+        cursor: pointer;
+        background-color: #cfc0d0;
+        width: 3rem;
+        height: 3rem;
+        display: inline-block;
+      }
+      div.tab:focus {
+        background-color: #fff0c0;
+        transform: scale(1.05);
+        transition: all, .5s;
+      }
+      form.focused {
+        outline: 1px dotted #807;
+      }
+      .textdiv {
+        outline: 1px dotted #807;
+        width: 5rem;
+        height: 5rem;
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -55,17 +81,55 @@
           autofocus
           id="input"
         />
-        <input  class="input" type="button" value="![?]!" />
+        <input  class="input" type="button" value="![?]!" onclick="returnFocus()"/>
         <button class="input" value="OK?" accesskey="a">
           shift-alt-a button text
         </button>
         <p>enter number</p>
         <input class="input" type="text" pattern="[0-9]{5,10}" required>
       </form>
+
+      <ul>
+        <li tabindex="1">Dolor.</li>
+        <li tabindex="2">Elit</li>
+        <li tabindex="3">Ipsum</li>
+        <li tabindex="4">Adipisicing</li>
+        <li tabindex="5">Lorem?</li>
+      </ul>
+      <div class="tab" tabindex="22"></div>
+      <div class="tab" tabindex="23"></div>
+      <div class="tab" tabindex="25"></div>
+      <div class="tab" tabindex="26"></div>
+      <div class="tab" tabindex="27"></div>
+      
+      <div id="textdiv" class="textdiv" tabindex=1>Dolor</div>
     </main>
 
     <script>
       let log = console.log;
+      let form = document.forms.etu;
+      let input = document.forms.etu.elements.input;
+
+      form.addEventListener("focusin", () => form.classList.add('focused'));
+      form.addEventListener("focusout", () => form.classList.remove('focused'));
+      showSelected();
+      input.onblur = checkMail;
+
+      document.body.addEventListener("focusin", () => {
+        log(document.activeElement);
+      });
+
+      textdiv.addEventListener("click", editDiv);
+
+      function editDiv() {
+        textdiv.outerHTML = `<textarea id='textarea' class='textdiv' onblur='returnDiv(this)' >${textdiv.innerHTML}</textarea>`;
+      }
+
+      function returnDiv(e) {
+        textarea.outerHTML = `
+          <div id="textdiv" class="textdiv" tabindex=1 onfocus='editDiv()'>${e.value}</div>
+        `;
+      }
 
       function showSelected() {
         let select = document.forms.etu.sel;
@@ -75,8 +139,6 @@
         select.add(newOption);
       }
 
-      showSelected();
-
       function selectFocus() {
         log("focus");
       }
@@ -84,21 +146,26 @@
         log("blur");
       }
 
-      let input = document.forms.etu.elements.input;
-      input.onblur = checkMail;
-
       function checkMail() {
         log("i check ");
         if (!input.value.includes('@')) {
           input.classList.add('invalid');
+          input.focus();
         }
       }
+
       input.onfocus = function() {
         log("i focus");
         if (this.classList.contains('invalid')) {
           this.classList.remove('invalid');
         }
       };
+
+      function returnFocus() {
+        input.focus();
+      }
+
+
     </script>
   </body>
 </html>
