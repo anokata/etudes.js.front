@@ -55,6 +55,10 @@
         height: 5rem;
         display: block;
       }
+      #info {
+        font-family: monospace;
+        font-size: 2rem;
+      }
     </style>
   </head>
   <body>
@@ -103,6 +107,14 @@
       <div class="tab" tabindex="27"></div>
       
       <div id="textdiv" class="textdiv" tabindex=1>Dolor</div>
+      <iframe seamless src="index.html" frameborder="0" ></iframe>
+      <div id="info"></div>
+      <p>
+        A<sup>2</sup>- B <sup>2</sup> = (A+B)&dot;(A-B)
+      </p>
+      <p>
+        E <sub>0</sub> = mc
+      </p>
     </main>
 
     <script>
@@ -120,6 +132,15 @@
       });
 
       textdiv.addEventListener("click", editDiv);
+
+      info.innerHTML = `Agent: ${navigator.userAgent}; OS: ${navigator.platform}`;
+
+
+        form.addEventListener("submit", formSubmitCheck);
+
+      function formSubmitCheck() {
+        log("submit");
+      }
 
       function editDiv() {
         textdiv.outerHTML = `<textarea id='textarea' class='textdiv' onblur='returnDiv(this)' >${textdiv.innerHTML}</textarea>`;
