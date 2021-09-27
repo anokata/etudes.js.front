@@ -16,7 +16,7 @@
       select {
         width: 30em;
       }
-      .input {
+      form * {
         display: block;
         padding: 0.5em;
         border-radius: 0.3rem;
@@ -25,6 +25,9 @@
       }
       button.input {
         border-color: #fa0;
+      }
+      .invalid { 
+        border-color: #f51; 
       }
     </style>
   </head>
@@ -50,11 +53,14 @@
           type="text"
           value="default autofocused!"
           autofocus
+          id="input"
         />
-        <input class="input" type="button" value="![?]!" />
+        <input  class="input" type="button" value="![?]!" />
         <button class="input" value="OK?" accesskey="a">
           shift-alt-a button text
         </button>
+        <p>enter number</p>
+        <input class="input" type="text" pattern="[0-9]{5,10}" required>
       </form>
     </main>
 
@@ -77,6 +83,22 @@
       function selectBlur() {
         log("blur");
       }
+
+      let input = document.forms.etu.elements.input;
+      input.onblur = checkMail;
+
+      function checkMail() {
+        log("i check ");
+        if (!input.value.includes('@')) {
+          input.classList.add('invalid');
+        }
+      }
+      input.onfocus = function() {
+        log("i focus");
+        if (this.classList.contains('invalid')) {
+          this.classList.remove('invalid');
+        }
+      };
     </script>
   </body>
 </html>
