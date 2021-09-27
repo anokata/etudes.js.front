@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+
+    body {
+      background-color: #eeeeee;
+    }
+
+    main {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    select {
+      width: 30em;
+    }
+    .input {
+      display: block;
+      padding: .5em;
+      border-radius: .3rem;
+      margin:.5em auto;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <form name="etu">
+    <div id="selected" class="input"></div>
+      <select  class="input" id="sel" name="sele" onchange="showSelected()" size=10>
+        <option value="lo">L</option>
+        <option value="ri">R</option>
+        <option value="mas">M</option>
+      </select>
+      <input class="input" type="text" value="default">
+    </form>
+  </main>
+
+  
+  <script>
+    function showSelected() {
+      let select = document.forms.etu.sel;
+      selected.innerHTML = `${select.value}:${select.selectedIndex}`;
+      let char = String.fromCharCode(Math.round((Math.random()*100)));
+      let newOption = new Option(char, char);
+      select.add(newOption);
+    }
+
+    showSelected();
+  </script>
+</body>
+</html>
