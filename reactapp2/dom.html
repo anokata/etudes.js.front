@@ -14,11 +14,15 @@
     button {
       vertical-align: top;
     }
+    #clones {
+      outline: 1px solid #fc5;
+    }
   </style>  
 </head>
 <body>
   <main>
     <button id="button"> add </button>
+    <div id="clones">clones:</div>
   </main>
 
   <script>
@@ -34,6 +38,13 @@
       block.style.setProperty("background-color", `rgb(${blockColorR}, 80, 100)`);
       button.after(block);
       blockColorR += 20;
+      block.addEventListener("click", addClone);
+    }
+
+    function addClone(e) {
+      let el = e.target;
+      let clone = el.cloneNode(true);
+      clones.append(clone);
     }
   </script>
 </body>
