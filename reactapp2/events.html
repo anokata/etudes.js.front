@@ -17,8 +17,7 @@
     </style>
   </head>
   <body>
-    <div id="test"><span>Elit!</span></div>
-    <script>
+    <div id="test"><span>Elit!</span></div><script>
       let log = (...args) => {
         args.unshift(`[${loadTime()}ms]`);
         console.log.apply(null, args);
@@ -31,7 +30,9 @@
       window.onbeforeunload = function () {
         return "bye...";
       };
+      document.addEventListener('readystatechange', () => console.log(document.readyState));
 
+      // inserting: OUT NODE: after, before, IN NODE: prepend, append
 
       setTimeout(function _showState() {
         showState();
@@ -67,6 +68,8 @@
         );
         log(`parentNode: ${test.parentNode}(${test.parentNode.tagName})`);
         for (let node of test.childNodes) log(node);
+        log(`previousSibling ${test.previousSibling}`);
+        log(`nextSibling ${test.nextSibling}`);
       }
 
       function loadTime() {
