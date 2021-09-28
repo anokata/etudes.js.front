@@ -150,3 +150,11 @@ blockquote {
   border-left: 2px solid #6a2cce;
   color: #6a2cce;
 }
+
+button {
+  border-color: #207090;
+  border-width: .3rem;
+  border-radius: .3rem;
+  padding: 0.5em;
+  margin: 0.2rem;
+}

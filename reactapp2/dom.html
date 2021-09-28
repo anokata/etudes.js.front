@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../style.css" media="all">
+  <style>
+    .block {
+      width: 5rem;
+      height: 5rem;
+      margin: .2rem;
+      display: inline-block;
+    }
+    button {
+      vertical-align: top;
+    }
+  </style>  
+</head>
+<body>
+  <main>
+    <button id="button"> add </button>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        button.addEventListener("click", addBlock);
+    });
+    let blockColorR = 20;
+    addBlock();
+
+    function addBlock() {
+      let block = document.createElement("div");
+      block.className = "block";
+      block.style.setProperty("background-color", `rgb(${blockColorR}, 80, 100)`);
+      button.after(block);
+      blockColorR += 20;
+    }
+  </script>
+</body>
+</html>
