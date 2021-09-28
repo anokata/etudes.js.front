@@ -21,7 +21,7 @@
   -webkit-transform: rotate(3deg);
   -ms-transform: rotate(3deg);
   transform: rotate(3deg);
-  transit: all 1s;
+  transition: all 1s;
 }
 
 /*# sourceMappingURL=scss-test-style.css.map */
