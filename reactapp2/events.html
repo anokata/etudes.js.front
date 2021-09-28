@@ -17,7 +17,7 @@
     </style>
   </head>
   <body>
-    <div id="test"> <span>Elit!</span></div>
+    <div id="test"><span>Elit!</span></div>
     <script>
       let log = (...args) => {
         args.unshift(`[${loadTime()}ms]`);
@@ -28,6 +28,16 @@
 
       window.addEventListener("load", fullLoad);
 
+      window.onbeforeunload = function () {
+        return "bye...";
+      };
+
+
+      setTimeout(function _showState() {
+        showState();
+        setTimeout(_showState, 300);
+      }, 300);
+
       function domLoaded() {
         log("Event: DOMContentLoaded");
         let div = document.createElement("div");
@@ -37,23 +47,43 @@
         div.append(text);
         div.className = "alert";
         document.body.append(div);
-;
         log(`Element id:test (${test}) exist`);
-        log(`style is: ${getComputedStyle(test)} - ${getComputedStyle(test).fontSize}`);
+        log(
+          `style is: ${getComputedStyle(test)} - ${
+            getComputedStyle(test).fontSize
+          }`
+        );
+
       }
 
       function fullLoad() {
         log("Event: window.load");
         log(`childNodes: ${test.childNodes}(${test.childNodes.length})`);
         log(`firstChild: ${test.firstChild}(${test.firstChild.type})`);
-        log(`lastChild: ${test.lastChild}(${test.lastChild.tagName}) ${test.lastChild.hasChildNodes()}`);
+        log(
+          `lastChild: ${test.lastChild}(${
+            test.lastChild.tagName
+          }) ${test.lastChild.hasChildNodes()}`
+        );
         log(`parentNode: ${test.parentNode}(${test.parentNode.tagName})`);
+        for (let node of test.childNodes) log(node);
       }
 
       function loadTime() {
         return Date.now() - window.performance.timing.connectStart;
       }
 
+      function showState() {
+        let state = document.readyState;
+        if (state !== "complete") log(state);
+        let stateContainer = document.getElementById("state");
+        if (!stateContainer) {
+          stateContainer = document.createElement("div");
+          stateContainer.setAttribute("id", "state");
+          test.after(stateContainer);
+        }
+        stateContainer.innerHTML = `current state:${state} @ ${loadTime()}`;
+      }
     </script>
   </body>
 </html>
