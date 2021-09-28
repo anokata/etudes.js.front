@@ -2,7 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Events and dom change</title>
+  <link rel="stylesheet" href="../style.css" media="all">
+<style>
+.alert {
+  width: 80%;
+  padding: 1em;
+  margin: 1em auto;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+</style>
 </head>
 <body>
   
@@ -12,6 +24,11 @@
 
     function domLoaded(){
       log("Event: DOMContentLoaded");
+      let div = document.createElement("div"); 
+      let text = document.createTextNode("Message on dom loaded, created in js");
+      div.append(text);
+      div.className = "alert";
+      document.body.append(div);
     }
 
 
