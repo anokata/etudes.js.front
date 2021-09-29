@@ -57,6 +57,15 @@
         font-size: 10px;
         padding: 10px;
       }
+      #mouse {
+        cursor: crosshair;
+        width: 30px;
+        height: 30px;
+        background-color: #8cd;
+        border: 5px solid #9de;
+        font-size: 12px;
+        padding: 5px;
+      }
     </style>
     <script defer src="deferred.js"></script>
     <script async src="asyncwork.js"></script>
@@ -86,6 +95,7 @@
         <div id="images"></div>
       </div>
       <div id="size"></div>
+      <div id="mouse"></div>
     </main>
 
     <script>
@@ -202,6 +212,17 @@
       documentW: ${document.offsetWidth}
       documentC: ${document.body.clientWidth}
       `;
+
+      let mouse = document.getElementById("mouse");
+      mouse.addEventListener("click", () => {
+        mouse.style.position = 'fixed';
+        document.body.addEventListener("mousemove", (e) => {
+          let mouse = document.getElementById("mouse");
+          mouse.style.left = `${e.x - 15}px`;
+          mouse.style.top = `${e.y - 25}px`;
+          mouse.textContent = `X:${e.x} Y:${e.y}`;
+        });
+      });
 
 
       function showNotification(s) {
