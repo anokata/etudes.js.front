@@ -74,7 +74,7 @@
         background-color: #eee;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-        margin-bottom: 1rem;
+        margin: 1rem;
       }
     </style>
     <script defer src="deferred.js"></script>
@@ -82,6 +82,8 @@
   </head>
   <body>
     <main>
+      <progress value="1" max="20"></progress>
+      <progress value="1" max="20"></progress>
       <div>
         <button id="button" data-info="023.1xr">add</button>
         <div id="clones">clones:</div>
@@ -106,7 +108,6 @@
       </div>
       <div id="size"></div>
       <div id="mouse"></div>
-      <progress value="1" max="100"></progress>
     </main>
 
     <script>
@@ -220,8 +221,10 @@
       s.textContent = `offsetWidth: ${s.offsetWidth}
       clientTop: ${s.clientTop}
       clientWidth: ${s.clientWidth}
-      documentW: ${document.offsetWidth}
+      documentW: ${document.body.offsetWidth}
       documentC: ${document.body.clientWidth}
+      screenW: ${document.documentElement.clientWidth}
+      windowW: ${window.innerWidth}
       `;
 
       let mouse = document.getElementById("mouse");
@@ -237,11 +240,13 @@
 
       setTimeout(function _progress() {
         let progress = document.querySelector('progress');
+        let progress2 = document.querySelectorAll('progress')[1];
         let max = progress.max;
         if (progress.value < max) {
           progress.value += 1;
         } else {
           progress.value = 0;
+          progress2.value += 1;
         }
         setTimeout(_progress, 50);
       }, 50);
