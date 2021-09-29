@@ -20,6 +20,17 @@
       .activate {
         background-color: #ac4;
       }
+      .notify {
+        position: fixed;
+        background-color: #cd8;
+        color: #222;
+        font-size: 2em;
+        padding: 1em;
+      }
+      .notifyHide {
+        opacity: 0;
+        transition: all 1s;
+      }
     </style>
     <script defer src="deferred.js"></script>
     <script async src="asyncwork.js"></script>
@@ -31,6 +42,8 @@
       <button id="clickMe">clickme</button>
       <button id="targetMe">target</button>
       <input id="bgColorPick" type="color" list="#fafafa" />
+      <input type="text" id="notifyText">
+      <button id="notifySend">notify</button>
     </main>
 
     <script>
@@ -56,7 +69,36 @@
 
       bgColorPick.addEventListener("input", (e) => {
         document.body.style.backgroundColor = e.target.value;
-      })
+      });
+
+      showNotification({
+        top: 10,
+        right: 10,
+        html: "Hello!",
+        className: "welcome",
+      });
+
+      notifySend.addEventListener("click", () => {
+        showNotification({
+          top: 10, right: 10,
+          html: notifyText.value,
+          className: "",
+        });
+      });
+
+      function showNotification(s) {
+        let {top, right, html, className} = s;
+        let notify = document.createElement("div");
+        if (className)
+          notify.classList.add(className);
+        notify.classList.add("notify");
+        notify.style.top = `${top}px`;
+        notify.style.right = `${right}px`;
+        notify.innerHTML = html;
+        document.body.append(notify);
+        setTimeout(() => { notify.classList.add('notifyHide');}, 1000);
+        setTimeout(() => { notify.remove();}, 2000);
+      }
 
       function addBlock() {
         let block = document.createElement("div");
