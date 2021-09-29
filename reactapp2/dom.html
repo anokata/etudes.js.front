@@ -154,6 +154,23 @@
       }, 1000);
       console.log(document.body.querySelector('div').contains(document.body.querySelector("#button")));
 
+      // Node types
+      setTimeout(() => {
+        console.log(document.body.constructor, document.body.constructor.name);
+        console.log(document.body instanceof Node);
+        console.log(document.createElement("div") instanceof HTMLElement);
+        console.log(document.createElement("div").constructor.name);
+        //console.dir(document.createElement("div"));
+        console.log(document.nodeName);
+        console.log(document.firstChild.nodeName);
+        console.log(document.firstElementChild.nodeName);
+        console.log(document.body.lastChild.nodeName);
+        console.log(document.body.lastElementChild.nodeName);
+        console.log(document.body.querySelector('div').textContent); // all text
+        console.log(document.querySelector("#clickMe").firstChild.data); // text of textNode
+        document.querySelector("#clickMe").textContent = "Click me Please!<txt>";
+      }, 2000);
+
 
       function showNotification(s) {
         let {top, right, html, className} = s;
