@@ -66,6 +66,16 @@
         font-size: 12px;
         padding: 5px;
       }
+
+      progress {
+        height: 1rem;
+        width: 80%;
+        appearance: none;
+        background-color: #eee;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+        margin-bottom: 1rem;
+      }
     </style>
     <script defer src="deferred.js"></script>
     <script async src="asyncwork.js"></script>
@@ -96,6 +106,7 @@
       </div>
       <div id="size"></div>
       <div id="mouse"></div>
+      <progress value="1" max="100"></progress>
     </main>
 
     <script>
@@ -223,6 +234,17 @@
           mouse.textContent = `X:${e.x} Y:${e.y}`;
         });
       });
+
+      setTimeout(function _progress() {
+        let progress = document.querySelector('progress');
+        let max = progress.max;
+        if (progress.value < max) {
+          progress.value += 1;
+        } else {
+          progress.value = 0;
+        }
+        setTimeout(_progress, 50);
+      }, 50);
 
 
       function showNotification(s) {
