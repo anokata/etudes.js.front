@@ -131,7 +131,7 @@
 
       imgLoad.addEventListener("click", () => {
         let img = document.createElement("img");
-        let imgname = imgName.value;
+        let imgname = imgName.value; // USE getElementById !
         img.src = imgname;
         img.addEventListener("load", () => {
           images.append(img);
@@ -139,6 +139,20 @@
         img.onerror = () => {alert(`image load error: ${imgname}`)};
       });
 
+      // Finding elems
+      let byId = document.getElementById("imgName");
+      let byCss = document.querySelectorAll("div div");
+      console.log(byCss);
+      let nowHover = document.querySelectorAll(':hover');
+      setTimeout(() => {console.log("hover", document.querySelectorAll(":hover"))}, 1000);
+      console.log(nowHover);
+      if (byCss[0].matches(".block")) console.log("FouND!");
+      setTimeout(() => {
+        let byCss = document.querySelectorAll("div div");
+        console.log(Array.from(byCss).filter((e)=> e.matches(".block")));
+        console.log(byCss[0].closest('main'));
+      }, 1000);
+      console.log(document.body.querySelector('div').contains(document.body.querySelector("#button")));
 
 
       function showNotification(s) {
