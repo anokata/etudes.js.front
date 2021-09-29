@@ -17,6 +17,9 @@
     #clones {
       outline: 1px solid #fc5;
     }
+    .activate {
+      background-color: #ac4;
+    }
   </style>  
   <script defer src="deferred.js"></script>
   <script async src="asyncwork.js"></script>
@@ -25,6 +28,8 @@
   <main>
     <button id="button"> add </button>
     <div id="clones">clones:</div>
+    <button id="clickMe">clickme</button>
+    <button id="targetMe">target</button>
   </main>
 
   <script>
@@ -34,6 +39,13 @@
     });
     let blockColorR = 20;
     addBlock();
+
+    clickMe.addEventListener("click", () => {
+      targetMe.classList.toggle("activate");
+    });
+    targetMe.addEventListener("click", () => {
+      clickMe.classList.toggle("activate");
+    });
 
     function addBlock() {
       let block = document.createElement("div");
