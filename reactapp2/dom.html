@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-  <link rel="stylesheet" href="../style.css" media="all">
-  <style>
-    .block {
-      width: 5rem;
-      height: 5rem;
-      margin: .2rem;
-      display: inline-block;
-    }
-    button {
-      vertical-align: top;
-    }
-    #clones {
-      outline: 1px solid #fc5;
-    }
-    .activate {
-      background-color: #ac4;
-    }
-  </style>  
-  <script defer src="deferred.js"></script>
-  <script async src="asyncwork.js"></script>
-</head>
-<body>
-  <main>
-    <button id="button"> add </button>
-    <div id="clones">clones:</div>
-    <button id="clickMe">clickme</button>
-    <button id="targetMe">target</button>
-  </main>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="../style.css" media="all" />
+    <style>
+      .block {
+        width: 5rem;
+        height: 5rem;
+        margin: 0.2rem;
+        display: inline-block;
+      }
+      button {
+        vertical-align: top;
+      }
+      #clones {
+        outline: 1px solid #fc5;
+      }
+      .activate {
+        background-color: #ac4;
+      }
+    </style>
+    <script defer src="deferred.js"></script>
+    <script async src="asyncwork.js"></script>
+  </head>
+  <body>
+    <main>
+      <button id="button">add</button>
+      <div id="clones">clones:</div>
+      <button id="clickMe">clickme</button>
+      <button id="targetMe">target</button>
+      <input id="bgColorPick" type="color" list="#fafafa" />
+    </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log("DOMContentLoaded");
-      button.addEventListener("click", addBlock);
-    });
-    let blockColorR = 20;
-    addBlock();
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("DOMContentLoaded");
+        button.addEventListener("click", addBlock);
+      });
+      let blockColorR = 20;
+      addBlock();
 
-    clickMe.addEventListener("click", () => {
-      targetMe.classList.toggle("activate");
-    });
-    targetMe.addEventListener("click", () => {
-      clickMe.classList.toggle("activate");
-    });
+      clickMe.addEventListener("click", () => {
+        targetMe.classList.toggle("activate");
+      });
+      targetMe.addEventListener("click", () => {
+        clickMe.classList.toggle("activate");
+        bgColorPick.select();
+      });
 
-    function addBlock() {
-      let block = document.createElement("div");
-      block.className = "block";
-      block.style.setProperty("background-color", `rgb(${blockColorR}, 80, 100)`);
-      button.after(block);
-      blockColorR += 20;
-      block.addEventListener("click", addClone);
-      block.append(`${blockColorR}`);
-    }
+      bgColorPick.addEventListener("change", (e) => {
+        console.log(e.target.value);
+        document.body.style.backgroundColor = e.target.value;
+      });
 
-    function addClone(e) {
-      let el = e.target;
-      let clone = el.cloneNode(true);
-      clones.append(clone);
-    }
-  </script>
-</body>
+      bgColorPick.addEventListener("input", (e) => {
+        document.body.style.backgroundColor = e.target.value;
+      })
+
+      function addBlock() {
+        let block = document.createElement("div");
+        block.className = "block";
+        block.style.setProperty(
+          "background-color",
+          `rgb(${blockColorR}, 80, 100)`
+        );
+        button.after(block);
+        blockColorR += 20;
+        block.addEventListener("click", addClone);
+        block.append(`${blockColorR}`);
+      }
+
+      function addClone(e) {
+        let el = e.target;
+        let clone = el.cloneNode(true);
+        clones.append(clone);
+      }
+    </script>
+  </body>
 </html>
