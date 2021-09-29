@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="../style.css" media="all" />
     <style>
       .block {
-        width: 5rem;
-        height: 5rem;
+        width: 4rem;
+        height: 4rem;
         margin: 0.2rem;
         display: inline-block;
+        color: #eee;
       }
       button {
         vertical-align: top;
@@ -31,19 +32,39 @@
         opacity: 0;
         transition: all 1s;
       }
+      input {
+        margin: 1em;
+      }
+      div {
+        margin: 1rem auto;
+        background-color: #fffff8;
+        padding: 1rem;
+        border-radius: 1em;
+      }
+
     </style>
     <script defer src="deferred.js"></script>
     <script async src="asyncwork.js"></script>
   </head>
   <body>
     <main>
-      <button id="button">add</button>
-      <div id="clones">clones:</div>
-      <button id="clickMe">clickme</button>
-      <button id="targetMe">target</button>
+      <div>
+        <button id="button">add</button>
+        <div id="clones">clones:</div>
+      </div>
+      <div>
+        <button id="clickMe">clickme</button>
+        <button id="targetMe">target</button>
+      </div>
       <input id="bgColorPick" type="color" list="#fafafa" />
-      <input type="text" id="notifyText">
-      <button id="notifySend">notify</button>
+      <div>
+        <input type="text" id="notifyText">
+        <button id="notifySend">notify</button>
+      </div>
+      <div>
+        <input type="text" id="scriptName" value="loading.js">
+        <button id="scriptLoad" >Load Script</button>
+      </div>
     </main>
 
     <script>
@@ -84,6 +105,20 @@
           html: notifyText.value,
           className: "",
         });
+      });
+
+      scriptLoad.addEventListener("click", () => {
+        let script = document.createElement("script");
+        let scriptname = scriptName.value || "loading.js";
+        script.src = scriptname;
+        script.addEventListener("load", () => {
+          alert(done());
+        });
+        script.onerror = () => {alert(`script load error: ${scriptname}`)};
+
+        document.head.append(script);
+
+        console.log("loading...")
       });
 
       function showNotification(s) {
