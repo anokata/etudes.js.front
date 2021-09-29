@@ -5,6 +5,9 @@
     <title></title>
     <link rel="stylesheet" href="../style.css" media="all" />
     <style>
+      body {
+        font-size: 1.5rem;
+      }
       .block {
         width: 4rem;
         height: 4rem;
@@ -13,6 +16,7 @@
         color: #eee;
       }
       button {
+        background-color: #d8e1f0;
         vertical-align: top;
       }
       #clones {
@@ -37,13 +41,21 @@
       }
       div {
         margin: 1rem auto;
-        background-color: #fffff8;
+        background-color: #f8f8f8;
         padding: 1rem;
-        border-radius: 1em;
+        border-radius: .3em;
       }
       img {
         width: 4rem;
         height: 4rem;
+      }
+      #size {
+        width: 100px;
+        height: 100px;
+        background-color: #c8d;
+        border: 10px solid #d9e;
+        font-size: 10px;
+        padding: 10px;
       }
     </style>
     <script defer src="deferred.js"></script>
@@ -73,6 +85,7 @@
         <button id="imgLoad" >Load iMAGE</button>
         <div id="images"></div>
       </div>
+      <div id="size"></div>
     </main>
 
     <script>
@@ -180,6 +193,15 @@
         document.querySelector("input[type=text]").value = "fromscript";
         console.log(document.querySelector("button[data-info]")?.dataset);
       }, 2100);
+
+      // size
+      let s = document.querySelector("#size");
+      s.textContent = `offsetWidth: ${s.offsetWidth}
+      clientTop: ${s.clientTop}
+      clientWidth: ${s.clientWidth}
+      documentW: ${document.offsetWidth}
+      documentC: ${document.body.clientWidth}
+      `;
 
 
       function showNotification(s) {
