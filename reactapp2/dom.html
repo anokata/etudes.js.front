@@ -52,7 +52,7 @@
   <body>
     <main>
       <div>
-        <button id="button">add</button>
+        <button id="button" data-info="023.1xr">add</button>
         <div id="clones">clones:</div>
       </div>
       <div>
@@ -170,6 +170,16 @@
         console.log(document.querySelector("#clickMe").firstChild.data); // text of textNode
         document.querySelector("#clickMe").textContent = "Click me Please!<txt>";
       }, 2000);
+
+      // Attributes
+      setTimeout(() =>{
+        let inp = document.querySelector("input");
+        if (inp.hasAttribute("type")) console.log(`elem: ${inp} has type=${inp.getAttribute('type')}`);
+        inp.setAttribute("somenew", "0008");
+        console.log(inp);
+        document.querySelector("input[type=text]").value = "fromscript";
+        console.log(document.querySelector("button[data-info]")?.dataset);
+      }, 2100);
 
 
       function showNotification(s) {
