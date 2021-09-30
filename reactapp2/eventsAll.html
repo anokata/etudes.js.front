@@ -71,12 +71,22 @@
     #runningLine2 span {
       position: absolute;
     }
+    #tooltip {
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+      width:auto;
+      height: auto;
+      background: #eee;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
-  <div id="runningLine" class="runningLine">
+  <div id="runningLine" class="runningLine" data-tooltip="running line with string change">
   </div>
-  <div id="runningLine2" class="runningLine">
+  <div id="runningLine2" class="runningLine" data-tooltip="runnin with position absolute">
     <span>
       mouseover
       mouseout
@@ -247,9 +257,31 @@
 
       return {
         top: box.top + pageYOffset,
-        left: box.left + pageXOffset
+        left: box.left + pageXOffset,
+        height: box.height,
       };
     }
+
+    document.addEventListener("mouseover", function(e) {
+      if (e.target.dataset.tooltip) {
+        let tooltip = document.createElement("div");
+        let coord = getCoords(e.target);
+        tooltip.id = "tooltip";
+        tooltip.innerHTML = e.target.dataset.tooltip;
+        tooltip.style.left = `${coord.left/2}px`;
+        let top = coord.top - coord.height;
+        if (top < 0) top = coord.top + coord.height/2;
+        log(top);
+        tooltip.style.top = `${top}px`;
+        document.body.append(tooltip);
+      }
+    });
+
+    document.addEventListener("mouseout", function(e) {
+      if (e.target.dataset.tooltip) {
+        document.querySelector("#tooltip").remove();
+      }
+    });
     
   </script>
 </body>
