@@ -8,12 +8,19 @@
   <style>
 
     .clickdiv {
-      background-color: #efc;
+      background-color: #9e8;
+    }
+    .clickdiv2 {
+      transform:scale(1.5);
+      transition: transform 1s;
+      border: .1rem solid #208;
     }
     div {
-      width: 4rem;
-      height: 4rem;
-      background-color: #cfe;
+      width: 5rem;
+      height: 5rem;
+      background-color: #ac8;
+      font-size: 10px;
+      margin: 2em;
     }
 
   </style>
@@ -23,13 +30,44 @@
   mouseout
   oncontextmenu
   <div id="clickdiv"></div>
+  <div id="menudiv"></div>
   
   <script>
     let clickdiv = id("clickdiv");
+    let menudiv = id("menudiv");
 
-    clickdiv.onclick = () => {
-      clickdiv.classList.toggle("clickdiv");
+    clickdiv.onclick = function() {
+      this.classList.toggle("clickdiv");
     };
+    clickdiv.addEventListener("click", function(){ this.classList.toggle("clickdiv2")});
+    clickdiv.addEventListener("click", function(e){ log(e); });
+    clickdiv.addEventListener("click", function(e){ this.textContent = `event
+    type: ${e.type}
+    at ${e.clientX}:${e.clientY}
+    `});
+
+    document.body.addEventListener("click", ()=> {document.body.classList.toggle("click")}, true);
+
+    class Menu {
+      name = 'menu';
+
+      handleEvent(event) {
+        let elem = event.target;
+        switch(event.type) {
+          case 'mousedown':
+            elem.innerHTML = event.type;
+            break;
+          case 'mouseup':
+            elem.innerHTML = `${event.type} ${this.name}`;
+            break;
+        }
+      }
+    }
+
+    let menu = new Menu();
+    menudiv.addEventListener('mousedown', menu);
+    menudiv.addEventListener('mouseup', menu);
+
   </script>
 </body>
 </html>
