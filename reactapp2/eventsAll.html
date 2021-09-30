@@ -8,7 +8,7 @@
   <style>
 
     .clickdiv {
-      background-color: #928;
+      background-color: #928 !important;
     }
     .clickdiv2 {
       transform:scale(1.5);
@@ -44,13 +44,44 @@
       background-color: #28e;
       margin:0;
     }
+    #delegate {
+      background-color: #eea;
+      width: auto;
+      height: auto;
+    }
+    #delegate > div{
+      background-color: #884;
+      display:inline-block;
+    }
 
+    .runningLine {
+      overflow: hidden;
+      background:none;
+      width: 10em;
+      height: 1em;
+      outline:1px groove #888;
+      padding: 1rem;
+      white-space:nowrap;
+      font: 20px bold monospace;
+    }
+    #runningLine2 {
+      position:relative;
+    }
+    #runningLine2 span {
+      position: absolute;
+    }
   </style>
 </head>
 <body>
-  mouseover
-  mouseout
-  oncontextmenu
+  <div id="runningLine" class="runningLine">
+  </div>
+  <div id="runningLine2" class="runningLine">
+    <span>
+      mouseover
+      mouseout
+      oncontextmenu
+    </span>
+  </div>
   <div id="clickdiv"></div>
   <div id="menudiv"></div>
   <div id="hiding"></div>
@@ -60,11 +91,52 @@
   <div id="bubbling">
     <div id="inner">bubble me</div>
   </div>
+  <div id="delegate">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   
   <script>
     "use strict";
     let clickdiv = id("clickdiv");
     let menudiv = id("menudiv");
+    let delegate = id("delegate");
+    let string = "Sit quasi deleniti repellat necessitatibus deleniti    ...  ";
+    let rstr = id("runningLine");
+    let line = id("runningLine2").querySelector("span");
+    let runline2 = id("runningLine2");
+    let runline2width = runline2.clientWidth;
+    log(line);
+
+    function runString(s) {
+      let ns = s.slice(-1) + s.slice(0,-1);
+      return ns;
+    }
+
+    function runningString() {
+      string = runString(string);
+      rstr.textContent = string;
+
+      let left = +line.style.left.slice(0, -2);
+      if (left > runline2width) left = -line.clientWidth;
+      line.style.left = `${left+10}px`;
+      //log(left, line.style.left);
+      setTimeout(runningString, 50);
+    }
+    setTimeout(runningString, 50);
+
+    delegate.addEventListener("click", function(e) {
+      let target = e.target.closest("div");
+      if (target != this)
+        target.classList.toggle("clickdiv");
+    });
 
     clickdiv.onclick = function(e) {
       this.classList.toggle("clickdiv");
