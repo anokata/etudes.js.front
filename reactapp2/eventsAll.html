@@ -40,6 +40,10 @@
       outline: 1px solid #22a;
       transition: all 200ms;
     }
+    #moving {
+      background-color: #28e;
+      margin:0;
+    }
 
   </style>
 </head>
@@ -51,6 +55,7 @@
   <div id="menudiv"></div>
   <div id="hiding"></div>
   <div class="scroll">Lorem recusandae quos error quaerat porro accusantium non Expedita iure ab quam doloribus blanditiis? Reiciendis saepe assumenda sint harum magnam? Voluptas quis sunt a quam ab. Ipsum deserunt blanditiis magni?</div>
+  <div id="moving"></div>
 
   <div id="bubbling">
     <div id="inner">bubble me</div>
@@ -149,6 +154,25 @@
       el.classList.add("hover-selected");
       setTimeout(() => el.classList.remove("hover-selected"), 1000);
     });
+
+    let moving = id("moving");
+    moving.addEventListener("mouseover", function(e) {
+      let el = id("clickdiv");
+      let coord =  getCoords(el);
+      moving.style.position = "absolute";
+      moving.style.left = `${coord.left}px`;
+      moving.style.top = `${coord.top}px`;
+      log(coord);
+    });
+
+    function getCoords(elem) {
+      let box = elem.getBoundingClientRect();
+
+      return {
+        top: box.top + pageYOffset,
+        left: box.left + pageXOffset
+      };
+    }
     
   </script>
 </body>
