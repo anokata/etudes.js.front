@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../style.css" media="all">
+  <script src="../abbrev.js"></script>
+  <style>
+
+    .clickdiv {
+      background-color: #efc;
+    }
+    div {
+      width: 4rem;
+      height: 4rem;
+      background-color: #cfe;
+    }
+
+  </style>
+</head>
+<body>
+  mouseover
+  mouseout
+  oncontextmenu
+  <div id="clickdiv"></div>
+  
+  <script>
+    let clickdiv = id("clickdiv");
+
+    clickdiv.onclick = () => {
+      clickdiv.classList.toggle("clickdiv");
+    };
+  </script>
+</body>
+</html>
