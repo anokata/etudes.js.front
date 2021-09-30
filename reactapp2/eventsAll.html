@@ -33,6 +33,9 @@
       height: 4rem;
       margin:auto;
     }
+    .scroll {
+      overflow: scroll;
+    }
 
   </style>
 </head>
@@ -43,6 +46,7 @@
   <div id="clickdiv"></div>
   <div id="menudiv"></div>
   <div id="hiding"></div>
+  <div class="scroll">Lorem recusandae quos error quaerat porro accusantium non Expedita iure ab quam doloribus blanditiis? Reiciendis saepe assumenda sint harum magnam? Voluptas quis sunt a quam ab. Ipsum deserunt blanditiis magni?</div>
 
   <div id="bubbling">
     <div id="inner">bubble me</div>
@@ -107,6 +111,34 @@
         //e.stopImmediatePropagation();
       }
     }, {capture: true}); // on deep phase
+
+    let scrollingDiv = document.querySelector(".scroll");
+    let scrollDown = false;
+
+    function isScrollAtBottom(el) {
+      return el.scrollTop+el.clientHeight >= el.scrollHeight;
+    }
+
+    function isScrollAtTop(el) {
+      return el.scrollTop == 0;
+    }
+
+    function scrollDiv() {
+      if (isScrollAtBottom(scrollingDiv)) {
+        scrollDown = false;
+      }
+      if (isScrollAtTop(scrollingDiv)) {
+        scrollDown = true;
+      }
+
+      if (scrollDown) {
+        scrollingDiv.scrollTop += 10;
+      } else {
+        scrollingDiv.scrollTop -= 5;
+      }
+      setTimeout(scrollDiv, 50);
+    }
+    setTimeout(scrollDiv, 50);
     
   </script>
 </body>
