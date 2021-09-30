@@ -50,6 +50,7 @@
       height: auto;
     }
     #delegate > div{
+      vertical-align: middle;
       background-color: #884;
       display:inline-block;
     }
@@ -99,8 +100,8 @@
     <div></div>
     <div></div>
     <div></div>
-    <div></div>
-    <div></div>
+    <div data-addtext data-text="123"></div>
+    <div data-addtext data-text="abc"></div>
   </div>
   
   <script>
@@ -153,8 +154,12 @@
 
     document.body.addEventListener("click", function(e) {
       document.body.classList.toggle("click");
-      log(`click on ${e.target} caught by ${this}`);
+      log(`click on ${e.target} caught by ${this} data: ${e.target.dataset.toString()}`);
       //e.stopPropagation();
+      if (e.target.dataset.addtext !== undefined) { // data-addtext handler
+        log("add Text");
+        e.target.textContent = e.target.dataset.text;
+      }
     }, true);
 
     class Menu {
