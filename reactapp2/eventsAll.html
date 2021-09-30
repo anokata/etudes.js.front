@@ -36,6 +36,10 @@
     .scroll {
       overflow: scroll;
     }
+    .hover-selected {
+      outline: 1px solid #22a;
+      transition: all 200ms;
+    }
 
   </style>
 </head>
@@ -139,6 +143,12 @@
       setTimeout(scrollDiv, 50);
     }
     setTimeout(scrollDiv, 50);
+
+    document.body.addEventListener("mousemove", function(e) {
+      let el = document.elementFromPoint(e.clientX, e.clientY);
+      el.classList.add("hover-selected");
+      setTimeout(() => el.classList.remove("hover-selected"), 1000);
+    });
     
   </script>
 </body>
