@@ -8,7 +8,7 @@
   <style>
 
     .clickdiv {
-      background-color: #9e8;
+      background-color: #928;
     }
     .clickdiv2 {
       transform:scale(1.5);
@@ -23,6 +23,17 @@
       margin: 2em;
     }
 
+    .hiding {
+      opacity: 0;
+      transition: all 1s;
+    }
+    #inner{
+      background-color: #8ca;
+      width: 4rem;
+      height: 4rem;
+      margin:auto;
+    }
+
   </style>
 </head>
 <body>
@@ -31,22 +42,35 @@
   oncontextmenu
   <div id="clickdiv"></div>
   <div id="menudiv"></div>
+  <div id="hiding"></div>
+
+  <div id="bubbling">
+    <div id="inner">bubble me</div>
+  </div>
   
   <script>
+    "use strict";
     let clickdiv = id("clickdiv");
     let menudiv = id("menudiv");
 
-    clickdiv.onclick = function() {
+    clickdiv.onclick = function(e) {
       this.classList.toggle("clickdiv");
+      e.stopPropagation();
     };
     clickdiv.addEventListener("click", function(){ this.classList.toggle("clickdiv2")});
     clickdiv.addEventListener("click", function(e){ log(e); });
     clickdiv.addEventListener("click", function(e){ this.textContent = `event
-    type: ${e.type}
-    at ${e.clientX}:${e.clientY}
-    `});
+      type: ${e.type}
+      at ${e.clientX}:${e.clientY}
+      `;
+      e.stopPropagation();
+    });
 
-    document.body.addEventListener("click", ()=> {document.body.classList.toggle("click")}, true);
+    document.body.addEventListener("click", function(e) {
+      document.body.classList.toggle("click");
+      log(`click on ${e.target} caught by ${this}`);
+      //e.stopPropagation();
+    }, true);
 
     class Menu {
       name = 'menu';
@@ -68,6 +92,22 @@
     menudiv.addEventListener('mousedown', menu);
     menudiv.addEventListener('mouseup', menu);
 
+    id("hiding").addEventListener("mouseover", function(e) { this.classList.add('hiding'); e.stopPropagation();});
+    id("hiding").addEventListener("transitionend", function(e) {this.classList.remove("hiding")}, false);
+
+    id("bubbling").addEventListener("click", function(w){this.classList.toggle("clickdiv2");});
+
+    let flag = false;
+    // Stop all clicks
+    document.body.addEventListener("click", function(e) {
+      flag = !flag;
+      log(flag);
+      if (flag) {
+        //e.stopPropagation();
+        //e.stopImmediatePropagation();
+      }
+    }, {capture: true}); // on deep phase
+    
   </script>
 </body>
 </html>
