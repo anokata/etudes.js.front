@@ -114,6 +114,8 @@
     <div data-addtext data-text="abc"></div>
   </div>
   <a id="notworklink" href="http://github.com">Not opening link</a>
+  <div id="genMenu">generate event by click</div>
+  <input id="genme" type="text">
   
   <script>
     "use strict";
@@ -240,6 +242,7 @@
     document.body.addEventListener("mousemove", function(e) {
       let el = document.elementFromPoint(e.clientX, e.clientY);
       el.classList.add("hover-selected");
+      //e.target.classList.add("hover-selected");
       setTimeout(() => el.classList.remove("hover-selected"), 1000);
     });
 
@@ -291,6 +294,20 @@
     document.addEventListener("contextmenu", (e) => {
       e.preventDefault();
       log(e.defaultPrevented);
+    });
+
+    id("genMenu").addEventListener("click", (e)=> {
+      let event = new Event("mouseover");
+      id("genme").dispatchEvent(event);
+      log("generated: ", event);
+      event = new CustomEvent("myevent", {bubbles: true, detail: "ok"});
+      id("genme").dispatchEvent(event);
+      event = new MouseEvent("mouseover", {bubbles: true});
+      id("genme").dispatchEvent(event);
+    });
+
+    id("genme").addEventListener("myevent", (e) =>{
+      log(`caught!: ${e.type} [${e.detail}]`);
     });
     
   </script>
