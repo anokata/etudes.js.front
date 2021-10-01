@@ -336,6 +336,8 @@
 
     document.addEventListener("dblclick", (e)=> {e.preventDefault();});
     id("genMenu").addEventListener("dblclick", (e)=> { log("dbl"); e.preventDefault();});
+    id("genMenu").onmousedown = function() { return false; };
+    id("genMenu").ondblclick = function() { return false; };
     
   </script>
 </body>
