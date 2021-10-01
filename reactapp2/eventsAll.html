@@ -81,6 +81,12 @@
       background: #eee;
       font-size: 1rem;
     }
+    .info {
+      position: fixed;
+      width: auto;
+      height: auto;
+      background: #eee;
+    }
   </style>
 </head>
 <body>
@@ -309,6 +315,27 @@
     id("genme").addEventListener("myevent", (e) =>{
       log(`caught!: ${e.type} [${e.detail}]`);
     });
+
+    document.addEventListener("mousedown", (e) => {
+      let key = e.shiftKey?"(shift)":"";
+      key += e.metaKey?"(meta)":"";
+      key += e.altKey?"(alt)":"";
+      key += e.ctrlKey?"(ctrl)":"";
+      let info = `mouse button ${e.which==1?"left":"right"} down \n
+      (${e.x}:${e.y}) [${key}]
+      `;
+      let infoblock = document.createElement("div");
+      log(info, e);
+      infoblock.style.left = e.x + "px";
+      infoblock.style.top = e.y + "px";
+      infoblock.className = "info";
+      infoblock.textContent = info;
+      document.body.append(infoblock);
+      setTimeout(() => {infoblock.remove()}, 1000);
+    });
+
+    document.addEventListener("dblclick", (e)=> {e.preventDefault();});
+    id("genMenu").addEventListener("dblclick", (e)=> { log("dbl"); e.preventDefault();});
     
   </script>
 </body>
