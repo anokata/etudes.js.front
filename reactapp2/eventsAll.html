@@ -113,6 +113,7 @@
     <div data-addtext data-text="123"></div>
     <div data-addtext data-text="abc"></div>
   </div>
+  <a id="notworklink" href="http://github.com">Not opening link</a>
   
   <script>
     "use strict";
@@ -281,6 +282,15 @@
       if (e.target.dataset.tooltip) {
         document.querySelector("#tooltip").remove();
       }
+    });
+
+    id("notworklink").addEventListener("click", (e)=> {
+        e.preventDefault();
+    });
+
+    document.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      log(e.defaultPrevented);
     });
     
   </script>
