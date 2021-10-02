@@ -14,8 +14,8 @@
     div {
       outline: 1px solid #486;
       background-color: #efc;
-      padding: 1rem;
-      margin: 1rem;
+      padding: .5rem;
+      margin: .5rem;
     }
     .flexing-a {
       width: 1rem;
@@ -30,10 +30,18 @@
       outline: 1px solid #864;
       background-color: #fce;
     }
+    body {
+      flex-direction: row;
+      flex-wrap: wrap;
+      /* = flex-flow: row wrap;*/
+    }
+    .max-flex {
+      flex: 0.5 2 auto;
+    }
   </style>
 </head>
 <body>
-  <div class="flex-container-block">
+  <div class="flex-container-block" >
 После установки flex свойства (контейнера) каждый дочерний элемент автоматически становится flex-элементом, выстраиваясь в один ряд (вдоль главной оси).
 <div class="flexing">A</div>
 <div class="flexing">
@@ -41,6 +49,67 @@
 </div>
 <div class="flexing-b"></div>
 <div class="flexing-a"></div>
+  </div>
+
+  <div class="flex-container-block" style="flex-direction: row-reverse">
+    flex-direction: row-reverse
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+
+  <div class="flex-container-block" style="flex-direction: column-reverse">
+    flex-direction: column-reverse
+    <div>1</div>
+    <div style="order: 5">2 order(5)</div>
+    <div>3</div>
+  </div>
+  <div class="flex-container-block" style="flex-wrap: wrap; width: 14%">
+    flex-wrap: wrap
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+  <div class="flex-container-block" style="flex: 1 1 1; width: 50%">
+    flex, flex-grow
+    <div class="max-flex">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div class="max-flex">6</div>
+  </div>
+  <div class="flex-container-block" >
+    flex, flex-shrink
+    <div class="min-flex">1</div>
+    <div style="flex-grow: 1;flex-shrink: 30; flex-basis: 5em">2</div>
+    <div style="flex-grow: .5">3</div>
+    <div style="flex-grow: 1">4</div>
+    <div style="flex-grow: 1">5</div>
+    <div class="max-flex" style="flex-grow: 1">6</div>
+  </div>
+
+  <div class="flex-container-block" style="justify-content: space-around">
+    justify-content:space-around
+    <div class="">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div class="">6</div>
+  </div>
+
+  <div class="flex-container-block" style="justify-content: space-between">
+    justify-content
+    <div class="">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div class="">6</div>
   </div>
   
 </body>
