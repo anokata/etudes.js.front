@@ -5,35 +5,43 @@
   <title>css grid</title>
   <link rel="stylesheet" href="../style.css" media="all">
   <style>
+    body {
+      background-color: #fcf8fc;
+    }
 
     .grid {
       display: grid;
-      grid-template-rows: 6em 6em 30%;
-      grid-template-columns: 7em 7em 30%;
+      grid-template-rows: 6em 1fr 1fr;
+      grid-template-columns: 7em 2fr 1fr;
       background-color: #fdd;
       height: 20rem;
       width: 20rem;
+      margin: .5rem;
     }
     div {
-      background-color: #ddf;
-      height: 4rem;
-      width: 4rem;
+      background-color: #e6a3ac;
+      height: 3rem;
+      width: 3rem;
       margin: 2px;
       box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.2);
+    }
+    .grid-all {
+      display: grid;
+      grid-template-rows: 1fr minmax(4em, 5em);
+      grid-template-columns: minmax(1em, 20em) 1fr 1fr 1fr 1fr;
+      background-color: #ffd;
+      height: 20rem;
+      width: 95%;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
   <div class="grid">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+  </div>
+  <div class="grid-all">
+    <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
   </div>
   
 </body>
