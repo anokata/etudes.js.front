@@ -54,6 +54,23 @@ class Game extends React.Component {
           <div>{/* status */}</div>
           <ol>{/* TODO */}</ol>
         </div>
+        <LifeList input="[some]" />
+      </div>
+    );
+  }
+}
+
+class LifeList extends React.Component {
+  render() {
+    return (
+      <div className="list">
+        <ul>input = {this.props.input}.
+          <li>001</li>
+          <li>002</li>
+          <li>003</li>
+          <li>004</li>
+          <li>005</li>
+        </ul>
       </div>
     );
   }
