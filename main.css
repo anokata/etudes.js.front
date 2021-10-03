@@ -5,14 +5,19 @@
   padding: 0;
 }
 
+
 body {
   margin: 0 auto;
-  max-width: 50em;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
-  padding: 4em 1em;
   color: #555;
   color: #566b78;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 50em;
+  padding: 4em 1em;
 }
 
 h1,
