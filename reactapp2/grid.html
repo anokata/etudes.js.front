@@ -28,7 +28,7 @@
     .grid-all {
       display: grid;
       grid-template-rows: 1fr minmax(4em, 5em);
-      grid-template-columns: minmax(1em, 20em) 1fr 1fr 1fr 1fr;
+      grid-template-columns: minmax(1em, 20em) fit-content(20%) 1fr 1fr 1fr;
       background-color: #ffd;
       height: 20rem;
       width: 95%;
@@ -45,6 +45,48 @@
       height: 8rem;
       width: 8rem;
       flex-direction: column;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-rows: repeat(3, 30%);
+      grid-template-columns: repeat(2, 50%);
+      grid-template-areas: "head head"
+                           "contl contr"
+                           "foot foot";
+
+      background-color: #fed;
+      height: auto;
+      min-height: 25rem;
+      width: 80%;
+      margin: 1rem auto;
+    }
+    .head {
+      grid-area: head;
+      background-color: #dda;
+      width: 98%;
+      height: 80%;
+      margin: 1em auto;
+    }
+    .contl {
+      grid-area: contl;
+      background-color: #daa;
+      width: 80%;
+      height: 80%;
+      margin: 1em auto;
+    }
+    .contr {
+      grid-area: contr;
+      background-color: #ada;
+      width: 80%;
+      height: 80%;
+      margin: 1em auto;
+    }
+    .foot {
+      grid-area: foot;
+      background-color: #558;
+      width: 98%;
+      height: 80%;
+      margin: 1em auto;
     }
   </style>
 </head>
@@ -63,6 +105,14 @@
         <div class="minidiv">5</div>
     </div> 
     <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+  </div>
+
+
+  <div class="grid-3">
+    <div class="head">heder</div>
+    <div class="foot">footer</div>
+    <div class="contr">R</div>
+    <div class="contl">L</div>
   </div>
   
 </body>
