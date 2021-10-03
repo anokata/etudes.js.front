@@ -107,6 +107,32 @@
       padding: 10rem 28rem;
       font-size: 4rem;
     }
+
+    .grid-auto-dense {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: .7rem;
+      grid-auto-rows: 10rem;
+      grid-auto-flow: dense;
+
+      background-color: #fed;
+      height: auto;
+      min-height: 25rem;
+      width: 80%;
+      margin: 1rem auto;
+    }
+    .big-item {
+      grid-column: span 2;
+      grid-row: span 2;
+      background-color: #fa9;
+      width: 100%;
+      height: 100%;
+    }
+    .item,
+    img {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -133,6 +159,17 @@
     <div class="foot">footer</div>
     <div class="contr">R</div>
     <div class="contl">L</div>
+  </div>
+
+  <div class="grid-auto-dense">
+    <div class="item"> <img src="https://source.unsplash.com/random/200x200?sig=1" /></div>
+    <div class="item"> <img src="https://picsum.photos/200" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200?blur" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200?random=1" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200?random=2" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200?random=3" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200?random=4" alt=""></div>
+    <div class="big-item"> <img src="https://picsum.photos/200?random=8" alt=""></div>
   </div>
   
 </body>
