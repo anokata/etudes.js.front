@@ -112,7 +112,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: .7rem;
-      grid-auto-rows: 10rem;
+      /*grid-auto-rows: 10rem;*/
       grid-auto-flow: dense;
 
       background-color: #fed;
@@ -132,6 +132,10 @@
     img {
       width: 100%;
       height: 100%;
+    }
+    img:active {
+      transform: scale(2);
+      transition: transform 200ms;
     }
   </style>
 </head>
@@ -163,13 +167,13 @@
 
   <div class="grid-auto-dense">
     <div class="item"> <img src="https://source.unsplash.com/random/200x200?sig=1" /></div>
-    <div class="item"> <img src="https://picsum.photos/200" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/300" alt=""></div>
     <div class="item"> <img src="https://picsum.photos/200?blur" alt=""></div>
-    <div class="item"> <img src="https://picsum.photos/200?random=1" alt=""></div>
-    <div class="item"> <img src="https://picsum.photos/200?random=2" alt=""></div>
-    <div class="item"> <img src="https://picsum.photos/200?random=3" alt=""></div>
-    <div class="item"> <img src="https://picsum.photos/200?random=4" alt=""></div>
-    <div class="big-item"> <img src="https://picsum.photos/200?random=8" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200/300?random=1" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200/300?random=2" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200/300?random=3" alt=""></div>
+    <div class="item"> <img src="https://picsum.photos/200/300?random=4" alt=""></div>
+    <div class="big-item"> <img src="https://picsum.photos/400/500?random=8" alt=""></div>
   </div>
   
 </body>
