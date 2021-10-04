@@ -115,7 +115,7 @@ class Game extends React.Component {
       const move = step.move;
       return (
         <li key={index}>
-          <button onClick={() => {this.jumpTo(index)}}>{label} {move}</button>
+          <button class={this.state.stepNumber == index ? "selected" : ""} onClick={() => {this.jumpTo(index)}}>{label} {move}</button>
         </li>
       );
     });
@@ -129,8 +129,8 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
-          <div>Steps: {this.state.stepNumber}</div>
+          <h3>{status}</h3>
+          <h4>Steps: {this.state.stepNumber}</h4>
           <ol>{moves}</ol>
         </div>
         <LifeList input="[some]" />

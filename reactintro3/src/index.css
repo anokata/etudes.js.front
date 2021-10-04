@@ -19,6 +19,10 @@ ol, ul {
   display: table;
 }
 
+.game-board {
+  margin: 10em auto;
+}
+
 .status {
   margin-bottom: 10px;
 }
@@ -30,12 +34,12 @@ ol, ul {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 2px;
   text-align: center;
-  width: 34px;
+  height: 4rem;
+  width: 4rem;
 }
 
 .square:focus {
@@ -64,4 +68,24 @@ li button {
   font-variant: petite-caps;
   font-size: 1.2em;
   margin-bottom: .5rem;
+  border-radius: 4px;
+  background-color:#eafff5;
+  border-bottom-color: #85c2c2;
+  border-right-color: #85c2c2;
+  border-top-color: #c5fdfd;
+  border-left-color: #c5fdfd;
+}
+
+button.selected {
+  background-color:#b3f7d7;
+  font-weight: bold;
+  border-bottom-color: aqua;
+  border-right-color: aqua;
+}
+
+h3 {
+  font-size: 2em;
+}
+h4 {
+  font-size: 1.5em;
 }
