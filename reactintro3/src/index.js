@@ -16,29 +16,29 @@ function Square(props) {
 class Board extends React.Component {
 
   renderSquare(i) {
-    return <Square 
+    return <Square  key={i}
       value={this.props.squares[i]} 
       onClick={()=>this.props.onClick(i)}
     />;
+  }
+
+  makeRow3(startIndex) {
+    return Array(3).fill(null).map((e, i) => {
+        return this.renderSquare(i + startIndex);
+      });
   }
 
   render() {
     return (
       <div>
         <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
+          {this.makeRow3(0)}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
+          {this.makeRow3(3)}
         </div>
         <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
+          {this.makeRow3(6)}
         </div>
       </div>
     );
@@ -115,7 +115,7 @@ class Game extends React.Component {
       const move = step.move;
       return (
         <li key={index}>
-          <button class={this.state.stepNumber == index ? "selected" : ""} onClick={() => {this.jumpTo(index)}}>{label} {move}</button>
+          <button className={this.state.stepNumber === index ? "selected" : ""} onClick={() => {this.jumpTo(index)}}>{label} {move}</button>
         </li>
       );
     });
