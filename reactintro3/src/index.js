@@ -50,12 +50,14 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: [{ squares: Array(9).fill(null) }, ],
+      history: [{ 
+        squares: Array(9).fill(null),
+        move: "(start)",
+      }],
       xIsNext: true,
       stepNumber: 0,
     }
   }
-
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -67,7 +69,10 @@ class Game extends React.Component {
     squares[i] = 'X';
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({ 
-      history: history.concat([{squares: squares}]),
+      history: history.concat([{
+        squares: squares,
+        move: this.getMoveDesc(i),
+      }]),
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length,
     });
@@ -86,6 +91,13 @@ class Game extends React.Component {
     });
   }
 
+  getMoveDesc(index) {
+    index++;
+    const row = Math.ceil(index / 3);
+    const col = (index-1) % 3 + 1;
+    return `(${row}:${col})`;
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -100,9 +112,10 @@ class Game extends React.Component {
 
     const moves = history.map((step, index) => {
       const label = index ? `Go to step #${index}` : "Go to start";
+      const move = step.move;
       return (
         <li key={index}>
-          <button onClick={() => {this.jumpTo(index)}}>{label}</button>
+          <button onClick={() => {this.jumpTo(index)}}>{label} {move}</button>
         </li>
       );
     });
@@ -117,6 +130,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <div>Steps: {this.state.stepNumber}</div>
           <ol>{moves}</ol>
         </div>
         <LifeList input="[some]" />
