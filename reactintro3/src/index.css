@@ -58,3 +58,10 @@ ol, ul {
   margin-left: 20px;
 }
 
+li button {
+  padding: .3rem;
+  font-family: monospace;
+  font-variant: petite-caps;
+  font-size: 1.2em;
+  margin-bottom: .5rem;
+}
