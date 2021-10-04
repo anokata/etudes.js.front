@@ -24,6 +24,11 @@
       height: 20rem;
       width: 20rem;
       margin: .5rem;
+      row-gap: 2px;
+      column-gap:4%;
+    }
+    .grid div {
+      font-size:10px;
     }
     div {
       background-color: #e6a3ac;
@@ -141,13 +146,13 @@
 </head>
 <body>
   <div class="grid">
-    <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+    <div style="margin: auto;">margin auto</div > <div style="justify-self: center; align-self: center;">align/justify</div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
   </div>
   <div class="grid-all">
     Sit debitis.
     <div>Adipisicing totam.</div> 
     <div class="flex">
-        <div class="minidiv">1</div>
+        <div class="minidiv" >1</div>
         <div class="minidiv" style="flex: 3 0 auto;">2</div>
         <div class="minidiv">3</div>
         <div class="minidiv">4</div>
