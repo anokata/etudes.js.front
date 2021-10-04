@@ -33,6 +33,10 @@ class Board extends React.Component {
 
   handleClick(i) {
     const squares = this.state.squares.slice(); // copy
+    console.log(calculateWinner(squares));
+    if (calculateWinner(squares) || squares[i]) 
+      return;
+
     squares[i] = 'X';
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({ 
@@ -42,7 +46,14 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+    const winner = calculateWinner(this.state.squares);
+    let status = "";
+
+    if (winner) {
+      status = `Win: ${winner}`
+    } else {
+      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+    }
 
     return (
       <div>
@@ -98,6 +109,29 @@ class LifeList extends React.Component {
       </div>
     );
   }
+}
+
+// ========================================
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  lines.forEach((e, i) => {
+    const [a, b, c] = e;
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+    console.log(squares[a]);
+      return squares[a];
+    }
+  });
+  return null;
 }
 
 // ========================================
