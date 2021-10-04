@@ -183,3 +183,4 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
+console.log('start');
