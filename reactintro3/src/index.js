@@ -28,18 +28,18 @@ class Board extends React.Component {
       });
   }
 
+  makeBoard3() {
+    const board = [];
+    for (const i of [0,3,6]) {
+      board.push(<div className="board-row" key={i}>{this.makeRow3(i)}</div>);
+    }
+    return board;
+  }
+
   render() {
     return (
       <div>
-        <div className="board-row">
-          {this.makeRow3(0)}
-        </div>
-        <div className="board-row">
-          {this.makeRow3(3)}
-        </div>
-        <div className="board-row">
-          {this.makeRow3(6)}
-        </div>
+        {this.makeBoard3()}
       </div>
     );
   }
