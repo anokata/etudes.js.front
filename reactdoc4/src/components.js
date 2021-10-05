@@ -25,11 +25,28 @@ export function UnsortedList(props) {
   return <ul>{elems}</ul>;
 }
 
+export class Clock extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    }
+  }
+
+  render() {
+    return (<div>
+      <span>Time is:{this.state.date.toLocaleTimeString()}</span>
+          </div>);
+    }
+}
+
 const root = (
   <main>
     c<ButtonHu text="hu" />
     <ButtonCu value="CU" />
     <div><UnsortedList length="3" >text<span>in</span> </UnsortedList></div>
+    <Clock />
   </main>
 );
 
