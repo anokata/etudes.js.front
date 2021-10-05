@@ -35,4 +35,17 @@ module.exports = {
       maxEntrypointSize: 512000,
       maxAssetSize: 512000
   },
+  devServer: {
+    static: [
+      {
+        directory: path.join(__dirname, ''),
+      },
+      {
+        directory: path.join(__dirname, 'dist'),
+      },
+      {
+        directory: path.join(__dirname, 'css'),
+      },
+    ],
+  },
 }
