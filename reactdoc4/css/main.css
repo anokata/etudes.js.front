@@ -64,3 +64,10 @@ p.spoiler {
   padding: 1em;
   border-left: 4px solid #bcccdf;
 }
+
+li {
+  cursor: pointer;
+}
+li:focus {
+  outline: 1px dashed #ccc;
+}
