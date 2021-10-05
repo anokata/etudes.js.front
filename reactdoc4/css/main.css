@@ -50,3 +50,11 @@ button.cu {
 button.hu {
   color: #884;
 }
+
+label {
+  margin: 1rem;
+}
+
+input[type=checkbox]{
+  transform: scale(1.5);
+}

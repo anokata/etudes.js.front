@@ -38,7 +38,7 @@ export class Clock extends React.Component {
   }
 
   render() {
-    console.log("[Clock render]");
+    // console.log("[Clock render]");
     return (<div>
       <span>Time is:{this.state.date.toLocaleTimeString()} [{this.state.secs}]({this.state.wrongSecs})</span>
           </div>);
@@ -67,12 +67,42 @@ export class Clock extends React.Component {
   }
 }
 
+export class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggled: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      toggled: e.target.checked,
+    });
+  }
+
+  render() {
+    return (<div>
+      <input 
+      className="switch" 
+      name="c1" 
+      type="checkbox" 
+      onChange={this.handleChange} />
+      <label 
+        className="switch-label" 
+        for="c1">toggler
+      </label></div>);
+  }
+}
+
 const root = (
   <main>
     c<ButtonHu text="hu" />
     <ButtonCu value="CU" />
     <div><UnsortedList length="3" >text<span>in</span> </UnsortedList></div>
     <Clock />
+    <Toggle />
   </main>
 );
 
