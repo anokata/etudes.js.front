@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Components from './components';
 
 const headerH2 = <h2>Consectetur esse eveniet?</h2>;
 const user1 = {

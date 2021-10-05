@@ -38,3 +38,15 @@ p {
 .anon {
   color: #5a5;
 }
+
+button {
+  padding: 1rem;
+  margin: .3rem;
+}
+
+button.cu {
+  color: #484;
+}
+button.hu {
+  color: #884;
+}
