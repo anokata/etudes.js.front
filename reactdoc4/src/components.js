@@ -31,6 +31,8 @@ export class Clock extends React.Component {
     super(props);
     this.state = {
       date: new Date(),
+      secs: 0,
+      wrongSecs: 0,
     }
     console.log("[Clock constructor]");
   }
@@ -38,7 +40,7 @@ export class Clock extends React.Component {
   render() {
     console.log("[Clock render]");
     return (<div>
-      <span>Time is:{this.state.date.toLocaleTimeString()}</span>
+      <span>Time is:{this.state.date.toLocaleTimeString()} [{this.state.secs}]({this.state.wrongSecs})</span>
           </div>);
   }
 
@@ -46,6 +48,12 @@ export class Clock extends React.Component {
     this.setState({
       date: new Date(),
     });
+    this.setState({
+      wrongSecs: this.state.wrongSecs + 1,
+    });
+    this.setState((prevState) => ({
+        secs: prevState.secs + 1,
+    }));
   }
 
   componentDidMount() {
