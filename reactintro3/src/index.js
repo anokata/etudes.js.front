@@ -56,7 +56,14 @@ class Game extends React.Component {
       }],
       xIsNext: true,
       stepNumber: 0,
+      sortAsc: true,
     }
+  }
+
+  sortChange(e) {
+    this.setState({
+      sortAsc: !this.state.sortAsc,
+    });
   }
 
   handleClick(i) {
@@ -112,7 +119,7 @@ class Game extends React.Component {
       status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     }
 
-    const moves = history.map((step, index) => {
+    let moves = history.map((step, index) => {
       const label = index ? `Go to step #${index}` : "Go to start";
       const move = step.move;
       return (
@@ -121,6 +128,7 @@ class Game extends React.Component {
         </li>
       );
     });
+    if (!this.state.sortAsc) moves = moves.reverse();
 
     return (
       <div className="game">
@@ -134,6 +142,7 @@ class Game extends React.Component {
           <h3>{status}</h3>
           <h4>Steps: {this.state.stepNumber}</h4>
           <ol>{moves}</ol>
+          Sort acending: <input type="checkbox" defaultChecked onChange={(e)=>this.sortChange(e)}></input>
         </div>
         <LifeList input="[some]" />
       </div>
