@@ -19,29 +19,35 @@ export function ListElem(props) {
 
 export function UnsortedList(props) {
   console.log(props.children);
-  const elems = Array(props.length | 1).fill(null).map((e, i) => {
-    return <ListElem key={i} text={`Elem#${i + 1}`} />;
-  });
+  const elems = Array(props.length | 1)
+    .fill(null)
+    .map((e, i) => {
+      return <ListElem key={i} text={`Elem#${i + 1}`} />;
+    });
   return <ul>{elems}</ul>;
 }
 
 export class Clock extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       date: new Date(),
       secs: 0,
       wrongSecs: 0,
-    }
+    };
     console.log("[Clock constructor]");
   }
 
   render() {
     // console.log("[Clock render]");
-    return (<div>
-      <span>Time is:{this.state.date.toLocaleTimeString()} [{this.state.secs}]({this.state.wrongSecs})</span>
-          </div>);
+    return (
+      <div>
+        <span>
+          Time is:{this.state.date.toLocaleTimeString()} [{this.state.secs}](
+          {this.state.wrongSecs})
+        </span>
+      </div>
+    );
   }
 
   tick() {
@@ -52,13 +58,13 @@ export class Clock extends React.Component {
       wrongSecs: this.state.wrongSecs + 1,
     });
     this.setState((prevState) => ({
-        secs: prevState.secs + 1,
+      secs: prevState.secs + 1,
     }));
   }
 
   componentDidMount() {
     console.log("[Clock mount]");
-    this.timerID = setInterval(()=>this.tick(), 1000);
+    this.timerID = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
@@ -83,16 +89,51 @@ export class Toggle extends React.Component {
   }
 
   render() {
-    return (<div>
-      <input 
-      className="switch" 
-      name="c1" 
-      type="checkbox" 
-      onChange={this.handleChange} />
-      <label 
-        className="switch-label" 
-        for="c1">toggler
-      </label></div>);
+    return (
+      <div>
+        <input
+          className="switch"
+          name="c1"
+          type="checkbox"
+          onChange={this.handleChange}
+        />
+        <label className="switch-label" htmlFor="c1">
+          toggler
+        </label>
+      </div>
+    );
+  }
+}
+
+export class SpoilerParagraph extends React.Component {
+  render() {
+    if (this.props.hide) return null;
+    return <p className="spoiler">{this.props.text}</p>;
+  }
+}
+
+export class SpoilerBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hide: true,
+    };
+  }
+
+  handleClick = () => {
+    this.setState((state) => ({
+      hide: !state.hide,
+    }));
+  }
+
+  render() {
+    return (
+      <div onClick={this.handleClick}>
+        <button>{this.state.hide ? "show" : "hide"}</button>
+        <hr />
+        <SpoilerParagraph text={this.props.text} hide={this.state.hide} />
+      </div>
+    );
   }
 }
 
@@ -100,12 +141,17 @@ const root = (
   <main>
     c<ButtonHu text="hu" />
     <ButtonCu value="CU" />
-    <div><UnsortedList length="3" >text<span>in</span> </UnsortedList></div>
+    <div>
+      <UnsortedList length="3">
+        text<span>in</span>{" "}
+      </UnsortedList>
+    </div>
     <Clock />
     <Toggle />
-    {10 > 5 && <h3>yes</h3>}.
-    {10 < 5 && <h3>no</h3>}.
+    Conditional Rendering:
+    {10 > 5 && <h3>yes</h3>}.{10 < 5 && <h3>no</h3>}.
     {10 < 5 ? <h3>no</h3> : <h3>false</h3>}.
+    <SpoilerBlock text="Ipsum maxime explicabo pariatur cum velit Ad mollitia!" />
   </main>
 );
 

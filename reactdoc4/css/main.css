@@ -58,3 +58,9 @@ label {
 input[type=checkbox]{
   transform: scale(1.5);
 }
+
+p.spoiler {
+  background: #dddff0;
+  padding: 1em;
+  border-left: 4px solid #bcccdf;
+}
