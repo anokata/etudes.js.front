@@ -106,6 +106,8 @@ class Game extends React.Component {
 
     if (winner) {
       status = `Win: ${winner}`
+    } else if (isDraw(current.squares)) {
+      status = 'Draw. no is winner. endgame.'
     } else {
       status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     }
@@ -156,6 +158,13 @@ class LifeList extends React.Component {
 }
 
 // ========================================
+
+function isDraw(squares) {
+  for (let el of squares) {
+    if (!el) return false;
+  }
+  return true;
+}
 
 function calculateWinner(squares) {
   const lines = [
