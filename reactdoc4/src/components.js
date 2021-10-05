@@ -32,13 +32,31 @@ export class Clock extends React.Component {
     this.state = {
       date: new Date(),
     }
+    console.log("[Clock constructor]");
   }
 
   render() {
+    console.log("[Clock render]");
     return (<div>
       <span>Time is:{this.state.date.toLocaleTimeString()}</span>
           </div>);
-    }
+  }
+
+  tick() {
+    this.setState({
+      date: new Date(),
+    });
+  }
+
+  componentDidMount() {
+    console.log("[Clock mount]");
+    this.timerID = setInterval(()=>this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    console.log("[Clock unmount]");
+    clearInterval(this.timerID);
+  }
 }
 
 const root = (
