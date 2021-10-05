@@ -137,6 +137,31 @@ export class SpoilerBlock extends React.Component {
   }
 }
 
+
+export class List extends React.Component {
+  constructor(props) {
+      super(props);
+      const elems = props.elems || [];
+      this.state = {
+        elems: ["0 default"].concat(elems),
+          };
+      }
+
+  handleClick() {
+  }
+
+  render() {
+    const elems = this.state.elems.map((e, i) => <li key={i} tabIndex="1">{e}</li>);
+    return (
+      <div>
+        <button onClick={this.handleClick.bind(this)}>Add</button>
+        <input type="text" />
+        <ul>{elems}</ul>
+      </div>
+      );
+    }
+}
+
 const root = (
   <main>
     c<ButtonHu text="hu" />
@@ -152,6 +177,7 @@ const root = (
     {10 > 5 && <h3>yes</h3>}.{10 < 5 && <h3>no</h3>}.
     {10 < 5 ? <h3>no</h3> : <h3>false</h3>}.
     <SpoilerBlock text="Ipsum maxime explicabo pariatur cum velit Ad mollitia!" />
+    <List elems={["1 param",2,"ccc"]} />
   </main>
 );
 
