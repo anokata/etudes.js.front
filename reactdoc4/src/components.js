@@ -103,6 +103,9 @@ const root = (
     <div><UnsortedList length="3" >text<span>in</span> </UnsortedList></div>
     <Clock />
     <Toggle />
+    {10 > 5 && <h3>yes</h3>}.
+    {10 < 5 && <h3>no</h3>}.
+    {10 < 5 ? <h3>no</h3> : <h3>false</h3>}.
   </main>
 );
 
