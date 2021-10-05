@@ -41,9 +41,6 @@ module.exports = {
         directory: path.join(__dirname, ''),
       },
       {
-        directory: path.join(__dirname, 'dist'),
-      },
-      {
         directory: path.join(__dirname, 'css'),
       },
     ],
