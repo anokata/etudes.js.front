@@ -17,6 +17,9 @@ export class NamingForm extends React.Component {
   handleSubmit(e) {
     console.log(`${this.state.name}:${this.state.age}`);
     e.preventDefault();
+    const inputNode = this.inputRef.current;
+    console.log(inputNode);
+    inputNode.focus();
   }
 
   handleChange(e) {
