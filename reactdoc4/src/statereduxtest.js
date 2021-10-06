@@ -34,23 +34,53 @@ log(counterSlice);
 log(counterSlice.reducer);
 log(counterSlice.actions);
 log(counterSlice.actions.increment);
+const decrement = counterSlice.actions.decrement;
+const increment = counterSlice.actions.increment;
+const counterReducer = counterSlice.reducer;
 
-const store0 = configureStore({ reducer: {
-  counter: counterReducer,
-} }); //toolkit style
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+}); //toolkit style
 
-let store = createStore(incrementReducer); // basic style
+let store0 = createStore(incrementReducer); // basic style
 
 store.subscribe(() => {
-  console.log(`store: ${store.getState().value}`);
+  console.log(`store: ${store.getState().counter.value}`);
 });
 store.dispatch({ type: "inc" });
+
+export function Counter() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <div>
+        <button
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+        >
+          Increment
+        </button>
+        <span>{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </button>
+      </div>
+    </div>
+  );
+}
 
 // ------------------------------------------
 const root = document.getElementById("state");
 const elem = (
   <Provider store={store}>
     <main>HHH</main>
+    <Counter />
   </Provider>
 );
 if (root) ReactDOM.render(elem, root);
