@@ -71,3 +71,8 @@ li {
 li:focus {
   outline: 1px dashed #ccc;
 }
+
+.cart {
+  background-color: #ced;
+  padding: 2rem;
+}
