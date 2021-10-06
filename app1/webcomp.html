@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../style.css" media="all">
+  <link rel="stylesheet" href="../main.css" media="all">
+  <style>
+    my-comp {
+      background-color: #cce;
+    }
+    :not(:defined) {
+      background-color: #caa;
+    }
+    :defined {
+    }
+  </style>
+</head>
+<body>
+  <my-comp></my-comp>
+
+<script>
+  let log = console.log;
+
+class MyComp extends HTMLElement {
+  constructor() {
+    super();
+    log("[my-comp] created");
+  }
+  connectedCallback() {
+    log("[my-comp] connect");
+    this.innerHTML = `<div>hi</div>`;
+  }
+
+  disconnectedCallback() {
+    log("[my-comp] disconnect");
+  }
+
+  static get observedAttributes() {
+    log("[my-comp] get attr");
+    return [];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    log("[my-comp] set attr");
+  }
+
+  adoptedCallback() {
+    log("[my-comp] adopt");
+  }
+}
+
+customElements.define("my-comp", MyComp);
+
+</script>
+</body>
+</html>
