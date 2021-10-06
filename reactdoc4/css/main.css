@@ -76,3 +76,11 @@ li:focus {
   background-color: #ced;
   padding: 2rem;
 }
+
+.border-d {
+  outline: 2px solid #888;
+  border-right: 4px solid #888;
+}
+.border-d-a {
+  border-right: 4px solid #aaa;
+}
