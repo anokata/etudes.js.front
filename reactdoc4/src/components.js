@@ -164,7 +164,42 @@ export class List extends React.Component {
   }
 }
 
+const YDCourse = 111.65;
+const currencyNames = {  d: '$dollar',  y: 'Yen'};
+
+function yen2dollar(y) { return y/YDCourse; }
+
+function dollar2yen(d) { return d*YDCourse; }
+
+function tryConvert(s, convertF) {
+  const input = parseFloat(s);
+  if (Number.isNaN(input)) {
+    return "";
+  }
+  const out = convertF(input);
+  const rounded = Math.round(output * 1000) / 1000;
+  return rounded.toString();
+}
+
+
 export class ShoppingCart extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          };
+      }
+
+    render() {
+        return (
+          <div>
+            <CartInput currency="d"/>
+            <CartInput currency="y"/>
+          </div>
+        )
+      }
+}
+
+export class CartInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -189,7 +224,7 @@ export class ShoppingCart extends React.Component {
           type="text"
           value={this.state.price}
           onChange={this.handleChange}
-        />
+        />{currencyNames[this.props.currency]}
         <BuyingVerdict price={this.state.price} />
       </div>
     );
