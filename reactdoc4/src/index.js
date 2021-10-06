@@ -20,10 +20,12 @@ function formatHeader(text) {
   else return <h3 tabIndex="0" className={user1.role}>{text}</h3>;
 }
 
-let inText = "_s_";
+let inTextV = "_S_";
+let inText = (<span>{inTextV}</span>);
 function inChange(e) {
-  console.log(e);
-  inText = e.target.value;
+  console.log(e, this);
+  inTextV = e.target.value;
+  document.querySelector("input").value=e.target.value;
   main();
 }
 const input = <input value="{console.log('attaked?')}" type="text" onChange={inChange} />;

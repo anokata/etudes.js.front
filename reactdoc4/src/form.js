@@ -6,19 +6,22 @@ export class NamingForm extends React.Component {
     super(props);
     this.state = {
       value: "",
+      name: "_",
+      age: 0,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange= this.handleChange.bind(this);
   }
 
   handleSubmit(e) {
-    console.log(this.state.value);
+    console.log(`${this.state.name}:${this.state.age}`);
     e.preventDefault();
   }
 
   handleChange(e) {
+    let name = e.target.name;
     this.setState({
-      value: e.target.value,
+      [name]: e.target.value,
     })
   }
 
@@ -27,7 +30,8 @@ export class NamingForm extends React.Component {
         <form action="" onSubmit={this.handleSubmit}>
           <label htmlFor="">
             name:
-            <input type="text" name="name" value={this.state.value} onChange={this.handleChange} />
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+            <input type="text" name="age" value={this.state.age} onChange={this.handleChange} />
           </label>
           <input type="submit" value="send" />
         </form>
