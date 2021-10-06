@@ -11,6 +11,7 @@ export class NamingForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange= this.handleChange.bind(this);
+    this.inputRef = React.createRef();
   }
 
   handleSubmit(e) {
@@ -30,7 +31,7 @@ export class NamingForm extends React.Component {
         <form action="" onSubmit={this.handleSubmit}>
           <label htmlFor="">
             name:
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} ref={this.inputRef} />
             <input type="text" name="age" value={this.state.age} onChange={this.handleChange} />
           </label>
           <input type="submit" value="send" />

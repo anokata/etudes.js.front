@@ -79,8 +79,9 @@ export function Counter() {
 const root = document.getElementById("state");
 const elem = (
   <Provider store={store}>
-    <main>HHH</main>
-    <Counter />
+    <main>HHH
+      <Counter />
+    </main>
   </Provider>
 );
 if (root) ReactDOM.render(elem, root);
