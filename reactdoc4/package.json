@@ -30,6 +30,7 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
+    "react-redux": "^7.2.5",
     "redux": "^4.1.1"
   }
 }
