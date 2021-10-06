@@ -174,10 +174,10 @@ function dollar2yen(d) { return d*YDCourse; }
 function tryConvert(s, convertF) {
   const input = parseFloat(s);
   if (Number.isNaN(input)) {
-    return "";
+    return "0";
   }
   const out = convertF(input);
-  const rounded = Math.round(output * 1000) / 1000;
+  const rounded = Math.round(out * 1000) / 1000;
   return rounded.toString();
 }
 
@@ -186,35 +186,46 @@ export class ShoppingCart extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          };
-      }
+        price: 0,
+        currency: 'd',
+      };
+    this.dollarChange = this.dollarChange.bind(this);
+    this.yenChange = this.yenChange.bind(this);
+  }
 
-    render() {
-        return (
-          <div>
-            <CartInput currency="d"/>
-            <CartInput currency="y"/>
-          </div>
-        )
-      }
+  dollarChange(price) {
+    this.setState({price: price, currency: "d"});
+  }
+  
+  yenChange(price) {
+    this.setState({price: price, currency: "y"});
+  }
+
+  render() {
+    const currency = this.state.currency;
+    const price = this.state.price;
+    const dollars = currency === 'y' ? tryConvert(price, yen2dollar) : price;
+    const yens = currency === 'd' ? tryConvert(price, dollar2yen) : price;
+
+    console.log(dollars, yens);
+      return (
+        <div>
+          <CartInput currency="d" price={dollars} onChange={this.dollarChange}/>
+          <CartInput currency="y" price={yens} onChange={this.yenChange}/>
+          <BuyingVerdict price={this.state.price} />
+        </div>
+      )
+    }
 }
 
 export class CartInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      accumulatedPrice: 0,
-      price: 0,
-    };
-
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({
-      price: e.target.value,
-      accumulatedPrice: 0,
-    });
+    this.props.onChange(e.target.value);
   }
 
   render() {
@@ -222,10 +233,9 @@ export class CartInput extends React.Component {
       <div className="cart" >Cart:
         <input
           type="text"
-          value={this.state.price}
+          value={this.props.price}
           onChange={this.handleChange}
         />{currencyNames[this.props.currency]}
-        <BuyingVerdict price={this.state.price} />
       </div>
     );
   }
