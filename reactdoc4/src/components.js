@@ -246,6 +246,14 @@ function BuyingVerdict(props) {
   return <p>Do not need...</p>;
 }
 
+function BorderDecorate(props){
+  return (
+    <div className={`border-d border-d-${props.type}`}>
+      {props.children}
+    </div>
+  );
+}
+
 // ===============================
 const root = (
   <main>
@@ -264,6 +272,7 @@ const root = (
     <SpoilerBlock text="Ipsum maxime explicabo pariatur cum velit Ad mollitia!" />
     <List elems={["1 param", 2, "ccc"]} />
     <ShoppingCart />
+    <BorderDecorate type="a"><span>Text in border</span></BorderDecorate>
   </main>
 );
 
