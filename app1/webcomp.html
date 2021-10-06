@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  <my-comp></my-comp>
+  <my-comp value="-" onclick="this.value='x'" ></my-comp>
 
 <script>
   let log = console.log;
@@ -27,9 +27,14 @@ class MyComp extends HTMLElement {
     super();
     log("[my-comp] created");
   }
+
+  render(value="_") {
+    this.innerHTML = `<div>hi ${value}</div>`;
+  }
+
   connectedCallback() {
     log("[my-comp] connect");
-    this.innerHTML = `<div>hi</div>`;
+    this.render();
   }
 
   disconnectedCallback() {
@@ -38,11 +43,12 @@ class MyComp extends HTMLElement {
 
   static get observedAttributes() {
     log("[my-comp] get attr");
-    return [];
+    return ['value'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     log("[my-comp] set attr");
+    this.render(newValue);
   }
 
   adoptedCallback() {
@@ -51,6 +57,8 @@ class MyComp extends HTMLElement {
 }
 
 customElements.define("my-comp", MyComp);
+
+  setInterval(()=>{  },1000);
 
 </script>
 </body>
