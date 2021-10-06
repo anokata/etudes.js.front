@@ -124,7 +124,7 @@ export class SpoilerBlock extends React.Component {
     this.setState((state) => ({
       hide: !state.hide,
     }));
-  }
+  };
 
   render() {
     return (
@@ -137,31 +137,71 @@ export class SpoilerBlock extends React.Component {
   }
 }
 
-
 export class List extends React.Component {
   constructor(props) {
-      super(props);
-      const elems = props.elems || [];
-      this.state = {
-        elems: ["0 default"].concat(elems),
-          };
-      }
-
-  handleClick() {
+    super(props);
+    const elems = props.elems || [];
+    this.state = {
+      elems: ["0 default"].concat(elems),
+    };
   }
 
+  handleClick() {}
+
   render() {
-    const elems = this.state.elems.map((e, i) => <li key={i} tabIndex="1">{e}</li>);
+    const elems = this.state.elems.map((e, i) => (
+      <li key={i} tabIndex="1">
+        {e}
+      </li>
+    ));
     return (
       <div>
         <button onClick={this.handleClick.bind(this)}>Add</button>
         <input type="text" />
         <ul>{elems}</ul>
       </div>
-      );
-    }
+    );
+  }
 }
 
+export class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      accumulatedPrice: 0,
+      price: 0,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      price: e.target.value,
+      accumulatedPrice: 0,
+    });
+  }
+
+  render() {
+    return (
+      <div className="cart" >Cart:
+        <input
+          type="text"
+          value={this.state.price}
+          onChange={this.handleChange}
+        />
+        <BuyingVerdict price={this.state.price} />
+      </div>
+    );
+  }
+}
+
+function BuyingVerdict(props) {
+  if (props.price < 100) return <p>Want to buy!</p>;
+  return <p>Do not need...</p>;
+}
+
+// ===============================
 const root = (
   <main>
     c<ButtonHu text="hu" />
@@ -177,7 +217,8 @@ const root = (
     {10 > 5 && <h3>yes</h3>}.{10 < 5 && <h3>no</h3>}.
     {10 < 5 ? <h3>no</h3> : <h3>false</h3>}.
     <SpoilerBlock text="Ipsum maxime explicabo pariatur cum velit Ad mollitia!" />
-    <List elems={["1 param",2,"ccc"]} />
+    <List elems={["1 param", 2, "ccc"]} />
+    <ShoppingCart />
   </main>
 );
 
