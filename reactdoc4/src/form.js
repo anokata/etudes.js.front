@@ -42,4 +42,6 @@ export class NamingForm extends React.Component {
 
 let root = (<main><NamingForm /></main>);
 
-ReactDOM.render(root, document.getElementById("form"));
+let form = document.getElementById("form");
+if (form)
+  ReactDOM.render(root, form);

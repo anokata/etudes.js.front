@@ -1,9 +1,20 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 
-document.getElementById("state");
-
 function incrementReducer(state = {value: 0}, action) {
-  if (action === "inc") return {value:state.value + 1};
+  if (action.type === "inc") return {value:state.value + 1};
   return state;
 }
 
+let store = createStore(incrementReducer);
+
+store.subscribe(() => {console.log(`store: ${store.getState().value}`)});
+
+store.dispatch({type:"inc"});
+
+
+ReactDOM.render(
+  <main>HHH</main>,
+  document.getElementById("state")
+);

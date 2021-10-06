@@ -46,6 +46,8 @@ let mainElement =
   </main>;
 
 function main() {
+  let root = document.getElementById("root");
+  if (!root) return;
   ReactDOM.render(
     mainElement,
     document.getElementById("root")

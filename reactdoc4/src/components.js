@@ -276,6 +276,9 @@ const root = (
   </main>
 );
 
-ReactDOM.render(root, document.getElementById("component"));
+
+let component = document.getElementById("component");
+if (component) 
+  ReactDOM.render(root, document.getElementById("component"));
 
 export let Components = root;
