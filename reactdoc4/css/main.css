@@ -84,3 +84,13 @@ li:focus {
 .border-d-a {
   border-right: 4px solid #aaa;
 }
+
+main:hover button {
+  background-color: #eee;
+  border-radius: 5px;
+  transition: all 200ms;
+}
+
+main:has(>div:hover)  {
+  background-color: #efe;
+}
