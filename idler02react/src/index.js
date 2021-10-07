@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function ClickField(props) {
   const [clicker, setClick] = useState({
@@ -9,9 +9,16 @@ function ClickField(props) {
   });
 
   console.log(`render cli<C-BS> ${clicker.clicks} ${clicker.incrementBy}`);
+  useEffect(() => {
+    console.log(`effect`);
+  });
   return (
-    <div className="click-field" onClick={() => setClick({...clicker, clicks: clicker.clicks + clicker.incrementBy})}>Clicks: {clicker.clicks}</div>
+    <div className="click-field" onClick={() => updateClick(setClick, clicker)}>Clicks: {clicker.clicks}</div>
   );
+}
+
+function updateClick(setClick, clicker) {
+  setClick({...clicker, clicks: clicker.clicks + clicker.incrementBy});
 }
 
 let root = (<main>
