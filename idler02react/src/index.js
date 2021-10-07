@@ -8,9 +8,9 @@ function ClickField(props) {
     incrementBy: 0.1,
   });
 
-  console.log("render cli<C-BS>");
+  console.log(`render cli<C-BS> ${clicker.clicks} ${clicker.incrementBy}`);
   return (
-    <div className="click-field"></div>
+    <div className="click-field" onClick={() => setClick({...clicker, clicks: clicker.clicks + clicker.incrementBy})}>Clicks: {clicker.clicks}</div>
   );
 }
 
