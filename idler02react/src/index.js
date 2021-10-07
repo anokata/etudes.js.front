@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 import { configureStore } from "@reduxjs/toolkit";
+import { useSelector, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 function ClickField(props) {
   const [clicker, setClick] = useState({
@@ -13,10 +15,19 @@ function ClickField(props) {
   useEffect(() => {
     console.log(`effect`);
     console.log("state: ", store.getState());
+    console.log("clicks: ", getClicks());
   });
+  const dispatch = useDispatch();
+  const click = useSelector(selectClicks);
+
   return (
-    <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
-      Clicks: {clicker.clicks}
+    <div>
+      <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
+        Clicks: {clicker.clicks}
+      </div>
+      <div className="click-field" onClick={() => dispatch(clickAction())}>
+        Clicks 2: {getClicks()} {click}
+      </div>
     </div>
   );
 }
@@ -49,12 +60,16 @@ function clickAction() {
   };
 }
 // store.dispatch(clickAction());
+const selectClicks = (state) => state.clicks; //selector
+const getClicks = () => selectClicks(store.getState());
 // -----
 
 let root = (
   <main>
-    <h1>Idler 02</h1>
-    <ClickField />
+    <Provider store={store}>
+      <h1>Idler 02</h1>
+      <ClickField />
+    </Provider>
   </main>
 );
 
