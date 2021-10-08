@@ -33,7 +33,7 @@ function ClickFieldR(props) {
 
   return (
     <div>
-      <div className="click-field" onClick={() => dispatch(clickAction())} onDblClick={(e)=>e.preventDefault()}>
+      <div className="click-field" onClick={() => dispatch(clickAction())} onDoubleClick={(e)=>e.preventDefault()}>
         Clicks 2: {getClicks()} {click}
       </div>
     </div>

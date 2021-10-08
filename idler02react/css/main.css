@@ -42,3 +42,15 @@ p {
   cursor: pointer;
   user-select: none; 
 }
+
+.click-field:hover { 
+  background-color: #bcb;
+  outline: 1px solid #cdc;
+  transition: all 200ms;
+}
+
+.click-field:active { 
+  background-color: #bdb;
+  outline: 1px solid #cec;
+  transition: all 200ms;
+}
