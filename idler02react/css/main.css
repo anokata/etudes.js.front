@@ -34,3 +34,11 @@ h2 {
 p {
   margin: 1em 0;
 }
+
+.click-field {
+  background-color: #cdc;
+  padding: 1rem;
+  margin: .5rem;
+  cursor: pointer;
+  user-select: none; 
+}
