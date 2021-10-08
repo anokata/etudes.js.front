@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from 'react-redux';
 import { Provider } from 'react-redux';
 
+// state hook
 function ClickField(props) {
   const [clicker, setClick] = useState({
     clicks: 0,
@@ -12,9 +13,19 @@ function ClickField(props) {
   });
 
   console.log(`render cli<C-BS> ${clicker.clicks} ${clicker.incrementBy}`);
+
+  return (
+    <div>
+      <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
+        Clicks: {clicker.clicks}
+      </div>
+    </div>
+  );
+}
+
+// redux store
+function ClickFieldR(props) {
   useEffect(() => {
-    console.log(`effect`);
-    console.log("state: ", store.getState());
     console.log("clicks: ", getClicks());
   });
   const dispatch = useDispatch();
@@ -22,9 +33,6 @@ function ClickField(props) {
 
   return (
     <div>
-      <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
-        Clicks: {clicker.clicks}
-      </div>
       <div className="click-field" onClick={() => dispatch(clickAction())} onDblClick={(e)=>e.preventDefault()}>
         Clicks 2: {getClicks()} {click}
       </div>
@@ -32,9 +40,10 @@ function ClickField(props) {
   );
 }
 
+
 function updateClick(setClick, clicker) {
-  setClick({ ...clicker, clicks: clicker.clicks + clicker.incrementBy });
-  store.dispatch(clickAction());
+  let newValue = Math.round(100 * ( clicker.clicks + clicker.incrementBy ))/100; 
+  setClick({ ...clicker, clicks: newValue});
 }
 
 // redux
@@ -69,6 +78,7 @@ let root = (
     <Provider store={store}>
       <h1>Idler 02</h1>
       <ClickField />
+      <ClickFieldR />
     </Provider>
   </main>
 );
