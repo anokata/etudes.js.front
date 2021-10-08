@@ -25,7 +25,7 @@ function ClickField(props) {
       <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
         Clicks: {clicker.clicks}
       </div>
-      <div className="click-field" onClick={() => dispatch(clickAction())}>
+      <div className="click-field" onClick={() => dispatch(clickAction())} onDblClick={(e)=>e.preventDefault()}>
         Clicks 2: {getClicks()} {click}
       </div>
     </div>
@@ -46,7 +46,7 @@ const store = configureStore({ reducer: rootReducer });
 function rootReducer(state = initialState, action) {
   if (action.type === CLICK_ACTION) {
     let newState = {...state};
-    newState.clicks += 1;
+    newState.clicks += 0.1;
     return newState;
   }
   return state;
@@ -60,7 +60,7 @@ function clickAction() {
   };
 }
 // store.dispatch(clickAction());
-const selectClicks = (state) => state.clicks; //selector
+const selectClicks = (state) => Math.round(state.clicks*100)/100; //selector
 const getClicks = () => selectClicks(store.getState());
 // -----
 
