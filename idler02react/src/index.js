@@ -13,6 +13,9 @@ function ClickField(props) {
   });
 
   console.log(`render cli<C-BS> ${clicker.clicks} ${clicker.incrementBy}`);
+  useEffect(() => {
+    console.log("clicks: ", clicker.clicks);
+  });
 
   return (
     <div>
@@ -26,10 +29,11 @@ function ClickField(props) {
 // redux store
 function ClickFieldR(props) {
   useEffect(() => {
-    console.log("clicks: ", getClicks());
+    console.log("rclicks: ", getClicks());
   });
   const dispatch = useDispatch();
   const click = useSelector(selectClicks);
+  console.log("rclicks: ", click);
 
   return (
     <div>
@@ -43,6 +47,7 @@ function ClickFieldR(props) {
 
 function updateClick(setClick, clicker) {
   let newValue = Math.round(100 * ( clicker.clicks + clicker.incrementBy ))/100; 
+  console.log(newValue);
   setClick({ ...clicker, clicks: newValue});
 }
 
