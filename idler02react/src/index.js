@@ -1,49 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
-import { configureStore } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from 'react-redux';
-import { Provider } from 'react-redux';
+import { useSelector, useDispatch, Provider } from 'react-redux';
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-// state hook
-function ClickField(props) {
-  const [clicker, setClick] = useState({
-    clicks: 0,
-    incrementBy: 0.1,
-  });
-
-  console.log(`render cli<C-BS> ${clicker.clicks} ${clicker.incrementBy}`);
-  useEffect(() => {
-    console.log("clicks: ", clicker.clicks);
-  });
-
-  return (
-    <div>
-      <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
-        Clks: {clicker.clicks}
-      </div>
-    </div>
-  );
-}
-
-function updateClick(setClick, clicker) {
-  let newValue = Math.round(100 * ( clicker.clicks + clicker.incrementBy ))/100; 
-  console.log(newValue);
-  setClick({ ...clicker, clicks: newValue});
-}
-
-
-// redux store
+// redux store component
 function ClickFieldR(props) {
   const dispatch = useDispatch();
   const click = useSelector(selectClicks);
   const inc = useSelector(selectInc);
   console.log(`clicks: ${click}  inc: ${inc}`);
-  const clicks = getClicks();
 
   return (
     <div className="field-left">
-      <div className="click-field" onClick={() => dispatch(clickAction())} onDoubleClick={(e)=>e.preventDefault()}>
+      <div className="click-field" onClick={() => dispatch(clickerSlice.actions.click())} onDoubleClick={(e)=>e.preventDefault()}>
         Clicks: {click}<br />
         <span className="small-text">incrementing: {inc}</span>
       </div>
@@ -51,56 +21,47 @@ function ClickFieldR(props) {
   );
 }
 
-
-// redux
+// redux init
 const initialState = {
   clicks: 0,
   clickInc: 0.5,
+  incUpgrade: 0.2,
 };
-const store = configureStore({ reducer: rootReducer });
 
-function rootReducer(state = initialState, action) {
-  if (action.type === CLICK_ACTION) {
-    let newState = {...state};
-    newState.clicks += state.clickInc;
-    return newState;
-  }
-  if (action.type === UPGRADE_ACTION) {
-    // TODO extract click upd ... logic in model clicker
-    if (state.clicks < action.cost) return state;
-    let newState = {...state};
-    newState.clickInc += action.payload;
-    newState.clicks -= action.cost;
-    return newState;
-  }
-  return state;
-}
-const CLICK_ACTION = "click/clicked";
-const UPGRADE_ACTION = "click/upgrade";
-// make an action
-function clickAction() {
-  return { 
-    type: CLICK_ACTION, 
-    payload: 0,
-  };
-}
-function upgradeAction() {
-  return { 
-    type: UPGRADE_ACTION, 
-    payload: 0.1,
-    cost: 1,
-  };
-}
-// store.dispatch(clickAction());
 const selectClicks = (state) => Math.round(state.clicks*100)/100; //selector
 const selectInc = (state) => Math.round(state.clickInc*100)/100;
-const getClicks = () => selectClicks(store.getState());
+// slice way to do - reducers per action with immer
+const clickerSlice = createSlice({
+  name: "clicker",
+  initialState: initialState,
+  reducers: {
+    click: (state) => {
+      state.clicks += state.clickInc;
+    },
+    upgradeClick: (state, action) => {
+      const {inc, cost} = action.payload;
+      if (state.clicks < cost) return;
+      state.clickInc += inc;
+      state.clicks -= cost;
+    },
+  }
+});
+
+//use clickerSlice.reducer:
+const store = configureStore({ reducer: clickerSlice.reducer });
+//use clickerSlice.actions
+function makeUpgrade() {
+  return {
+    inc: 0.2,
+    cost: 1,
+  }
+}
 // -----
 
 function BuyUpdateButton(props) {
   const dispatch = useDispatch();
   const upgrade = () => {
-    dispatch(upgradeAction());
+    dispatch(clickerSlice.actions.upgradeClick(makeUpgrade()));
   }
   return (
     <button onClick={upgrade}>Upgrade {props.for} for 1 click</button>
@@ -115,7 +76,6 @@ let root = (
   <main>
     <Provider store={store}>
       <h1>Idler 02</h1>
-      <ClickField />
       <hr />
       <ClickFieldR />
       <BuyUpdateButton for="clicker"/>
