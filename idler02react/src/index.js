@@ -55,7 +55,7 @@ function ClickFieldR(props) {
 // redux
 const initialState = {
   clicks: 0,
-  clickInc: 0.05,
+  clickInc: 0.5,
 };
 const store = configureStore({ reducer: rootReducer });
 
@@ -66,8 +66,11 @@ function rootReducer(state = initialState, action) {
     return newState;
   }
   if (action.type === UPGRADE_ACTION) {
+    // TODO extract click upd ... logic in model clicker
+    if (state.clicks < action.cost) return state;
     let newState = {...state};
     newState.clickInc += action.payload;
+    newState.clicks -= action.cost;
     return newState;
   }
   return state;
@@ -85,6 +88,7 @@ function upgradeAction() {
   return { 
     type: UPGRADE_ACTION, 
     payload: 0.1,
+    cost: 1,
   };
 }
 // store.dispatch(clickAction());
@@ -99,8 +103,11 @@ function BuyUpdateButton(props) {
     dispatch(upgradeAction());
   }
   return (
-    <button onClick={upgrade}>Upgrade {props.for}</button>
+    <button onClick={upgrade}>Upgrade {props.for} for 1 click</button>
   );
+}
+
+class Clicker {
 }
 
 // ----------------------------------------
