@@ -32,6 +32,15 @@ function inChange(e) {
 }
 const input = <input value="{console.log('attaked?')}" type="text" onChange={inChange} />;
 
+function CompForRenderProp(props) {
+  return <div>CompForRenderProp</div>;
+}
+
+function RenderSome(props) {
+  const state = {};
+  return <div>R:{props.render(state)}{props.children}</div>;
+}
+
 let mainElement = 
   <main>
     <div>
@@ -43,6 +52,7 @@ let mainElement =
       {formatHeader("Abc")}
       {input}
       {inText}
+      <RenderSome render={CompForRenderProp}>D:</RenderSome>
     </div>
   </main>;
 
