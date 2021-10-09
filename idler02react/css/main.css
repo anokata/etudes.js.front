@@ -40,6 +40,7 @@ p {
   margin: 0.5rem;
   cursor: pointer;
   user-select: none;
+  border-radius: 3px;
 }
 
 .click-field:hover {
@@ -56,9 +57,14 @@ p {
 
 .field-left {
   display: inline-block;
+  width: 10rem;
 }
 
 button {
   padding: 0.3rem;
   display: inline-block;
+}
+
+.small-text {
+  font-size: 10px;
 }

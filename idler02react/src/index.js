@@ -20,27 +20,11 @@ function ClickField(props) {
   return (
     <div>
       <div className="click-field" onClick={() => updateClick(setClick, clicker)}>
-        Clicks: {clicker.clicks}
+        Clks: {clicker.clicks}
       </div>
     </div>
   );
 }
-
-// redux store
-function ClickFieldR(props) {
-  const dispatch = useDispatch();
-  const click = useSelector(selectClicks);
-  // console.log("rclicks: ", click);
-
-  return (
-    <div className="field-left">
-      <div className="click-field" onClick={() => dispatch(clickAction())} onDoubleClick={(e)=>e.preventDefault()}>
-        Clicks 2: {getClicks()} {click}
-      </div>
-    </div>
-  );
-}
-
 
 function updateClick(setClick, clicker) {
   let newValue = Math.round(100 * ( clicker.clicks + clicker.incrementBy ))/100; 
@@ -48,35 +32,75 @@ function updateClick(setClick, clicker) {
   setClick({ ...clicker, clicks: newValue});
 }
 
+
+// redux store
+function ClickFieldR(props) {
+  const dispatch = useDispatch();
+  const click = useSelector(selectClicks);
+  const inc = useSelector(selectInc);
+  console.log(`clicks: ${click}  inc: ${inc}`);
+  const clicks = getClicks();
+
+  return (
+    <div className="field-left">
+      <div className="click-field" onClick={() => dispatch(clickAction())} onDoubleClick={(e)=>e.preventDefault()}>
+        Clicks: {click}<br />
+        <span className="small-text">incrementing: {inc}</span>
+      </div>
+    </div>
+  );
+}
+
+
 // redux
 const initialState = {
   clicks: 0,
+  clickInc: 0.05,
 };
 const store = configureStore({ reducer: rootReducer });
 
 function rootReducer(state = initialState, action) {
   if (action.type === CLICK_ACTION) {
     let newState = {...state};
-    newState.clicks += 0.1;
+    newState.clicks += state.clickInc;
+    return newState;
+  }
+  if (action.type === UPGRADE_ACTION) {
+    let newState = {...state};
+    newState.clickInc += action.payload;
     return newState;
   }
   return state;
 }
 const CLICK_ACTION = "click/clicked";
+const UPGRADE_ACTION = "click/upgrade";
 // make an action
 function clickAction() {
   return { 
     type: CLICK_ACTION, 
-    payload: 0 
+    payload: 0,
+  };
+}
+function upgradeAction() {
+  return { 
+    type: UPGRADE_ACTION, 
+    payload: 0.1,
   };
 }
 // store.dispatch(clickAction());
 const selectClicks = (state) => Math.round(state.clicks*100)/100; //selector
+const selectInc = (state) => Math.round(state.clickInc*100)/100;
 const getClicks = () => selectClicks(store.getState());
 // -----
 
 function BuyUpdateButton(props) {
-  return (<button>Upgrade {props.for}</button>);
+  const dispatch = useDispatch();
+  const upgrade = () => {
+    dispatch(upgradeAction());
+  }
+  return (
+    <button onClick={upgrade}>Upgrade {props.for}</button>
+  );
 }
 
 // ----------------------------------------
