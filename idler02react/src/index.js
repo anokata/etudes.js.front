@@ -28,15 +28,12 @@ function ClickField(props) {
 
 // redux store
 function ClickFieldR(props) {
-  useEffect(() => {
-    console.log("rclicks: ", getClicks());
-  });
   const dispatch = useDispatch();
   const click = useSelector(selectClicks);
-  console.log("rclicks: ", click);
+  // console.log("rclicks: ", click);
 
   return (
-    <div>
+    <div className="field-left">
       <div className="click-field" onClick={() => dispatch(clickAction())} onDoubleClick={(e)=>e.preventDefault()}>
         Clicks 2: {getClicks()} {click}
       </div>
@@ -78,12 +75,19 @@ const selectClicks = (state) => Math.round(state.clicks*100)/100; //selector
 const getClicks = () => selectClicks(store.getState());
 // -----
 
+function BuyUpdateButton(props) {
+  return (<button>Upgrade {props.for}</button>);
+}
+
+// ----------------------------------------
 let root = (
   <main>
     <Provider store={store}>
       <h1>Idler 02</h1>
       <ClickField />
+      <hr />
       <ClickFieldR />
+      <BuyUpdateButton for="clicker"/>
     </Provider>
   </main>
 );

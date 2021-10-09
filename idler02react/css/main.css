@@ -1,10 +1,9 @@
-@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500";
 
 * {
   margin: 0;
   padding: 0;
 }
-
 
 body {
   margin: 0 auto;
@@ -38,19 +37,28 @@ p {
 .click-field {
   background-color: #cdc;
   padding: 1rem;
-  margin: .5rem;
+  margin: 0.5rem;
   cursor: pointer;
-  user-select: none; 
+  user-select: none;
 }
 
-.click-field:hover { 
+.click-field:hover {
   background-color: #bcb;
   outline: 1px solid #cdc;
   transition: all 200ms;
 }
 
-.click-field:active { 
+.click-field:active {
   background-color: #bdb;
   outline: 1px solid #cec;
   transition: all 200ms;
+}
+
+.field-left {
+  display: inline-block;
+}
+
+button {
+  padding: 0.3rem;
+  display: inline-block;
 }
