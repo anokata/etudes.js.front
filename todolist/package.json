@@ -9,7 +9,7 @@
     "dev": "webpack serve",
     "build": "webpack",
     "tbuild": "tsc",
-    "upd": "npm run build; ga -f dist; gcm [build] dist; git push origin main"
+    "upd": "npm run build && ga -f dist && gcm [build] dist && git push origin main"
   },
   "keywords": [],
   "author": "",
