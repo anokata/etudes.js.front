@@ -34,3 +34,12 @@ h2 {
 p {
   margin: 1em 0;
 }
+
+.todo-input-area {
+  margin: .5rem;
+  display: flex;
+}
+.todo-input {
+  margin: .5rem;
+}
+

@@ -7,6 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 //state
 
 function createData(name, text) {
@@ -19,15 +21,13 @@ const rows = [
 
 export default function TodoList(props) {
   return (<div>
-    <table>
-      <tbody>
-        <tr>
-          <td>+</td>
-        </tr>
-      </tbody>
-    </table>
 
-    <Button variant="contained">add</Button>
+    <div className="todo-input-area">
+      <div className="todo-input">
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      </div>
+      <Button variant="contained">add</Button>
+    </div>
 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
