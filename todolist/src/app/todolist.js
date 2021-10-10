@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,27 +10,53 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from 'react-redux';
-import { store, selectList } from './store';
+import { store, selectList, addTodo, makeTodoRec } from './store';
+import { connect } from 'react-redux';
 
 export default function TodoList(props) {
   return (
     <div>
-      <InputArea />
+      <InputAreaD />
       <TodoTable />
     </div>
   );
 }
 
-function InputArea(props) {
-  return (
-    <div className="todo-input-area">
-      <div className="todo-input">
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+class InputArea extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      value: "",
+    }
+  }
+
+  handleChange(e) {
+    this.setState({
+      value: e.target.value,
+    });
+  }
+
+  render() {
+    return (
+      <div className="todo-input-area">
+        <div className="todo-input">
+          <TextField id="outlined-basic" label="Todo text" variant="outlined" onChange={(e) => this.handleChange(e)}/>
+        </div>
+        <Button variant="contained" onClick={() => this.props.addTodo(makeTodoRec("New", this.state.value))}>add</Button>
       </div>
-      <Button variant="contained">add</Button>
-    </div>
-  );
+    );
+  }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTodo: (data) => {
+          dispatch(addTodo(data));
+        },
+    }
+};
+const InputAreaD = connect(null, mapDispatchToProps)(InputArea);
 
 function TodoTable(props) {
   const todolist = useSelector(selectList);

@@ -28,6 +28,6 @@ export const selectList = (state) => state.list;
 // const click = useSelector(selectA);
 // dispatch(Slice.actions.do({});
 
-function makeTodoRec(type, text) {
+export function makeTodoRec(type, text) {
   return {type, text, };
 }
