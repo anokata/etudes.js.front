@@ -29,19 +29,44 @@ function ClickFieldR(props:Props) {
   );
 }
 
+export type Action = {
+  type: string;
+  payload: any;
+}
+
+export interface ClickFieldProps {
+  selectClicks: (state: State) => number;
+  selectInc: (state: State) => number;
+  click: () => Action;
+}
+
+function ClickField(props:ClickFieldProps) {
+  const dispatch = useDispatch();
+  const click = useSelector(props.selectClicks);
+  const inc = useSelector(props.selectInc);
+  const clickAction = props.click;
+  console.log(`kilo: clicks: ${click}  inc: ${inc}`);
+
+  return (
+    <div className="field-left">
+      <div className="click-field" onClick={() => dispatch(clickAction())} onDoubleClick={(e)=>e.preventDefault()}>
+        KiloClicks: {click}<br />
+        <span className="small-text">incrementing: {inc}</span>
+      </div>
+    </div>
+  );
+}
 
 // TODO
 export interface ClickerType {
   baseProgression: number[];
-  init: ()=>void;
+  kiloClicks: number,
+  kiloClicksInc: number,
 }
 let Clicker  = {
   baseProgression: [1, 2, 5, 10, 25, 50, 75, 100, 150, 200],
-
-  init: () => {
-    console.log(this);
-    return this;
-  },
+  kiloClicks: 0,
+  kiloClicksInc: 0.1,
 }
 
 
@@ -50,17 +75,19 @@ export interface State {
   clicks: number,
   clickInc: number,
   incUpgrade: number,
-  cliker: ClickerType,
+  clicker: ClickerType,
 };
 const initialState: State = {
   clicks: 0,
   clickInc: 0.5,
   incUpgrade: 0.2,
-  cliker: Clicker,
+  clicker: Clicker,
 };
 
 const selectClicks = (state: State) => Math.round(state.clicks*100)/100; //selector
 const selectInc = (state: State) => Math.round(state.clickInc*100)/100;
+const selectKiloClicks = (state: State) => Math.round(state.clicker.kiloClicks*100)/100; //selector
+const selectKiloInc = (state: State) => Math.round(state.clicker.kiloClicksInc*100)/100;
 // slice way to do - reducers per action with immer
 const clickerSlice = createSlice({
   name: "clicker",
@@ -69,11 +96,14 @@ const clickerSlice = createSlice({
     click: (state) => {
       state.clicks += state.clickInc;
     },
-    upgradeClick: (state, action) => {
+    upgradeClick: (state, action: Action) => {
       const {inc, cost} = action.payload;
       if (state.clicks < cost) return;
       state.clickInc += inc;
       state.clicks -= cost;
+    },
+    kiloClick: (state) => {
+      state.clicker.kiloClicks += state.clicker.kiloClicksInc;
     },
   }
 });
@@ -107,6 +137,8 @@ let root = (
       <hr />
       <ClickFieldR />
       <BuyUpdateButton for="clicker"/>
+      <hr />
+      <ClickField selectClicks={selectKiloClicks} selectInc={selectKiloInc} click={clickerSlice.actions.kiloClick}/>
     </Provider>
   </main>
 );
