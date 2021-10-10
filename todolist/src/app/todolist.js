@@ -19,16 +19,20 @@ const rows = [
   createData("-", "do something"),
 ];
 
-export default function TodoList(props) {
-  return (<div>
 
+function InputArea(props) {
+  return (
     <div className="todo-input-area">
       <div className="todo-input">
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       </div>
       <Button variant="contained">add</Button>
     </div>
+  );
+}
 
+function TodoTable(props) {
+  return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -52,6 +56,12 @@ export default function TodoList(props) {
         </TableBody>
       </Table>
     </TableContainer>
+  );
+}
 
+export default function TodoList(props) {
+  return (<div>
+    <InputArea />
+    <TodoTable />
   </div>);
 }
