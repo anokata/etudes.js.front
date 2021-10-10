@@ -20,17 +20,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ \"./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\n\n\n\n\n // redux store component\n\nfunction ClickFieldR(props) {\n  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();\n  var click = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(selectClicks);\n  var inc = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(selectInc);\n  console.log(\"clicks: \".concat(click, \"  inc: \").concat(inc));\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"field-left\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"click-field\",\n    onClick: function onClick() {\n      return dispatch(clickerSlice.actions.click());\n    },\n    onDoubleClick: function onDoubleClick(e) {\n      return e.preventDefault();\n    }\n  }, \"Clicks: \", click, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"br\", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"span\", {\n    className: \"small-text\"\n  }, \"incrementing: \", inc)));\n} // redux init\n\n\nvar initialState = {\n  clicks: 0,\n  clickInc: 0.5,\n  incUpgrade: 0.2\n};\n\nvar selectClicks = function selectClicks(state) {\n  return Math.round(state.clicks * 100) / 100;\n}; //selector\n\n\nvar selectInc = function selectInc(state) {\n  return Math.round(state.clickInc * 100) / 100;\n}; // slice way to do - reducers per action with immer\n\n\nvar clickerSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createSlice)({\n  name: \"clicker\",\n  initialState: initialState,\n  reducers: {\n    click: function click(state) {\n      state.clicks += state.clickInc;\n    },\n    upgradeClick: function upgradeClick(state, action) {\n      var _action$payload = action.payload,\n          inc = _action$payload.inc,\n          cost = _action$payload.cost;\n      if (state.clicks < cost) return;\n      state.clickInc += inc;\n      state.clicks -= cost;\n    }\n  }\n}); //use clickerSlice.reducer:\n\nvar store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.configureStore)({\n  reducer: clickerSlice.reducer\n}); //use clickerSlice.actions\n\nfunction makeUpgrade() {\n  return {\n    inc: 0.2,\n    cost: 1\n  };\n} // -----\n\n\nfunction BuyUpdateButton(props) {\n  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();\n\n  var upgrade = function upgrade() {\n    dispatch(clickerSlice.actions.upgradeClick(makeUpgrade()));\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", {\n    onClick: upgrade\n  }, \"Upgrade \", props[\"for\"], \" for 1 click\");\n}\n\nvar Clicker = function Clicker() {\n  _classCallCheck(this, Clicker);\n}; // ----------------------------------------\n\n\nvar root = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"main\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {\n  store: store\n}, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"Idler 02\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"hr\", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickFieldR, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BuyUpdateButton, {\n  \"for\": \"clicker\"\n})));\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render(root, document.getElementById(\"root\"));\n\n//# sourceURL=webpack://idler02/./src/index.js?");
-
-/***/ }),
-
 /***/ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
@@ -525,6 +514,17 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./src/index.tsx":
+/*!***********************!*\
+  !*** ./src/index.tsx ***!
+  \***********************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nvar react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\"));\r\nvar react_redux_1 = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\r\nvar toolkit_1 = __webpack_require__(/*! @reduxjs/toolkit */ \"./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js\");\r\n// kilo mega clicks\r\n// dblclickers\r\nvar x = \"a\";\r\nconsole.log(\"hello from TS: \" + x);\r\n;\r\n;\r\nfunction ClickFieldR(props) {\r\n    var dispatch = (0, react_redux_1.useDispatch)();\r\n    var click = (0, react_redux_1.useSelector)(selectClicks);\r\n    var inc = (0, react_redux_1.useSelector)(selectInc);\r\n    console.log(\"clicks: \" + click + \"  inc: \" + inc);\r\n    return (react_1.default.createElement(\"div\", { className: \"field-left\" },\r\n        react_1.default.createElement(\"div\", { className: \"click-field\", onClick: function () { return dispatch(clickerSlice.actions.click()); }, onDoubleClick: function (e) { return e.preventDefault(); } },\r\n            \"Clicks: \",\r\n            click,\r\n            react_1.default.createElement(\"br\", null),\r\n            react_1.default.createElement(\"span\", { className: \"small-text\" },\r\n                \"incrementing: \",\r\n                inc))));\r\n}\r\n;\r\nvar initialState = {\r\n    clicks: 0,\r\n    clickInc: 0.5,\r\n    incUpgrade: 0.2,\r\n};\r\nvar selectClicks = function (state) { return Math.round(state.clicks * 100) / 100; }; //selector\r\nvar selectInc = function (state) { return Math.round(state.clickInc * 100) / 100; };\r\n// slice way to do - reducers per action with immer\r\nvar clickerSlice = (0, toolkit_1.createSlice)({\r\n    name: \"clicker\",\r\n    initialState: initialState,\r\n    reducers: {\r\n        click: function (state) {\r\n            state.clicks += state.clickInc;\r\n        },\r\n        upgradeClick: function (state, action) {\r\n            var _a = action.payload, inc = _a.inc, cost = _a.cost;\r\n            if (state.clicks < cost)\r\n                return;\r\n            state.clickInc += inc;\r\n            state.clicks -= cost;\r\n        },\r\n    }\r\n});\r\n//use clickerSlice.reducer:\r\nvar store = (0, toolkit_1.configureStore)({ reducer: clickerSlice.reducer });\r\n//use clickerSlice.actions\r\nfunction makeUpgrade() {\r\n    return {\r\n        inc: 0.2,\r\n        cost: 1,\r\n    };\r\n}\r\n// -----\r\nfunction BuyUpdateButton(props) {\r\n    var dispatch = (0, react_redux_1.useDispatch)();\r\n    var upgrade = function () {\r\n        dispatch(clickerSlice.actions.upgradeClick(makeUpgrade()));\r\n    };\r\n    return (react_1.default.createElement(\"button\", { onClick: upgrade },\r\n        \"Upgrade \",\r\n        props.for,\r\n        \" for 1 click\"));\r\n}\r\nvar Clicker = /** @class */ (function () {\r\n    function Clicker() {\r\n    }\r\n    return Clicker;\r\n}());\r\n// ----------------------------------------\r\nvar root = (react_1.default.createElement(\"main\", null,\r\n    react_1.default.createElement(react_redux_1.Provider, { store: store },\r\n        react_1.default.createElement(\"h1\", null, \"Idler 02\"),\r\n        react_1.default.createElement(\"hr\", null),\r\n        react_1.default.createElement(ClickFieldR, null),\r\n        react_1.default.createElement(BuyUpdateButton, { for: \"clicker\" }))));\r\nreact_dom_1.default.render(root, document.getElementById(\"root\"));\r\n\n\n//# sourceURL=webpack://idler02/./src/index.tsx?");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
@@ -589,7 +589,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -640,8 +640,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.tsx");
 /******/ 	
 /******/ })()
 ;
