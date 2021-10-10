@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from 'react-redux';
-import { store, selectList, addTodo, makeTodoRec } from './store';
+import { store, selectList, addTodo, delTodo, makeTodoRec } from './store';
 import { connect } from 'react-redux';
 
 export default function TodoList(props) {
@@ -54,9 +54,21 @@ const mapDispatchToProps = (dispatch) => {
         addTodo: (data) => {
           dispatch(addTodo(data));
         },
+        delTodo: (id) => {
+          dispatch(delTodo(id));
+        },
     }
 };
 const InputAreaD = connect(null, mapDispatchToProps)(InputArea);
+
+class DelTodoButtonPlain extends React.Component {
+  render() {
+    return (
+        <Button variant="contained" onClick={() => this.props.delTodo(this.props.id)}>X</Button>
+    );
+  }
+}
+const DelTodoButton = connect(null, mapDispatchToProps)(DelTodoButtonPlain);
 
 function TodoTable(props) {
   const todolist = useSelector(selectList);
@@ -65,6 +77,7 @@ function TodoTable(props) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell>Delete</TableCell>
             <TableCell>Type</TableCell>
             <TableCell align="left">Text</TableCell>
           </TableRow>
@@ -72,9 +85,12 @@ function TodoTable(props) {
         <TableBody>
           {todolist.map((row, i) => (
             <TableRow
-              key={i}
+              key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
+              <TableCell component="th" scope="row">
+                <DelTodoButton id={row.id} />
+              </TableCell>
               <TableCell component="th" scope="row">
                 {row.type}
               </TableCell>
