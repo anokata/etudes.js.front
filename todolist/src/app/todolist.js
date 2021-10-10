@@ -9,7 +9,8 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-//state
+import { useSelector, useDispatch } from 'react-redux';
+import { store, selectList } from './store';
 
 export default function TodoList(props) {
   return (
@@ -19,12 +20,6 @@ export default function TodoList(props) {
     </div>
   );
 }
-
-function createData(name, text) {
-  return { name, text };
-}
-
-const rows = [createData("-", "do something")];
 
 function InputArea(props) {
   return (
@@ -38,6 +33,7 @@ function InputArea(props) {
 }
 
 function TodoTable(props) {
+  const todolist = useSelector(selectList);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -48,13 +44,13 @@ function TodoTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {todolist.map((row, i) => (
             <TableRow
-              key={row.name}
+              key={i}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.type}
               </TableCell>
               <TableCell align="left">{row.text}</TableCell>
             </TableRow>
