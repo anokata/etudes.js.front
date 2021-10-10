@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch, Provider } from 'react-redux';
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+// kilo mega clicks
+// dblclickers
 
 // redux store component
 function ClickFieldR(props) {
