@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch, Provider } from 'react-redux';
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 // kilo mega clicks
-// dblclickers
+// dblclickers, autoclk
+// each 10 25 50... increase more
+// increasing func
 let x:string = "a";
 console.log(`hello from TS: ${x}`);
 // redux store component
@@ -27,16 +29,34 @@ function ClickFieldR(props:Props) {
   );
 }
 
+
+// TODO
+export interface ClickerType {
+  baseProgression: number[];
+  init: ()=>void;
+}
+let Clicker  = {
+  baseProgression: [1, 2, 5, 10, 25, 50, 75, 100, 150, 200],
+
+  init: () => {
+    console.log(this);
+    return this;
+  },
+}
+
+
 // redux init
 export interface State {
   clicks: number,
   clickInc: number,
   incUpgrade: number,
+  cliker: ClickerType,
 };
 const initialState: State = {
   clicks: 0,
   clickInc: 0.5,
   incUpgrade: 0.2,
+  cliker: Clicker,
 };
 
 const selectClicks = (state: State) => Math.round(state.clicks*100)/100; //selector
@@ -77,9 +97,6 @@ function BuyUpdateButton(props: BuyProps) {
   return (
     <button onClick={upgrade}>Upgrade {props.for} for 1 click</button>
   );
-}
-
-class Clicker {
 }
 
 // ----------------------------------------
