@@ -52,9 +52,6 @@ export const { addTodo, delTodo, toggleDoneStatus, changeFilter } =
   todoSlice.actions;
 export const selectList = (state) => state.list;
 export const selectFilter = (state) => state.filter;
-// const dispatch = useDispatch();
-// const click = useSelector(selectA);
-// dispatch(Slice.actions.do({});
 
 function genIDfunc() {
   let id = Math.round(Math.random() * 11231231);

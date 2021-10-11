@@ -35,9 +35,6 @@ import {
   changeFilter,
 } from "./store";
 import { connect } from "react-redux";
-/* TODO
-Фильтрация по типу (все, выполненные, невыполненные);
- * */
 
 export const TodoTypeDone = "Done";
 export const TodoTypeUndone = "Undone";
@@ -171,12 +168,13 @@ function todoFilterList(list, filter) {
     case TodoTypeDone: {
       return list.filter((e) => e.type === TodoTypeDone);
       break;
-    } 
+    }
     case TodoTypeUndone: {
       return list.filter((e) => e.type === TodoTypeUndone);
       break;
-    } 
-    default: return list;
+    }
+    default:
+      return list;
   }
 }
 
