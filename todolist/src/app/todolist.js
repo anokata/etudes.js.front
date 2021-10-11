@@ -11,6 +11,14 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import Divider from "@mui/material/Divider";
+import Badge from "@mui/material/Badge";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ClearIcon from "@mui/icons-material/Clear";
+import CardTravelIcon from "@mui/icons-material/CardTravel";
+import ConstructionIcon from "@mui/icons-material/Construction";
+import Grid from "@mui/material/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import {
   store,
@@ -25,6 +33,9 @@ import { connect } from "react-redux";
 Отображение счётчика выполненных и невыполненных задач;
 Фильтрация по типу (все, выполненные, невыполненные);
  * */
+
+export const TodoTypeDone = "Done";
+export const TodoTypeUndone = "Undone";
 
 export default function TodoList(props) {
   return (
@@ -74,6 +85,8 @@ class InputArea extends React.Component {
   render() {
     return (
       <div className="todo-input-area">
+      <Grid container spacing={1} sx={{ alignItems: 'center' }}>
+        <Grid item xs={5}>
         <div className="todo-input">
           <TextField
             id="outlined-basic"
@@ -82,11 +95,17 @@ class InputArea extends React.Component {
             onChange={(e) => this.handleChange(e)}
           />
         </div>
+      </Grid>
+      <Grid item xs={1}>
         <Button variant="contained" onClick={this.addTodoItem}>
           add
         </Button>
+      </Grid>
         <div className="alert">{this.state.alert}</div>
+      <Grid item xs={3}>
         <TodoCounter />
+      </Grid>
+      </Grid>
       </div>
     );
   }
@@ -184,7 +203,26 @@ function TodoAlert(props) {
 }
 
 function TodoCounter(props) {
-  return (
-    <div></div>
+  const todolist = useSelector(selectList);
+  const doneCount = todolist.reduce(
+    (total, el) => (el.type === TodoTypeDone ? total + 1 : total),
+    0
+  );
+  const unDoneCount = todolist.reduce(
+    (total, el) => (el.type === TodoTypeUndone ? total + 1 : total),
+    0
+  );
+  return (<Grid container spacing={1} sx={{ alignItems: 'center' }}>
+        <Grid item xs={2}>
+          <Badge badgeContent={doneCount} color="primary">
+            <CheckCircleIcon color="primary" />
+          </Badge>
+        </Grid>
+        <Grid item xs={2}>
+          <Badge badgeContent={unDoneCount} color="secondary">
+            <CardTravelIcon color="secondary" />
+          </Badge>
+        </Grid>
+      </Grid>
   );
 }
