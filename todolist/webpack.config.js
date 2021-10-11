@@ -1,11 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const PROD = JSON.parse(process.env.PROD_ENV || '0');
 
 module.exports = {
   mode: "development",
   entry: path.join(__dirname, "src", "index.js"),
   output: {
     path:path.resolve(__dirname, "dist"),
+    filename: PROD ? 'main.min.js' : 'main.js'
   },
   module: {
     rules: [
@@ -47,5 +52,13 @@ module.exports = {
         directory: path.join(__dirname, 'css'),
       },
     ],
+  },
+  optimization: {
+    // minimize: PROD,
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({ parallel: true }),
+      new UglifyJsPlugin(),
+  ]
   },
 }

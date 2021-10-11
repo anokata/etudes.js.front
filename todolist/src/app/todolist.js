@@ -12,6 +12,12 @@ import TextField from "@mui/material/TextField";
 import { useSelector, useDispatch } from 'react-redux';
 import { store, selectList, addTodo, delTodo, makeTodoRec } from './store';
 import { connect } from 'react-redux';
+/* TODO
+Новая запись добавляет при условии, что её длина меньше N символов или равна ей;
+Переключение статуса записи Выполнено / Невыполненный при клике на её название;
+Фильтрация по типу (все, выполненные, невыполненные);
+Отображение счётчика выполненных и невыполненных задач;
+ * */
 
 export default function TodoList(props) {
   return (
