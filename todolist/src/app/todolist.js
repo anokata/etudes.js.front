@@ -31,6 +31,7 @@ import {
   delTodo,
   toggleDoneStatus,
   makeTodoRec,
+  changeFilter,
 } from "./store";
 import { connect } from "react-redux";
 /* TODO
@@ -116,7 +117,7 @@ class InputArea extends React.Component {
           <div className="alert">{this.state.alert}</div>
 
           <Grid item xs={4}>
-            <TodoFilter />
+            <TodoFilterD />
           </Grid>
 
           <Grid item xs={3}>
@@ -137,6 +138,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     toggleDoneStatus: (id) => {
       dispatch(toggleDoneStatus(id));
+    },
+    changeFilter: (filter) => {
+      dispatch(changeFilter(filter));
     },
   };
 };
@@ -254,15 +258,18 @@ class TodoFilter extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
+  handleChange(e, newValue) {
+    if (!newValue) return;
     this.setState({
-      filter: e.target.value,
-    })
+      filter: newValue,
+    });
+    this.props.changeFilter(newValue);
   }
 
   render() {
     return (
       <ToggleButtonGroup
+        exclusive
         value={this.state.filter}
         onChange={this.handleChange}
         aria-label="filter"
@@ -280,3 +287,4 @@ class TodoFilter extends React.Component {
     );
   }
 }
+const TodoFilterD = connect(null, mapDispatchToProps)(TodoFilter);

@@ -32,7 +32,7 @@ const todoSlice = createSlice({
       state.list[index].type = oppositeType(state.list[index].type);
     },
     changeFilter: (state, action) => {
-      state.filter = actoin.payload;
+      state.filter = action.payload;
     },
   },
 });
