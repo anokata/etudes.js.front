@@ -65,10 +65,11 @@ p {
   color: #773 !important;
   user-select: none; 
   cursor: pointer;
+  font-weight: bold;
 }
 .type-cell-done {
   color: #373 !important;
 }
 .type-cell-undone {
-  color: #337 !important;
+  color: #733 !important;
 }

@@ -22,9 +22,8 @@ import {
 } from "./store";
 import { connect } from "react-redux";
 /* TODO
-Переключение статуса записи Выполнено / Невыполненный при клике на её название;
-Фильтрация по типу (все, выполненные, невыполненные);
 Отображение счётчика выполненных и невыполненных задач;
+Фильтрация по типу (все, выполненные, невыполненные);
  * */
 
 export default function TodoList(props) {
@@ -87,6 +86,7 @@ class InputArea extends React.Component {
           add
         </Button>
         <div className="alert">{this.state.alert}</div>
+        <TodoCounter />
       </div>
     );
   }
@@ -180,5 +180,11 @@ function TodoAlert(props) {
     <Stack sx={{ width: "100%" }} spacing={2}>
       <Alert severity="warning">{props.text}</Alert>
     </Stack>
+  );
+}
+
+function TodoCounter(props) {
+  return (
+    <div></div>
   );
 }
