@@ -27,6 +27,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   store,
   selectList,
+  selectFilter,
   addTodo,
   delTodo,
   toggleDoneStatus,
@@ -40,6 +41,7 @@ import { connect } from "react-redux";
 
 export const TodoTypeDone = "Done";
 export const TodoTypeUndone = "Undone";
+export const TodoFilterAll = "all";
 
 export default function TodoList(props) {
   return (
@@ -160,9 +162,29 @@ class DelTodoButtonPlain extends React.Component {
 }
 const DelTodoButton = connect(null, mapDispatchToProps)(DelTodoButtonPlain);
 
+function todoFilterList(list, filter) {
+  switch (filter) {
+    case TodoFilterAll: {
+      return list;
+      break;
+    }
+    case TodoTypeDone: {
+      return list.filter((e) => e.type === TodoTypeDone);
+      break;
+    } 
+    case TodoTypeUndone: {
+      return list.filter((e) => e.type === TodoTypeUndone);
+      break;
+    } 
+    default: return list;
+  }
+}
+
 function TodoTable(props) {
   const dispatch = useDispatch();
   const todolist = useSelector(selectList);
+  const filter = useSelector(selectFilter);
+  const filtredList = todoFilterList(todolist, filter);
   const tableHead = (
     <TableHead>
       <TableRow>
@@ -185,7 +207,7 @@ function TodoTable(props) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         {tableHead}
         <TableBody>
-          {todolist.map((row, i) => (
+          {filtredList.map((row, i) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -277,10 +299,10 @@ class TodoFilter extends React.Component {
         <ToggleButton value="all" aria-label="all">
           <AllInclusiveIcon />
         </ToggleButton>
-        <ToggleButton value="done" aria-label="done">
+        <ToggleButton value={TodoTypeDone} aria-label={TodoTypeDone}>
           <CheckCircleIcon color="primary" />
         </ToggleButton>
-        <ToggleButton value="undone" aria-label="undone">
+        <ToggleButton value={TodoTypeUndone} aria-label={TodoTypeUndone}>
           <CardTravelIcon color="secondary" />
         </ToggleButton>
       </ToggleButtonGroup>

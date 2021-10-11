@@ -51,6 +51,7 @@ export const store = configureStore({ reducer: todoSlice.reducer });
 export const { addTodo, delTodo, toggleDoneStatus, changeFilter } =
   todoSlice.actions;
 export const selectList = (state) => state.list;
+export const selectFilter = (state) => state.filter;
 // const dispatch = useDispatch();
 // const click = useSelector(selectA);
 // dispatch(Slice.actions.do({});
