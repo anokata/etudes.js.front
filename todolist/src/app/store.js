@@ -20,7 +20,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       const {id, type, text} = action.payload;
-      state.list.push(makeTodoRec(type, text));
+      state.list.unshift(makeTodoRec(type, text));
     },
     delTodo: (state, action) => {
       const id = action.payload;
