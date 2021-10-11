@@ -30,7 +30,6 @@ import {
 } from "./store";
 import { connect } from "react-redux";
 /* TODO
-Отображение счётчика выполненных и невыполненных задач;
 Фильтрация по типу (все, выполненные, невыполненные);
  * */
 
@@ -52,6 +51,7 @@ class InputArea extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.addTodoItem = this.addTodoItem.bind(this);
     this.state = {
       value: "",
@@ -63,6 +63,12 @@ class InputArea extends React.Component {
     this.setState({
       value: e.target.value,
     });
+  }
+  
+  handleKeyDown(e) {
+    if (e.key === "Enter") {
+      this.addTodoItem();
+    }
   }
 
   addTodoItem() {
@@ -93,6 +99,7 @@ class InputArea extends React.Component {
             label="Todo text"
             variant="outlined"
             onChange={(e) => this.handleChange(e)}
+            onKeyDown={(e) => this.handleKeyDown(e)}
           />
         </div>
       </Grid>
