@@ -18,7 +18,11 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ClearIcon from "@mui/icons-material/Clear";
 import CardTravelIcon from "@mui/icons-material/CardTravel";
 import ConstructionIcon from "@mui/icons-material/Construction";
+import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
+import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import Grid from "@mui/material/Grid";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useSelector, useDispatch } from "react-redux";
 import {
   store,
@@ -64,7 +68,7 @@ class InputArea extends React.Component {
       value: e.target.value,
     });
   }
-  
+
   handleKeyDown(e) {
     if (e.key === "Enter") {
       this.addTodoItem();
@@ -91,28 +95,34 @@ class InputArea extends React.Component {
   render() {
     return (
       <div className="todo-input-area">
-      <Grid container spacing={1} sx={{ alignItems: 'center' }}>
-        <Grid item xs={5}>
-        <div className="todo-input">
-          <TextField
-            id="outlined-basic"
-            label="Todo text"
-            variant="outlined"
-            onChange={(e) => this.handleChange(e)}
-            onKeyDown={(e) => this.handleKeyDown(e)}
-          />
-        </div>
-      </Grid>
-      <Grid item xs={1}>
-        <Button variant="contained" onClick={this.addTodoItem}>
-          add
-        </Button>
-      </Grid>
-        <div className="alert">{this.state.alert}</div>
-      <Grid item xs={3}>
-        <TodoCounter />
-      </Grid>
-      </Grid>
+        <Grid container spacing={1} sx={{ alignItems: "center" }}>
+          <Grid item xs={4}>
+            <div className="todo-input">
+              <TextField
+                id="outlined-basic"
+                label="Todo text"
+                variant="outlined"
+                onChange={(e) => this.handleChange(e)}
+                onKeyDown={(e) => this.handleKeyDown(e)}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={1}>
+            <Button variant="contained" onClick={this.addTodoItem}>
+              add
+            </Button>
+          </Grid>
+
+          <div className="alert">{this.state.alert}</div>
+
+          <Grid item xs={4}>
+            <TodoFilter />
+          </Grid>
+
+          <Grid item xs={3}>
+            <TodoCounter />
+          </Grid>
+        </Grid>
       </div>
     );
   }
@@ -219,17 +229,54 @@ function TodoCounter(props) {
     (total, el) => (el.type === TodoTypeUndone ? total + 1 : total),
     0
   );
-  return (<Grid container spacing={1} sx={{ alignItems: 'center' }}>
-        <Grid item xs={2}>
-          <Badge badgeContent={doneCount} color="primary">
-            <CheckCircleIcon color="primary" />
-          </Badge>
-        </Grid>
-        <Grid item xs={2}>
-          <Badge badgeContent={unDoneCount} color="secondary">
-            <CardTravelIcon color="secondary" />
-          </Badge>
-        </Grid>
+  return (
+    <Grid container spacing={1} sx={{ alignItems: "center" }}>
+      <Grid item xs={2}>
+        <Badge badgeContent={doneCount} color="primary">
+          <CheckCircleIcon color="primary" />
+        </Badge>
       </Grid>
+      <Grid item xs={2}>
+        <Badge badgeContent={unDoneCount} color="secondary">
+          <CardTravelIcon color="secondary" />
+        </Badge>
+      </Grid>
+    </Grid>
   );
+}
+
+class TodoFilter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: "all",
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      filter: e.target.value,
+    })
+  }
+
+  render() {
+    return (
+      <ToggleButtonGroup
+        value={this.state.filter}
+        onChange={this.handleChange}
+        aria-label="filter"
+      >
+        <ToggleButton value="all" aria-label="all">
+          <AllInclusiveIcon />
+        </ToggleButton>
+        <ToggleButton value="done" aria-label="done">
+          <CheckCircleIcon color="primary" />
+        </ToggleButton>
+        <ToggleButton value="undone" aria-label="undone">
+          <CardTravelIcon color="secondary" />
+        </ToggleButton>
+      </ToggleButtonGroup>
+    );
+  }
 }
