@@ -4,11 +4,11 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const genID = genIDfunc();
 const mockData = [
-  makeTodoRec("-", "do todo list"),
-  makeTodoRec("A", "do somthing else..."),
-  makeTodoRec("b", "do somthing else..."),
-  makeTodoRec("C", "do somthing else..."),
-  makeTodoRec("d", "do somthing else..."),
+  makeTodoRec("Undone", "do todo list"),
+  makeTodoRec("Undone", "do somthing else..."),
+  makeTodoRec("Undone", "do somthing else..."),
+  makeTodoRec("Undone", "do somthing else..."),
+  makeTodoRec("Done", "do somthing else..."),
 ];
 const initialState = {
   list: mockData,
@@ -23,16 +23,28 @@ const todoSlice = createSlice({
       state.list.unshift(makeTodoRec(type, text));
     },
     delTodo: (state, action) => {
-      const id = action.payload;
-      const delIndex = state.list.findIndex((e) => e.id === id);
-      console.log(`del ${id} #${delIndex}`);
+      const delIndex = getTodoElemByIdAction(state, action);
       state.list.splice(delIndex, 1);
+    },
+    toggleDoneStatus: (state, action) => {
+      const index = getTodoElemByIdAction(state, action);
+      state.list[index].type = oppositeType(state.list[index].type);
     }
   }
 });
 
+function oppositeType(type){
+  if (type === "Undone") return "Done";
+  if (type === "Done") return "Undone";
+}
+
+function getTodoElemByIdAction(state, action) {
+      const id = action.payload;
+      return state.list.findIndex((e) => e.id === id);
+}
+
 export const store = configureStore({ reducer: todoSlice.reducer });
-export const {addTodo, delTodo} = todoSlice.actions;
+export const {addTodo, delTodo, toggleDoneStatus} = todoSlice.actions;
 export const selectList = (state) => state.list;
 // const dispatch = useDispatch();
 // const click = useSelector(selectA);

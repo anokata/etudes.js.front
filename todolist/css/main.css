@@ -48,3 +48,26 @@ p {
   right: 1rem;
   top: 1rem;
 }
+
+.todo-text {
+  cursor: pointer;
+  border-radius: 5px;
+  user-select: none; 
+}
+
+.todo-text:hover {
+    background-color: #eee;
+    color: #484;
+    transition: all 300ms;
+}
+
+.type-cell {
+  color: #773 !important;
+  user-select: none; 
+}
+.type-cell-done {
+  color: #373 !important;
+}
+.type-cell-undone {
+  color: #337 !important;
+}

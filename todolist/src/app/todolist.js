@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from 'react-redux';
-import { store, selectList, addTodo, delTodo, makeTodoRec } from './store';
+import { store, selectList, addTodo, delTodo, toggleDoneStatus, makeTodoRec } from './store';
 import { connect } from 'react-redux';
 /* TODO
 Переключение статуса записи Выполнено / Невыполненный при клике на её название;
@@ -89,6 +89,9 @@ const mapDispatchToProps = (dispatch) => {
         delTodo: (id) => {
           dispatch(delTodo(id));
         },
+        toggleDoneStatus: (id) => {
+          dispatch(toggleDoneStatus(id));
+        },
     }
 };
 const InputAreaD = connect(null, mapDispatchToProps)(InputArea);
@@ -103,17 +106,29 @@ class DelTodoButtonPlain extends React.Component {
 const DelTodoButton = connect(null, mapDispatchToProps)(DelTodoButtonPlain);
 
 function TodoTable(props) {
+  const dispatch = useDispatch();
   const todolist = useSelector(selectList);
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+  const tableHead = (
         <TableHead>
           <TableRow>
             <TableCell>Delete</TableCell>
             <TableCell>Type</TableCell>
-            <TableCell align="left">Text</TableCell>
+            <TableCell>Text</TableCell>
           </TableRow>
         </TableHead>
+  );
+  const handleClick = (e, id) => {
+    dispatch(toggleDoneStatus(id));
+  };
+  const typeClass = (type) => {
+    if (type === "Done") return "type-cell-done";
+    if (type === "Undone") return "type-cell-undone";
+    return "";
+  }
+  return (
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        {tableHead}
         <TableBody>
           {todolist.map((row, i) => (
             <TableRow
@@ -123,10 +138,12 @@ function TodoTable(props) {
               <TableCell component="th" scope="row">
                 <DelTodoButton id={row.id} />
               </TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" className={`type-cell ${typeClass(row.type)}`}>
                 {row.type}
               </TableCell>
-              <TableCell align="left">{row.text}</TableCell>
+              <TableCell className="todo-text" onClick={(e) => handleClick(e, row.id)}>
+                {row.text}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
