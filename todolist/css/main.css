@@ -64,6 +64,7 @@ p {
 .type-cell {
   color: #773 !important;
   user-select: none; 
+  cursor: pointer;
 }
 .type-cell-done {
   color: #373 !important;
