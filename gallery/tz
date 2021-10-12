@@ -1,0 +1,13 @@
+https://www.artstation.com/api/v2/community/explore/projects/trending.json?page=1&dimension=2d&per_page=30&medium_ids%5B%5D=1
+[i].smaller_square_cover_urlpost  {"query":"anime girl","page":1,"per_page":50,"sorting":"relevance","pro_first":"1","filters":[],"additional_fields":[]}
+https://www.artstation.com/api/v2/search/projects.jsonhttps://picsum.photos/400/600
+
+photo gallery, react/redux TS src/common/GalleryApp/index.tsx
+
+any number of images
+preview, click, modal enlarge
+click arrow left/right scroll line by 1 img
+add info of img
+UX.
+
+https://materializecss.com/getting-started.html
