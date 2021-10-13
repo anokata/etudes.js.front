@@ -13,5 +13,5 @@ const ASlice = createSlice({
   }
 });
 
-const store = configureStore({ reducer: ASlice.reducer });
-export const { doX } = todoSlice.actions;
+export const store = configureStore({ reducer: ASlice.reducer });
+export const { doX } = ASlice.actions;
