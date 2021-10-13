@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-console.log(React);
-console.log(ReactDOM);
+import App from './app/app';
 
 ReactDOM.render(
-  <h1>good day webpack with react by babel!</h1>,
+  <App />,
   document.getElementById("root")
 );

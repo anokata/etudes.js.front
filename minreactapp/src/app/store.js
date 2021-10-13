@@ -8,14 +8,10 @@ const ASlice = createSlice({
   name: "a",
   initialState: initialState,
   reducers: {
-    do: (state) => {
+    doX: (state) => {
     },
   }
 });
 
 const store = configureStore({ reducer: ASlice.reducer });
-// const dispatch = useDispatch();
-// const click = useSelector(selectA);
-// dispatch(Slice.actions.do({});
-
-// <Provider store={store}>
+export const { doX } = todoSlice.actions;
