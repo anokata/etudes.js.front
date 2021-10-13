@@ -5,7 +5,8 @@ import { useSelector, useDispatch, Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { connect } from "react-redux";
 import { doX, store } from "./store";
-console.log(`hello from TS`);
+import M from 'materialize-css';
+import { Button, Card, Row, Col } from 'react-materialize';
 
 export interface Props {}
 
