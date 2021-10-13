@@ -1,10 +1,27 @@
+fetch: 
 https://www.artstation.com/api/v2/community/explore/projects/trending.json?page=1&dimension=2d&per_page=30&medium_ids%5B%5D=1
 [i].smaller_square_cover_urlpost  {"query":"anime girl","page":1,"per_page":50,"sorting":"relevance","pro_first":"1","filters":[],"additional_fields":[]}
 https://www.artstation.com/api/v2/search/projects.jsonhttps://picsum.photos/400/600
+
 https://picsum.photos/200/300
+https://harvardartmuseums.org/collections/api
+https://www.programmableweb.com/news/14-most-popular-art-apis/brief/2020/07/19
+https://public-apis.io/anime-public-apis-collection
+https://comicvine.gamespot.com/api/
+
+https://www.behance.net/dev
+https://myanimelist.net/apiconfig/references/api/v2
+https://anilist.gitbook.io/anilist-apiv2-docs/
+
+fetch("https://api.myanimelist.net/v2/manga", {
+Authorization: "todo", 
+"Access-Control-Allow-Origin": "*",
+})
+https://nordicapis.com/10-free-to-use-cors-proxies/
 
 photo gallery, react/redux TS src/common/GalleryApp/index.tsx
 
+next button
 any number of images
 preview, click, modal enlarge
 click arrow left/right scroll line by 1 img
