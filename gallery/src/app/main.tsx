@@ -22,9 +22,6 @@ export default function Main(props: Props) {
   return (
     <div>
       <Gallery count={5} />
-      <Button node="button" style={{ marginRight: "5px" }} waves="light">
-        More
-      </Button>
     </div>
   );
 }
@@ -35,6 +32,11 @@ class Gallery extends React.Component<GalleryProps> {
     this.state = {
       value: "",
     };
+  }
+
+  handleClick = ()=> {
+    const url = "https://www.artstation.com/api/v2/community/explore/projects/trending.json?page=1&dimension=2d&per_page=30&medium_ids%5B%5D=1";
+    fetch(url).then((r) => console.log(r));
   }
 
   render() {
@@ -53,6 +55,9 @@ class Gallery extends React.Component<GalleryProps> {
     return (
       <div className="gallery">
         {images}
+      <Button node="button" style={{ marginRight: "5px" }} waves="light" onClick={this.handleClick}>
+        More
+      </Button>
       </div>
     );
   }
