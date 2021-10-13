@@ -34,3 +34,12 @@ h2 {
 p {
   margin: 1em 0;
 }
+
+.gallery * {
+  margin: .5rem;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}

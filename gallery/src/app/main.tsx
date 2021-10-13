@@ -5,10 +5,13 @@ import { useSelector, useDispatch, Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { connect } from "react-redux";
 import { doX, store } from "./store";
-import M from 'materialize-css';
-import { Button, Card, Row, Col } from 'react-materialize';
+import M from "materialize-css";
+import { Button, Card, Row, Col, MediaBox } from "react-materialize";
 
-export interface Props {}
+export interface Props {};
+export interface GalleryProps {
+  count: number;
+};
 
 export type Action = {
   type: string;
@@ -18,31 +21,38 @@ export type Action = {
 export default function Main(props: Props) {
   return (
     <div>
-      <StGallery />
+      <Gallery count={5} />
+      <Button node="button" style={{ marginRight: "5px" }} waves="light">
+        More
+      </Button>
     </div>
   );
 }
 
-class Gallery extends React.Component {
-  constructor(props: Props) {
+class Gallery extends React.Component<GalleryProps> {
+  constructor(props: GalleryProps) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
     this.state = {
       value: "",
     };
   }
 
-  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      value: e.target.value,
-    });
-  }
-
   render() {
+    const images = Array(this.props.count || 3).fill(null).map((e, i) => 
+      <MediaBox
+      id="MediaBox_9"
+        options={{
+          inDuration: 275,
+          outDuration: 200,
+        }}
+        key={i}
+        >
+        <img src={`https://picsum.photos/800/600?random=${i}`} alt="" width="100" />
+      </MediaBox>
+    );
     return (
       <div className="gallery">
-        <img src="https://picsum.photos/200/300" alt="" />
-        {/* <input onChange={(e) => this.handleChange(e)} /> */}
+        {images}
       </div>
     );
   }
@@ -56,4 +66,4 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     },
   };
 };
-const StGallery = connect(null, mapDispatchToProps)(Gallery);
+// const StGallery = connect(null, mapDispatchToProps)(Gallery);
