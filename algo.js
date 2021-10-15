@@ -1,0 +1,2 @@
+function binSearch(arr, el) {
+}

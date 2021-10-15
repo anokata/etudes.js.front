@@ -1,3 +1,5 @@
+http://react-materialize.github.io/react-materialize/?path=/story/javascript-tabs--default
+
 fetch: 
 https://www.artstation.com/api/v2/community/explore/projects/trending.json?page=1&dimension=2d&per_page=30&medium_ids%5B%5D=1
 [i].smaller_square_cover_urlpost  {"query":"anime girl","page":1,"per_page":50,"sorting":"relevance","pro_first":"1","filters":[],"additional_fields":[]}
@@ -36,3 +38,5 @@ https://material.io/develop/web/getting-started
 https://codelabs.developers.google.com/codelabs/mdc-101-web/#0
 
 npm install materialize-css@next 
+
+http://react-materialize.github.io/react-materialize/?path=/story/javascript-tabs--default
