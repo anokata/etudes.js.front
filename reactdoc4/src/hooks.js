@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import ReactDOM from "react-dom";
 
 function State1() {
@@ -55,6 +55,27 @@ function TryContext() {
   );
 }
 
+// try useReducer
+function reducer(state, action) {
+  console.log(action)
+  switch (action) {
+    case "inc":
+      return {...state, val: state.val + 10}
+  }
+  return state
+}
+
+function TryReducer() {
+  const [state, dispatch] = useReducer(reducer, {val: 8})
+  return (
+    <div>
+      <hr />
+      Reducer: {state.val}
+      <button onClick={()=>dispatch("inc")}>inc</button>
+    </div>
+  );
+}
+
 const root = document.getElementById("hook");
 const elem = (
   <main>
@@ -63,6 +84,7 @@ const elem = (
     <Context.Provider value={obj}>
     <TryContext />
       </Context.Provider>
+    <TryReducer/>
   </main>
 );
 
