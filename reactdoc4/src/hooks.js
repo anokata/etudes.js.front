@@ -31,12 +31,21 @@ let obj = {
   val: 1,
   set: function() {this.val += 10},
 };
+// context that give a state 
 const Context = React.createContext(); // create Context obj with value {..} // props: Provider,  Consumer
 console.log("Context: ", Context);
-Context.displayName = 'CONTEXT!!';
+Context.displayName = 'tryCONTEXT!';
+
+function useTryContext() {
+  const context = React.useContext(Context)
+  if (!context) {
+    throw new Error(`useTryContext must be used within a Provider`)
+  }
+  return context
+}
 
 function TryContext() {
-  const context = useContext(Context); // get current context value
+  const context = useTryContext(); // get current context value
   // const {val, set} = useContext(Context); // get current context value
   const [v, setV] = useState(obj);
 
@@ -76,6 +85,32 @@ function TryReducer() {
   );
 }
 
+// Context again, give state
+const StateContext = React.createContext()
+
+// our hook to get state context
+function useStateContext() {
+  const context = React.useContext(StateContext)
+  if (!context) {
+    throw new Error("useStateContext must be used within a StateProvider")
+  }
+  return context
+}
+
+function StateProvider(props) {
+  // make state that will be given in context
+  const [value, setValue] = useState(1)
+  // give state in value of context provider
+  return <StateContext.Provider value={{value, setValue}} {...props} />
+}
+
+// use
+function StateContextUsingButton() {
+  // get state value thru context
+  const {value, setValue} = useStateContext()
+  return <button onClick={()=> setValue(value*5)}>state from context: {value}</button>
+}
+
 const root = document.getElementById("hook");
 const elem = (
   <main>
@@ -84,8 +119,15 @@ const elem = (
     <Context.Provider value={obj}>
     <TryContext />
       </Context.Provider>
+
     <TryReducer/>
+
+    <StateProvider >
+      <StateContextUsingButton />
+    </StateProvider>
   </main>
 );
+
+
 
 if (root) ReactDOM.render(elem, root);
