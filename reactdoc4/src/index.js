@@ -4,6 +4,7 @@ import Components from './components';
 import './form';
 import './statereduxtest';
 import './hooks';
+import './slomux';
 
 const headerH2 = <h2>Consectetur esse eveniet?</h2>;
 const user1 = {
