@@ -85,7 +85,7 @@ function TryReducer() {
   );
 }
 
-// Context again, give state
+// --- Context again, give state. Share state(val, setVal) by context geting from provider.value
 const StateContext = React.createContext()
 
 // our hook to get state context
@@ -110,6 +110,7 @@ function StateContextUsingButton() {
   const {value, setValue} = useStateContext()
   return <button onClick={()=> setValue(value*5)}>state from context: {value}</button>
 }
+
 
 const root = document.getElementById("hook");
 const elem = (
