@@ -22,7 +22,7 @@ const req = https.request(options, res => {
   console.log(`statusCode: ${res.statusCode}`)
 
   res.on('data', d => {
-    process.stdout.write(d)
+    afterAuth(d)
   })
 })
 
@@ -32,3 +32,15 @@ req.on('error', error => {
 
 req.write(data)
 req.end()
+
+function afterAuth(auth) {
+  console.log(typeof(auth))
+  // process.stdout.write(auth)
+  console.log(auth.toJSON().data)
+  console.log(auth.toString())
+  const obj = JSON.parse(auth.toString())
+  console.log(obj)
+  console.log(obj["access_token"])
+  // console.log(Object.keys(auth))
+
+}
