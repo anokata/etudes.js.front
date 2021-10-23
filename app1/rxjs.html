@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://unpkg.com/@reactivex/rxjs@6.0.0/dist/global/rxjs.umd.js"></script>
+</head>
+<body>
+ <input type="text">
+ <ul>
+ </ul>
+ <script>
+"use strict";
+const log = console.log;
+rxjs.of("rxjs").pipe(rxjs.operators.map(v => `hi ${v}!`)).subscribe(log);
+ </script>
+</body>
+</html>
