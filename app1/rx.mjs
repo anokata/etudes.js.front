@@ -39,3 +39,21 @@ const logFull = (...args) => {console.log(`Get Value: ${args[0]} and ${args}`)};
 rxjs.from("abcdefg").subscribe(logFull);
 
 // rxjs.interval(50).subscribe(log);
+// pipe map
+rxjs.from("abcdefg").pipe(rxjs.map(value=>value.toUpperCase())).subscribe(log);
+rxjs.of(1,3,5).pipe(rxjs.map(value=>value*202)).subscribe(log);
+function isPrime(n) {
+  if (n <= 1) return false;
+  if (n % 2 === 0) return false;
+  if (n % 3 === 0) return false;
+  const dv = Math.round(Math.sqrt(n));
+  for (let divisor = 5; divisor < dv; divisor++) {
+    if (n % divisor === 0) return false;
+  }
+  return true;
+}
+log("primes:");
+rxjs.from(Array.from(Array(100).fill(null).keys()))
+  .pipe(rxjs.filter(isPrime))
+  .subscribe(log);
+
