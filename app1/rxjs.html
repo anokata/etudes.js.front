@@ -13,6 +13,45 @@
 "use strict";
 const log = console.log;
 rxjs.of("rxjs").pipe(rxjs.operators.map(v => `hi ${v}!`)).subscribe(log);
+
+const input = document.querySelector('input');
+const ul = document.querySelector('ul');
+
+const getUsersRepsFromAPI = (username) => {
+  const url = `https://api.github.com/users/${ username }/repos`;
+  
+  return fetch(url)
+    .then(response => {
+      if(response.ok) {
+        return response.json();
+      }
+
+      throw new Error('Ошибка');
+    });
+}
+getUsersRepsFromAPI("anokata").then(log)
+
+const recordRepsToList = (reps) => {
+  reps.forEach((e, i) => {
+    if (!ul.children[i]) {
+      const newEl = document.createElement('li');
+      ul.appendChild(newEl);
+    }
+    const li = ul.children[i];
+    li.innerHTML = reps[i].name;
+  });
+
+  while (ul.children.length > reps.length) {
+    ul.removeChild(ul.lastChild);
+  }
+};
+
+
+const keyUp = rxjs.fromEvent(input, 'keyup');
+const keyValues = keyUp.pipe(rxjs.operators.map((e) => e.target.value));
+keyUp.subscribe(log);
+keyValues.subscribe(log);
+
  </script>
 </body>
 </html>
