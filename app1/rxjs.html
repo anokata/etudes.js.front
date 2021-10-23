@@ -47,10 +47,21 @@ const recordRepsToList = (reps) => {
 };
 
 
-const keyUp = rxjs.fromEvent(input, 'keyup');
-const keyValues = keyUp.pipe(rxjs.operators.map((e) => e.target.value));
+const keyUp = rxjs.fromEvent(input, 'keyup')
+  .pipe(
+    rxjs.operators.debounceTime(500),
+    rxjs.operators.map((e) => e.target.value),
+    rxjs.operators.filter((val) => val.length > 2),
+    rxjs.operators.distinctUntilChanged());
+
 keyUp.subscribe(log);
-keyValues.subscribe(log);
+
+keyUp
+     .pipe(rxjs.operators.mergeMap((val) => rxjs.from(getUsersRepsFromAPI(val))))
+  .subscribe({
+    next: val => recordRepsToList(val),
+  error: log})
+    //.subscribe((promise => promise.then(res => recordRepsToList(res))));
 
  </script>
 </body>
