@@ -34,4 +34,8 @@ setTimeout(() => subscription.unsubscribe(), 1000);
 const range1_5 = rxjs.of(1,2,3,4,5);
 rxjs.of("hi", "event").subscribe(log);
 
+const logFull = (...args) => {console.log(`Get Value: ${args[0]} and ${args}`)};
 
+rxjs.from("abcdefg").subscribe(logFull);
+
+// rxjs.interval(50).subscribe(log);
