@@ -57,7 +57,8 @@ const keyUp = rxjs.fromEvent(input, 'keyup')
 keyUp.subscribe(log);
 
 keyUp
-     .pipe(rxjs.operators.mergeMap((val) => rxjs.from(getUsersRepsFromAPI(val))))
+     .pipe(rxjs.operators.mergeMap((val) => rxjs.from(getUsersRepsFromAPI(val)).
+           pipe(rxjs.operators.catchError(err => of([])))))
   .subscribe({
     next: val => recordRepsToList(val),
   error: log})
