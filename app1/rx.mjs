@@ -29,3 +29,9 @@ const timer = new rxjs.Observable((observer) => {
 const subscription = timer.subscribe({ next: log });
 log(`after timer`);
 setTimeout(() => subscription.unsubscribe(), 1000);
+
+// simpler creation
+const range1_5 = rxjs.of(1,2,3,4,5);
+rxjs.of("hi", "event").subscribe(log);
+
+
