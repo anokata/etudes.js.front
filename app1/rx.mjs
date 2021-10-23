@@ -1,6 +1,5 @@
 import * as rxjs from "rxjs";
 const log = console.log;
-// log(rxjs, typeof rxjs);
 const observable = new rxjs.Observable((observer) => {
   // subscribe fn
   observer.next(1);
