@@ -68,8 +68,18 @@ keyUp
   });
 //.subscribe((promise => promise.then(res => recordRepsToList(res))));
 
-const requester = rxjs
-  .timer(0, 5000) // every 500 ms
-  .pipe(rxjs.operators.map(() => emulateRequest()));
+let requester = rxjs
+  .timer(0, 5000) // every 5000 ms
+  .pipe(
+    rxjs.operators.map(() => emulateRequest()),
+    rxjs.operators.mergeAll()
+  );
+// short way
+requester = rxjs
+  .timer(0, 1000) // every 1000 ms
+  .pipe(
+    rxjs.operators.mergeMap(() => emulateRequest()),
+  );
+// mergeMap = map + mergeAll
 
 requester.subscribe(log);
