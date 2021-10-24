@@ -1,76 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-  <script src="https://unpkg.com/@reactivex/rxjs@6.0.0/dist/global/rxjs.umd.js"></script>
-</head>
-<body>
- <input type="text">
- <ul>
- </ul>
- <script>
-"use strict";
-const log = console.log;
-rxjs.of("rxjs").pipe(rxjs.operators.map(v => `hi ${v}!`)).subscribe(log);
-
-const input = document.querySelector('input');
-const ul = document.querySelector('ul');
-
-const getUsersRepsFromAPI = (username) => {
-  const url = `https://api.github.com/users/${ username }/repos`;
-  
-  return fetch(url)
-    .then(response => {
-      if(response.ok) {
-        return response.json();
-      }
-
-      throw new Error('Ошибка');
-    });
-}
-getUsersRepsFromAPI("anokata").then(log)
-
-const recordRepsToList = (reps) => {
-  reps.forEach((e, i) => {
-    if (!ul.children[i]) {
-      const newEl = document.createElement('li');
-      ul.appendChild(newEl);
-    }
-    const li = ul.children[i];
-    li.innerHTML = reps[i].name;
-  });
-
-  while (ul.children.length > reps.length) {
-    ul.removeChild(ul.lastChild);
-  }
-};
-
-
-const keyUp = rxjs.fromEvent(input, 'keyup')
-  .pipe(
-    rxjs.operators.debounceTime(500),
-    rxjs.operators.map((e) => e.target.value),
-    rxjs.operators.filter((val) => val.length > 2),
-    rxjs.operators.distinctUntilChanged());
-
-keyUp.subscribe(log);
-
-keyUp
-     .pipe(rxjs.operators.mergeMap((val) => rxjs.from(getUsersRepsFromAPI(val)).
-           pipe(rxjs.operators.catchError(err => of([])))))
-  .subscribe({
-    next: val => recordRepsToList(val),
-  error: log})
-    //.subscribe((promise => promise.then(res => recordRepsToList(res))));
-
-function emulateRequest() {
-  return rxjs.timer(100).pipe(rxjs.operators.mapTo("{done}"));
-}
-
-const requester = rxjs.timer(0, 500).pipe(rxjs.operators.map(()=>emulateRequest()))
-requester.subscribe(log);
-
- </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script src="https://unpkg.com/@reactivex/rxjs@6.0.0/dist/global/rxjs.umd.js"></script>
+  </head>
+  <body>
+    <input type="text" />
+    <ul></ul>
+    <script src="rx.js"></script>
+  </body>
 </html>
