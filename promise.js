@@ -19,4 +19,19 @@ p1.then((r) => {
 // ---
 console.log("end.");
 
+const p2 = new Promise((res, rej) => {
+  log('p2 created');
+  setTimeout(()=>res('a'), 100);
+});
+
+p2
+  .then(v=>v+"b")
+  .then(v=>v+"c")
+  .finally(v=>v+"F") // no value
+  .catch(v=>v+"C")
+  .then(v=>v+"D")
+  .then(v=>Promise.reject(v+"R"))
+  .catch(v=>v+"!")
+  .then(v=>v+"Z")
+  .then(v=>log(`p2 in end: ${v}`));
 
