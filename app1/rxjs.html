@@ -64,6 +64,13 @@ keyUp
   error: log})
     //.subscribe((promise => promise.then(res => recordRepsToList(res))));
 
+function emulateRequest() {
+  return rxjs.timer(100).pipe(rxjs.operators.mapTo("{done}"));
+}
+
+const requester = rxjs.timer(0, 500).pipe(rxjs.operators.map(()=>emulateRequest()))
+requester.subscribe(log);
+
  </script>
 </body>
 </html>

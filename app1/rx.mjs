@@ -57,3 +57,6 @@ rxjs.from(Array.from(Array(100).fill(null).keys()))
   .pipe(rxjs.filter(isPrime))
   .subscribe(log);
 
+
+rxjs.timer(200).subscribe((v)=>log(`timer 200 ${v}`));
+
