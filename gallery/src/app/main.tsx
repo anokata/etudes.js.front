@@ -8,6 +8,10 @@ import { doX, store } from "./store";
 import M from "materialize-css";
 import { Button, Card, Row, Col, MediaBox } from "react-materialize";
 
+import * as rxjs from "rxjs";
+import {from, fromEvent, of } from "rxjs";
+import {scan, map } from "rxjs/operators";
+
 export interface Props {};
 export interface GalleryProps {
   count: number;
