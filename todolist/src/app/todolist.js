@@ -95,7 +95,7 @@ class InputArea extends React.Component {
   render() {
     return (
       <div className="todo-input-area">
-        <Grid container spacing={1} sx={{ alignItems: "center" }}>
+        <Grid container justifyContent="center" spacing={2} sx={{ alignItems: "center" }} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={4}>
             <div className="todo-input">
               <TextField
@@ -108,9 +108,11 @@ class InputArea extends React.Component {
             </div>
           </Grid>
           <Grid item xs={1}>
-            <Button variant="contained" onClick={this.addTodoItem}>
-              add
-            </Button>
+            <Box sx={{ m: -1 }}>
+              <Button variant="contained" onClick={this.addTodoItem}>
+                add
+              </Button>
+            </Box>
           </Grid>
 
           <div className="alert">{this.state.alert}</div>
