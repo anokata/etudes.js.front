@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "./store";
+import { sumOfPack } from "./banknote";
 
 export default function Main(props) {
   return <ATMdispatched />;
@@ -16,7 +17,7 @@ class ATM extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleNumpadInput = this.handleNumpadInput.bind(this);
     this.state = {
-      value: "5432",
+      value: "8550",
       info: "",
     };
   }
@@ -73,11 +74,11 @@ class ATM extends React.Component {
           <Numpad onNumpadInput={this.handleNumpadInput} />
           {/* <button onClick={() => this.props.deposite("2")}>Занести</button> */}
           <button onClick={() => this.getInfo()}>Справка</button>
+          <div>Остаток:{sumOfPack(this.props.selectBanknotes)}</div>
         </div>
 
         <div className="atm-side-info">
-          <div>Выдано:{this.props.selectGivePack}</div>
-          <div>Остаток:{this.props.selectReminder}</div>
+          <div>Выдано:{this.props.selectGivePack.length}</div>
           <div>
             Варианты
             <button>

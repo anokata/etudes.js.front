@@ -13,9 +13,17 @@ export default class BankNotePack {
   }
 
   take(amount) {
-    if (amount > this._count) throw new Error(`No such summ: ${amount}`);
+    if (amount > this._count) {
+      const lastCount = this._count;
+      this._count = 0;
+      return lastCount;
+    };
     this._count -= amount;
-    return this.count;
+    return amount;
+  }
+
+  get sum() {
+    return this.count * this.dignity;
   }
 
   toString() {
@@ -23,14 +31,31 @@ export default class BankNotePack {
   }
 }
 
+export function sumOfPack(banknotes) {
+  return banknotes.reduce((acc, b) => acc + b.sum, 0);
+}
+
 export function takeAmount(banknotes, amount) {
   console.log("take", amount);
   let taked = 0;
   let takedNotes = [];
+  banknotes.forEach((note) => {
+    // cat take such amount banknotes
+    if (amount > note.dignity) {
+      // calc count 
+      const count = Math.floor(amount / note.dignity);
+      const realtaked = note.take(count);
+      taked += realtaked * note.dignity;
+      amount -= realtaked * note.dignity;
+      takedNotes.push(new BankNotePack(realtaked, note.dignity));
+      // console.log(`take ${count} by ${note.dignity} taked ${realtaked}`)
+    }
+  });
 
+  console.log(takedNotes);
   return {
     banknotes: banknotes,
-    reminder: amount - taked,
+    reminder: sumOfPack(banknotes),
     givePack: takedNotes,
   };
 }
