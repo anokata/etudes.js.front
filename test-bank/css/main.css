@@ -34,3 +34,21 @@ h2 {
 p {
   margin: 1em 0;
 }
+
+.numpad {
+  border-radius: 5px;
+  border: 1px solid #555;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  height: 12em;
+  width: 12em;
+  padding: .5em;
+  margin: .5em;
+}
+
+.numpad-button {
+  width: 95%;
+  height: 95%;
+}
