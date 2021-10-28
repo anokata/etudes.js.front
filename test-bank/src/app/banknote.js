@@ -17,9 +17,20 @@ export default class BankNotePack {
     this._count -= amount;
     return this.count;
   }
-  
+
   toString() {
     return `BankNotePack[${this._count} of ${this.dignity}]`;
   }
 }
 
+export function takeAmount(banknotes, amount) {
+  console.log("take", amount);
+  let taked = 0;
+  let takedNotes = [];
+
+  return {
+    banknotes: banknotes,
+    reminder: amount - taked,
+    givePack: takedNotes,
+  };
+}

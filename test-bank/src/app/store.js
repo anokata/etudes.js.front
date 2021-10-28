@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch, Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import BankNotePack from "./banknote"
+import { takeAmount } from "./banknote"
 
 // dignity
 const initialState = {
@@ -14,6 +15,8 @@ const initialState = {
     new BankNotePack(100, 100),
     new BankNotePack(100, 50),
   ],
+  reminder: 0,
+  givePack: [],
 };
 
 const ASlice = createSlice({
@@ -26,7 +29,10 @@ const ASlice = createSlice({
     },
     take: (state, action) => {
       const amount = action.payload;
-      console.log("take", amount);
+      const result = takeAmount(state.banknotes, amount)
+      state.banknotes = result.banknotes;
+      state.reminder = result.reminder;
+      state.givePack = result.givePack;
     },
     banknoteInfo: (state) => {},
   },
@@ -47,5 +53,7 @@ export const mapDispatchToProps = (dispatch) => {
 };
 
 export const mapStateToProps = state => ({
-    selectBanknotes: state.banknotes
+    selectBanknotes: state.banknotes,
+    selectReminder: state.reminder,
+    selectGivePack: state.givePack,
 });

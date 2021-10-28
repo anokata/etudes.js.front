@@ -76,6 +76,8 @@ class ATM extends React.Component {
         </div>
 
         <div className="atm-side-info">
+          <div>Выдано:{this.props.selectGivePack}</div>
+          <div>Остаток:{this.props.selectReminder}</div>
           <div>
             Варианты
             <button>
