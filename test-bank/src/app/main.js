@@ -72,7 +72,6 @@ class ATM extends React.Component {
           </button>
 
           <Numpad onNumpadInput={this.handleNumpadInput} />
-          {/* <button onClick={() => this.props.deposite("2")}>Занести</button> */}
           <button onClick={() => this.getInfo()}>Справка</button>
           <div>Остаток:{sumOfPack(this.props.selectBanknotes)}</div>
         </div>

@@ -23,10 +23,6 @@ const ASlice = createSlice({
   name: "a",
   initialState: initialState,
   reducers: {
-    deposite: (state, action) => {
-      const set = action.payload;
-      console.log("deposite", set);
-    },
     take: (state, action) => {
       const amount = action.payload;
       const result = takeAmount(state.banknotes, amount)
@@ -39,13 +35,10 @@ const ASlice = createSlice({
 });
 
 export const store = configureStore({ reducer: ASlice.reducer });
-export const { deposite, take } = ASlice.actions;
+export const { take } = ASlice.actions;
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    deposite: (data) => {
-      dispatch(deposite(data));
-    },
     take: (amount) => {
       dispatch(take(amount));
     },
