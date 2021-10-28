@@ -34,7 +34,7 @@ class ATM extends React.Component {
         value: "",
       });
     } else if (num === COMMA) {
-      if (this.state.value.indexOf(COMMA) === -1) 
+      if (this.state.value.indexOf(COMMA) === -1)
         this.setState({
           value: `${this.state.value}${num}`,
         });
@@ -48,28 +48,43 @@ class ATM extends React.Component {
   getInfo() {
     console.log(`${this.props.selectBanknotes[0]}`);
     const banknotes = this.props.selectBanknotes;
-    const newInfo = banknotes.map((e) => `${e.dignity}=${e.count}`).reduce((acc, b) => `${acc}, ${b}`);
+    const newInfo = banknotes
+      .map((e) => `${e.dignity}=${e.count}`)
+      .reduce((acc, b) => `${acc}, ${b}`);
     this.setState({
       info: newInfo,
-    })
+    });
   }
 
   render() {
     return (
-      <div className="atm">
-        <input
-          label="Get"
-          type="text"
-          value={this.state.value}
-          onChange={(e) => this.handleChange(e)}
-        />
-        <button onClick={() => this.props.take(this.state.value)}>Выдача</button>
+      <div className="atm-container">
+        <div className="atm">
+          <input
+            label="Get"
+            type="text"
+            value={this.state.value}
+            onChange={(e) => this.handleChange(e)}
+          />
+          <button onClick={() => this.props.take(this.state.value)}>
+            Выдача
+          </button>
 
-        <Numpad onNumpadInput={this.handleNumpadInput} />
-        <button onClick={() => this.props.deposite("2")}>Занести</button>
-        <button>Загрузить вариант</button>
-        <button onClick={() => this.getInfo()}>Справка</button>
-        <div className="info">{this.state.info}</div>
+          <Numpad onNumpadInput={this.handleNumpadInput} />
+          {/* <button onClick={() => this.props.deposite("2")}>Занести</button> */}
+          <button onClick={() => this.getInfo()}>Справка</button>
+        </div>
+
+        <div className="atm-side-info">
+          <div>
+            Варианты
+            <button>
+              купюры 5000= 100; 2000= 400; 1000= 1000; 500= 3000; 200= 5000;
+              100= 8000; 50= 10000
+            </button>
+          <div className="info">{this.state.info}</div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -118,6 +133,5 @@ class Numpad extends React.Component {
     );
   }
 }
-
 
 const ATMdispatched = connect(mapStateToProps, mapDispatchToProps)(ATM);
