@@ -15,6 +15,8 @@ class ATM extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeydown = this.handleKeydown.bind(this);
+    this.take = this.take.bind(this);
     this.handleNumpadInput = this.handleNumpadInput.bind(this);
     this.state = {
       value: "8550",
@@ -26,6 +28,12 @@ class ATM extends React.Component {
     this.setState({
       value: e.target.value,
     });
+  }
+
+  handleKeydown(e) {
+    if (e.key === "Enter") {
+      this.take();
+    }
   }
 
   handleNumpadInput(e) {
@@ -57,14 +65,21 @@ class ATM extends React.Component {
     });
   }
 
+  take() {
+    this.props.take(this.state.value);
+  }
+
   showTaked() {
-    // this.props.selectGivePack.forEach
-    return ``;
+    return this.props.selectGivePack.map((b, i) => (
+      <span key={i}>
+        {b.dignity}={b.count},{" "}
+      </span>
+    ));
   }
 
   render() {
     return (
-      <div className="atm-container">
+      <div className="atm-container" onKeyDown={this.handleKeydown}>
         <div className="atm">
           <input
             label="Get"
@@ -72,9 +87,7 @@ class ATM extends React.Component {
             value={this.state.value}
             onChange={(e) => this.handleChange(e)}
           />
-          <button onClick={() => this.props.take(this.state.value)}>
-            Выдача
-          </button>
+          <button onClick={this.take}>Выдача</button>
 
           <Numpad onNumpadInput={this.handleNumpadInput} />
           <button onClick={() => this.getInfo()}>Справка</button>
@@ -89,7 +102,7 @@ class ATM extends React.Component {
               купюры 5000= 100; 2000= 400; 1000= 1000; 500= 3000; 200= 5000;
               100= 8000; 50= 10000
             </button>
-          <div className="info">{this.state.info}</div>
+            <div className="info">{this.state.info}</div>
           </div>
         </div>
       </div>
