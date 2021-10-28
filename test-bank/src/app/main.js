@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
-import { deposite, take } from "./store";
+import { mapStateToProps, mapDispatchToProps } from "./store";
 
 export default function Main(props) {
   return <ATMdispatched />;
@@ -17,6 +17,7 @@ class ATM extends React.Component {
     this.handleNumpadInput = this.handleNumpadInput.bind(this);
     this.state = {
       value: "5432",
+      info: "",
     };
   }
 
@@ -44,9 +45,18 @@ class ATM extends React.Component {
     }
   }
 
+  getInfo() {
+    console.log(`${this.props.selectBanknotes[0]}`);
+    const banknotes = this.props.selectBanknotes;
+    const newInfo = banknotes.map((e) => `${e.dignity}=${e.count}`).reduce((acc, b) => `${acc}, ${b}`);
+    this.setState({
+      info: newInfo,
+    })
+  }
+
   render() {
     return (
-      <React.Fragment>
+      <div className="atm">
         <input
           label="Get"
           type="text"
@@ -58,7 +68,9 @@ class ATM extends React.Component {
         <Numpad onNumpadInput={this.handleNumpadInput} />
         <button onClick={() => this.props.deposite("2")}>Занести</button>
         <button>Загрузить вариант</button>
-      </React.Fragment>
+        <button onClick={() => this.getInfo()}>Справка</button>
+        <div className="info">{this.state.info}</div>
+      </div>
     );
   }
 }
@@ -107,14 +119,5 @@ class Numpad extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deposite: (data) => {
-      dispatch(deposite(data));
-    },
-    take: (amount) => {
-      dispatch(take(amount));
-    },
-  };
-};
-const ATMdispatched = connect(null, mapDispatchToProps)(ATM);
+
+const ATMdispatched = connect(mapStateToProps, mapDispatchToProps)(ATM);

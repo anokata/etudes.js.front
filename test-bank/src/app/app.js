@@ -6,7 +6,7 @@ import Main from './main';
 export default function App(props) {
   return (
     <main>
-      <h1>App</h1>
+      <h1>Virtual ATM</h1>
       <Provider store={store}>
         <Main />
       </Provider>
