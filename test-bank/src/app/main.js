@@ -57,6 +57,11 @@ class ATM extends React.Component {
     });
   }
 
+  showTaked() {
+    // this.props.selectGivePack.forEach
+    return ``;
+  }
+
   render() {
     return (
       <div className="atm-container">
@@ -77,7 +82,7 @@ class ATM extends React.Component {
         </div>
 
         <div className="atm-side-info">
-          <div>Выдано:{this.props.selectGivePack.length}</div>
+          <div>Выдано:{this.showTaked()}</div>
           <div>
             Варианты
             <button>
