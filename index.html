@@ -1,79 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Anokata Pet projects [html,css,js]</title>
-<link rel="stylesheet" href="style.css" media="all">
-<!-- <link rel="stylesheet" href="scss-test-style.css" media="all"> -->
-<script src="dom.js"></script>
-<style>
-  main a {
-    display: block;
-    padding: .3rem;
-    font: 1.3rem/2 sans-serif;
-    border-left: 2px solid #d0d0d0;
-    color: #555;
-    color: #427ebf;
-    transition: all 100ms;
-  }
-  main a:hover {
-    background-color: #e6e6e6;
-    color: #404040;
-    color: #56abd5;
-  }
+  <head>
+    <meta charset="utf-8" />
+    <title>Anokata Pet projects [html,css,js]</title>
+    <link rel="stylesheet" href="style.css" media="all" />
+    <!-- <link rel="stylesheet" href="scss-test-style.css" media="all"> -->
+    <script src="dom.js"></script>
+    <style>
+      main a {
+        display: block;
+        padding: 0.3rem;
+        font: 1.3rem/2 sans-serif;
+        /* border-left: 2px solid #d0d0d0;*/
+        color: #555;
+        color: #427ebf;
+        transition: all 100ms;
+        padding-left: 2em;
+        margin-right: 1rem;
+      }
+      main a:hover {
+        background-color: #e6e6e6;
+        color: #404040;
+        color: #56abd5;
+      }
 
-  nav a {
-    text-decoration: none;
-    color: #888;
-    background-color: #777;
-    padding: .5em;
-    margin: 0;
-  }
-  nav a:hover {
-    color:#ccc;
-    background-color: #999;
-    transition: all 100ms;
-  }
+      nav a {
+        text-decoration: none;
+        color: #888;
+        background-color: #777;
+        padding: 0.5em;
+        margin: 0;
+      }
+      nav a:hover {
+        color: #ccc;
+        background-color: #999;
+        transition: all 100ms;
+      }
 
-  nav {
-    display: flex;
-  }
-</style>
-</head>
-<body>
-      <header>
-        <nav>
-          <a href="https://anokata.github.io/">Root</a>
-          <a href="https://anokata.github.io/cv.html">CV</a>
-        </nav>
-      </header>
-      <main>
-        <h1>Main navigation page</h1>
-        <div class="links">
-          <a href="idler01/idler01.html">idler 01</a>
-          <a href="reactapp1/index.html">reactapp index</a>
-          <a href="reactapp1/forms.html">forms</a>
-          <a href="reactapp1/forms2.html">forms2</a>
-          <a href="reactapp1/anime.html">css anim</a>
-          <a href="reactapp1/position.html">position</a>
-          <a href="reactapp1/sizes.html">sizes anim</a>
-          <a href="cv.html">CV</a>
-          <a href="reactapp2/index.html">reactapp 2 index</a>
-          <a href="reactapp2/events.html">events</a>
-          <a href="reactapp2/dom.html">dom</a>
-          <a href="reactapp2/text.html">text</a>
-          <a href="reactintro3/public/index.html">react tic toe</a>
-          <a href="reactdoc4/index.html">react on webpack</a>
-          <a href="reactdoc4/dist/index.html">react on webpack</a>
-          <a href="idler02react/dist/main.html">idler 02</a>
-          <a href="todolist/dist/main.html">todolist</a>
-          <a href="gallery/dist/main.html">gallery</a>
-          <a href="ng-hw-mtnt/dist/helloapp/index.html">ng-hello-app</a>
-          <a href="test-bank/dist/main.html">Bank account</a>
+      nav {
+        display: flex;
+      }
+
+      h3 {
+        color: #777;
+        padding-left: 1rem;
+      }
+
+      .link-group {
+        border-left: 4px solid #ddd;
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="https://anokata.github.io/">Root</a>
+        <a href="https://anokata.github.io/cv.html">CV</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Main navigation page</h1>
+      <div class="links">
+        <div>
+          <h3>HTML&amp;CSS</h3>
+          <div class="link-group">
+            <a href="reactapp1/forms.html">forms</a>
+            <a href="reactapp1/forms2.html">forms2</a>
+            <a href="reactapp1/anime.html">css anim</a>
+            <a href="reactapp1/position.html">position</a>
+            <a href="reactapp1/sizes.html">sizes anim</a>
+            <a href="reactapp2/dom.html">dom</a>
+            <a href="reactapp2/text.html">text</a>
+            <a href="reactapp2/events.html">events</a>
+          </div>
         </div>
-      </main>
-<footer>
-by Anokata(Ksi) <span class="copyleft">&copy;</span>
-</footer>
-</body>
+        <div>
+          <h3>React</h3>
+          <div class="link-group">
+            <a href="reactapp1/index.html">reactapp index</a>
+            <a href="reactapp2/index.html">reactapp 2 index</a>
+            <a href="reactintro3/public/index.html">react tic toe</a>
+            <a href="reactdoc4/index.html">react on webpack</a>
+            <a href="reactdoc4/dist/index.html">react on webpack</a>
+          </div>
+        </div>
+        <div>
+          <h3>Pet-projects</h3>
+          <div class="link-group">
+            <a href="idler01/idler01.html">idler 01</a>
+            <a href="idler02react/dist/main.html">idler 02</a>
+            <a href="gallery/dist/main.html">gallery</a>
+            <a href="todolist/dist/main.html">todolist</a>
+            <a href="test-bank/dist/main.html">Bank account</a>
+          </div>
+        </div>
+        <div>
+          <h3>Angular</h3>
+          <div class="link-group">
+            <a href="ng-hw-mtnt/dist/helloapp/index.html">ng-hello-app</a>
+            <a href="ng-todo/index.html">ng-todo</a>
+          </div>
+          <!-- <a href="cv.html">CV</a> -->
+        </div>
+      </div>
+    </main>
+    <footer>by Anokata(Ksi) <span class="copyleft">&copy;</span></footer>
+  </body>
 </html>
