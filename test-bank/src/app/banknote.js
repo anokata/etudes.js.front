@@ -36,7 +36,6 @@ export function sumOfPack(banknotes) {
 }
 
 export function takeAmount(banknotes, amount) {
-  console.log("take", amount);
   let taked = 0;
   let takedNotes = [];
   banknotes.forEach((note) => {
@@ -48,11 +47,9 @@ export function takeAmount(banknotes, amount) {
       taked += realtaked * note.dignity;
       amount -= realtaked * note.dignity;
       takedNotes.push(new BankNotePack(realtaked, note.dignity));
-      // console.log(`take ${count} by ${note.dignity} taked ${realtaked}`)
     }
   });
 
-  console.log(takedNotes);
   return {
     banknotes: banknotes,
     reminder: sumOfPack(banknotes),

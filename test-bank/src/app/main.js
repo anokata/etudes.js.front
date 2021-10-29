@@ -8,7 +8,7 @@ export default function Main(props) {
   return <ATMdispatched />;
 }
 
-const numArray = n => Array.from(Array(n).fill(0).keys());
+const numArray = (n) => Array.from(Array(n).fill(0).keys());
 
 const CLEAR_VALUE = "CLR";
 const COMMA = ",";
@@ -80,6 +80,7 @@ class ATM extends React.Component {
     this.state = {
       value: "8550",
       info: "",
+      infoVisible: "info-hide",
     };
   }
 
@@ -116,13 +117,22 @@ class ATM extends React.Component {
   }
 
   getInfo() {
-    console.log(`${this.props.selectBanknotes[0]}`);
     const banknotes = this.props.selectBanknotes;
     const newInfo = banknotes
       .map((e) => `${e.dignity}=${e.count}`)
       .reduce((acc, b) => `${acc}, ${b}`);
     this.setState({
       info: newInfo,
+      infoVisible: "info-show",
+    });
+    setTimeout(() => {
+      this.hideInfo();
+    }, 300000);
+  }
+
+  hideInfo = () => {
+    this.setState({
+      infoVisible: "info-hide",
     });
   }
 
@@ -137,15 +147,22 @@ class ATM extends React.Component {
       </div>
     ));
   }
-  
+
   loadVariant(n) {
     this.props.restore(variants[n]);
   }
 
   render() {
-    const variantButtons = numArray(6).map(i=>
-      <button className="variant-btn" key={i} onClick={()=>this.loadVariant(i)}> Вариант {i+1} </button>
-    )
+    const variantButtons = numArray(6).map((i) => (
+      <button
+        className="variant-btn"
+        key={i}
+        onClick={() => this.loadVariant(i)}
+      >
+        {" "}
+        Вариант {i + 1}{" "}
+      </button>
+    ));
 
     return (
       <div
@@ -183,7 +200,11 @@ class ATM extends React.Component {
             <div className="variant-container">
               Загрузить вариант:
               {variantButtons}
-              <div className="info">{this.state.info}</div>
+              <div className={("info", this.state.infoVisible)} onPointerDown={()=>this.hideInfo()}>
+                <div className="info-content">
+                  {this.state.info}
+                </div>
+              </div>
             </div>
           </div>
         </div>
