@@ -12,11 +12,13 @@ body {
   line-height: 1.5;
   color: #555;
   color: #566b78;
+  background-color: #eee;
 }
 
 main {
   margin: 0 auto;
   max-width: 50em;
+  background-color: #fefefe;
   padding: 4em 1em;
 }
 
@@ -24,6 +26,7 @@ h1,
 h2,
 strong {
   color: #333;
+  text-align: center;
 }
 
 h2 {
@@ -40,9 +43,9 @@ p {
   border: 1px solid #555;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
-  height: 12em;
+  height: 15em;
   width: 12em;
   padding: .5em;
   margin: .5em;
@@ -51,6 +54,13 @@ p {
 .numpad-button {
   width: 95%;
   height: 95%;
+  background: rgb(231,231,231);
+  background: linear-gradient(90deg, rgb(231, 231, 231) 0%, rgb(217, 217, 217) 100%);
+  border: none;
+}
+
+.numpad-button:active {
+  background: linear-gradient(180deg, rgb(196, 196, 196) 0%, rgb(236, 236, 236) 100%);
 }
 
 .atm {
@@ -77,4 +87,7 @@ main {
   width: 90%;
   margin: 0 auto;
   width: max-content;
+}
+
+button {
 }

@@ -34,6 +34,8 @@ class ATM extends React.Component {
     if (e.key === "Enter") {
       this.take();
     }
+    if (e.key === "1") {
+    }
   }
 
   handleNumpadInput(e) {
@@ -79,7 +81,7 @@ class ATM extends React.Component {
 
   render() {
     return (
-      <div className="atm-container" onKeyDown={this.handleKeydown}>
+      <div className="atm-container" autoFocus tabIndex="1" onKeyDown={this.handleKeydown}>
         <div className="atm">
           <input
             label="Get"
