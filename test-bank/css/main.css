@@ -13,6 +13,7 @@ body {
   color: #555;
   color: #566b78;
   background-color: #eee;
+  text-align: center;
 }
 
 main {
@@ -57,10 +58,16 @@ p {
   background: rgb(231,231,231);
   background: linear-gradient(90deg, rgb(231, 231, 231) 0%, rgb(217, 217, 217) 100%);
   border: none;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 .numpad-button:active {
   background: linear-gradient(180deg, rgb(196, 196, 196) 0%, rgb(236, 236, 236) 100%);
+}
+
+.numpad-button:hover {
+  background: linear-gradient(180deg, rgb(156, 156, 196) 0%, rgb(206, 206, 236) 100%);
 }
 
 .atm {
@@ -72,15 +79,29 @@ p {
 
 .atm-container {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .atm-side-info {
+  display: flex;
   border-radius: 5px;
   border: 2px solid #777;
   padding: .5em;
   margin: .5em;
   width: 50%;
+}
+
+.atm-side-a {
+  border-radius: 5px;
+  border: 1px solid #777;
+  padding: .3em;
+  margin: .3em;
+}
+.atm-side-b {
+  border-radius: 5px;
+  border: 1px solid #777;
+  padding: .3em;
+  margin: .3em;
 }
 
 main {
@@ -90,4 +111,30 @@ main {
 }
 
 button {
+}
+
+.remain {
+  text-align: center;
+}
+
+input {
+  text-align: center;
+}
+
+.ui-button {
+  margin: .5rem;
+  padding: .5rem;
+  text-transform: uppercase;
+}
+
+.variant-btn {
+  display: block;
+  margin: .5rem;
+  padding: .5rem;
+  text-transform: uppercase;
+}
+
+.variant-container {
+  display: flex;
+  flex-direction: column;
 }

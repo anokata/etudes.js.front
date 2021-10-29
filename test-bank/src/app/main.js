@@ -73,38 +73,54 @@ class ATM extends React.Component {
 
   showTaked() {
     return this.props.selectGivePack.map((b, i) => (
-      <span key={i}>
-        {b.dignity}={b.count},{" "}
-      </span>
+      <div key={i}>
+        {b.dignity}={b.count}{" "}
+      </div>
     ));
   }
 
   render() {
     return (
-      <div className="atm-container" autoFocus tabIndex="1" onKeyDown={this.handleKeydown}>
+      <div
+        className="atm-container"
+        autoFocus
+        tabIndex="1"
+        onKeyDown={this.handleKeydown}
+      >
         <div className="atm">
+          <div className="remain">
+            Остаток:{sumOfPack(this.props.selectBanknotes)}
+          </div>
           <input
             label="Get"
             type="text"
             value={this.state.value}
             onChange={(e) => this.handleChange(e)}
           />
-          <button onClick={this.take}>Выдача</button>
 
           <Numpad onNumpadInput={this.handleNumpadInput} />
-          <button onClick={() => this.getInfo()}>Справка</button>
-          <div>Остаток:{sumOfPack(this.props.selectBanknotes)}</div>
+          <button className="ui-button" onClick={this.take}>
+            Выдача
+          </button>
+          <button className="ui-button" onClick={() => this.getInfo()}>
+            Справка
+          </button>
         </div>
 
         <div className="atm-side-info">
-          <div>Выдано:{this.showTaked()}</div>
-          <div>
-            Варианты
-            <button>
-              купюры 5000= 100; 2000= 400; 1000= 1000; 500= 3000; 200= 5000;
-              100= 8000; 50= 10000
-            </button>
-            <div className="info">{this.state.info}</div>
+          <div className="atm-side-a">
+            <div>Выдано:{this.showTaked()}</div>
+          </div>
+          <div className="atm-side-b">
+            <div className="variant-container">
+              Загрузить вариант:
+              <button className="variant-btn"> Вариант 1 </button>
+              <button className="variant-btn"> Вариант 2 </button>
+              <button className="variant-btn"> Вариант 3 </button>
+              <button className="variant-btn"> Вариант 4 </button>
+              <button className="variant-btn"> Вариант 5 </button>
+              <div className="info">{this.state.info}</div>
+            </div>
           </div>
         </div>
       </div>
