@@ -49,6 +49,7 @@ p {
   width: 12em;
   padding: 0.5em;
   margin: 0.5em;
+  /* background: linear-gradient(122deg, rgba(182,207,255,1) 0%, rgba(184,204,247,1) 7%, rgba(230,236,255,1) 10%, rgba(186,195,241,1) 12%, rgba(107,115,201,1) 41%, rgba(187,193,252,1) 42%, rgba(213,216,246,1) 44%, rgba(84,92,189,1) 46%, rgba(67,75,175,1) 63%, rgba(49,86,173,1) 90%, rgba(28,69,145,1) 99%); */ 
 }
 
 .numpad-button {
