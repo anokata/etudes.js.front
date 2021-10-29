@@ -22,6 +22,7 @@ const initialState = {
   ],
   reminder: 0,
   givePack: [],
+  last: 0,
 };
 
 const ASlice = createSlice({
@@ -34,6 +35,7 @@ const ASlice = createSlice({
       state.banknotes = result.banknotes;
       state.reminder = result.reminder;
       state.givePack = result.givePack;
+      state.last = result.last;
     },
     banknoteInfo: (state) => {},
     restore: (state, action) => {
@@ -63,4 +65,5 @@ export const mapStateToProps = state => ({
     selectBanknotes: state.banknotes,
     selectReminder: state.reminder,
     selectGivePack: state.givePack,
+    selectLast: state.last,
 });

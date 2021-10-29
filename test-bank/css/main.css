@@ -63,6 +63,8 @@ p {
   border: none;
   font-size: 1.4rem;
   font-weight: bold;
+  border-right: 2px solid #aaa;
+  border-bottom: 2px solid #7d7d7d;
 }
 
 .numpad-button:active {
@@ -71,6 +73,9 @@ p {
     rgb(196, 196, 196) 0%,
     rgb(236, 236, 236) 100%
   );
+  border: none;
+  border-left: 2px solid #eee;
+  border-top: 2px solid #eee;
 }
 
 .numpad-button:hover {

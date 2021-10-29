@@ -36,11 +36,12 @@ export function sumOfPack(banknotes) {
 }
 
 export function takeAmount(banknotes, amount) {
+  const startAmount = amount;
   let taked = 0;
   let takedNotes = [];
   banknotes.forEach((note) => {
     // cat take such amount banknotes
-    if (amount > note.dignity) {
+    if (amount >= note.dignity) {
       // calc count 
       const count = Math.floor(amount / note.dignity);
       const realtaked = note.take(count);
@@ -54,6 +55,7 @@ export function takeAmount(banknotes, amount) {
     banknotes: banknotes,
     reminder: sumOfPack(banknotes),
     givePack: takedNotes,
+    last: Math.round((startAmount - taked)*100)/100,
   };
 }
 

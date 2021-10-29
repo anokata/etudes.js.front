@@ -119,7 +119,7 @@ class ATM extends React.Component {
   getInfo() {
     const banknotes = this.props.selectBanknotes;
     const newInfo = banknotes
-      .map((e) => `${e.dignity}=${e.count}`)
+      .map((e) => `${e.dignity}=${e.count}`) // <span digniti>
       .reduce((acc, b) => `${acc}, ${b}`);
     this.setState({
       info: newInfo,
@@ -134,18 +134,22 @@ class ATM extends React.Component {
     this.setState({
       infoVisible: "info-hide",
     });
-  }
+  };
 
   take() {
-    this.props.take(this.state.value);
+    this.props.take(this.state.value.replace(COMMA, "."));
   }
 
   showTaked() {
-    return this.props.selectGivePack.map((b, i) => (
-      <div key={i}>
-        {b.dignity}={b.count}{" "}
-      </div>
-    ));
+    return (
+    <div>
+      {this.props.selectGivePack.map((b, i) => (
+        <div key={i}>
+          {b.dignity}={b.count}{" "}
+        </div>
+      ))}
+      Осталось: {this.props.selectLast}
+    </div>);
   }
 
   loadVariant(n) {
@@ -200,10 +204,11 @@ class ATM extends React.Component {
             <div className="variant-container">
               Загрузить вариант:
               {variantButtons}
-              <div className={("info", this.state.infoVisible)} onPointerDown={()=>this.hideInfo()}>
-                <div className="info-content">
-                  {this.state.info}
-                </div>
+              <div
+                className={("info", this.state.infoVisible)}
+                onPointerDown={() => this.hideInfo()}
+              >
+                <div className="info-content">{this.state.info}</div>
               </div>
             </div>
           </div>
