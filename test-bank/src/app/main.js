@@ -92,6 +92,7 @@ class ATM extends React.Component {
             Остаток:{sumOfPack(this.props.selectBanknotes)}
           </div>
           <input
+            className="text-input"
             label="Get"
             type="text"
             value={this.state.value}

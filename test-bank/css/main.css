@@ -40,8 +40,8 @@ p {
 }
 
 .numpad {
-  border-radius: 5px;
-  border: 1px solid #555;
+  border-radius: 2px;
+  border: 1px solid #ccc;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -71,7 +71,7 @@ p {
 }
 
 .atm {
-  border-radius: 5px;
+  border-radius: 2px;
   border: 2px solid #777;
   padding: .5em;
   margin: .5em;
@@ -84,7 +84,7 @@ p {
 
 .atm-side-info {
   display: flex;
-  border-radius: 5px;
+  border-radius: 2px;
   border: 2px solid #777;
   padding: .5em;
   margin: .5em;
@@ -92,14 +92,14 @@ p {
 }
 
 .atm-side-a {
-  border-radius: 5px;
-  border: 1px solid #777;
+  border-radius: 2px;
+  border: 1px solid #ccc;
   padding: .3em;
   margin: .3em;
 }
 .atm-side-b {
-  border-radius: 5px;
-  border: 1px solid #777;
+  border-radius: 2px;
+  border: 1px solid #ccc;
   padding: .3em;
   margin: .3em;
 }
@@ -137,4 +137,10 @@ input {
 .variant-container {
   display: flex;
   flex-direction: column;
+}
+
+.text-input {
+  font-size: 1.1rem;
+  font-family: monospace;
+  font-weight: bold;
 }
