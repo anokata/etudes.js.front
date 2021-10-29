@@ -139,13 +139,12 @@ class ATM extends React.Component {
   }
   
   loadVariant(n) {
-    console.log(`loading var: ${n}`);
-    const variant = variants[n];
+    this.props.restore(variants[n]);
   }
 
   render() {
     const variantButtons = numArray(6).map(i=>
-      <button className="variant-btn" onClick={()=>this.loadVariant(i)}> Вариант {i+1} </button>
+      <button className="variant-btn" key={i} onClick={()=>this.loadVariant(i)}> Вариант {i+1} </button>
     )
 
     return (

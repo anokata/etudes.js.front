@@ -1,8 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch, Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import BankNotePack from "./banknote"
-import { takeAmount } from "./banknote"
+import { takeAmount, fromVariant } from "./banknote"
+
+const customizedMiddleware = getDefaultMiddleware({
+  serializableCheck: false
+})
 
 // dignity
 const initialState = {
@@ -31,16 +36,25 @@ const ASlice = createSlice({
       state.givePack = result.givePack;
     },
     banknoteInfo: (state) => {},
+    restore: (state, action) => {
+      state.banknotes = fromVariant(action.payload);
+    }
   },
 });
 
-export const store = configureStore({ reducer: ASlice.reducer });
-export const { take } = ASlice.actions;
+export const store = configureStore({ 
+  reducer: ASlice.reducer,
+  middleware: customizedMiddleware,
+});
+export const { take, restore } = ASlice.actions;
 
 export const mapDispatchToProps = (dispatch) => {
   return {
     take: (amount) => {
       dispatch(take(amount));
+    },
+    restore: (variant) => {
+      dispatch(restore(variant));
     },
   };
 };

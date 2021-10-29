@@ -59,3 +59,7 @@ export function takeAmount(banknotes, amount) {
     givePack: takedNotes,
   };
 }
+
+export function fromVariant(variant) {
+  return variant.map(({dignity, count}) => new BankNotePack(count, dignity));
+}
