@@ -41,7 +41,7 @@ main {
   margin: 0 auto;
 }
 
-header {
+main {
   width: var(--w-main);
   margin: 0 auto;
   background-color: var(--ww-color);
@@ -52,9 +52,21 @@ header {
   box-sizing: border-box;
 }
 
+header {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #333;
+  color: #eee;
+  font: bold 2rem/2rem bold sans-serif;
+  padding: 0em;
+  height: 100%;
+  box-sizing: border-box;
+}
+
 footer {
   min-height: 3em;
   width: var(--w-main);
+  width: 100%;
   margin: 0 auto;
   background-color: var(--g-color);
   margin-top: 1em;
@@ -100,6 +112,11 @@ p {
 h1 {
   font-family: Sans-serif;
   text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+  text-decoration-thickness: 5px;
 }
 
 hr {
@@ -162,7 +179,7 @@ button {
 .links {
   margin: auto;
   width: 85%;
-  background-color: #dfdfdf;
+  /* background-color: #dfdfdf; */
   border: .2rem solid #f8f8f8;
   border-radius: 5px;
   padding: .5rem;

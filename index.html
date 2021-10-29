@@ -7,48 +7,71 @@
 <!-- <link rel="stylesheet" href="scss-test-style.css" media="all"> -->
 <script src="dom.js"></script>
 <style>
-  a {
+  main a {
     display: block;
     padding: .3rem;
     font: 1.3rem/2 sans-serif;
+    border-left: 2px solid #d0d0d0;
+    color: #555;
+    color: #427ebf;
+    transition: all 100ms;
   }
-  a:hover {
-    background-color: #ccc;
+  main a:hover {
+    background-color: #e6e6e6;
+    color: #404040;
+    color: #56abd5;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #888;
+    background-color: #777;
+    padding: .5em;
+    margin: 0;
+  }
+  nav a:hover {
+    color:#ccc;
+    background-color: #999;
+    transition: all 100ms;
+  }
+
+  nav {
+    display: flex;
   }
 </style>
 </head>
 <body>
-    <header>
-      <h1>Main navigation page</h1>
-      <div class="links">
-        <a href="idler01/idler01.html">idler 01</a>
-        <a href="reactapp1/index.html">reactapp index</a>
-        <a href="reactapp1/forms.html">forms</a>
-        <a href="reactapp1/forms2.html">forms2</a>
-        <a href="reactapp1/anime.html">css anim</a>
-        <a href="reactapp1/position.html">position</a>
-        <a href="reactapp1/sizes.html">sizes anim</a>
-        <a href="cv.html">CV</a>
-        <a href="reactapp2/index.html">reactapp 2 index</a>
-        <a href="reactapp2/events.html">events</a>
-        <a href="reactapp2/dom.html">dom</a>
-        <a href="reactapp2/text.html">text</a>
-        <a href="reactintro3/public/index.html">react tic toe</a>
-        <a href="reactdoc4/index.html">react on webpack</a>
-        <a href="reactdoc4/dist/index.html">react on webpack</a>
-        <a href="idler02react/dist/main.html">idler 02</a>
-        <a href="todolist/dist/main.html">todolist</a>
-        <a href="gallery/dist/main.html">gallery</a>
-        <a href="ng-hw-mtnt/dist/helloapp/index.html">ng-hello-app</a>
-        <a href="test-bank/dist/main.html">Bank account</a>
-      </div>
-    </header>
-    <main>
-      <nav>
-      </nav>
-
-
-    </main>
+      <header>
+        <nav>
+          <a href="https://anokata.github.io/">Root</a>
+          <a href="https://anokata.github.io/cv.html">CV</a>
+        </nav>
+      </header>
+      <main>
+        <h1>Main navigation page</h1>
+        <div class="links">
+          <a href="idler01/idler01.html">idler 01</a>
+          <a href="reactapp1/index.html">reactapp index</a>
+          <a href="reactapp1/forms.html">forms</a>
+          <a href="reactapp1/forms2.html">forms2</a>
+          <a href="reactapp1/anime.html">css anim</a>
+          <a href="reactapp1/position.html">position</a>
+          <a href="reactapp1/sizes.html">sizes anim</a>
+          <a href="cv.html">CV</a>
+          <a href="reactapp2/index.html">reactapp 2 index</a>
+          <a href="reactapp2/events.html">events</a>
+          <a href="reactapp2/dom.html">dom</a>
+          <a href="reactapp2/text.html">text</a>
+          <a href="reactintro3/public/index.html">react tic toe</a>
+          <a href="reactdoc4/index.html">react on webpack</a>
+          <a href="reactdoc4/dist/index.html">react on webpack</a>
+          <a href="idler02react/dist/main.html">idler 02</a>
+          <a href="todolist/dist/main.html">todolist</a>
+          <a href="gallery/dist/main.html">gallery</a>
+          <a href="ng-hw-mtnt/dist/helloapp/index.html">ng-hello-app</a>
+          <a href="test-bank/dist/main.html">Bank account</a>
+        </div>
+      </main>
 <footer>
 by Anokata(Ksi) <span class="copyleft">&copy;</span>
 </footer>
