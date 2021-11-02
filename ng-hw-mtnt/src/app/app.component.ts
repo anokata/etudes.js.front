@@ -21,6 +21,15 @@ export class AppComponent {
   text: string = "";
   price: number = 0;
   bindValue = "test bind value";
+  bindTwoWay = "-";
+
+  showValue(): void {
+    console.log(this.bindValue);
+  }
+  changeValue(): void {
+    this.bindValue += "+";
+    this.bindTwoWay += "$";
+  }
 
   items: Item[] = [
     { purchase: "Хлеб", done: false, price: 15.9 },

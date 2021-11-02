@@ -10,3 +10,8 @@ table {
 :host {
   background-color: #aec2c5;
 }
+
+.bind__one {
+  padding: .5rem;
+  background-color: rgb(151, 184, 136);
+}

@@ -1,7 +1,15 @@
 <div class="wrapper main">
   binding:
-  1. one way out value
-  <p class="bind__one">{{bindValue}}</p>
+  <div class="binding">1. one way out value</div>
+  <p class="bind__one">{{ bindValue }}</p>
+  <div class="binding">2. one way out to attribute</div>
+  <p class="bind__two"><input type="text" name="some" [value]="bindValue" id=""></p>
+  <div class="binding">3. one way event bind:</div>
+  <button (click)="showValue()">show 2nd value</button>
+  <button (click)="changeValue()">change value</button>
+  <div class="binding">4. two way bind:</div>
+  <input [(ngModel)]="bindTwoWay" placeholder="name">
+  <p class="bind__one">{{ bindTwoWay }}</p>
 </div>
 
 <div class="page-header">
@@ -11,11 +19,7 @@
   <div class="form-inline">
     <div class="form-group">
       <div class="col-md-8">
-        <input
-          class="form-control"
-          [(ngModel)]="text"
-          placeholder="Название"
-        />
+        <input class="form-control" [(ngModel)]="text" placeholder="Название" />
       </div>
     </div>
     <div class="form-group">
@@ -52,6 +56,6 @@
           <td><input type="checkbox" [(ngModel)]="item.done" /></td>
         </tr>
       </tbody>
-      </table>
-    </div>
+    </table>
+  </div>
 </div>
