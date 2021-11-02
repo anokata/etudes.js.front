@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "upd": "npm run build && git add -f dist && git commit -m [build] dist && git push origin main"
   },
   "keywords": [],
   "author": "",
