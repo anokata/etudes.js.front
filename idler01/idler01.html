@@ -1,255 +1,192 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-            crossorigin="anonymous"
-        />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-        <style>
-            body {
-                background: #c7b39b; /* url(bg.jpg); */
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-            .region {
-                background-color: #999;
-                width: 100px;
-                height: 100px;
-                display: inline-block;
-                margin: 10px;
-            }
-            .active {
-                background-color: red;
-            }
-            .bounded {
-                border: 2px solid green;
-            }
-            .tab_vis {
-                display: block;
-            }
-            .tab_hide {
-                display: none;
-            }
-            .btn-outline-info {
-                border-color: #587e8c;
-                color: #587e8c;
-            }
-            .btn-outline-info:hover {
-                border-color: #587e8c;
-                color: #fff;
-                background-color: #0dcaf000;
-            }
-            .btn:focus,
-            .btn:active {
-                outline: none !important;
-                box-shadow: none;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container" id="app">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#menu1"
-                    aria-controls="menu1"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                ></button>
 
-                <div class="collapse navbar-collapse" id="menu1">
-                    <div class="navbar-nav">
-                        <a
-                            v-for="(val, name) in menu"
-                            class="nav-item nav-link"
-                            v-bind:class="{active: val.active}"
-                            v-on:click="menuToggle(name)"
-                            href="#"
-                            >{{val.name}}</a
-                        >
-                        <!-- <a class="nav-item nav-link" v-bind:class="{active: menu.dev}" v-on:click="menuToggle('dev')" href="#">Dev</a> -->
-                    </div>
-                </div>
-            </nav>
+<head>
+    <meta charset="utf-8" />
+    <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <style>
+        body {
+            background: #c7b39b;
+            /* url(bg.jpg); */
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
-            <div id="settings" v-show="menu.settings.active">
-                <div class="row">
-                    <div class="col-sm">
-                        <v-button
-                            message="Save"
-                            :handler="saveCoockie"
-                            type="secondary"
-                        ></v-button>
-                        <v-button
-                            message="Load"
-                            :handler="loadCoockie"
-                            type="secondary"
-                        ></v-button>
-                        <v-button
-                            message="Reset Save"
-                            :handler="resetCoockie"
-                            type="secondary"
-                        ></v-button>
-                    </div>
+        .region {
+            background-color: #999;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .active {
+            background-color: red;
+        }
+
+        .bounded {
+            border: 2px solid green;
+        }
+
+        .tab_vis {
+            display: block;
+        }
+
+        .tab_hide {
+            display: none;
+        }
+
+        .btn-outline-info {
+            border-color: #587e8c;
+            color: #587e8c;
+        }
+
+        .btn-outline-info:hover {
+            border-color: #587e8c;
+            color: #fff;
+            background-color: #0dcaf000;
+        }
+
+        .btn:focus,
+        .btn:active {
+            outline: none !important;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#menu1" aria-controls="menu1" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+
+            <div class="collapse navbar-collapse" id="menu1">
+                <div class="navbar-nav">
+                    <a v-for="(val, name) in menu" class="nav-item nav-link" v-bind:class="{active: val.active}"
+                        v-on:click="menuToggle(name)" href="#">{{val.name}}</a>
+                    <!-- <a class="nav-item nav-link" v-bind:class="{active: menu.dev}" v-on:click="menuToggle('dev')" href="#">Dev</a> -->
                 </div>
             </div>
+        </nav>
 
-            <div id="dev" v-show="menu.dev.active">
-                <div class="row">
-                    <!-- TODO array for -->
-                    <div class="col-sm">
-                        <span>
-                            <img :src="blocksIcons[0]"/ height=20 width=20 />
-                            {{state.blocks[0] | number-suffix }} 
-                        </span>
-                    </div>
-                    <div class="col-sm"> <span>
-                            <img :src="blocksIcons[1]"/ height=20 width=20 />
-                            {{state.blocks[1] | number-suffix }} 
-                        </span>
-                    </div>
-                    <div class="col-sm"> <span>
-                            <img :src="blocksIcons[1]"/ height=20 width=20 />
-                            {{state.blocks[2] | number-suffix }} 
-                        </span>
-                    </div>
-                    <div class="col-sm"> <span>
-                            <img :src="blocksIcons[1]"/ height=20 width=20 />
-                            {{state.blocks[3] | number-suffix }} 
-                        </span>
-                    </div>
-                    <div class="col-sm"> <span>
-                            <img :src="blocksIcons[1]"/ height=20 width=20 />
-                            {{state.blocks[4] | number-suffix }} 
-                        </span>
-                    </div>
-                    <div class="col-sm"> <span>
-                            <img :src="blocksIcons[1]"/ height=20 width=20 />
-                            {{state.blocks[5] | number-suffix }} 
-                        </span>
-                    </div>
-                    <div class="col-sm">
-                        coins: {{ state.coins | number-suffixZ3 }}
-                    </div>
-                    <div class="col-sm"></div>
-                    <div class="col-sm">auto: {{ state.auto[0] }}</div>
-                    <div class="col-sm"></div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                        <click-button
-                            message="Mine gray block  "
-                            type="0"
-                            :clickfn="mineBlock"
-                        ></click-button>
-                    </div>
-                    <div class="col-sm">
-                        <v-button
-                            :message="canBuyCoinsMsg(0)"
-                            :handler="sellBlock"
-                            btype="0"
-                            type="secondary"
-                        ></v-button>
-                    </div>
-                    <div class="col-sm">
-                        <click-button
-                            message="Upgrade click power for x Coin"
-                            type="0"
-                        ></click-button>
-                    </div>
-                    <!-- TODO loop -->
-                    <div class="col-sm">
-                        <click-button
-                            v-show="state.unlocksAuto[0]"
-                            :message="autoMinerBuyMsg(0)"
-                            type="0"
-                            :clickfn="buyAutoMine"
-                        ></click-button>
-                        <v-button
-                            v-show="!state.unlocksAuto[0]"
-                            :message="unlockAutoForMsg(1)"
-                            :handler="unlockAuto"
-                            btype="0"
-                            type="warning"
-                        ></v-button>
-                    </div>
-                    <div class="col-sm">auto: {{ state.auto[0] }}</div>
-                    <div class="col-sm">spd: {{ state.autoSpeed[0] * 1000 }}/sec</div>
-                    </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                        <v-button
-                            v-show="!state.unlocks[1]"
-                            :message="unlockForMsg(1)"
-                            :handler="unlock"
-                            btype="1"
-                            type="warning"
-                        ></v-button>
-                        <click-button
-                            v-show="state.unlocks[1]"
-                            message="Mine yellow block  "
-                            type="1"
-                            :clickfn="mineBlock"
-                        ></click-button>
-                    </div>
-                    <div class="col-sm">
-                        <v-button
-                            v-show="state.unlocks[1]"
-                            :message="canBuyCoinsMsg(1)"
-                            :handler="sellBlock"
-                            btype="1"
-                            type="secondary"
-                        ></v-button>
-                    </div>
-                    <div class="col-sm"></div>
-                    <div class="col-sm">
-                        <click-button
-                            v-show="state.unlocksAuto[1]"
-                            :message="autoMinerBuyMsg(1)"
-                            type="1"
-                            :clickfn="buyAutoMine"
-                        ></click-button>
-                        <v-button
-                            v-show="!state.unlocksAuto[1]"
-                            :message="unlockAutoForMsg(2)"
-                            :handler="unlockAuto"
-                            btype="1"
-                            type="warning"
-                        ></v-button>
-                    </div>
-                    <div class="col-sm">auto: {{ state.auto[1] }}</div>
-                    <div class="col-sm">spd: {{ state.autoSpeed[1] * 1000 }}/sec</div>
-                </div>
-                </div>
-            </div>
-
-            <div id="upgrades" v-show="menu.upgrades.active">
-                <div class="col-sm"></div>
-                <div class="row">
-                    <div class="col-sm">upg</div>
+        <div id="settings" v-show="menu.settings.active">
+            <div class="row">
+                <div class="col-sm">
+                    <v-button message="Save" :handler="saveCoockie" type="secondary"></v-button>
+                    <v-button message="Load" :handler="loadCoockie" type="secondary"></v-button>
+                    <v-button message="Reset Save" :handler="resetCoockie" type="secondary"></v-button>
                 </div>
             </div>
         </div>
-        <script src="idler01.js"></script>
-        <!-- <script src="js/jquery.min.js"></script> -->
-        <!-- <script src="js/bootstrap.js"></script> -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-            crossorigin="anonymous"
-        ></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue-cookie@1.1.4/src/vue-cookie.min.js"></script> -->
-    </body>
+
+        <div id="dev" v-show="menu.dev.active">
+            <div class="row">
+                <!-- TODO array for -->
+                <div class="col-sm">
+                    <span>
+                        <img :src="blocksIcons[0]" / height=20 width=20 />
+                        {{state.blocks[0] | number-suffix }}
+                    </span>
+                </div>
+                <div class="col-sm"> <span>
+                        <img :src="blocksIcons[1]" / height=20 width=20 />
+                        {{state.blocks[1] | number-suffix }}
+                    </span>
+                </div>
+                <div class="col-sm"> <span>
+                        <img :src="blocksIcons[1]" / height=20 width=20 />
+                        {{state.blocks[2] | number-suffix }}
+                    </span>
+                </div>
+                <div class="col-sm"> <span>
+                        <img :src="blocksIcons[1]" / height=20 width=20 />
+                        {{state.blocks[3] | number-suffix }}
+                    </span>
+                </div>
+                <div class="col-sm"> <span>
+                        <img :src="blocksIcons[1]" / height=20 width=20 />
+                        {{state.blocks[4] | number-suffix }}
+                    </span>
+                </div>
+                <div class="col-sm"> <span>
+                        <img :src="blocksIcons[1]" / height=20 width=20 />
+                        {{state.blocks[5] | number-suffix }}
+                    </span>
+                </div>
+                <div class="col-sm">
+                    coins: {{ state.coins | number-suffixZ3 }}
+                </div>
+                <div class="col-sm"></div>
+                <div class="col-sm">auto: {{ state.auto[0] }}</div>
+                <div class="col-sm"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <click-button message="Mine gray block  " type="0" :clickfn="mineBlock"></click-button>
+                </div>
+                <div class="col-sm">
+                    <v-button :message="canBuyCoinsMsg(0)" :handler="sellBlock" btype="0" type="secondary"></v-button>
+                </div>
+                <div class="col-sm">
+                    <click-button message="Upgrade click power for x Coin" type="0"></click-button>
+                </div>
+                <!-- TODO loop -->
+                <div class="col-sm">
+                    <click-button v-show="state.unlocksAuto[0]" :message="autoMinerBuyMsg(0)" type="0"
+                        :clickfn="buyAutoMine"></click-button>
+                    <v-button v-show="!state.unlocksAuto[0]" :message="unlockAutoForMsg(1)" :handler="unlockAuto"
+                        btype="0" type="warning"></v-button>
+                </div>
+                <div class="col-sm">auto: {{ state.auto[0] }}</div>
+                <div class="col-sm">spd: {{ state.autoSpeed[0] * 1000 }}/sec</div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <v-button v-show="!state.unlocks[1]" :message="unlockForMsg(1)" :handler="unlock" btype="1"
+                        type="warning"></v-button>
+                    <click-button v-show="state.unlocks[1]" message="Mine yellow block  " type="1" :clickfn="mineBlock">
+                    </click-button>
+                </div>
+                <div class="col-sm">
+                    <v-button v-show="state.unlocks[1]" :message="canBuyCoinsMsg(1)" :handler="sellBlock" btype="1"
+                        type="secondary"></v-button>
+                </div>
+                <div class="col-sm"></div>
+                <div class="col-sm">
+                    <click-button v-show="state.unlocksAuto[1]" :message="autoMinerBuyMsg(1)" type="1"
+                        :clickfn="buyAutoMine"></click-button>
+                    <v-button v-show="!state.unlocksAuto[1]" :message="unlockAutoForMsg(2)" :handler="unlockAuto"
+                        btype="1" type="warning"></v-button>
+                </div>
+                <div class="col-sm">auto: {{ state.auto[1] }}</div>
+                <div class="col-sm">spd: {{ state.autoSpeed[1] * 1000 }}/sec</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="upgrades" v-show="menu.upgrades.active">
+        <div class="col-sm"></div>
+        <div class="row">
+            <div class="col-sm">upg</div>
+        </div>
+    </div>
+    </div>
+    <script src="idler01.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- <script src="js/bootstrap.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue-cookie@1.1.4/src/vue-cookie.min.js"></script> -->
+</body>
+
 </html>

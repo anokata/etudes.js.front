@@ -1,0 +1,12 @@
+table {
+  outline: 2px solid #777;
+  background-color: #dfc9ec;
+}
+
+.wrapper {
+  padding: 1rem;
+}
+
+:host {
+  background-color: #aec2c5;
+}
