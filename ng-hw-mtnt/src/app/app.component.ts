@@ -22,6 +22,10 @@ export class AppComponent {
   price: number = 0;
   bindValue = "test bind value";
   bindTwoWay = "-";
+  complex = { name: "Vault 64", size: 24.02 };
+  x: number = 0;
+  incrementText: string = "Value x:";
+  isOn: boolean = false;
 
   showValue(): void {
     console.log(this.bindValue);
@@ -29,6 +33,15 @@ export class AppComponent {
   changeValue(): void {
     this.bindValue += "+";
     this.bindTwoWay += "$";
+    setInterval(() => {
+      this.complex.size *= 1.01;
+    }, 200);
+  }
+
+  increment($event) {
+    this.x++;
+    this.incrementText = `Value x: ${this.x}`;
+    console.log($event)
   }
 
   items: Item[] = [

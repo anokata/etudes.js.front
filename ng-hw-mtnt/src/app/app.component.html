@@ -3,13 +3,25 @@
   <div class="binding">1. one way out value</div>
   <p class="bind__one">{{ bindValue }}</p>
   <div class="binding">2. one way out to attribute</div>
-  <p class="bind__two"><input type="text" name="some" [value]="bindValue" id=""></p>
+  <p class="bind__two">
+    <input type="text" name="some" [value]="bindValue" id="" />
+  </p>
   <div class="binding">3. one way event bind:</div>
   <button (click)="showValue()">show 2nd value</button>
   <button (click)="changeValue()">change value</button>
   <div class="binding">4. two way bind:</div>
-  <input [(ngModel)]="bindTwoWay" placeholder="name">
+  <input [(ngModel)]="bindTwoWay" placeholder="name" />
   <p class="bind__one">{{ bindTwoWay }}</p>
+
+  <p class="bind__one">{{ complex.name }} : {{ complex.size }}</p>
+  <input type="text" name="" id="" value="{{complex.size}}" [value]="complex.size">
+  <p>bind to textContent (js prop)</p>
+  <p [textContent]="complex.size"></p>
+  <button (click)="increment($event)" [textContent]="incrementText"></button>
+<br>
+  <input type="checkbox" name="isOn" [(ngModel)]="isOn" id="">
+  <div class="colorOn" [class.isOn]="isOn"></div>
+  
 </div>
 
 <div class="page-header">
