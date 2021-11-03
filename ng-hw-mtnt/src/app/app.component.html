@@ -24,6 +24,14 @@
   
 </div>
 
+<button class="shopToggle" (click)="toggleShopBlock()">Shop open</button>
+<div class="shopblock" *ngIf="this.showShopBlock">
+<ul>
+  <li class="product-item" *ngFor="let item of products">{{item.name}}</li>
+</ul>
+
+</div>
+
 <div class="page-header">
   <h1>Список покупок on ssd</h1>
 </div>

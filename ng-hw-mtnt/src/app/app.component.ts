@@ -27,6 +27,18 @@ export class AppComponent {
   incrementText: string = "Value x:";
   isOn: boolean = false;
 
+  showShopBlock: boolean = false;
+  products = [
+    {name: "phone X-1"},
+    {name: "PC One-Z"},
+    {name: "Box Rezona"},
+  ];
+
+  toggleShopBlock(): void {
+    this.showShopBlock = !this.showShopBlock;
+    console.log(this.showShopBlock);
+  }
+
   showValue(): void {
     console.log(this.bindValue);
   }

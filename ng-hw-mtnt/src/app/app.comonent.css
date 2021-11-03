@@ -24,3 +24,16 @@ table {
   height: 1rem;
   outline: 2px solid forestgreen;
 }
+
+.shopblock {
+  background-color: #ececec;
+  padding: 0.5rem;
+  line-height: 2;
+}
+
+.product-item {
+  padding: .5rem;
+  color:rgb(83, 34, 49);
+  outline: 1px solid #887a7a;
+  list-style-position: inside;
+}
