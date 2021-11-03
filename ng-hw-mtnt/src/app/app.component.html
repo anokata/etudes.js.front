@@ -1,5 +1,9 @@
 <div class="wrapper main">
-  <cart-list><h3>end of cart table inserted in child with ng-content</h3></cart-list>
+  <cart-list [inInfo]="bindValue">
+    <h3 bottom>
+      end of cart table inserted in child with ng-content
+    </h3>
+  </cart-list>
   binding:
   <div class="binding">1. one way out value</div>
   <p class="bind__one">{{ bindValue }}</p>
@@ -15,22 +19,20 @@
   <p class="bind__one">{{ bindTwoWay }}</p>
 
   <p class="bind__one">{{ complex.name }} : {{ complex.size }}</p>
-  <input type="text" name="" id="" value="{{complex.size}}" [value]="complex.size">
+  <input type="text" name="" id="" value="{{ complex.size }}" [value]="complex.size" />
   <p>bind to textContent (js prop)</p>
   <p [textContent]="complex.size"></p>
   <button (click)="increment($event)" [textContent]="incrementText"></button>
-<br>
-  <input type="checkbox" name="isOn" [(ngModel)]="isOn" id="">
+  <br />
+  <input type="checkbox" name="isOn" [(ngModel)]="isOn" id="" />
   <div class="colorOn" [class.isOn]="isOn"></div>
-  
 </div>
 
 <button class="shopToggle" (click)="toggleShopBlock()">Shop open</button>
 <div class="shopblock" *ngIf="this.showShopBlock">
-<ul>
-  <li class="product-item" *ngFor="let item of products">{{item.name}}</li>
-</ul>
-
+  <ul>
+    <li class="product-item" *ngFor="let item of products">{{ item.name }}</li>
+  </ul>
 </div>
 
 <div class="page-header">
@@ -45,12 +47,7 @@
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <input
-          type="number"
-          class="form-control"
-          [(ngModel)]="price"
-          placeholder="Цена"
-        />
+        <input type="number" class="form-control" [(ngModel)]="price" placeholder="Цена" />
       </div>
     </div>
     <div class="form-group">

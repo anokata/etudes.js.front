@@ -1,3 +1,14 @@
 .cart__row {
   border-bottom: 1px solid #d7d7d7;
 }
+
+.cart__cell {
+  padding: 1rem;
+  font-size: 1.1em;
+  border-right: 1px solid #d7d7d7;
+}
+
+.cart__table {
+  outline: 1px solid #ddd;
+  padding: 1em;
+}

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Input, Component } from "@angular/core";
 
 class Item {
   name: string;
@@ -16,6 +16,8 @@ class Item {
   styleUrls: ['./cart-list.component.css'],
 })
 export class CartList {
+  @Input() inInfo: string = "(init)";
+  
   products: Item[] = [
     new Item("bag Z-a2", 0.1),
     new Item("Default phone", 2.5),

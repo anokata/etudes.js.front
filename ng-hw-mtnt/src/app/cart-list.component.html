@@ -2,10 +2,11 @@
   <div class="list">
     <table class="cart__table">
       <tr class="cart__row"  *ngFor="let item of products">
-        <td>{{item.name}}</td>
-        <td>{{item.price}}</td>
+        <td class="cart__cell">{{item.name}}</td>
+        <td class="cart__cell">{{item.price}}</td>
       </tr>
     </table>
-    <ng-content select="selector"></ng-content>
+    <h2>{{inInfo}}</h2>
+    <ng-content select="[bottom]"></ng-content>
   </div>
 </div>
