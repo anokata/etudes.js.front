@@ -1,0 +1,11 @@
+<div class="cart">
+  <div class="list">
+    <table class="cart__table">
+      <tr class="cart__row"  *ngFor="let item of products">
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+      </tr>
+    </table>
+    <ng-content select="selector"></ng-content>
+  </div>
+</div>
