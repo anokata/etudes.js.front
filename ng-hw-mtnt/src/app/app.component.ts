@@ -26,6 +26,7 @@ export class AppComponent {
   x: number = 0;
   incrementText: string = "Value x:";
   isOn: boolean = false;
+  counter: number = 0;
 
   showShopBlock: boolean = false;
   products = [
@@ -65,5 +66,9 @@ export class AppComponent {
   addItem(text: string, price: number): void {
     if (text == null || text.trim() == "" || price == null) return;
     this.items.push(new Item(text, price));
+  }
+
+  onChange(value: number) {
+    this.counter += value;
   }
 }

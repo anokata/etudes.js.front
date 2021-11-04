@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'test',
@@ -7,5 +7,9 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
   constructor() { }
 
+  @Output() onChanged = new EventEmitter<number>();
+  change(value: number) {
+    this.onChanged.emit(value*10);
+  }
   ngOnInit() { }
 }

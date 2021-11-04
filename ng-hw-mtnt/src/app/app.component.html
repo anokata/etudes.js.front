@@ -1,5 +1,6 @@
 <div class="wrapper main">
-  <test></test>
+  <test (onChanged)="onChange($event)"></test>
+  <h4>counter: {{counter}}</h4>
   <cart-list [inInfo]="bindValue">
     <h3 bottom>
       end of cart table inserted in child with ng-content
