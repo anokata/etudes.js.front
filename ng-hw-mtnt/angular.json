@@ -12,6 +12,7 @@
             "outputPath": "dist/helloapp",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "baseHref": "/", 
             "deployUrl": "/etudes.js.front/ng-hw-mtnt/dist/helloapp/",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.json",
@@ -21,7 +22,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hwapp:build"
+            "browserTarget": "hwapp:build",
+            "baseHref": "/", 
+            "deployUrl": "/"
           }
         }
       }
