@@ -41,3 +41,8 @@ table {
 button {
   margin: 1rem;
 }
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
