@@ -1,5 +1,6 @@
 <div class="wrapper main">
-  <test (onChanged)="onChange($event)"></test>
+  <test (onChanged)="onChange($event)" [(inputText)]="inputValue"></test>
+  binded in main component: {{inputValue}}
   <h4>counter: {{counter}}</h4>
   <cart-list [inInfo]="bindValue">
     <h3 bottom>

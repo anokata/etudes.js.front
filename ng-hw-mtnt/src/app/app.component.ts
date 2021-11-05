@@ -27,6 +27,7 @@ export class AppComponent {
   incrementText: string = "Value x:";
   isOn: boolean = false;
   counter: number = 0;
+  inputValue: string;
 
   showShopBlock: boolean = false;
   products = [

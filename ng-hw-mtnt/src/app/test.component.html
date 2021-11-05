@@ -2,4 +2,6 @@
   component for test event binding
   <button (click)="change(1)">click me add</button>
   <button (click)="change(-2)">click me 2</button>
+  <h4>two way bind:</h4>
+  <input type="text" name="childText" id="" [ngModel]="inputText" (ngModelChange)="onInputTextChange($event)">
 </div>
