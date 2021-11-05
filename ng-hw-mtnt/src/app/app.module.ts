@@ -9,12 +9,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { FormsComponent } from "./forms.component";
 import { AboutComponentComponent } from "./about-component/about-component.component";
 import { BasicBindignComponent } from "./basic-bindign.component";
+import { DirectivesComponent } from './directives.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "about" },
   { path: "forms", component: FormsComponent },
   { path: "binding", component: BasicBindignComponent },
   { path: "about", component: AboutComponentComponent },
+  { path: "direcitves", component: DirectivesComponent },
 ];
 
 @NgModule({
@@ -31,6 +33,7 @@ const routes: Routes = [
     FormsComponent,
     AboutComponentComponent,
     BasicBindignComponent,
+    DirectivesComponent,
   ],
   bootstrap: [AppComponent],
 })
