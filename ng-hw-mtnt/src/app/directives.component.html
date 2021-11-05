@@ -1,1 +1,4 @@
-<p>directives works!</p>
+<p #parToggle 
+   [ngClass]="{coloredText: isColoredText}"
+   (click)="toggleTextClass()">click me to change style</p>
+   
