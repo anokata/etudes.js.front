@@ -12,6 +12,7 @@
             "outputPath": "dist/helloapp",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "deployUrl": "/etudes.js.front/ng-hw-mtnt/dist/helloapp/",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.json",
             "aot": true
