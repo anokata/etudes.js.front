@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "test",
   templateUrl: "./test.component.html",
 })
-export class TestComponent implements OnInit {
-  constructor() {}
+export class TestComponent implements OnInit, OnChanges {
+  constructor() {
+    console.log("test.component Constructing...");
+  }
 
   @Input() inputText: string;
 
@@ -22,5 +24,16 @@ export class TestComponent implements OnInit {
     this.onChanged.emit(value * 10);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("test.component Init.");
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (let propName in changes) {
+      let chng = changes[propName];
+      let cur  = JSON.stringify(chng.currentValue);
+      let prev = JSON.stringify(chng.previousValue);
+      console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+    }
+  }
 }
