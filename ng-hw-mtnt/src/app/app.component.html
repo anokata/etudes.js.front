@@ -1,12 +1,15 @@
 <div class="wrapper main">
-  <test (onChanged)="onChange($event)" [(inputText)]="inputValue"></test>
+  <test #test (onChanged)="onChange($event)" [(inputText)]="inputValue"></test>
   binded in main component: {{inputValue}}
-  <h4>counter: {{counter}}</h4>
+  <h4 #counterHeader>counter: {{counter}}</h4>
+  <p>header4: [{{counterHeader.textContent}}]</p>
+  <button (click)="test.change(111)">test change by 111</button>
   <cart-list [inInfo]="bindValue">
     <h3 bottom>
       end of cart table inserted in child with ng-content
     </h3>
   </cart-list>
+  <hr>
   binding:
   <div class="binding">1. one way out value</div>
   <p class="bind__one">{{ bindValue }}</p>
@@ -30,14 +33,14 @@
   <input type="checkbox" name="isOn" [(ngModel)]="isOn" id="" />
   <div class="colorOn" [class.isOn]="isOn"></div>
 </div>
-
+<hr>
 <button class="shopToggle" (click)="toggleShopBlock()">Shop open</button>
 <div class="shopblock" *ngIf="this.showShopBlock">
   <ul>
     <li class="product-item" *ngFor="let item of products">{{ item.name }}</li>
   </ul>
 </div>
-
+<hr>
 <div class="page-header">
   <h1>Список покупок on ssd</h1>
 </div>
