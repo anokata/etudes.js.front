@@ -11,7 +11,7 @@ import { AboutComponentComponent } from "./about-component/about-component.compo
 import { BasicBindignComponent } from "./basic-bindign.component";
 
 const routes: Routes = [
-  { path: "", component: AppComponent },
+  { path: "", redirectTo: "about" },
   { path: "forms", component: FormsComponent },
   { path: "binding", component: BasicBindignComponent },
   { path: "about", component: AboutComponentComponent },
