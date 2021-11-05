@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "forms", component: FormsComponent },
   { path: "binding", component: BasicBindignComponent },
   { path: "about", component: AboutComponentComponent },
-  { path: "direcitves", component: DirectivesComponent },
+  { path: "directives", component: DirectivesComponent },
 ];
 
 @NgModule({
