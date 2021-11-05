@@ -16,15 +16,15 @@ class GameItem {
 export class DirectivesComponent implements OnInit {
   isColoredText: boolean = false;
 
-  name: string = "";
-  genre: string = "";
-  price: number = 0.0;
+  game: GameItem = new GameItem("Default Name", "action", 60.99);
 
   games: GameItem[] = [];
   genres: string[] = ["action", "jrpg", "startegy", "casual"];
 
   addGameItem() {
-    this.games.push(new GameItem(this.name, this.genre, this.price));
+    this.games.push(
+      new GameItem(this.game.name, this.game.genre, this.game.price)
+    );
   }
 
   toggleTextClass() {
