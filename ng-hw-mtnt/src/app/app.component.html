@@ -36,14 +36,18 @@
     <input type="checkbox" name="isOn" [(ngModel)]="isOn" id="" />
     <div class="colorOn" [class.isOn]="isOn"></div>
     <hr>
+  </div>
+
+  <div class="right">###
     <button class="shopToggle" (click)="toggleShopBlock()">Shop open</button>
     <div class="shopblock" *ngIf="this.showShopBlock">
       <ul>
         <li class="product-item" *ngFor="let item of products">{{ item.name }}</li>
       </ul>
     </div>
+    <h3>Data:</h3>
+    <data-fix></data-fix>
   </div>
-  <div class="right">###</div>
 </div>
 
 <hr>
