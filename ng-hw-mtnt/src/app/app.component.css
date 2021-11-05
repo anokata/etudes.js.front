@@ -37,3 +37,7 @@ table {
   outline: 1px solid #887a7a;
   list-style-position: inside;
 }
+
+button {
+  margin: 1rem;
+}

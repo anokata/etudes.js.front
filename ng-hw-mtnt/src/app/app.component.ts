@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
+import { TestComponent } from "./test.component";
 
 class Item {
   purchase: string;
@@ -15,7 +16,7 @@ class Item {
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.comonent.css"],
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
   text: string = "";
@@ -28,6 +29,17 @@ export class AppComponent {
   isOn: boolean = false;
   counter: number = 0;
   inputValue: string;
+
+  @ViewChild(TestComponent, {static:false})
+  private testComponent: TestComponent | undefined;
+
+  @ViewChild("parRef", {static: false})
+  parRef: ElementRef | undefined;
+
+  changeByRef() {
+    if (this.parRef === undefined) return;
+    this.parRef.nativeElement.textContent += "."
+  }
 
   showShopBlock: boolean = false;
   products = [
@@ -55,7 +67,8 @@ export class AppComponent {
   increment($event) {
     this.x++;
     this.incrementText = `Value x: ${this.x}`;
-    console.log($event)
+    console.log($event);
+    this.testComponent.change(55);
   }
 
   items: Item[] = [
@@ -71,5 +84,6 @@ export class AppComponent {
 
   onChange(value: number) {
     this.counter += value;
+    // console.log(this.testComponent);
   }
 }

@@ -9,6 +9,9 @@
       end of cart table inserted in child with ng-content
     </h3>
   </cart-list>
+  <p>view child by #ref</p>
+  <p #parRef>None</p>
+  <button (click)="changeByRef()">change by elem ref ^ parRef</button>
   <hr>
   binding:
   <div class="binding">1. one way out value</div>
