@@ -1,22 +1,33 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { DataService } from "./data.service";
 
 @Component({
   selector: "forms",
   templateUrl: "forms.component.html",
   styleUrls: ["./forms.component.css"],
+  providers: [DataService],
 })
 export class FormsComponent implements OnInit {
   name: string = "def name";
   email: string;
   phone: string;
+  list: string[] = [];
+  item: string;
+  selectedItem: string;
 
   submit(form: NgForm) {
     console.log(form);
     console.log(this.name, this.email, this.phone);
   }
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.list = this.dataService.getData();
+  }
+
+  addItem() {
+    this.dataService.addData(this.item);
+  }
 }
