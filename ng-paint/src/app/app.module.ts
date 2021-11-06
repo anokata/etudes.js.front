@@ -8,7 +8,7 @@ import { Router, RouterOutlet, RouterLink } from '@angular/router';
 const routes: Routes = [
   { path: 'canvas', component: CanvasComponent },
   { path: 'app', component: AppComponent },
-  { path: '**', redirectTo: 'app' },
+  { path: '**', redirectTo: 'canvas' },
 ];
 
 @NgModule({
