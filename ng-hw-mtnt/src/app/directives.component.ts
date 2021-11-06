@@ -25,6 +25,14 @@ export class DirectivesComponent implements OnInit {
     this.game.price = Math.round(this.game.price * 100) / 100;
   }
 
+  onNameChange() {
+    this.game.name = this.game.name
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
   addGameItem() {
     this.games.push(
       new GameItem(this.game.name, this.game.genre, this.game.price)

@@ -4,7 +4,8 @@
 <div>
   <div class="form-group">
     <label>Название игры</label>
-    <input class="form-control" name="title" [(ngModel)]="game.name" #gameName="ngModel" />
+    <input class="form-control" name="title" [(ngModel)]="game.name" #gameName="ngModel"
+      (ngModelChange)="onNameChange()" />
   </div>
   <div class="form-group">
     <label>Цена</label>
