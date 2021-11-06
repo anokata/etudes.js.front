@@ -5,12 +5,16 @@
   <div class="form-group">
     <label>Название игры</label>
     <input class="form-control" name="title" [(ngModel)]="game.name" #gameName="ngModel"
-      (ngModelChange)="onNameChange()" />
+      (ngModelChange)="onNameChange()" required />
+    <div [hidden]="gameName.valid || gameName.untouched" class="alert alert-danger">
+      Не указано название
+    </div>
   </div>
   <div class="form-group">
     <label>Цена</label>
     <input type="number" class="form-control" name="price" [(ngModel)]="game.price" #gamePrice="ngModel"
-      (change)="onPriceChange()" />
+      (change)="onPriceChange()" required pattern="^[0-9]+\.[0-9]+$" />
+    <div [hidden]="gamePrice.valid || gamePrice.untouched" class="alert alert-danger"> некорректная цена </div>
   </div>
   <div class="form-group">
     <label>Жанр</label>
@@ -21,7 +25,8 @@
     </select>
   </div>
   <div class="form-group">
-    <button class="btn btn-default" (click)="addGameItem()">Добавить</button>
+    <button class="btn btn-default" (click)="addGameItem()"
+      [disabled]="gameName.invalid || gamePrice.invalid">Добавить</button>
     <p>{{gameName.name}}: {{gameName.model}}</p>
     <p>{{gamePrice.name}}: {{gamePrice.model}}</p>
     <p>{{gameGenre.name}}: {{gameGenre.model}}</p>
