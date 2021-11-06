@@ -20,6 +20,7 @@ specifiers:
   karma-coverage: ~2.0.3
   karma-jasmine: ~4.0.0
   karma-jasmine-html-reporter: ~1.7.0
+  konva: ^8.2.3
   rxjs: ~6.6.0
   tslib: ^2.3.0
   typescript: ~4.3.5
@@ -34,6 +35,7 @@ dependencies:
   '@angular/platform-browser': 12.2.13_97b07de0e0a2767eebb8b475e5d053cc
   '@angular/platform-browser-dynamic': 12.2.13_df59fb07029055b5d0e612925b487993
   '@angular/router': 12.2.13_77f9be83c64208f20f952d6482f49f76
+  konva: 8.2.3
   rxjs: 6.6.7
   tslib: 2.3.1
   zone.js: 0.11.4
@@ -5056,6 +5058,10 @@ packages:
     resolution: {integrity: sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==}
     engines: {node: '>= 8'}
     dev: true
+
+  /konva/8.2.3:
+    resolution: {integrity: sha512-2hDlDzB9goNgV0Fm6oQqbq3ZISL34bOYvIpe4iXXQmOiPFFy1o3wwo0z0CX2x2Gv+fS6SHDR/JsRNRtEquApXA==}
+    dev: false
 
   /less-loader/10.0.1_less@4.1.1+webpack@5.50.0:
     resolution: {integrity: sha512-Crln//HpW9M5CbtdfWm3IO66Cvx1WhZQvNybXgfB2dD/6Sav9ppw+IWqs/FQKPBFO4B6X0X28Z0WNznshgwUzA==}

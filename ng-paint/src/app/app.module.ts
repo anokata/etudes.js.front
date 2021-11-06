@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { CanvasComponent } from './canvas/canvas.component';
+import { Router, RouterOutlet, RouterLink } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'canvas', component: CanvasComponent },
+  { path: 'app', component: AppComponent },
+  { path: '**', redirectTo: 'app' },
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, CanvasComponent],
+  imports: [BrowserModule, RouterModule, RouterModule.forRoot(routes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
