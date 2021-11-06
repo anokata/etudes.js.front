@@ -21,6 +21,10 @@ export class DirectivesComponent implements OnInit {
   games: GameItem[] = [];
   genres: string[] = ["action", "jrpg", "startegy", "casual"];
 
+  onPriceChange() {
+    this.game.price = Math.round(this.game.price * 100) / 100;
+  }
+
   addGameItem() {
     this.games.push(
       new GameItem(this.game.name, this.game.genre, this.game.price)
