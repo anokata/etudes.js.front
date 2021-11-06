@@ -1,4 +1,25 @@
 <div class="main">
   <input type="text" name="" id="">
   use: ng g component --flat --skip-tests Comp
+
+  <form action="" #myForm="ngForm" novalidate>
+    <div class="form-group">
+      <label>Имя</label>
+      <input class="form-control" name="name" [(ngModel)]="name" required />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input class="form-control" name="email" ngModel required email />
+    </div>
+    <div class="form-group">
+      <label>Телефон</label>
+      <input class="form-control" name="phone" ngModel required pattern="[0-9]{10}" />
+    </div>
+    <div class="form-group">
+      <button [disabled]="myForm.invalid" class="btn btn-default" (click)="submit(myForm)">Добавить</button>
+    </div>
+  </form>
+
+  <div>Имя: {{myForm.value.name}}</div>
+  <div>Email: {{myForm.value.email}}</div>
 </div>
