@@ -13,6 +13,7 @@ export class FormsComponent implements OnInit {
 
   submit(form: NgForm) {
     console.log(form);
+    console.log(this.name, this.email, this.phone);
   }
 
   constructor() {}
