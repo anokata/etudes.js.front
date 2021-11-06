@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { Router, RouterOutlet, RouterLink } from '@angular/router';
+import { ToolBarComponent } from './tool-bar/tool-bar.component';
 
 const routes: Routes = [
   { path: 'canvas', component: CanvasComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, CanvasComponent],
+  declarations: [AppComponent, CanvasComponent, ToolBarComponent],
   imports: [BrowserModule, RouterModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],

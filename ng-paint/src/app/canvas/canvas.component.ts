@@ -3,10 +3,7 @@ import Konva from 'konva';
 import { Layer } from 'konva/lib/Layer';
 import { Line } from 'konva/lib/shapes/Line';
 import { Stage } from 'konva/lib/Stage';
-
-enum Tool {
-  Rect,
-}
+import { Tool } from '../tools';
 
 @Component({
   selector: 'app-canvas',
