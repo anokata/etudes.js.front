@@ -25,7 +25,7 @@ export class FormsComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.list = this.dataService.getData();
+    this.dataService.getData().subscribe((data) => (this.list = data));
   }
 
   addItem() {

@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LogService } from "./log.service";
+import { Observable, of } from "rxjs";
 
 @Injectable()
 export class DataService {
@@ -7,9 +8,11 @@ export class DataService {
 
   constructor(private logService: LogService) {}
 
-  getData(): string[] {
+  getData(): Observable<string[]> {
     this.logService.write("data.service: getData");
-    return this.data;
+    // make rx observable
+    const data = of(this.data);
+    return data;
   }
 
   addData(name: string) {
