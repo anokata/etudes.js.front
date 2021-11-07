@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { DataService } from "./data.service";
+import { LogService } from "./log.service";
 
 @Component({
   selector: "forms",
   templateUrl: "forms.component.html",
   styleUrls: ["./forms.component.css"],
-  providers: [DataService],
+  providers: [DataService, LogService],
 })
 export class FormsComponent implements OnInit {
   name: string = "def name";
