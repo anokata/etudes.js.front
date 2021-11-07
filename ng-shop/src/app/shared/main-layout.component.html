@@ -1,2 +1,11 @@
-<p>main-layout works!</p>
+<nav class="navbar bg-dark">
+  <h2>Online game stuff shop</h2>
+  <ul>
+    <li routerLinkActive="active"><a href="">Swords</a></li>
+    <li routerLinkActive="active"><a href="">Boots</a></li>
+    <li routerLinkActive="active"><a href="">Guns</a></li>
+    <li routerLinkActive="active"><a href="">Cloth</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['/cart']" href="">Cart</a></li>
+  </ul>
+</nav>
 <router-outlet></router-outlet>
