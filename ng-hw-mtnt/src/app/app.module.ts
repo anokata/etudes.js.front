@@ -10,6 +10,7 @@ import { FormsComponent } from "./forms.component";
 import { AboutComponentComponent } from "./about-component/about-component.component";
 import { BasicBindignComponent } from "./basic-bindign.component";
 import { DirectivesComponent } from './directives.component';
+import { StoreModule } from '@ngrx/store';
 
 const routes: Routes = [
   { path: "", redirectTo: "about" },
@@ -25,6 +26,7 @@ const routes: Routes = [
     FormsModule,
     DataModule,
     RouterModule.forRoot(routes),
+    StoreModule.forRoot({}, {}),
   ],
   declarations: [
     AppComponent,
