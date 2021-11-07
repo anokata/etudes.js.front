@@ -9,8 +9,9 @@ import { RouterModule, Routes } from "@angular/router";
 import { FormsComponent } from "./forms.component";
 import { AboutComponentComponent } from "./about-component/about-component.component";
 import { BasicBindignComponent } from "./basic-bindign.component";
-import { DirectivesComponent } from './directives.component';
-import { StoreModule } from '@ngrx/store';
+import { DirectivesComponent } from "./directives.component";
+import { StoreModule } from "@ngrx/store";
+import { StoreViewComponent } from "./store-view.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "about" },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "binding", component: BasicBindignComponent },
   { path: "about", component: AboutComponentComponent },
   { path: "directives", component: DirectivesComponent },
+  { path: "storeview", component: StoreViewComponent },
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const routes: Routes = [
     AboutComponentComponent,
     BasicBindignComponent,
     DirectivesComponent,
+    StoreViewComponent,
   ],
   bootstrap: [AppComponent],
 })
