@@ -12,6 +12,10 @@ import { BasicBindignComponent } from "./basic-bindign.component";
 import { DirectivesComponent } from "./directives.component";
 import { StoreModule } from "@ngrx/store";
 import { StoreViewComponent } from "./store-view.component";
+import { booksReducer } from "./state/books.reducer";
+import { collectionReducer } from "./state/collection.reducer";
+import { BookListComponent } from "./book-list/book-list.component";
+import { BookCollectionComponent } from "./book-collection/book-collection.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "about" },
@@ -28,7 +32,7 @@ const routes: Routes = [
     FormsModule,
     DataModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }),
   ],
   declarations: [
     AppComponent,
@@ -39,6 +43,8 @@ const routes: Routes = [
     BasicBindignComponent,
     DirectivesComponent,
     StoreViewComponent,
+    BookListComponent,
+    BookCollectionComponent,
   ],
   bootstrap: [AppComponent],
 })
