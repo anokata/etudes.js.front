@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block" [disabled]="form?.invalid">Logon</button>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="form?.invalid || submitted">Logon</button>
 
 
 </form>
