@@ -1,12 +1,18 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
 
-  <h2>Add</h2>
+  <h2 class="text-center">Add product</h2>
 
   <div class="form-control">
-    <label for="info">info</label>
-    <input id="info" info="info" formControlName="info">
-    <div *ngIf="form.get('info')?.touched && form.get('info')?.invalid" class="validation">
-      <small *ngIf="form.get('info')?.errors?.required">Choose product info</small>
+    <label for="type">type</label>
+    <select formControlName="type">
+      <option value="Game">Game</option>
+      <option value="Sword">Sword</option>
+      <option value="Boots">Boots</option>
+      <option value="Guns">Guns</option>
+      <option value="Cloth">Cloth</option>
+    </select>
+    <div *ngIf="form.get('type')?.touched && form.get('type')?.invalid" class="validation">
+      <small *ngIf="form.get('type')?.errors?.required">Choose product type</small>
     </div>
   </div>
 
@@ -20,14 +26,14 @@
 
   <div class="form-control">
     <label for="photo">photo</label>
-
+    <quill-editor formControlName="photo"></quill-editor>
     <div *ngIf="form.get('photo')?.touched && form.get('photo')?.invalid" class="validation">
       <small *ngIf="form.get('photo')?.errors?.required">Choose product photo</small>
     </div>
   </div>
   <div class="form-control">
     <label for="info">info</label>
-
+    <quill-editor formControlName="info"></quill-editor>
     <div *ngIf="form.get('info')?.touched && form.get('info')?.invalid" class="validation">
       <small *ngIf="form.get('info')?.errors?.required">Choose product info</small>
     </div>
