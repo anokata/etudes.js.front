@@ -10,6 +10,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/helloapp",
+            "assets": ["src/assets"],
             "index": "src/index.html",
             "main": "src/main.ts",
             "baseHref": "/",

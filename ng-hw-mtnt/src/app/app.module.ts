@@ -19,6 +19,7 @@ import { BookCollectionComponent } from "./book-collection/book-collection.compo
 import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 import { MatSliderModule } from "@angular/material/slider";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -40,6 +41,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSliderModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,

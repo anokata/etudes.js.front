@@ -1,12 +1,18 @@
-<p>reactive-form works!</p>
-<form class="form-group" [formGroup]="cityForm" novalidate (ngSubmit)="submit()">
+<div class="wrapper wrapper__center">
+  <form class="form-group" [formGroup]="cityForm" novalidate (ngSubmit)="submit()">
 
-  <input class="form-control" type="text" formControlName="cityName">
-  <div class="alert alert-danger"
-    *ngIf="cityForm.controls['cityName'].invalid && cityForm.controls['cityName'].touched">
-    Не верно
-  </div>
-  <button class="btn btn-primary" type="submit" [disabled]="cityForm.invalid">set</button>
+    <input class="form-control" type="text" formControlName="cityName">
+    <div class="alert alert-danger"
+      *ngIf="cityForm.controls['cityName'].invalid && cityForm.controls['cityName'].touched">
+      Не верно
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="cityForm.invalid">set</button>
 
-</form>
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+  </form>
+  <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
+  <button class="btn btn-danger" (click)="buttonGet()">get data</button>
+  <p>city data: </p>
+  <p>{{city?.cityName}}</p>
+  <p>{{city?.population}}</p>
+</div>
