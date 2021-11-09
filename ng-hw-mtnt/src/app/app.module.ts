@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { CartList } from "./cart-list.component";
 import { TestComponent } from "./test.component";
@@ -17,6 +17,7 @@ import { collectionReducer } from "./state/collection.reducer";
 import { BookListComponent } from "./book-list/book-list.component";
 import { BookCollectionComponent } from "./book-collection/book-collection.component";
 import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
+import { MatSliderModule } from "@angular/material/slider";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -35,6 +36,8 @@ const routes: Routes = [
     DataModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }),
+    ReactiveFormsModule,
+    MatSliderModule,
   ],
   declarations: [
     AppComponent,
