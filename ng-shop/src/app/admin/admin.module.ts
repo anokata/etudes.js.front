@@ -9,6 +9,7 @@ import { OrdersPageComponent } from './orders-page/orders-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from '../shared/auth.guard';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AuthGuard } from '../shared/auth.guard';
         ],
       },
     ]),
+    QuillModule.forRoot(),
   ],
   exports: [RouterModule],
 })
