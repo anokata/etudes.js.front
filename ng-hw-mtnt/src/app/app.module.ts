@@ -16,14 +16,16 @@ import { booksReducer } from "./state/books.reducer";
 import { collectionReducer } from "./state/collection.reducer";
 import { BookListComponent } from "./book-list/book-list.component";
 import { BookCollectionComponent } from "./book-collection/book-collection.component";
+import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "about" },
+  { path: "", redirectTo: "about", pathMatch: "full" },
   { path: "forms", component: FormsComponent },
   { path: "binding", component: BasicBindignComponent },
   { path: "about", component: AboutComponentComponent },
   { path: "directives", component: DirectivesComponent },
   { path: "storeview", component: StoreViewComponent },
+  { path: "reactiveform", component: ReactiveFormComponent },
 ];
 
 @NgModule({
@@ -45,6 +47,7 @@ const routes: Routes = [
     StoreViewComponent,
     BookListComponent,
     BookCollectionComponent,
+    ReactiveFormComponent,
   ],
   bootstrap: [AppComponent],
 })
