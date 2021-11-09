@@ -18,6 +18,7 @@ import { BookListComponent } from "./book-list/book-list.component";
 import { BookCollectionComponent } from "./book-collection/book-collection.component";
 import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 import { MatSliderModule } from "@angular/material/slider";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -38,6 +39,7 @@ const routes: Routes = [
     StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }),
     ReactiveFormsModule,
     MatSliderModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     AppComponent,

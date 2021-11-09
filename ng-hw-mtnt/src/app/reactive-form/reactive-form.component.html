@@ -1,1 +1,12 @@
 <p>reactive-form works!</p>
+<form class="form-group" [formGroup]="cityForm" novalidate (ngSubmit)="submit()">
+
+  <input class="form-control" type="text" formControlName="cityName">
+  <div class="alert alert-danger"
+    *ngIf="cityForm.controls['cityName'].invalid && cityForm.controls['cityName'].touched">
+    Не указано
+  </div>
+  <button class="btn btn-primary" type="submit">set</button>
+
+</form>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
