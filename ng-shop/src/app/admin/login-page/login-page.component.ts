@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 
-class User {
-  public email: string;
-  public password: string;
-}
+type AuthUser = {
+  email: string;
+  password: string;
+  returnSecureToken: boolean;
+};
 
 @Component({
   selector: 'app-login-page',
@@ -33,9 +34,10 @@ export class LoginPageComponent implements OnInit {
     if (this.form.invalid) return;
     this.submitted = true;
 
-    const user: User = {
+    const user: AuthUser = {
       email: this.form.value.email,
       password: this.form.value.password,
+      returnSecureToken: true,
     };
 
     this.auth.login(user).subscribe(
