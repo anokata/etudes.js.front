@@ -12,22 +12,39 @@
             "outputPath": "dist/helloapp",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "baseHref": "/", 
+            "baseHref": "/",
             "deployUrl": "/etudes.js.front/ng-hw-mtnt/dist/helloapp/",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.json",
             "aot": true
+          },
+          "configurations": {
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "hwapp:build",
-            "baseHref": "/", 
+            "baseHref": "/",
             "deployUrl": "/"
-          }
+          },
+          "configurations": {
+            "development": {
+              "browserTarget": "hwapp:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
         }
       }
-    }},
+    }
+  },
   "defaultProject": "hwapp"
 }
