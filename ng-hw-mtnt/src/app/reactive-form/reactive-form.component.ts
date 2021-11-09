@@ -11,8 +11,18 @@ export class ReactiveFormComponent implements OnInit {
 
   constructor() {
     this.cityForm = new FormGroup({
-      cityName: new FormControl("DefaulCity", [Validators.required]),
+      cityName: new FormControl("DefaultCity", [
+        Validators.required,
+        this.cityNameValidator,
+      ]),
     });
+  }
+
+  cityNameValidator(control: FormControl): { [s: string]: boolean } {
+    if ((control.value as string).indexOf("fault") > 0) {
+      return { cityName: true };
+    }
+    return null;
   }
 
   ngOnInit(): void {}
