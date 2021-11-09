@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiKey: 'AIzaSyBFKfTGtUjCYGR0f8gyNBrGcbc789Jrc3I',
+  fbdbUrl: 'https://ng-shop-4e762-default-rtdb.firebaseio.com/',
 };
 
 /*
