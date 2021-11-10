@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { Proposal } from '../model/proposal.model';
 
 @Component({
   selector: 'app-proposals',
@@ -12,16 +13,14 @@ import {
   styleUrls: ['./proposals.component.scss'],
 })
 export class ProposalsComponent implements OnInit, OnChanges {
-  @Input() distance: number = 0;
-  @Input() age: number = 0;
-  @Input() luggageWeight: number = 0;
-  @Input() proposals: any[] = [];
+  @Input() proposals: Proposal[] = [];
 
   constructor() {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(`Proposal chg: ${changes['distance']?.currentValue}`);
+    console.log(`Proposal chg: ${changes['proposals'].currentValue}`);
+    console.log(this.proposals);
   }
 }

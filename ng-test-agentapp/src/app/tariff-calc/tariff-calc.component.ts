@@ -11,6 +11,7 @@ export class TariffCalcComponent implements OnInit {
   distance: number = 5;
   age: number = 0;
   luggageWeight: number = 0;
+  proposals: Proposal[] = [];
 
   transfers: Transfer[] = [
     new Transfer('Аэрофлот', ComfortClass.Econom, 4, 5, 4000, 20, NoDiscont),
@@ -30,7 +31,7 @@ export class TariffCalcComponent implements OnInit {
   }
 
   calc() {
-    let proposals: Proposal[] = this.transfers.map(
+    this.proposals = this.transfers.map(
       (t) =>
         new Proposal(
           t.company,
@@ -38,6 +39,6 @@ export class TariffCalcComponent implements OnInit {
         )
     );
     // filter 0
-    console.log(proposals);
+    console.log(this.proposals);
   }
 }

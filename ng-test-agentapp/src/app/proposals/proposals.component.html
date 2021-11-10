@@ -1,4 +1,5 @@
-<p>proposals works!</p>
-{{distance}}
-{{age}}
-{{luggageWeight}}
+<div class="container">
+  <ul>
+    <li *ngFor="let p of proposals">{{p.company}}: {{p.cost}}</li>
+  </ul>
+</div>
