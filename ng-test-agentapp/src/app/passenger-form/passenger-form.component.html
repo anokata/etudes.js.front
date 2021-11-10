@@ -1,32 +1,32 @@
-  <div class="form-group">
-    <label for="distance">Количество километров</label>
-    <input type="text" class="form-control" required [ngModel]="distance" #dist="ngModel"
-      (ngModelChange)="onDistanceChange($event)">
-    <div *ngIf="dist.invalid && (dist.dirty || dist.touched)" class="alert">
-      <div *ngIf="dist.errors?.['required']">
-        Enter d in km
-      </div>
+<div class="form-group">
+  <label for="distance">Количество километров</label>
+  <input type="text" class="form-control" required [ngModel]="distance" #dist="ngModel"
+    (ngModelChange)="onDistanceChange($event)">
+  <div *ngIf="dist.invalid && (dist.dirty || dist.touched)" class="alert">
+    <div *ngIf="dist.errors?.['required']">
+      Enter d in km
     </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="age">Возраст</label>
-    <input type="text" class="form-control" required [ngModel]="age" #ageInput="ngModel"
-      (ngModelChange)="onAgeChange($event)">
-    <div *ngIf="ageInput.invalid && (ageInput.dirty || ageInput.touched)" class="alert">
-      <div *ngIf="ageInput.errors?.['required']">
-        Enter age
-      </div>
+<div class="form-group">
+  <label for="age">Возраст</label>
+  <input type="text" class="form-control" required [ngModel]="age" #ageInput="ngModel"
+    (ngModelChange)="onAgeChange($event)">
+  <div *ngIf="ageInput.invalid && (ageInput.dirty || ageInput.touched)" class="alert">
+    <div *ngIf="ageInput.errors?.['required']">
+      Enter age
     </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="luggageWeight">Вес багажа</label>
-    <input type="text" id="luggageWeight" name="luggageWeight" class="form-control" required [ngModel]="luggageWeight"
-      #luggageWeightInput="ngModel" (ngModelChange)="onLuggageWeightChange($event)">
-    <div *ngIf="luggageWeightInput.invalid && (luggageWeightInput.dirty || luggageWeightInput.touched)" class="alert">
-      <div *ngIf="luggageWeightInput.errors?.['required']">
-        Enter luggageWeight
-      </div>
+<div class="form-group">
+  <label for="luggageWeight">Вес багажа</label>
+  <input type="text" id="luggageWeight" name="luggageWeight" class="form-control" required [ngModel]="luggageWeight"
+    #luggageWeightInput="ngModel" (ngModelChange)="onLuggageWeightChange($event)">
+  <div *ngIf="luggageWeightInput.invalid && (luggageWeightInput.dirty || luggageWeightInput.touched)" class="alert">
+    <div *ngIf="luggageWeightInput.errors?.['required']">
+      Enter luggageWeight
     </div>
   </div>
+</div>

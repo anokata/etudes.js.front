@@ -17,4 +17,6 @@ export class TariffCalcComponent implements OnInit {
   handleChange($event: any) {
     // console.log(`Traffic. dist: ${this.distance} ev: ${$event}`);
   }
+
+  calc() {}
 }
