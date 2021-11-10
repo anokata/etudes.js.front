@@ -45,7 +45,7 @@
             "outputPath": "dist/agentapp-test",
             "index": "src/index.html",
             "baseHref": "/",
-            "deployUrl": "/ng-test-agentapp/dist/agentapp-test/",
+            "deployUrl": "/etudes.js.front/ng-test-agentapp/dist/agentapp-test/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
