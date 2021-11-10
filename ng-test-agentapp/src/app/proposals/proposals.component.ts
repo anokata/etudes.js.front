@@ -20,7 +20,6 @@ export class ProposalsComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(`Proposal chg: ${changes['proposals'].currentValue}`);
-    console.log(this.proposals);
+    // console.log(this.proposals);
   }
 }

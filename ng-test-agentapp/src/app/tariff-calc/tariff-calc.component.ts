@@ -60,6 +60,7 @@ export class TariffCalcComponent implements OnInit {
             t.calcCost(this.distance, this.age, this.luggageWeight)
           )
       )
-      .filter((p) => p.cost > 0);
+      .filter((p) => p.cost > 0)
+      .sort((a, b) => a.company.localeCompare(b.company));
   }
 }
