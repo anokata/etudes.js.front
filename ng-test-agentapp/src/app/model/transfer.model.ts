@@ -9,9 +9,28 @@ export class Transfer {
     public ageDiscont: AgeDiscont
   ) {}
 
-  public calcCost(km: number, age: number, luggage: number): number {
+  public calcCost(distance: number, age: number, luggage: number): number {
     if (luggage > this.maxLuggage) return -1;
-    return 0;
+
+    const pathCost = distance * this.kmCost;
+
+    let luggageCost = 0;
+    if (luggage > this.maxFreeLuggage) {
+      luggageCost = (luggage - this.maxFreeLuggage) * this.luggageCost;
+    }
+
+    let cost = pathCost + luggageCost;
+    if (this.ageDiscont.age >= age) {
+      if (this.ageDiscont.luggageInclude) {
+        cost =
+          ((pathCost + luggageCost) * (100 - this.ageDiscont.discontPrc)) / 100;
+      } else {
+        cost =
+          luggageCost + (pathCost * (100 - this.ageDiscont.discontPrc)) / 100;
+      }
+    }
+
+    return Math.round(cost * 100) / 100;
   }
 }
 
