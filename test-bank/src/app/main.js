@@ -142,14 +142,14 @@ class ATM extends React.Component {
 
   showTaked() {
     return (
-    <div>
-      {this.props.selectGivePack.map((b, i) => (
-        <div key={i}>
-          {b.dignity}={b.count}{" "}
-        </div>
-      ))}
-      Осталось: {this.props.selectLast}
-    </div>);
+      <div>
+        {this.props.selectGivePack.map((b, i) => (
+          <div key={i}>
+            {b.dignity}={b.count}{" "}
+          </div>
+        ))}
+        Осталось: {this.props.selectLast}
+      </div>);
   }
 
   loadVariant(n) {

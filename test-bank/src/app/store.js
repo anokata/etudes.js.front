@@ -3,7 +3,7 @@ import { useSelector, useDispatch, Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import BankNotePack from "./banknote"
-import { takeAmount, fromVariant } from "./banknote"
+import { takeAmountEqually, fromVariant } from "./banknote"
 
 const customizedMiddleware = getDefaultMiddleware({
   serializableCheck: false
@@ -31,20 +31,23 @@ const ASlice = createSlice({
   reducers: {
     take: (state, action) => {
       const amount = action.payload;
-      const result = takeAmount(state.banknotes, amount)
-      state.banknotes = result.banknotes;
-      state.reminder = result.reminder;
-      state.givePack = result.givePack;
-      state.last = result.last;
+      const result = takeAmountEqually(state.banknotes, amount)
+      return {
+        ...state,
+        banknotes: result.banknotes,
+        reminder: result.reminder,
+        givePack: result.givePack,
+        last: result.last,
+      }
     },
-    banknoteInfo: (state) => {},
+    banknoteInfo: (state) => { },
     restore: (state, action) => {
       state.banknotes = fromVariant(action.payload);
     }
   },
 });
 
-export const store = configureStore({ 
+export const store = configureStore({
   reducer: ASlice.reducer,
   middleware: customizedMiddleware,
 });
@@ -62,8 +65,8 @@ export const mapDispatchToProps = (dispatch) => {
 };
 
 export const mapStateToProps = state => ({
-    selectBanknotes: state.banknotes,
-    selectReminder: state.reminder,
-    selectGivePack: state.givePack,
-    selectLast: state.last,
+  selectBanknotes: state.banknotes,
+  selectReminder: state.reminder,
+  selectGivePack: state.givePack,
+  selectLast: state.last,
 });
