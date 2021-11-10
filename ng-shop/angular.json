@@ -26,7 +26,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "baseHref": "/",
-            "deployUrl": "/ng-test-agentapp/dist/agentapp-test/",
+            "deployUrl": "/etudes.js.front/ng-shop/dist/ng-shop/",
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
