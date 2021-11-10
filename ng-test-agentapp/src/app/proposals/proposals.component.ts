@@ -14,14 +14,21 @@ import { Proposal } from '../model/proposal.model';
 })
 export class ProposalsComponent implements OnInit, OnChanges {
   @Input() proposals: Proposal[] = [];
-  proposalsByCompany: any[] = [];
+  proposalsByCompany: { [key: string]: Proposal[] } = {};
 
   constructor() {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    // console.log(this.proposals);
-    // TODO grouping proposalsByCompany
+    // TODO grouping proposalsByCompany in tariff
+    this.proposalsByCompany = {};
+    this.proposals.forEach((p) => {
+      if (!this.proposalsByCompany[p.company]) {
+        this.proposalsByCompany[p.company] = [];
+      }
+      this.proposalsByCompany[p.company].push(p);
+    });
+    console.log(this.proposalsByCompany);
   }
 }

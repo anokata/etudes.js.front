@@ -2,9 +2,12 @@
   <h4>Предложения</h4>
 
   <div class="proposals">
-    <div class="" *ngFor="let p of proposals">
-      <div class="company">{{p.company}}</div>
-      <div class="cost">{{p.cost}}</div>
+    <div class="" *ngFor="let companyProps of proposalsByCompany | keyvalue">
+      <div class="company">{{companyProps.key}}</div>
+
+      <div class="" *ngFor="let proposal of companyProps.value">
+        <div class="cost">{{proposal.cost}}</div>
+      </div>
     </div>
   </div>
 
