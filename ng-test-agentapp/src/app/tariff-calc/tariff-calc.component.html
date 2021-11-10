@@ -1,2 +1,4 @@
- <app-passenger-form></app-passenger-form>
- <app-proposals></app-proposals>
+ <app-passenger-form [(distance)]="distance" (distanceChange)="handleChange($event)" [(age)]="age"
+   [(luggageWeight)]="luggageWeight">
+ </app-passenger-form>
+ <app-proposals [distance]="distance" [age]="age" [luggageWeight]="luggageWeight"></app-proposals>

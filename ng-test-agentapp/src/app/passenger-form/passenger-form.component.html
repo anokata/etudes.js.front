@@ -1,42 +1,32 @@
-<form class="form" action="" [formGroup]="form">
-
-  <div class="form-group">
-    <label for="distance">Количество километров</label>
-    <input type="text" formControlName="distance">
-    <div *ngIf="!form.controls['distance'].valid && form.controls['distance'].touched">
-      <div *ngIf="form.controls['distance'].errors?.required" style="background-color: red">
-        Enter distance in km
-      </div>
-      <div *ngIf="form.controls['distance'].errors?.pattern" style="background-color: red">
-        Only Numbers are allowed
-      </div>
+<div class="form-group">
+  <label for="distance">Количество километров</label>
+  <input type="text" class="form-control" required [ngModel]="distance" #dist="ngModel"
+    (ngModelChange)="onDistanceChange($event)">
+  <div *ngIf="dist.invalid && (dist.dirty || dist.touched)" class="alert">
+    <div *ngIf="dist.errors?.['required']">
+      Enter d in km
     </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="age">Возраст</label>
-    <input type="text" formControlName="age">
-    <div *ngIf="!form.controls['age'].valid && form.controls['age'].touched">
-      <div *ngIf="form.controls['age'].errors?.required" style="background-color: red">
-        Enter age
-      </div>
-      <div *ngIf="form.controls['distance'].errors?.pattern" style="background-color: red">
-        Only Numbers are allowed
-      </div>
+<div class="form-group">
+  <label for="age">Возраст</label>
+  <input type="text" class="form-control" required [ngModel]="age" #ageInput="ngModel"
+    (ngModelChange)="onAgeChange($event)">
+  <div *ngIf="ageInput.invalid && (ageInput.dirty || ageInput.touched)" class="alert">
+    <div *ngIf="ageInput.errors?.['required']">
+      Enter age
     </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="luggageWeight">Вес багажа</label>
-    <input type="text" formControlName="luggageWeight">
-    <div *ngIf="!form.controls['luggageWeight'].valid && form.controls['luggageWeight'].touched">
-      <div *ngIf="form.controls['luggageWeight'].errors?.required" style="background-color: red">
-        luggageWeight is required
-      </div>
-      <div *ngIf="form.controls['distance'].errors?.pattern" style="background-color: red">
-        Only Numbers are allowed
-      </div>
+<div class="form-group">
+  <label for="luggageWeight">Вес багажа</label>
+  <input type="text" id="luggageWeight" name="luggageWeight" class="form-control" required [ngModel]="luggageWeight"
+    #luggageWeightInput="ngModel" (ngModelChange)="onLuggageWeightChange($event)">
+  <div *ngIf="luggageWeightInput.invalid && (luggageWeightInput.dirty || luggageWeightInput.touched)" class="alert">
+    <div *ngIf="luggageWeightInput.errors?.['required']">
+      Enter luggageWeight
     </div>
   </div>
-
-</form>
+</div>
