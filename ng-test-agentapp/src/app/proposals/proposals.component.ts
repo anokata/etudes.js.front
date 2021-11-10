@@ -15,6 +15,7 @@ export class ProposalsComponent implements OnInit, OnChanges {
   @Input() distance: number = 0;
   @Input() age: number = 0;
   @Input() luggageWeight: number = 0;
+  @Input() proposals: any[] = [];
 
   constructor() {}
 

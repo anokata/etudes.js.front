@@ -91,6 +91,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "baseHref": "/",
+            "deployUrl": "/"
+          },
           "configurations": {
             "production": {
               "browserTarget": "agentapp-test:build:production"

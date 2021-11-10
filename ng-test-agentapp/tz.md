@@ -1,5 +1,6 @@
+https://anokata.github.io/etudes.js.front/ng-test-agentapp/dist/agentapp-test/index.html
+https://docs.google.com/document/d/1v5ZrpYBnuRHz89AY_Okzgvu1iA5h74p6Z8ZyoMtYxaI/edit#
 Важно: Тестовое задание должно быть выполнено на Angular
-
 
 Пассажир, для того, чтобы отправиться в путешествие, из пункта А в пункт Б, расстояние между которыми Х километров, может купить билет у двух компаний перевозчиков: 
 1. Авиакомпания Аэрофлот

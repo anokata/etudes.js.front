@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Proposal } from '../model/proposal.model';
+import { ComfortClass, NoDiscont, Transfer } from '../model/transfer.model';
 
 @Component({
   selector: 'app-tariff-calc',
@@ -10,6 +12,15 @@ export class TariffCalcComponent implements OnInit {
   age: number = 0;
   luggageWeight: number = 0;
 
+  transfers: Transfer[] = [
+    new Transfer('Аэрофлот', ComfortClass.Econom, 4, 5, 4000, 20, NoDiscont),
+    new Transfer('Аэрофлот', ComfortClass.Econom, 8, 20, 5000, 50, {
+      age: 7,
+      discontPrc: 30,
+      luggageInclude: false,
+    }),
+  ];
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -18,5 +29,15 @@ export class TariffCalcComponent implements OnInit {
     // console.log(`Traffic. dist: ${this.distance} ev: ${$event}`);
   }
 
-  calc() {}
+  calc() {
+    let proposals: Proposal[] = this.transfers.map(
+      (t) =>
+        new Proposal(
+          t.company,
+          t.calcCost(this.distance, this.age, this.luggageWeight)
+        )
+    );
+    // filter 0
+    console.log(proposals);
+  }
 }
