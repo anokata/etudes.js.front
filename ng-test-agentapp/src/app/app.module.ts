@@ -6,10 +6,16 @@ import { AppComponent } from './app.component';
 import { PassengerFormComponent } from './passenger-form/passenger-form.component';
 import { ProposalsComponent } from './proposals/proposals.component';
 import { TariffCalcComponent } from './tariff-calc/tariff-calc.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, PassengerFormComponent, ProposalsComponent, TariffCalcComponent],
-  imports: [BrowserModule, ReactiveFormsModule, FormsModule],
+  declarations: [
+    AppComponent,
+    PassengerFormComponent,
+    ProposalsComponent,
+    TariffCalcComponent,
+  ],
+  imports: [BrowserModule, ReactiveFormsModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
