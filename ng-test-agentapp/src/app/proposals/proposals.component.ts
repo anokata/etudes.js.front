@@ -14,6 +14,7 @@ import { Proposal } from '../model/proposal.model';
 })
 export class ProposalsComponent implements OnInit, OnChanges {
   @Input() proposals: Proposal[] = [];
+  proposalsByCompany: any[] = [];
 
   constructor() {}
 
@@ -21,5 +22,6 @@ export class ProposalsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     // console.log(this.proposals);
+    // TODO grouping proposalsByCompany
   }
 }

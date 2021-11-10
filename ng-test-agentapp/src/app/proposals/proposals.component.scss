@@ -1,0 +1,20 @@
+.company {
+  background-color: rgb(214, 214, 214);
+  border-bottom: 1px solid rgb(180, 180, 180);
+  padding: 1em;
+  font-weight: bold;
+}
+
+.proposals {
+  margin: 1rem auto;
+  border: 1px solid rgb(180, 180, 180);
+}
+
+.cost {
+  padding: 1em;
+}
+
+.cost:hover {
+  background-color: rgb(238, 238, 238);
+  color: rgb(39, 39, 39);
+}

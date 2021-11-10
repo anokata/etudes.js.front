@@ -44,7 +44,9 @@ export class TariffCalcComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.calc();
+  }
 
   handleChange($event: any) {
     // console.log(`Traffic. dist: ${this.distance} ev: ${$event}`);

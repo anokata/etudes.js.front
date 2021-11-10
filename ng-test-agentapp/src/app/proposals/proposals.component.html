@@ -1,5 +1,11 @@
 <div class="container">
-  <ul>
-    <li *ngFor="let p of proposals">{{p.company}}: {{p.cost}}</li>
-  </ul>
+  <h4>Предложения</h4>
+
+  <div class="proposals">
+    <div class="" *ngFor="let p of proposals">
+      <div class="company">{{p.company}}</div>
+      <div class="cost">{{p.cost}}</div>
+    </div>
+  </div>
+
 </div>
