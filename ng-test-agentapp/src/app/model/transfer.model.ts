@@ -14,10 +14,7 @@ export class Transfer {
 
     const pathCost = distance * this.kmCost;
 
-    let luggageCost = 0;
-    if (luggage > this.maxFreeLuggage) {
-      luggageCost = (luggage - this.maxFreeLuggage) * this.luggageCost;
-    }
+    let luggageCost = luggage > this.maxFreeLuggage ? this.luggageCost : 0;
 
     let cost = pathCost + luggageCost;
     if (this.ageDiscont.age >= age) {

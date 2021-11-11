@@ -1,7 +1,7 @@
 <div class="form-group">
   <label class="form-label" for="distance">Количество километров</label>
   <input type="text" class="form-control" required [ngModel]="distance" #dist="ngModel"
-    (ngModelChange)="onDistanceChange($event)">
+    (ngModelChange)="onDistanceChange($event)" validateRegEx="/\-?\d*\.?\d{1,2}/">
   <div *ngIf="dist.invalid && (dist.dirty || dist.touched)" class="alert">
     <div *ngIf="dist.errors?.['required']">
       Enter distance in km

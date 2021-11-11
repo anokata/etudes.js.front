@@ -6,8 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./passenger-form.component.scss'],
 })
 export class PassengerFormComponent implements OnInit {
-  numberRegEx = /\-?\d*\.?\d{1,2}/;
-
   @Input() distance: number = 0;
   @Output() distanceChange = new EventEmitter<number>();
   onDistanceChange(model: number) {
@@ -18,7 +16,6 @@ export class PassengerFormComponent implements OnInit {
   @Input() age: number = 0;
   @Output() ageChange = new EventEmitter<number>();
   onAgeChange(model: number) {
-    console.log(`Passenger. age: ${model}`);
     this.ageChange.emit(model);
   }
 

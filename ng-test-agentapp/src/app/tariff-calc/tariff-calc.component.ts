@@ -48,10 +48,6 @@ export class TariffCalcComponent implements OnInit {
     this.calc();
   }
 
-  handleChange($event: any) {
-    // console.log(`Traffic. dist: ${this.distance} ev: ${$event}`);
-  }
-
   calc() {
     this.proposals = this.transfers
       .map(

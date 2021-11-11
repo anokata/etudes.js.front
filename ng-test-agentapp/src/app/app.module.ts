@@ -7,6 +7,7 @@ import { PassengerFormComponent } from './passenger-form/passenger-form.componen
 import { ProposalsComponent } from './proposals/proposals.component';
 import { TariffCalcComponent } from './tariff-calc/tariff-calc.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ForbiddenValidatorDirective } from './directives/number-validator.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PassengerFormComponent,
     ProposalsComponent,
     TariffCalcComponent,
+    ForbiddenValidatorDirective,
   ],
   imports: [BrowserModule, ReactiveFormsModule, FormsModule, NgbModule],
   providers: [],
