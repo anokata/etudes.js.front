@@ -5,3 +5,15 @@
 label {
   width: 30%;
 }
+
+.alert {
+  position: absolute;
+  left: 50%;
+  font-size: 0.5em;
+  color: red;
+}
+
+.ng-invalid {
+  border-color: #ff9595;
+  border-width: 2px;
+}

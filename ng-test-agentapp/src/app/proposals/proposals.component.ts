@@ -22,6 +22,7 @@ export class ProposalsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     // TODO grouping proposalsByCompany in tariff
+    // TODO validation form
     this.proposalsByCompany = {};
     this.proposals.forEach((p) => {
       if (!this.proposalsByCompany[p.company]) {
@@ -29,6 +30,6 @@ export class ProposalsComponent implements OnInit, OnChanges {
       }
       this.proposalsByCompany[p.company].push(p);
     });
-    console.log(this.proposalsByCompany);
+    // console.log(this.proposalsByCompany);
   }
 }
