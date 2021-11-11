@@ -12,3 +12,6 @@ console.log(new Uname(Math.random() * 1000, "HkdzlK-df9"));
 
 // import {of} from 'rxjs';
 Promise.resolve(80).then(console.log);
+
+type UA = string | number;
+type UB = "a" | "2";
