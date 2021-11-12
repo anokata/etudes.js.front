@@ -14,4 +14,12 @@ console.log(new Uname(Math.random() * 1000, "HkdzlK-df9"));
 Promise.resolve(80).then(console.log);
 
 type UA = string | number;
-type UB = "a" | "2";
+type UB = "a" | "2" | 4;
+enum EA {
+  S = 1,
+  b = 4,
+  E = 8 * EA.b,
+}
+
+let ua: UA = 8;
+let ub: UB = "a";
