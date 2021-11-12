@@ -33,6 +33,7 @@ export class ProductService {
       })
     );
   }
+
   getById(id: string): Observable<Product> {
     return this.http.get(`${environment.fbdbUrl}/products/${id}.json`).pipe(
       map((res: Product) => {
@@ -42,6 +43,17 @@ export class ProductService {
           date: new Date(res.date || 0),
         };
       })
+    );
+  }
+
+  remove(id: string): Observable<Object> {
+    return this.http.delete(`${environment.fbdbUrl}/products/${id}.json`);
+  }
+
+  udpate(product: Product): Observable<Object> {
+    return this.http.patch(
+      `${environment.fbdbUrl}/products/${product.id}.json`,
+      product
     );
   }
 }

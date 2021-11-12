@@ -1,1 +1,8 @@
-<p>dashboard-page works!</p>
+<div class="container" *ngIf="products.length; else loading">
+
+
+</div>
+
+<ng-template #loading>
+  <p class="text-center">loading</p>
+</ng-template>
