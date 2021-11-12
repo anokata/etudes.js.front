@@ -33,4 +33,15 @@ export class ProductService {
       })
     );
   }
+  getById(id: string): Observable<Product> {
+    return this.http.get(`${environment.fbdbUrl}/products/${id}.json`).pipe(
+      map((res: Product) => {
+        return {
+          ...res,
+          id: id,
+          date: new Date(res.date || 0),
+        };
+      })
+    );
+  }
 }
