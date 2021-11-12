@@ -11,10 +11,15 @@ import { ProductService } from 'src/app/shared/product.service';
 export class DashboardPageComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   productSub: Subscription;
+  removeSub: Subscription;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  private getProducts() {
     this.productSub = this.productService.getAll().subscribe((products) => {
       this.products = products;
       console.log(products);
@@ -24,6 +29,17 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.productSub) {
       this.productSub.unsubscribe();
+    }
+    if (this.removeSub) {
+      this.removeSub.unsubscribe();
+    }
+  }
+
+  remove(id: string | undefined) {
+    if (id !== undefined) {
+      this.removeSub = this.productService.remove(id).subscribe(() => {
+        this.products = this.products.filter((product) => product.id !== id);
+      });
     }
   }
 }
