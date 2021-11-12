@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/shared/product.service';
 export class EditPageComponent implements OnInit {
   form: FormGroup;
   product: Product;
+  submitted: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,6 +37,26 @@ export class EditPageComponent implements OnInit {
           info: new FormControl(this.product.info, Validators.required),
           price: new FormControl(this.product.price, Validators.required),
         });
+      });
+  }
+
+  submit() {
+    if (this.form.invalid) return;
+    this.submitted = true;
+
+    this.productService
+      .udpate({
+        ...this.product,
+        type: this.form.value.type,
+        title: this.form.value.title,
+        photo: this.form.value.photo,
+        info: this.form.value.info,
+        price: this.form.value.price,
+        date: new Date(),
+      })
+      .subscribe((res) => {
+        this.submitted = false;
+        this.router.navigate(['/admin', 'dashboard']);
       });
   }
 }
