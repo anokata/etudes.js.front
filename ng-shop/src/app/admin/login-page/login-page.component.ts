@@ -42,15 +42,12 @@ export class LoginPageComponent implements OnInit {
 
     this.auth.login(user).subscribe(
       (res: any) => {
-        console.log(res);
-        console.log(res?.idToken);
         this.form.reset();
         this.router.navigate(['/admin', 'dashboard']);
         this.submitted = false;
       },
       () => {
         this.submitted = false;
-        console.log('err');
       }
     );
   }
