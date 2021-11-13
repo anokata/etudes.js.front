@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../shared/interfaces';
+import { OrderService } from '../shared/order.service';
 import { ProductService } from '../shared/product.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class CartPageComponent implements OnInit {
   form: FormGroup;
   submitted: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit(): void {
     this.cartProducts = this.productService.cartProducts;
@@ -38,15 +42,14 @@ export class CartPageComponent implements OnInit {
       phone: this.form.value.phone,
       address: this.form.value.address,
       payment: this.form.value.payment,
+      orders: this.cartProducts,
       price: this.totalPrice,
       date: new Date(),
     };
 
-    console.log(order);
-    // this.orderService.create(order).subscribe((res) => {
-    //   this.form.reset();
-    //   this.submitted = false;
-    //   this.router.navigate(['/admin', 'dashboard']);
-    // });
+    this.orderService.create(order).subscribe((res) => {
+      this.form.reset();
+      this.submitted = false;
+    });
   }
 }
