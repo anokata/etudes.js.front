@@ -13,6 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   public type: string = 'Sword';
+  cartProducts: Product[] = [];
 
   setType(type: string) {
     this.type = type;
@@ -61,5 +62,9 @@ export class ProductService {
       `${environment.fbdbUrl}/products/${product.id}.json`,
       product
     );
+  }
+
+  addProduct(product: Product) {
+    this.cartProducts.push(product);
   }
 }
