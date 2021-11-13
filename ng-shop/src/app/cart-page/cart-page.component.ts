@@ -47,7 +47,7 @@ export class CartPageComponent implements OnInit {
       phone: this.form.value.phone,
       address: this.form.value.address,
       payment: this.form.value.payment,
-      orders: this.cartProducts,
+      products: this.cartProducts,
       price: this.totalPrice,
       date: new Date(),
     };

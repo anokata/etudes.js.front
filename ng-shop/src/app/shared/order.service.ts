@@ -21,23 +21,19 @@ export class OrderService {
     );
   }
 
-  // getAll(): Observable<any[]> {
-  //   return this.http.get(`${environment.fbdbUrl}/products.json`).pipe(
-  //     map((res: any) => {
-  //       return Object.keys(res).map((key) => ({
-  //         ...res[key],
-  //         id: key,
-  //         date: new Date(res[key].date),
-  //       }));
-  //     })
-  //   );
-  // }
+  getAll(): Observable<any[]> {
+    return this.http.get(`${environment.fbdbUrl}/orders.json`).pipe(
+      map((res: any) => {
+        return Object.keys(res).map((key) => ({
+          ...res[key],
+          id: key,
+          date: new Date(res[key].date),
+        }));
+      })
+    );
+  }
 
-  // remove(id: string): Observable<Object> {
-  //   return this.http.delete(`${environment.fbdbUrl}/products/${id}.json`);
-  // }
-
-  // addProduct(product: Product) {
-  //   this.cartProducts.push(product);
-  // }
+  remove(id: string): Observable<Object> {
+    return this.http.delete(`${environment.fbdbUrl}/orders/${id}.json`);
+  }
 }
