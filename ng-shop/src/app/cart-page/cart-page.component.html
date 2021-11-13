@@ -16,6 +16,8 @@
 
   <h2 class="text-center">Delivery</h2>
 
+  <div class="text-center text-danger" *ngIf="added">{{added}}</div>
+
 
   <form [formGroup]="form" (ngSubmit)="submit()">
 
