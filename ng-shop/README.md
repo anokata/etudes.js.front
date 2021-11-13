@@ -1,3 +1,8 @@
+
+
+
+hostingurl: https://ng-shop-4e762.web.app
+
 # NgShop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.

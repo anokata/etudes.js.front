@@ -1,8 +1,7 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
-  "assetGroups": [
-    {
+  "assetGroups": [{
       "name": "app",
       "installMode": "prefetch",
       "resources": {
@@ -12,7 +11,8 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
-        ]
+        ],
+        "urls": ["https://fonts.googleapis.com/css?family=Roboto"]
       }
     },
     {
@@ -26,5 +26,14 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [{
+    "name": "firebase",
+    "urls": ["https://ng-shop-4e762-default-rtdb.firebaseio.com/**"],
+    "cacheConfig": {
+      "maxSize": 5,
+      "maxAge": "3600"
+    }
+
+  }]
 }
