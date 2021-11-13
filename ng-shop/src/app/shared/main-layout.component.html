@@ -2,11 +2,11 @@
   <h2><a routerLink="/">Online game stuff shop</a></h2>
 
   <ul>
-    <li routerLinkActive="active"><a href="">Swords</a></li>
-    <li routerLinkActive="active"><a href="">Boots</a></li>
-    <li routerLinkActive="active"><a href="">Guns</a></li>
-    <li routerLinkActive="active"><a href="">Cloth</a></li>
-    <li routerLinkActive="active"><a [routerLink]="['/cart']" href="">Cart</a></li>
+    <li routerLinkActive="active"><a (click)="setType('Sword')">Swords</a></li>
+    <li routerLinkActive="active"><a (click)="setType('Boots')">Boots</a></li>
+    <li routerLinkActive="active"><a (click)="setType('Guns')">Guns</a></li>
+    <li routerLinkActive="active"><a (click)="setType('Cloth')">Cloth</a></li>
+    <li routerLinkActive="active"><a (click)="setType('Cart')" [routerLink]="['/cart']" href="">Cart</a></li>
   </ul>
 </nav>
 <div class="container">

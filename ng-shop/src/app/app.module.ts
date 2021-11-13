@@ -12,6 +12,7 @@ import { QuillModule } from 'ngx-quill';
 import { AuthInterceptor } from './shared/auth.interceport';
 import { ProductComponent } from './product/product.component';
 import { SearchPipe } from './shared/search.pipe';
+import { SortingPipe } from './shared/sorting.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchPipe } from './shared/search.pipe';
     ProductPageComponent,
     CartPageComponent,
     ProductComponent,
+    SortingPipe,
   ],
   imports: [
     BrowserModule,

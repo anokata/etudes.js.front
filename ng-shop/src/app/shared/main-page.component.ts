@@ -10,9 +10,9 @@ import { ProductService } from './product.service';
 export class MainPageComponent implements OnInit {
   products$: Observable<any[]>;
 
-  constructor(private productServ: ProductService) {}
+  constructor(public productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products$ = this.productServ.getAll();
+    this.products$ = this.productService.getAll();
   }
 }

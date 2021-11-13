@@ -12,6 +12,12 @@ import { Observable } from 'rxjs';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
+  public type: string = 'Sword';
+
+  setType(type: string) {
+    this.type = type;
+  }
+
   create(product: any) {
     return this.http.post(`${environment.fbdbUrl}/products.json`, product).pipe(
       map((res: any) => ({
