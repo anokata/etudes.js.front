@@ -23,3 +23,8 @@ enum EA {
 
 let ua: UA = 8;
 let ub: UB = "a";
+
+let a: string | undefined;
+let A: { a: string; b: object; c: any } = { a: "2", b: {}, c: undefined };
+console.log(A.a, A.c?.b, !!undefined);
+console.log(((a) => a * 2)(3));

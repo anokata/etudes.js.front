@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
 import { AuthInterceptor } from './shared/auth.interceport';
 import { ProductComponent } from './product/product.component';
+import { SearchPipe } from './shared/search.pipe';
 
 @NgModule({
   declarations: [
