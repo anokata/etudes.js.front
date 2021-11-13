@@ -22,14 +22,19 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartProducts = this.productService.cartProducts;
-    this.cartProducts.forEach((e) => {
-      this.totalPrice += Number.parseFloat(e.price?.toString() || '0');
-    });
+    this.calcTotal();
     this.form = new FormGroup({
       name: new FormControl(null, Validators.required),
       phone: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
       payment: new FormControl('Cash'),
+    });
+  }
+
+  calcTotal() {
+    this.totalPrice = 0;
+    this.cartProducts.forEach((e) => {
+      this.totalPrice += Number.parseFloat(e.price?.toString() || '0');
     });
   }
 
@@ -51,5 +56,10 @@ export class CartPageComponent implements OnInit {
       this.form.reset();
       this.submitted = false;
     });
+  }
+
+  delete(product: Product) {
+    this.cartProducts.splice(this.cartProducts.indexOf(product), 1);
+    this.calcTotal();
   }
 }
