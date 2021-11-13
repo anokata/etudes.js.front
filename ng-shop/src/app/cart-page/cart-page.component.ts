@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../shared/interfaces';
 import { ProductService } from '../shared/product.service';
 
@@ -10,6 +11,8 @@ import { ProductService } from '../shared/product.service';
 export class CartPageComponent implements OnInit {
   cartProducts: Product[] = [];
   totalPrice: number = 0;
+  form: FormGroup;
+  submitted: boolean = false;
 
   constructor(private productService: ProductService) {}
 
@@ -18,5 +21,32 @@ export class CartPageComponent implements OnInit {
     this.cartProducts.forEach((e) => {
       this.totalPrice += Number.parseFloat(e.price?.toString() || '0');
     });
+    this.form = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      phone: new FormControl(null, Validators.required),
+      address: new FormControl(null, Validators.required),
+      payment: new FormControl('Cash'),
+    });
+  }
+
+  submit() {
+    if (this.form.invalid) return;
+    this.submitted = true;
+
+    const order: any = {
+      name: this.form.value.name,
+      phone: this.form.value.phone,
+      address: this.form.value.address,
+      payment: this.form.value.payment,
+      price: this.totalPrice,
+      date: new Date(),
+    };
+
+    console.log(order);
+    // this.orderService.create(order).subscribe((res) => {
+    //   this.form.reset();
+    //   this.submitted = false;
+    //   this.router.navigate(['/admin', 'dashboard']);
+    // });
   }
 }
