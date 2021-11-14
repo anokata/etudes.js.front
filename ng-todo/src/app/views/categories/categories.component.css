@@ -1,3 +1,7 @@
 #sidenav-collapse-main {
   overflow: visible;
 }
+
+.pointer {
+  cursor: pointer;
+}

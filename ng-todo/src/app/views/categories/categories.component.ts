@@ -9,6 +9,7 @@ import { DataHandlerService } from 'src/app/service/data-handler.service';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
+  activeCategory: Category | null = null;
 
   constructor(private dataHandler: DataHandlerService) {}
 
@@ -20,10 +21,12 @@ export class CategoriesComponent implements OnInit {
 
   showTasksByCategory(category: Category) {
     this.dataHandler.fillTasksByCategory(category);
+    this.activeCategory = category;
   }
 
   showAllTasks($event: Event) {
     this.dataHandler.fillTasks();
+    this.activeCategory = null;
     $event.preventDefault();
   }
 }
