@@ -17,4 +17,8 @@ export class TaskComponent implements OnInit {
       this.tasks = tasks;
     });
   }
+
+  checkTask(task: Task) {
+    task.completed = !task.completed;
+  }
 }

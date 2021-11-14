@@ -37,7 +37,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let task of tasks; let i = index">
+          <tr *ngFor="let task of tasks; let i = index" [class.completed]="task.completed">
 
             <td class="align-middle text-center text-sm">
               <h6 class="mb-0 text-sm">{{i + 1}}</h6>
@@ -66,7 +66,7 @@
                 {{task.date? (task.date | date : 'short') : 'no date' }}</span>
             </td>
             <td class="align-middle text-center text-sm">
-              <input class="form-switch" type="checkbox" [checked]="task.completed">
+              <input class="form-switch" type="checkbox" [checked]="task.completed" (click)="checkTask(task)">
             </td>
           </tr>
 
