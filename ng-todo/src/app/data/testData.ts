@@ -27,7 +27,7 @@ export class TestData {
   static tasks: Task[] = [
     {
       id: 1,
-      title: 'Залить бензин полный бак',
+      title: 'Get gasolin for auto',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[9],
@@ -36,7 +36,7 @@ export class TestData {
 
     {
       id: 2,
-      title: 'Передать отчеты начальнику управления',
+      title: 'Transfer reports to CEO',
       priority: TestData.priorities[0],
       completed: false,
       category: TestData.categories[0],
@@ -45,7 +45,7 @@ export class TestData {
 
     {
       id: 3,
-      title: 'Убраться у себя в комнате, полить растения',
+      title: 'Clean up room',
       priority: TestData.priorities[2],
       completed: true,
       category: TestData.categories[1],
@@ -53,7 +53,7 @@ export class TestData {
 
     {
       id: 4,
-      title: 'Сходить в парк с семьей, пригласить друзей',
+      title: 'Walk with family in park',
       priority: TestData.priorities[1],
       completed: false,
       category: TestData.categories[1],
@@ -61,13 +61,13 @@ export class TestData {
     },
     {
       id: 5,
-      title: 'Найти и выучить учебник по квантовой физике',
+      title: 'Learn quantum phisics and group theory',
       completed: false,
       category: TestData.categories[2],
     },
     {
       id: 6,
-      title: 'Сходить на семинар по программированию',
+      title: 'Take course for devOps',
       priority: TestData.priorities[1],
       completed: true,
       category: TestData.categories[2],
@@ -76,20 +76,20 @@ export class TestData {
 
     {
       id: 7,
-      title: 'Найти билеты в Турцию, выбрать отель',
+      title: 'Order tickets for vac, search hotel',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[3],
     },
     {
       id: 8,
-      title: 'Приготовить ужин для всей семьи (семга с картошкой)',
+      title: 'Make a dinner (pasta)',
       completed: false,
       category: TestData.categories[5],
     },
     {
       id: 9,
-      title: 'Подтянуться 10 раз',
+      title: 'Make squads 40 times, lift weight 16kg 10 times',
       priority: TestData.priorities[2],
       completed: false,
       category: TestData.categories[4],
