@@ -27,7 +27,7 @@
       <table class="table align-items-center mb-0">
         <thead>
           <tr>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Priority</th>
@@ -37,26 +37,36 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let task of tasks">
-            <td>
-              <div class="d-flex px-2 py-1">
-                <div class="d-flex flex-column justify-content-center">
-                  <h6 class="mb-0 text-sm">{{task.id}}</h6>
-                </div>
-              </div>
+          <tr *ngFor="let task of tasks; let i = index">
+
+            <td class="align-middle text-center text-sm">
+              <h6 class="mb-0 text-sm">{{i + 1}}</h6>
             </td>
 
             <td class="align-middle text-center text-sm">
               <span class="text-xs font-weight-bold"> {{task.title}}</span>
             </td>
+
+            <td class="align-middle text-center text-sm">
+              <span class="text-xs font-weight-bold"> {{task.category ? task.category.title : "no category"}}</span>
+            </td>
+
             <td class="align-middle">
               <div class="progress-wrapper w-75 mx-auto">
                 <div class="progress-info">
                   <div class="progress-percentage">
-                    <span class="text-xs font-weight-bold">{{task.priority}}</span>
+                    <span
+                      class="text-xs font-weight-bold">{{task.priority ? task.priority.title : "no priority"}}</span>
                   </div>
                 </div>
               </div>
+            </td>
+            <td class="align-middle text-center text-sm">
+              <span class="text-xs font-weight-bold">
+                {{task.date? (task.date | date : 'short') : 'no date' }}</span>
+            </td>
+            <td class="align-middle text-center text-sm">
+              <span class="text-xs font-weight-bold"> {{task.completed}}</span>
             </td>
           </tr>
 
