@@ -44,3 +44,10 @@ console.log(some, typeof some);
 let arr: Array<string> = [""];
 let tuple: [number, number] = [1, 2];
 console.log(tuple);
+
+class Over {
+  method(id?: number | string): void {
+    console.log(id || "1");
+  }
+}
+new Over().method(2);
