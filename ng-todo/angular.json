@@ -40,6 +40,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "baseHref": "/",
+            "deployUrl": "/etudes.js.front/ng-todo/dist/todong/",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -82,6 +84,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "baseHref": "/",
+            "deployUrl": "/"
+          },
           "configurations": {
             "production": {
               "browserTarget": "todong:build:production"
