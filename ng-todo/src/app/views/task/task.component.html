@@ -48,21 +48,22 @@
             </td>
 
             <td class="align-middle text-center text-sm">
-              <span class="text-xs font-weight-bold"> {{task.category ? task.category.title : "no category"}}</span>
+              <span class="text-xs font-weight-bold" [class.nodata]="!task.category">
+                {{task.category ? task.category.title : "no category"}}</span>
             </td>
 
             <td class="align-middle">
               <div class="progress-wrapper w-75 mx-auto">
                 <div class="progress-info">
                   <div class="progress-percentage">
-                    <span
-                      class="text-xs font-weight-bold">{{task.priority ? task.priority.title : "no priority"}}</span>
+                    <span class="text-xs font-weight-bold"
+                      [class.nodata]="!task.priority">{{task.priority ? task.priority.title : "no priority"}}</span>
                   </div>
                 </div>
               </div>
             </td>
             <td class="align-middle text-center text-sm">
-              <span class="text-xs font-weight-bold">
+              <span class="text-xs font-weight-bold" [class.nodata]="!task.date">
                 {{task.date? (task.date | date : 'short') : 'no date' }}</span>
             </td>
             <td class="align-middle text-center text-sm">

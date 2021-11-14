@@ -2,3 +2,7 @@
   text-decoration: line-through;
   color: #b8b8b8;
 }
+
+.nodata {
+  color: #cecece;
+}
