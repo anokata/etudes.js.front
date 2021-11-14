@@ -28,3 +28,19 @@ let a: string | undefined;
 let A: { a: string; b: object; c: any } = { a: "2", b: {}, c: undefined };
 console.log(A.a, A.c?.b, !!undefined);
 console.log(((a) => a * 2)(3));
+
+class Some {
+  constructor(public id: number) {}
+}
+class Other {
+  constructor(public id: number, public x: string) {}
+}
+let some: Some = { id: 8 }; // Structural typing
+console.log(some, typeof some);
+let other: Other = new Other(1, "2");
+some = other;
+console.log(some, typeof some);
+
+let arr: Array<string> = [""];
+let tuple: [number, number] = [1, 2];
+console.log(tuple);
