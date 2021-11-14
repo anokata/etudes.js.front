@@ -1,4 +1,3 @@
-// тестовые данные в виде массивов (заменяют таблицы БД)
 import { Category } from '../model/category';
 import { Priority } from '../model/priority';
 import { Task } from '../model/task';
@@ -15,6 +14,7 @@ export class TestData {
     { id: 8, title: 'Tech' },
     { id: 9, title: 'Health' },
     { id: 10, title: 'Auto' },
+    new Category(11, 'Misc'),
   ];
 
   static priorities: Priority[] = [
