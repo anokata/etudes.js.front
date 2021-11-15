@@ -22,7 +22,60 @@
       </div> -->
     </div>
   </div>
-  <div class="card-body px-0 pb-2">
+  <table class="table align-items-center mb-0" mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="color">
+      <th *matHeaderCellDef mat-header-cell></th>
+      <td *matCellDef="let task " [style.background-color]="getPriorityColor(task)"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th *matHeaderCellDef mat-header-cell></th>
+      <td *matCellDef="let index = index" mat-cell>
+        {{index + 1}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef mat-header-cell>Name</th>
+      <td *matCellDef="let task" [class.completed]="task.completed" mat-cell>
+        {{task.title}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef mat-header-cell>Date</th>
+      <td *matCellDef="let task" [ngClass]="{'completed': task.completed, 'nodata': !task.date}" mat-cell>
+        {{task.date? (task.date | date : 'medium') : 'no date' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+      <th *matHeaderCellDef mat-header-cell>Priority</th>
+      <td *matCellDef="let task" [ngClass]="{'completed': task.completed, 'nodata': !task.priority}" mat-cell>
+        {{task.priority? (task.priority.title ) : 'no priority' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th *matHeaderCellDef mat-header-cell>Category</th>
+      <td *matCellDef="let task" [ngClass]="{'completed': task.completed, 'nodata': !task.category}" mat-cell>
+        {{task.category? (task.category.title ) : 'no category' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="completion">
+      <th *matHeaderCellDef mat-header-cell>Completion</th>
+      <td *matCellDef="let task" mat-cell>
+        <input class="form-switch" type="checkbox" [checked]="task.completed" (click)="checkTask(task)">
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns;" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+
+  </table>
+
+  <!-- <div class="card-body px-0 pb-2">
     <div class="table-responsive">
       <table class="table align-items-center mb-0">
         <thead>
@@ -74,7 +127,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div> -->
 </div>
 
 
