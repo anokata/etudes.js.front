@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Priority } from 'src/app/model/priority';
 import { Task } from 'src/app/model/task';
 import { DataHandlerService } from 'src/app/service/data-handler.service';
 
@@ -39,6 +40,7 @@ export class TaskComponent implements OnInit {
   }
 
   public getPriorityColor(task: Task): string {
+    if (task?.completed) return '#888';
     return task?.priority?.color || '#fff';
   }
 

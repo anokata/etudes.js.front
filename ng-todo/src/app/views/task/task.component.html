@@ -25,7 +25,7 @@
   <table class="table align-items-center mb-0" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="color">
       <th *matHeaderCellDef mat-header-cell></th>
-      <td *matCellDef="let task " [style.background-color]="getPriorityColor(task)"></td>
+      <td *matCellDef="let task " [style.background-color]="getPriorityColor(task)" class="col-color"></td>
     </ng-container>
 
     <ng-container matColumnDef="id">

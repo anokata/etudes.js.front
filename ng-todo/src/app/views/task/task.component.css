@@ -6,3 +6,8 @@
 .nodata {
   color: #cecece;
 }
+
+.col-color {
+  width: 4%;
+  text-align: center;
+}
