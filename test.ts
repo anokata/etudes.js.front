@@ -51,3 +51,8 @@ class Over {
   }
 }
 new Over().method(2);
+
+let an2: 2 = 2;
+let an23: 2 | 3 = 3;
+const an5 = 5; // type is 5
+let an6 = 6; // type is number
