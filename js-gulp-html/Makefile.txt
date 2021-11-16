@@ -1,0 +1,2 @@
+preinit:
+  mkdir src/assets/{sass, img, js}
