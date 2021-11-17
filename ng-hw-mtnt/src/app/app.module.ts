@@ -23,6 +23,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { GridComponent } from "./grid/grid.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
+import { MatCardModule } from "@angular/material/card";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -48,6 +49,7 @@ const routes: Routes = [
     HttpClientModule,
     MatToolbarModule,
     MatIconModule,
+    MatCardModule,
   ],
   declarations: [
     AppComponent,

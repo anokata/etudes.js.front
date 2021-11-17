@@ -1,1 +1,9 @@
-<p>grid works!</p>
+<div *ngFor="let user of users">
+
+  <mat-card class="item" *ngIf="user" (dblclick)="changeUser.emit(user)">
+    <h2>{{ user.name }}</h2>
+    <p>
+      {{ user.occupation }}
+    </p>
+  </mat-card>
+</div>
