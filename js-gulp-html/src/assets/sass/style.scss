@@ -1,3 +1,8 @@
+@import "blocks/header";
+@import "blocks/button";
+@import "vendor/slick.scss";
+@import "vendor/slick-theme.scss";
+
 /* Default styles */
 body {
     margin: 0px;
@@ -89,6 +94,3 @@ body {
     outline: 2px solid rgb(151, 151, 151);
     min-width: 20%;
 }
-
-@import "blocks/header";
-@import "blocks/button";

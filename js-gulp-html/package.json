@@ -22,5 +22,8 @@
         "gulp-strip-css-comments": "^2.0.0",
         "gulp-uglify": "^3.0.2",
         "panini": "^1.7.2"
+    },
+    "dependencies": {
+        "slick-carousel": "^1.8.1"
     }
 }
