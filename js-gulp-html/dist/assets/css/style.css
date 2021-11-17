@@ -1,0 +1,111 @@
+/* Default styles */
+body {
+    margin: 0px;
+    color: #4e4e4e;
+}
+
+body div {
+    color: #333;
+}
+
+.block__element--mod {
+    color: #235c49;
+}
+
+.block__info {
+    font-size: 1.2em;
+}
+
+.block__tel {
+    font-size: 0.7em;
+}
+
+.header__item {
+    padding: 1em;
+}
+
+.nav {
+    background-color: #e2f3d3;
+}
+
+.nav__link {
+    color: #235c49;
+}
+
+.nav__link--active {
+    font-weight: bold;
+}
+
+.nav__link:visited {
+    color: #23275c;
+}
+
+.btn--danger {
+    background-color: #942e2e;
+}
+
+.side-panel {
+    background-color: #e7e7e7;
+}
+
+.side-panel__menu {
+    padding: 1rem;
+}
+
+.side-panel__menu-link {
+    color: #235c49;
+}
+
+.side-panel__menu-link:visited {
+    color: #23275c;
+}
+
+.side-panel__menu-link:hover {
+    color: #8b3f81;
+}
+
+.container {
+    display: flex;
+    outline: 2px solid #333;
+}
+
+.side {
+    background-color: #c5c5c5;
+}
+
+.center {
+    background-color: #b7cee4;
+    outline: 2px solid #979797;
+    min-width: 20%;
+}
+
+.header {
+    color: #697cbb;
+    padding: 10px;
+    background-color: #333;
+}
+
+.header__title {
+    color: #3c7a6b;
+}
+
+.header__title:hover {
+    color: antiquewhite;
+}
+
+.header__title {
+    margin: 0;
+    font-size: 25px;
+}
+
+.button {
+    background-color: royalblue;
+}
+
+.button:hover {
+    background-color: #2549b3;
+}
+
+.button:active {
+    background-color: #3365c2;
+}
