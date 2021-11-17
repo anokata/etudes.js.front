@@ -31,6 +31,11 @@ import { GridContainerComponent } from "./grid-container/grid-container.componen
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { UserDialogComponent } from "./user-dialog/user-dialog.component";
 import { MatInputModule } from "@angular/material/input";
+import { environment } from "src/environments/environment";
+import { provideFirestore, getFirestore } from "@angular/fire/firestore";
+import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { provideAuth, getAuth } from "@angular/fire/auth";
+import { provideStorage, getStorage } from "@angular/fire/storage";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -62,6 +67,10 @@ const routes: Routes = [
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   declarations: [
     AppComponent,

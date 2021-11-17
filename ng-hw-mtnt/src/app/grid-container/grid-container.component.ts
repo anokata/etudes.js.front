@@ -6,6 +6,8 @@ import {
   UserDialogComponent,
   UserDialogResult,
 } from "../user-dialog/user-dialog.component";
+import { Firestore, collectionData, collection } from "@angular/fire/firestore";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "grid-container",
@@ -13,6 +15,7 @@ import {
   styleUrls: ["./grid-container.component.css"],
 })
 export class GridContainerComponent implements OnInit {
+  user$: Observable<User[]>;
   users: User[] = [
     {
       id: 1,
@@ -30,7 +33,11 @@ export class GridContainerComponent implements OnInit {
   inProgress: User[] = [];
   done: User[] = [];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, firestore: Firestore) {
+    const usersdata = collection(firestore, "users");
+    // this.user$ = collectionData(usersdata);
+    // https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase#10
+  }
 
   ngOnInit(): void {}
 

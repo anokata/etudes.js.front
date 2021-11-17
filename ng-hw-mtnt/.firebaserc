@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "alltest-b9956": {
+      "hosting": {
+        "hwapp": [
+          "alltest-b9956"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "alltest-b9956"
+  }
+}

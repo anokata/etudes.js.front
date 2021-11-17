@@ -10,7 +10,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/helloapp",
-            "assets": ["src/assets"],
+            "assets": [
+              "src/assets"
+            ],
             "index": "src/index.html",
             "main": "src/main.ts",
             "baseHref": "/",
@@ -46,6 +48,16 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "hwapp:build:production",
+            "firebaseProject": "alltest-b9956",
+            "firebaseHostingSite": "alltest-b9956"
+          }
         }
       }
     }
