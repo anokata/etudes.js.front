@@ -20,6 +20,7 @@ import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 import { MatSliderModule } from "@angular/material/slider";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
+import { GridComponent } from "./grid/grid.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "directives", component: DirectivesComponent },
   { path: "storeview", component: StoreViewComponent },
   { path: "reactiveform", component: ReactiveFormComponent },
+  { path: "grid", component: GridComponent },
 ];
 
 @NgModule({
@@ -55,6 +57,7 @@ const routes: Routes = [
     BookListComponent,
     BookCollectionComponent,
     ReactiveFormComponent,
+    GridComponent,
   ],
   bootstrap: [AppComponent],
 })
