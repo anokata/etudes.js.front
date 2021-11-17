@@ -30,3 +30,8 @@
   text-shadow: 0 1px 0 #528ecc;
   outline: 0;
 }
+
+.main {
+  width: 90%;
+  margin: 1rem auto;
+}
