@@ -24,9 +24,13 @@ import { GridComponent } from "./grid/grid.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
 import { UsercrudComponent } from "./usercrud/usercrud.component";
 import { GridContainerComponent } from "./grid-container/grid-container.component";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { UserDialogComponent } from "./user-dialog/user-dialog.component";
+import { MatInputModule } from "@angular/material/input";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -55,6 +59,9 @@ const routes: Routes = [
     MatIconModule,
     MatCardModule,
     DragDropModule,
+    MatButtonModule,
+    MatInputModule,
+    MatDialogModule,
   ],
   declarations: [
     AppComponent,
@@ -71,6 +78,7 @@ const routes: Routes = [
     GridComponent,
     UsercrudComponent,
     GridContainerComponent,
+    UserDialogComponent,
   ],
   bootstrap: [AppComponent],
 })

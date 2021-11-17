@@ -1,6 +1,11 @@
 import { CdkDragDrop, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { User } from "../models/user";
+import { MatDialog } from "@angular/material/dialog";
+import {
+  UserDialogComponent,
+  UserDialogResult,
+} from "../user-dialog/user-dialog.component";
 
 @Component({
   selector: "grid-container",
@@ -25,11 +30,28 @@ export class GridContainerComponent implements OnInit {
   inProgress: User[] = [];
   done: User[] = [];
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   editUser(list: string, user: any): void {}
+
+  newUser(): void {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+      width: "270px",
+      data: {
+        user: {},
+      },
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe((result: UserDialogResult | undefined) => {
+        if (!result) {
+          return;
+        }
+        this.users.push(result.user);
+      });
+  }
 
   drop(event: CdkDragDrop<User[] | null>): void {
     if (event.previousContainer === event.container) {
