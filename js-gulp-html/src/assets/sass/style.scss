@@ -7,3 +7,69 @@ body {
         color: #333;
     }
 }
+
+.block {
+    &__element {
+        &--mod {
+            color: rgb(35, 92, 73);
+        }
+    }
+
+    &__info {
+        font-size: 1.2em;
+    }
+
+    &__tel {
+        font-size: 0.7em;
+    }
+}
+
+.header {
+    &__item {
+        padding: 1em;
+    }
+}
+
+.nav {
+    background-color: rgb(226, 243, 211);
+
+    &__link {
+        color: rgb(35, 92, 73);
+
+        &--active {
+            font-weight: bold;
+        }
+    }
+
+    &__link:visited {
+        color: rgb(35, 39, 92);
+
+    }
+}
+
+.btn {
+    &--danger {
+        background-color: rgb(148, 46, 46);
+    }
+}
+
+.side-panel {
+    background-color: rgb(231, 231, 231);
+
+    &__menu {
+        padding: 1rem;
+    }
+
+    &__menu-link {
+        color: rgb(35, 92, 73);
+
+    }
+
+    &__menu-link:visited {
+        color: rgb(35, 39, 92);
+    }
+
+    &__menu-link:hover {
+        color: rgb(139, 63, 129);
+    }
+}
