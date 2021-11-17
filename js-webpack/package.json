@@ -4,13 +4,18 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "webpack "
+    "build": "webpack ",
+    "serve": "webpack serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "webpack-dev-server": "^4.5.0"
   }
 }
