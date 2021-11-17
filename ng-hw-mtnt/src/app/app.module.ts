@@ -24,6 +24,7 @@ import { GridComponent } from "./grid/grid.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
+import { UsercrudComponent } from "./usercrud/usercrud.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: "storeview", component: StoreViewComponent },
   { path: "reactiveform", component: ReactiveFormComponent },
   { path: "grid", component: GridComponent },
+  { path: "crud", component: UsercrudComponent },
 ];
 
 @NgModule({
@@ -64,6 +66,7 @@ const routes: Routes = [
     BookCollectionComponent,
     ReactiveFormComponent,
     GridComponent,
+    UsercrudComponent,
   ],
   bootstrap: [AppComponent],
 })

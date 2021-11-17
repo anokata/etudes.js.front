@@ -27,7 +27,7 @@ export class UserService {
       headers: myHeaders,
     });
   }
-  deleteUser(id: string) {
+  deleteUser(id: number) {
     return this.http.delete<User>(this.url + "/" + id);
   }
 }
