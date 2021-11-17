@@ -25,6 +25,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
 import { UsercrudComponent } from "./usercrud/usercrud.component";
+import { GridContainerComponent } from "./grid-container/grid-container.component";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -34,7 +36,7 @@ const routes: Routes = [
   { path: "directives", component: DirectivesComponent },
   { path: "storeview", component: StoreViewComponent },
   { path: "reactiveform", component: ReactiveFormComponent },
-  { path: "grid", component: GridComponent },
+  { path: "grid", component: GridContainerComponent },
   { path: "crud", component: UsercrudComponent },
 ];
 
@@ -52,6 +54,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    DragDropModule,
   ],
   declarations: [
     AppComponent,
@@ -67,6 +70,7 @@ const routes: Routes = [
     ReactiveFormComponent,
     GridComponent,
     UsercrudComponent,
+    GridContainerComponent,
   ],
   bootstrap: [AppComponent],
 })

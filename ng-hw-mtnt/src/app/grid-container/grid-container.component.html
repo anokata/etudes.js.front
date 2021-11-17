@@ -1,0 +1,32 @@
+<div class="container-wrapper">
+  <div class="container">
+    <h2>Backlog</h2>
+
+    <mat-card cdkDropList id="users" #usersList="cdkDropList" [cdkDropListData]="users"
+      [cdkDropListConnectedTo]="[doneList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
+      <p class="empty-label" *ngIf="users.length === 0">Empty list</p>
+      <grid (edit)="editUser('users', $event)" *ngFor="let user of users" cdkDrag [user]="user"></grid>
+    </mat-card>
+  </div>
+
+  <div class="container">
+    <h2>In progress</h2>
+
+    <mat-card cdkDropList id="inProgress" #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
+      [cdkDropListConnectedTo]="[usersList, doneList]" (cdkDropListDropped)="drop($event)" class="list">
+      <p class="empty-label" *ngIf="inProgress.length === 0">Empty list</p>
+      <grid (edit)="editUser('inProgress', $event)" *ngFor="let user of inProgress" cdkDrag [user]="user">
+      </grid>
+    </mat-card>
+  </div>
+
+  <div class="container">
+    <h2>Done</h2>
+
+    <mat-card cdkDropList id="done" #doneList="cdkDropList" [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[usersList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
+      <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
+      <grid (edit)="editUser('done', $event)" *ngFor="let user of done" cdkDrag [user]="user"></grid>
+    </mat-card>
+  </div>
+</div>
