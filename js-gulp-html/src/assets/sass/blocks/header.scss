@@ -1,0 +1,18 @@
+.header {
+  color: rgb(105, 124, 187);
+  padding: 10px;
+  background-color: #333;
+
+  &__title {
+    color: rgb(60, 122, 107);
+
+    &:hover {
+      color: antiquewhite;
+    }
+  }
+}
+
+.header__title {
+  margin: 0;
+  font-size: 25px;
+}

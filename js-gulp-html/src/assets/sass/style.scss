@@ -39,12 +39,13 @@ body {
         &--active {
             font-weight: bold;
         }
+
+        &:visited {
+            color: rgb(35, 39, 92);
+        }
     }
 
-    &__link:visited {
-        color: rgb(35, 39, 92);
 
-    }
 }
 
 .btn {
@@ -73,3 +74,21 @@ body {
         color: rgb(139, 63, 129);
     }
 }
+
+.container {
+    display: flex;
+    outline: 2px solid #333;
+}
+
+.side {
+    background-color: rgb(197, 197, 197);
+}
+
+.center {
+    background-color: rgb(183, 206, 228);
+    outline: 2px solid rgb(151, 151, 151);
+    min-width: 20%;
+}
+
+@import "blocks/header";
+@import "blocks/button";
