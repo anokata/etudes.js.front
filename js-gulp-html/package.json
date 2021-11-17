@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "BEM project using gulp",
     "author": "quartenium",
+    "scripts": {
+        "upd": "gulp build && git add -f dist && git commit -m [build] dist && git push origin main"
+    },
     "devDependencies": {
         "browser-sync": "^2.27.7",
         "del": "^4.1.0",
