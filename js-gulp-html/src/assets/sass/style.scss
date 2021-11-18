@@ -17,6 +17,10 @@ body {
     margin: 0px;
     color: rgb(78, 78, 78);
 
+    @media (min-width: 1000px) {
+        color: rgb(77, 25, 25);
+    }
+
     div {
         color: #333;
     }
@@ -108,4 +112,10 @@ body {
 .col {
     outline: 2px solid #a3b9c4;
     background-color: rgb(183, 206, 228);
+}
+
+@media (max-width: 900px) {
+    body {
+        background-color: rgb(41, 61, 80);
+    }
 }
