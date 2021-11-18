@@ -119,3 +119,31 @@ body {
         background-color: rgb(41, 61, 80);
     }
 }
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+.anim-circle {
+    width: 4em;
+    height: 4em;
+    background-color: rgb(59, 29, 87);
+    border: 3px solid rgb(119, 38, 95);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgb(138, 42, 55);
+
+    &--h:hover {
+        transform: translateX(100px);
+        transition: transform 200ms;
+    }
+
+    &--k:hover {
+        animation: move 1s linear alternate infinite;
+    }
+}

@@ -2405,3 +2405,42 @@ body div {
         background-color: #293d50;
     }
 }
+
+@-webkit-keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+.anim-circle {
+    width: 4em;
+    height: 4em;
+    background-color: #3b1d57;
+    border: 3px solid #77265f;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #8a2a37;
+}
+
+.anim-circle--h:hover {
+    transform: translateX(100px);
+    transition: transform 200ms;
+}
+
+.anim-circle--k:hover {
+    -webkit-animation: move 1s linear alternate infinite;
+    animation: move 1s linear alternate infinite;
+}
