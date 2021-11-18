@@ -76,6 +76,25 @@
     background-color: #16331c;
 }
 
+.btn__link--mixed {
+    border: 2px solid #912b2b;
+    color: #421414;
+    border-radius: 5px;
+}
+
+.btn__link--mixed:hover {
+    border: 2px solid red;
+    color: #912b2b;
+}
+
+.btn__link--mixed:active {
+    border: 2px solid #912b2b;
+}
+
+.btn__link--mixed:focus {
+    border: 2px solid #f0cbcb;
+}
+
 .button {
     background-color: royalblue;
 }

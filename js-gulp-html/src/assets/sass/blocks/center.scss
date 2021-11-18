@@ -65,4 +65,12 @@ sans-serif;
     background-color: $gray;
 
   }
+
+  &--mixed {
+    @include btn(rgb(145, 43, 43));
+  }
+
+
+
+
 }

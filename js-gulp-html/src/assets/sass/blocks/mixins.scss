@@ -1,0 +1,18 @@
+@mixin btn($act) {
+  border: 2px solid $act;
+  color: darken($color: $act, $amount: 20%);
+  border-radius: 5px;
+
+  &:hover {
+    border: 2px solid red;
+    color: $act;
+  }
+
+  &:active {
+    border: 2px solid $act;
+  }
+
+  &:focus {
+    border: 2px solid lighten($color: $act, $amount: 50%);
+  }
+}
