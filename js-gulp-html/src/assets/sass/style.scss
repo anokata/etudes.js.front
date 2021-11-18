@@ -150,3 +150,29 @@ body {
         animation: move 1s linear alternate infinite;
     }
 }
+
+$link-color: rgb(35, 39, 92);
+$link-color-active: rgb(69, 95, 150);
+$navbg: rgb(215, 233, 192);
+
+.nav {
+
+    padding: 1em;
+
+
+    &__link {
+        color: rgb(48, 8, 20);
+        padding: 0.5em;
+        border-radius: 5px;
+        background-color: adjust-hue($color: $navbg, $degrees: 20);
+
+        &:visited {
+            color: $link-color;
+        }
+
+        &:hover {
+            color: adjust-color($color: $link-color, $lightness: 50%)
+        }
+    }
+
+}

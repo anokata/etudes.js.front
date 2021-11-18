@@ -2447,3 +2447,22 @@ body div {
     -webkit-animation: move 1s linear alternate infinite;
     animation: move 1s linear alternate infinite;
 }
+
+.nav {
+    padding: 1em;
+}
+
+.nav__link {
+    color: #300814;
+    padding: 0.5em;
+    border-radius: 5px;
+    background-color: #c9e9c0;
+}
+
+.nav__link:visited {
+    color: #23275c;
+}
+
+.nav__link:hover {
+    color: #a2a6dc;
+}
