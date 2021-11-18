@@ -1,0 +1,68 @@
+$primary: #729bd0;
+$primary-text: #a1f0cb;
+$hover-text: #76aeb8;
+$black: #334a47;
+$gray: #16331c;
+$indent: 1em;
+$font: 16px "Fira Sans",
+sans-serif;
+
+.center-header {
+  background-color: $primary;
+  color: $primary-text;
+  text-align: center;
+  padding: .5rem;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: sans-serif;
+  position: relative;
+  border-bottom: 3px solid #5487b3;
+
+  &--fixed {
+    background-color: $black;
+
+    & .btn__link {
+      padding: 0;
+      content: "con";
+    }
+  }
+
+  &:hover {
+    color: $hover-text;
+  }
+
+  &::before {
+    background-color: #4f55aa4f;
+    content: "";
+    width: 100%;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+
+}
+
+.center__text {
+  text-indent: $indent;
+  text-shadow: 0px 1px 1px $gray;
+  font: $font;
+}
+
+.btn {
+  padding: 1rem;
+}
+
+.btn__link {
+  background-color: $black;
+  text-decoration: none;
+  color: $primary-text;
+  padding: 1rem;
+
+  &:hover {
+    background-color: $gray;
+
+  }
+}
