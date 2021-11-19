@@ -1,6 +1,7 @@
 @mixin btn($act) {
-  border: 2px solid $act;
   color: darken($color: $act, $amount: 20%);
+
+  border: 2px solid $act;
   border-radius: 5px;
 
   &:hover {
