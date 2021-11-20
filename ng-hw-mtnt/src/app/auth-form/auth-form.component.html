@@ -1,1 +1,18 @@
-<p>auth-form works!</p>
+<div class="container">
+  <form class="form" action="" [formGroup]="form">
+    <div class=" form__input  input-group mb-3">
+      <label for="username">Username:</label>
+      <input class="form-control" type="text" name="username" formControlName="username">
+    </div>
+
+    <div class="form__input  input-group mb-3">
+      <label for="password">password:</label>
+      <input class="form-control" type="password" formControlName="password">
+    </div>
+
+    <div class="input-group">
+      <button class="btn btn-primary" type="submit" (click)="login()">Log in</button>
+    </div>
+
+  </form>
+</div>
