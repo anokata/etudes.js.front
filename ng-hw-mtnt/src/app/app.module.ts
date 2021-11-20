@@ -36,6 +36,7 @@ import { provideFirestore, getFirestore } from "@angular/fire/firestore";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { provideAuth, getAuth } from "@angular/fire/auth";
 import { provideStorage, getStorage } from "@angular/fire/storage";
+import { AuthFormComponent } from "./auth-form/auth-form.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "about", pathMatch: "full" },
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: "reactiveform", component: ReactiveFormComponent },
   { path: "grid", component: GridContainerComponent },
   { path: "crud", component: UsercrudComponent },
+  { path: "auth", component: AuthFormComponent },
 ];
 
 @NgModule({
@@ -88,6 +90,7 @@ const routes: Routes = [
     UsercrudComponent,
     GridContainerComponent,
     UserDialogComponent,
+    AuthFormComponent,
   ],
   bootstrap: [AppComponent],
 })
