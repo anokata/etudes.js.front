@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 @Component({
   selector: "auth-form",
@@ -36,6 +36,17 @@ export class AuthFormComponent implements OnInit {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(`Error: (${errorCode}) ${errorMessage}`);
+      });
+  }
+
+  logout() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        console.log(` Sign-out successful.`);
+      })
+      .catch((error) => {
+        // An error happened.
       });
   }
 }
