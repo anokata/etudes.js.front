@@ -12,8 +12,8 @@ export class AuthFormComponent implements OnInit {
 
   constructor() {
     this.form = new FormGroup({
-      username: new FormControl("default", [Validators.required]),
-      password: new FormControl("123", [Validators.required]),
+      username: new FormControl("user@mail.com", [Validators.required]),
+      password: new FormControl("123456", [Validators.required]),
     });
   }
 
