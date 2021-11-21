@@ -182,3 +182,40 @@ $navbg: rgb(215, 233, 192);
     }
 
 }
+
+.string {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.string__definition {
+    font-style: italic;
+}
+
+.content {
+    width: 40em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+
+    text-indent: 1em;
+    line-height: 1.5;
+
+    background-color: rgb(162, 190, 209);
+}
+
+.margin {
+    display: inline-block;
+
+    margin: 1em;
+}
+
+.main {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 10em;
+    max-width: 40em;
+}
+
+.bgimg {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
