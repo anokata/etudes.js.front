@@ -22,6 +22,8 @@ body {
     text-shadow: 0px 0px rgba(0, 0, 0, 0.5);
     color: rgb(78, 78, 78);
 
+    background-color: #e6f0f5;
+
     @media (min-width: 1000px) {
         color: #344566;
     }
@@ -217,5 +219,34 @@ $navbg: rgb(215, 233, 192);
 
 .bgimg {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-width: 20em;
+    min-height: 10em;
+    max-width: 40em;
+    max-height: 20em;
+
+    padding: 1em;
+
+    border: 1px solid #888;
+    border-radius: 2px;
+
+    background-color: #ffffff;
+
+
+    & p {
+        margin: 0 0 1em 0;
+
+        background: rgba(255, 255, 255, 0.7);
+        background-image: url("https://picsum.photos/400/100");
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: left center;
+
+        color: #eee;
+        line-height: 1.5;
+    }
+}
+
+.bg__title {
+    margin: 0 0 1em 0;
 
 }
