@@ -250,3 +250,13 @@ $navbg: rgb(215, 233, 192);
     margin: 0 0 1em 0;
 
 }
+
+/* pseudo */
+.pseudo_title {
+    margin: 0;
+}
+
+.pseudo_title::before {
+    content: "1.";
+
+}
