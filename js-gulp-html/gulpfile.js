@@ -28,6 +28,7 @@ let path = {
     html: "src/*.html",
     js: "src/assets/js/*.js",
     css: "src/assets/sass/style.scss",
+    css_flex: "src/assets/sass/style-flex.scss",
     images: "src/assets/img/**/*.{jpg,png,svg,gif,jpeg,ico}"
   },
   watch: {
@@ -92,6 +93,31 @@ function css() {
 
 }
 
+function css_flex() {
+  return src(path.src.css_flex, { base: "src/assets/sass" })
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(autoprefixer({
+      Browserslist: ['last 5 versions'],
+      cascade: true
+    }))
+    .pipe(cssbeautify())
+    .pipe(dest(path.build.css))
+    .pipe(cssnano({
+      zindex: false,
+      discardComments: {
+        removeAll: true
+      }
+    }))
+    .pipe(removeComments())
+    .pipe(rename({
+      suffix: ".min",
+      extname: ".css"
+    }))
+    .pipe(dest(path.build.css))
+
+}
+
 function js() {
   return src(path.src.js, { base: './src/assets/js/' })
     .pipe(plumber())
@@ -123,11 +149,12 @@ function watchFiles() {
   gulp.watch([path.watch.images], images);
 }
 
-const build = gulp.series(clean, gulp.parallel(html, css, js, images));
+const build = gulp.series(clean, gulp.parallel(html, css, css_flex, js, images));
 const watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.html = html;
 exports.css = css;
+exports.css_flex = css_flex;
 exports.js = js;
 exports.images = images;
 exports.clean = clean;
