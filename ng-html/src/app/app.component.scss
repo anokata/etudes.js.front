@@ -6,3 +6,43 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.content {
+  display: flex;
+}
+
+.footer {
+  padding: 1em;
+
+  background-color: rgb(197, 211, 197);
+}
+
+.header {
+  padding: 2em;
+  margin: 0;
+
+  background-color: rgb(197, 211, 197);
+}
+
+.main {
+  width: 70%;
+  padding: 1em;
+
+  color: rgb(233, 248, 231);
+  background-color:rgb(49, 63, 49);
+}
+
+.page {
+  width: 80%;
+  margin: 2em auto;
+
+  color: rgb(50, 61, 50);
+}
+
+.sidebar {
+  width: 15%;
+  padding: 1em;
+
+  background-color: rgb(20, 41, 31);
+  color: rgb(233, 248, 231);
+}
