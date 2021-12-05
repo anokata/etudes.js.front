@@ -36,8 +36,7 @@
   text-decoration: underline;
 }
 
-.header__item {
-}
+.header__item {}
 
 .main {
   flex-basis: 70%;
@@ -60,4 +59,35 @@
 
   background-color: rgb(20, 41, 31);
   color: rgb(233, 248, 231);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-item {
+  height: 3em;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.one {
+  background-color: #fac;
+}
+
+.two {
+  background-color: #caf;
+}
+
+.san {
+  background-color: #cfa;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 1em;
+  margin: 1em auto;
+
+  background-color: #efe;
 }
