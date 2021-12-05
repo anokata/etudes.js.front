@@ -93,6 +93,18 @@
 }
 
 /* Media */
+// media must be at bottom to work as rewrite rules
+
+@media (max-width: 1000px) {
+  .flex {
+    flex-wrap: wrap;
+    min-height: 5em;
+  }
+
+  .flex-item {
+    flex-basis: 50%;
+  }
+}
 
 @media (max-width: 800px) {
   .flex {
@@ -102,5 +114,15 @@
 
   .flex-item {
     flex-basis: 100%;
+  }
+
+  .one {
+    order: 2;
+  }
+}
+
+@media (max-height: 400px) {
+  .flex-item {
+    max-height: 1em;
   }
 }
