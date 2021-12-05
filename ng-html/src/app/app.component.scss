@@ -72,15 +72,15 @@
 }
 
 .one {
-  background-color: #fac;
+  background-color: #dfc;
 }
 
 .two {
-  background-color: #caf;
+  background-color: #8e8;
 }
 
 .san {
-  background-color: #cfa;
+  background-color: #cf3;
 }
 
 .container {
@@ -90,4 +90,17 @@
   margin: 1em auto;
 
   background-color: #efe;
+}
+
+/* Media */
+
+@media (max-width: 800px) {
+  .flex {
+    flex-direction: column;
+    min-height: 10em;
+  }
+
+  .flex-item {
+    flex-basis: 100%;
+  }
 }
